@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+coverage.json
 
 # next.js
 /.next/
@@ -26,6 +27,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
+.env
 .env*.local
 
 # vercel
@@ -33,3 +35,8 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+typechain
+
+#Hardhat files
+cache
+artifacts
