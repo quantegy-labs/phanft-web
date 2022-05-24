@@ -1,19 +1,19 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Layout from '../components/Layout'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Mission.module.css'
 
-const Home: NextPage = () => {
+const MissionPage: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>PhanFT | Welcome</title>
+				<title>PhanFT | Our Mission</title>
 			</Head>
 			<Layout>
-				<h1>Welcome to the Phanaverse!</h1>
+				<h1>Why PhanFT?</h1>
 			</Layout>
 		</>
 	)
 }
 
-export default Home
+export default MissionPage
