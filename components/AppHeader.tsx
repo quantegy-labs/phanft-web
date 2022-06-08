@@ -42,8 +42,10 @@ const styles = {
 };
 
 const pages = [
-  { name: "Home", href: "/" },
+  { name: "Roadmap", href: "/roadmap" },
   { name: "Mission", href: "/mission" },
+  { name: "Benefits", href: "/benefits" },
+  { name: "Team", href: "/team" },
   { name: "FAQs", href: "/faq" },
 ];
 
@@ -136,11 +138,21 @@ const AppHeader = () => {
           <Box sx={styles.connectBtnWrap}>
             <Button
               onClick={() => console.log("connect wallet")}
-              variant="contained"
-              color="secondary"
+              variant="outlined"
+              color="inherit"
+              sx={{ mr: 1 }}
             >
               Connect Wallet
             </Button>
+            <Link href="/join">
+              <Button
+                onClick={handleCloseNavMenu}
+                variant="contained"
+                color="secondary"
+              >
+                Join Now
+              </Button>
+            </Link>
           </Box>
         </Toolbar>
       </Container>
