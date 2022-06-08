@@ -108,7 +108,7 @@ const AppHeader = () => {
             href=""
             sx={styles.mobileNavLogo}
           >
-            PHANFT
+            PhanFT
           </Typography>
 
           {/* Desktop Navigation */}
@@ -119,7 +119,7 @@ const AppHeader = () => {
             href="/"
             sx={styles.desktopNavLogo}
           >
-            PHANFT
+            PhanFT
           </Typography>
           <Box component="nav" sx={styles.desktopNavWrap}>
             {pages.map((page) => (
