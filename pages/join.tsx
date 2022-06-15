@@ -2,7 +2,7 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import Layout from "../components/Layout";
+import PageLayout from "../components/layouts/PageLayout";
 
 const styles = {
   centeredIntro: {
@@ -51,7 +51,7 @@ const JoinPage: NextPage = () => {
           var $mcj = jQuery.noConflict(true);
         </script> */}
       </Head>
-      <Layout>
+      <PageLayout>
         <Box sx={styles.centeredIntro}>
           <Typography variant="h2">Sign Up</Typography>
           <Typography variant="h5" sx={{ mb: 3 }}>
@@ -130,7 +130,7 @@ const JoinPage: NextPage = () => {
             </div>
           </Box>
         </Container>
-      </Layout>
+      </PageLayout>
     </>
   );
 };

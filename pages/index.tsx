@@ -3,7 +3,14 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Layout from "../components/Layout";
+import HomeLayout from "../components/layouts/HomeLayout";
+
+const styles = {
+  banner: {
+    py: 10,
+    backgroundColor: "#dddaaa",
+  },
+};
 
 const Home: NextPage = () => {
   return (
@@ -11,8 +18,7 @@ const Home: NextPage = () => {
       <Head>
         <title>PhanFT | Welcome</title>
       </Head>
-      <Layout>
-        <Typography variant="h2">Welcome to the Phanaverse!</Typography>
+      <HomeLayout pageTitle="Welcome to the Phanaverse!">
         <Typography>
           By phans, for phans, PhanFT is a series of blockchain-powered NFT
           projects to celebrate and further solidify this amazing music and
@@ -30,7 +36,7 @@ const Home: NextPage = () => {
             <Image
               width={300}
               height={300}
-              src="/lizard_pfp.png"
+              src="/lizard1.png"
               alt="Lizards Genesis PFP"
             />
           </Grid>
@@ -110,12 +116,12 @@ const Home: NextPage = () => {
             <Image
               width={300}
               height={300}
-              src="/lizard_pfp.png"
+              src="/lizard3.png"
               alt="Lizards Genesis PFP"
             />
           </Grid>
         </Grid>
-      </Layout>
+      </HomeLayout>
     </>
   );
 };
