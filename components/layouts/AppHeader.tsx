@@ -56,7 +56,6 @@ const pages = [
   { name: "Roadmap", href: "#roadmap" },
   { name: "Team", href: "#team" },
   { name: "FAQs", href: "#faq" },
-  { name: "Sign Up", href: "#onboard" },
 ];
 
 const AppHeader = () => {
@@ -140,25 +139,68 @@ const AppHeader = () => {
             ))}
           </Box>
           <Box sx={styles.connectBtnWrap}>
-            <Button
-              onClick={() => console.log("connect wallet")}
-              variant="outlined"
-              color="secondary"
-              sx={{ mr: 1 }}
-              size="small"
+            <a
+              href="https://discord.com/invite/P5VpF5f7qx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
             >
-              Connect Wallet
-            </Button>
+              <Image
+                src="/icon_discord.svg"
+                alt="Discord"
+                width={20}
+                height={20}
+              />
+            </a>
+            <a
+              href="https://twitter.com/phanft_official"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+            >
+              <Image
+                src="/icon_twitter.svg"
+                alt="Twitter"
+                width={20}
+                height={20}
+              />
+            </a>
+            <a
+              href="https://instagram.com/phanft_official"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+            >
+              <Image
+                src="/icon_instagram.svg"
+                alt="Instagram"
+                width={20}
+                height={20}
+              />
+            </a>
             <Link href="#onboard">
               <Button
                 onClick={handleCloseNavMenu}
                 variant="contained"
                 color="primary"
                 size="small"
+                sx={{ ml: 1 }}
               >
                 Join Now
               </Button>
             </Link>
+            <Button
+              onClick={() => console.log("connect wallet")}
+              color="secondary"
+              size="small"
+            >
+              <Image
+                src="/icon_wallet.svg"
+                alt="Connect a Wallet"
+                width={30}
+                height={30}
+              />
+            </Button>
           </Box>
         </Toolbar>
       </Container>

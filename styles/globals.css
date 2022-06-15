@@ -20,3 +20,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.social-icon-link {
+  margin: 0 4px;
+  vertical-align: text-top;
+}
