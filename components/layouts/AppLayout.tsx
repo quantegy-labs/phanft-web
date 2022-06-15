@@ -9,8 +9,10 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    py: 6,
-    backgroundColor: "#dddaaa",
+    py: 10,
+    background: "url('/herobg.png') center center no-repeat",
+    backgroundSize: "cover",
+    color: "#fff",
   },
   pageContent: {
     py: 8,

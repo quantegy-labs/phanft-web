@@ -1,20 +1,36 @@
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
 import NextNProgress from "nextjs-progressbar";
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#ec1f65",
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: "#54c6eb",
+      contrastText: "#fff",
+    },
+  },
+});
+
+const PhanFTApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <NextNProgress
-        color="#9c27b0"
+        color={theme.palette.primary.main}
         startPosition={0.3}
         stopDelayMs={200}
         height={3}
         showOnShallow={true}
       />
       <Component {...pageProps} />
-    </>
+      <CssBaseline enableColorScheme />
+    </ThemeProvider>
   );
-}
+};
 
-export default MyApp;
+export default PhanFTApp;

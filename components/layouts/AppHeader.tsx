@@ -10,11 +10,20 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 const styles = {
-  appBar: { backgroundColor: "#031523" },
+  hidden: {
+    width: "1px",
+    height: "1px",
+    clip: "rect(0,0,0,0)",
+    clipPath: "inset(50%)",
+    margin: "-1px",
+    whiteSpace: "no-wrap",
+    overflow: "hidden",
+  },
   mobileNavWrap: { flexGrow: 1, display: { xs: "flex", md: "none" } },
   mobileNavMenu: { display: { xs: "block", md: "none" } },
   mobileNavLogo: {
@@ -62,7 +71,7 @@ const AppHeader = () => {
   };
 
   return (
-    <AppBar position="sticky" sx={styles.appBar}>
+    <AppBar position="sticky" color="default" enableColorOnDark>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Mobile Navigation */}
@@ -104,26 +113,20 @@ const AppHeader = () => {
               </nav>
             </Menu>
           </Box>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={styles.mobileNavLogo}
-          >
-            PhanFT
-          </Typography>
+          <Box sx={styles.mobileNavLogo}>
+            <Typography variant="h1" sx={styles.hidden}>
+              PhanFT
+            </Typography>
+            <Image src="/logo.png" width={200} height={40} alt="PhanFT Logo" />
+          </Box>
 
           {/* Desktop Navigation */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={styles.desktopNavLogo}
-          >
-            PhanFT
-          </Typography>
+          <Box sx={styles.desktopNavLogo}>
+            <Typography variant="h1" sx={styles.hidden}>
+              PhanFT
+            </Typography>
+            <Image src="/logo.png" width={200} height={40} alt="PhanFT Logo" />
+          </Box>
           <Box component="nav" sx={styles.desktopNavWrap}>
             {pages.map((page) => (
               <Link href={page.href} key={page.name}>
@@ -140,8 +143,9 @@ const AppHeader = () => {
             <Button
               onClick={() => console.log("connect wallet")}
               variant="outlined"
-              color="inherit"
+              color="secondary"
               sx={{ mr: 1 }}
+              size="small"
             >
               Connect Wallet
             </Button>
@@ -149,7 +153,8 @@ const AppHeader = () => {
               <Button
                 onClick={handleCloseNavMenu}
                 variant="contained"
-                color="secondary"
+                color="primary"
+                size="small"
               >
                 Join Now
               </Button>

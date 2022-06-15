@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
     "web3:test": "npx hardhat test",
     "web3:compile": "npx hardhat compile",
     "web3:deploy": "node scripts/deploy-contract.js"

@@ -76,7 +76,6 @@ const SectionOnboard = (): JSX.Element => {
                     type="text"
                     name="b_9e661be94b89b985bac91915f_c10d59ba7d"
                     tabIndex={-1}
-                    value=""
                     id="undefined_25429"
                   />
                 </div>
