@@ -7,12 +7,15 @@ import {
   Link,
   Typography,
 } from "@mui/material";
-import Head from "next/head";
 import { SyntheticEvent, useState } from "react";
 
 const styles = {
-  introText: {
+  headings: {
     mb: 2,
+    textAlign: "center",
+  },
+  introText: {
+    mb: 1,
     textAlign: "center",
   },
   faqWrap: {
@@ -38,12 +41,11 @@ const SectionFAQs = (): JSX.Element => {
   };
 
   return (
-    <>
-      <Head>
-        <title>PhanFT | Frequently Asked Questions</title>
-      </Head>
-      <Typography variant="h3">NFTs for Noobs</Typography>
-      <Typography variant="h4">Just Relax, You're Doing Fine</Typography>
+    <section id="faq">
+      <Box sx={styles.headings}>
+        <Typography variant="h3">NFTs for Noobs</Typography>
+        <Typography variant="h4">Just Relax, You're Doing Fine</Typography>
+      </Box>
       <Typography sx={styles.introText}>
         We appreciate that NFTs, blockchain, and cryptocurrency are all new
         territories - each with their own steep learning curve and risks to be
@@ -62,9 +64,8 @@ const SectionFAQs = (): JSX.Element => {
         Please jump to the glossary section at the bottom for simple
         explanations of the key terms and concepts here.
       </Typography>
-
       <Box sx={styles.faqWrap}>
-        <Box sx={styles.centeredIntro}>
+        <Box sx={styles.headings}>
           <Typography variant="h3">Frequently Asked Questions</Typography>
           <Typography variant="subtitle1">
             Some of the most commonly asked questions for beginners
@@ -420,8 +421,7 @@ const SectionFAQs = (): JSX.Element => {
           </AccordionDetails>
         </Accordion>
       </Box>
-
-      <Box sx={styles.centeredIntro}>
+      <Box sx={styles.headings}>
         <Typography variant="h3">Glossary</Typography>
         <Typography variant="subtitle1">
           Listed in order to maximize understanding
@@ -548,7 +548,7 @@ const SectionFAQs = (): JSX.Element => {
         marketplaces are similar to eBay. You can easily buy and sell NFTs here
         for a fixed price or in an auction.
       </Typography>
-    </>
+    </section>
   );
 };
 

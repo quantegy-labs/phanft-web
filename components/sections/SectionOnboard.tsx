@@ -2,13 +2,9 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
 const styles = {
-  centeredIntro: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+  headings: {
     textAlign: "center",
-    mb: 4,
+    mb: 2,
   },
   joinText: {
     mb: 4,
@@ -19,16 +15,14 @@ const styles = {
   },
 };
 
-const SectionSignUp = (): JSX.Element => {
+const SectionOnboard = (): JSX.Element => {
   const [email, setEmail] = useState<string>("");
 
   return (
-    <>
-      <Box sx={styles.centeredIntro}>
-        <Typography variant="h2">Sign Up</Typography>
-        <Typography variant="h5" sx={{ mb: 3 }}>
-          Join Our Membership Club
-        </Typography>
+    <section id="onboard">
+      <Box sx={styles.headings}>
+        <Typography variant="h3">Sign Up</Typography>
+        <Typography variant="h4">Join Our Membership Club</Typography>
       </Box>
       <Container maxWidth="md">
         <Typography sx={styles.joinText}>
@@ -102,8 +96,8 @@ const SectionSignUp = (): JSX.Element => {
           </div>
         </Box>
       </Container>
-    </>
+    </section>
   );
 };
 
-export default SectionSignUp;
+export default SectionOnboard;

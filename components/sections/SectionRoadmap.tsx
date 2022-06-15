@@ -1,6 +1,10 @@
-import { Link, Typography } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 
 const styles = {
+  headings: {
+    textAlign: "center",
+    mb: 2,
+  },
   roadmapHeading: {
     textAlign: "center",
   },
@@ -16,9 +20,13 @@ const styles = {
 };
 
 const SectionRoadmap = (): JSX.Element => (
-  <>
-    <Typography variant="h3">Let&apos;s Get This Show On The Road!</Typography>
-    <Typography variant="h4">Phase 1.0 Roadmap</Typography>
+  <section id="roadmap">
+    <Box sx={styles.headings}>
+      <Typography variant="h3">
+        Let&apos;s Get This Show On The Road!
+      </Typography>
+      <Typography variant="h4">Phase 1.0 Roadmap</Typography>
+    </Box>
     <Typography sx={styles.roadmapText}>
       We&rsquo;re in it for the long haul-our intent is all for your delight.
     </Typography>
@@ -91,7 +99,7 @@ const SectionRoadmap = (): JSX.Element => (
       </Link>
       .
     </Typography>
-  </>
+  </section>
 );
 
 export default SectionRoadmap;

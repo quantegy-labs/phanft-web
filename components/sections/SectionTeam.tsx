@@ -1,6 +1,10 @@
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 
 const styles = {
+  headings: {
+    textAlign: "center",
+    mb: 2,
+  },
   introText: {
     mb: 6,
     textAlign: "center",
@@ -9,9 +13,11 @@ const styles = {
 
 const SectionTeam = (): JSX.Element => {
   return (
-    <>
-      <Typography varaint="h3">Who We Are</Typography>
-      <Typography variant="h4">Meet the Phounders</Typography>
+    <section id="team">
+      <Box sx={styles.headings}>
+        <Typography variant="h3">Who We Are</Typography>
+        <Typography variant="h4">Meet the Phounders</Typography>
+      </Box>
       <Typography sx={styles.introText}>
         Our team consists of tech-savvy, long-time phans who are set on creating
         the greatest Phan experience in the metaverse. We&rsquo;re dedicated to
@@ -41,7 +47,7 @@ const SectionTeam = (): JSX.Element => {
           </Typography>
         </Grid>
       </Grid>
-    </>
+    </section>
   );
 };
 

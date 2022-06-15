@@ -1,6 +1,10 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const styles = {
+  headings: {
+    textAlign: "center",
+    mb: 2,
+  },
   missionText: {
     mb: 4,
     textAlign: "center",
@@ -8,9 +12,11 @@ const styles = {
 };
 
 const SectionMission = (): JSX.Element => (
-  <>
-    <Typography variant="h3">Why PhanFT?</Typography>
-    <Typography variant="h4">Our Mission Statement</Typography>
+  <section id="mission">
+    <Box sx={styles.headings}>
+      <Typography variant="h3">Why PhanFT?</Typography>
+      <Typography variant="h4">Our Mission Statement</Typography>
+    </Box>
     <Typography sx={styles.missionText}>
       The way people interact and engage digitally is evolving faster than ever.
       We&apos;re at the forefront of a new era where art and artists can thrive
@@ -46,7 +52,7 @@ const SectionMission = (): JSX.Element => (
       this your invitation to jump in the pond (with us here to guide you) as we
       create the greatest Phan community in the metaverse.
     </Typography>
-  </>
+  </section>
 );
 
 export default SectionMission;

@@ -1,16 +1,24 @@
 import { Star } from "@mui/icons-material";
 import {
+  Box,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Typography,
 } from "@mui/material";
-
+const styles = {
+  headings: {
+    textAlign: "center",
+    mb: 2,
+  },
+};
 const SectionBenefits = (): JSX.Element => (
-  <>
-    <Typography variant="h3">Benefits</Typography>
-    <Typography variant="h4">The PhanFT Membership Perks</Typography>
+  <section id="benefits">
+    <Box sx={styles.headings}>
+      <Typography variant="h3">Benefits</Typography>
+      <Typography variant="h4">The PhanFT Membership Perks</Typography>
+    </Box>
     <List>
       <ListItem>
         <ListItemIcon>
@@ -67,7 +75,7 @@ const SectionBenefits = (): JSX.Element => (
         <ListItemText primary="Help us save the race of Lizards from extinction by minting them to the blockchain and join the quest to gain the knowledge that you lack" />
       </ListItem>
     </List>
-  </>
+  </section>
 );
 
 export default SectionBenefits;

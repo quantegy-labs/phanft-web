@@ -7,16 +7,9 @@ import AppLayout from "../components/layouts/AppLayout";
 import SectionBenefits from "../components/sections/SectionBenefits";
 import SectionFAQs from "../components/sections/SectionFAQs";
 import SectionMission from "../components/sections/SectionMission";
+import SectionOnboard from "../components/sections/SectionOnboard";
 import SectionRoadmap from "../components/sections/SectionRoadmap";
-import SectionSignUp from "../components/sections/SectionSignUp";
 import SectionTeam from "../components/sections/SectionTeam";
-
-const styles = {
-  banner: {
-    py: 10,
-    backgroundColor: "#dddaaa",
-  },
-};
 
 const Home: NextPage = () => {
   return (
@@ -127,12 +120,18 @@ const Home: NextPage = () => {
             />
           </Grid>
         </Grid>
+        <Divider />
         <SectionMission />
+        <Divider />
         <SectionBenefits />
+        <Divider />
         <SectionRoadmap />
+        <Divider />
         <SectionTeam />
+        <Divider />
         <SectionFAQs />
-        <SectionSignUp />
+        <Divider />
+        <SectionOnboard />
       </AppLayout>
     </>
   );

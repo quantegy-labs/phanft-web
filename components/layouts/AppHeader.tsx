@@ -42,11 +42,12 @@ const styles = {
 };
 
 const pages = [
-  { name: "Roadmap", href: "/roadmap" },
-  { name: "Mission", href: "/mission" },
-  { name: "Benefits", href: "/benefits" },
-  { name: "Team", href: "/team" },
-  { name: "FAQs", href: "/faq" },
+  { name: "Mission", href: "#mission" },
+  { name: "Benefits", href: "#benefits" },
+  { name: "Roadmap", href: "#roadmap" },
+  { name: "Team", href: "#team" },
+  { name: "FAQs", href: "#faq" },
+  { name: "Sign Up", href: "#onboard" },
 ];
 
 const AppHeader = () => {
@@ -61,7 +62,7 @@ const AppHeader = () => {
   };
 
   return (
-    <AppBar position="static" sx={styles.appBar}>
+    <AppBar position="sticky" sx={styles.appBar}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Mobile Navigation */}
@@ -144,7 +145,7 @@ const AppHeader = () => {
             >
               Connect Wallet
             </Button>
-            <Link href="/join">
+            <Link href="#onboard">
               <Button
                 onClick={handleCloseNavMenu}
                 variant="contained"
