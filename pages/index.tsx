@@ -3,7 +3,13 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import HomeLayout from "../components/layouts/HomeLayout";
+import AppLayout from "../components/layouts/AppLayout";
+import SectionBenefits from "../components/sections/SectionBenefits";
+import SectionFAQs from "../components/sections/SectionFAQs";
+import SectionMission from "../components/sections/SectionMission";
+import SectionRoadmap from "../components/sections/SectionRoadmap";
+import SectionSignUp from "../components/sections/SectionSignUp";
+import SectionTeam from "../components/sections/SectionTeam";
 
 const styles = {
   banner: {
@@ -18,7 +24,7 @@ const Home: NextPage = () => {
       <Head>
         <title>PhanFT | Welcome</title>
       </Head>
-      <HomeLayout pageTitle="Welcome to the Phanaverse!">
+      <AppLayout>
         <Typography>
           By phans, for phans, PhanFT is a series of blockchain-powered NFT
           projects to celebrate and further solidify this amazing music and
@@ -121,7 +127,13 @@ const Home: NextPage = () => {
             />
           </Grid>
         </Grid>
-      </HomeLayout>
+        <SectionMission />
+        <SectionBenefits />
+        <SectionRoadmap />
+        <SectionTeam />
+        <SectionFAQs />
+        <SectionSignUp />
+      </AppLayout>
     </>
   );
 };
