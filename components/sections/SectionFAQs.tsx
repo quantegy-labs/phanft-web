@@ -44,7 +44,7 @@ const SectionFAQs = (): JSX.Element => {
     <section id="faq">
       <Box sx={styles.headings}>
         <Typography variant="h3">NFTs for Noobs</Typography>
-        <Typography variant="h4">Just Relax, You're Doing Fine</Typography>
+        <Typography variant="h4">Just Relax, You&apos;re Doing Fine</Typography>
       </Box>
       <Typography sx={styles.introText}>
         We appreciate that NFTs, blockchain, and cryptocurrency are all new
