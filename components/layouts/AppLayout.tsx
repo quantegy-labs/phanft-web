@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import type { ReactNode } from "react";
 import AppFooter from "./AppFooter";
 import AppHeader from "./AppHeader";
@@ -33,9 +33,7 @@ const AppLayout = (props: AppLayoutProps): JSX.Element => {
         <Box sx={styles.banner}>
           <Typography variant="h2">Welcome to the Phanaverse!</Typography>
         </Box>
-        <Container maxWidth="md" sx={styles.pageContent}>
-          {children}
-        </Container>
+        {children}
       </Box>
       <AppFooter />
     </>

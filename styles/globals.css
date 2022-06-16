@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  scroll-behavior: smooth;
 }
 
 hr,
@@ -19,6 +20,11 @@ hr,
 a {
   color: inherit;
   text-decoration: none;
+}
+
+main img {
+  border: 4px solid #54c6eb !important;
+  border-radius: 8px;
 }
 
 .social-icon-link {

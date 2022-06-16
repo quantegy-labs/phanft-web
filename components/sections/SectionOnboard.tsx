@@ -2,16 +2,27 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 
 const styles = {
-  headings: {
+  wrap: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    py: 10,
+    background: "url('/herobg.png') center center no-repeat",
+    backgroundSize: "cover",
     textAlign: "center",
+  },
+  headings: {
     mb: 2,
   },
   joinText: {
     mb: 4,
-    textAlign: "center",
   },
   formWrap: {
     my: 3,
+  },
+  input: {
+    borderRadius: "4px",
   },
 };
 
@@ -19,12 +30,12 @@ const SectionOnboard = (): JSX.Element => {
   const [email, setEmail] = useState<string>("");
 
   return (
-    <section id="onboard">
-      <Box sx={styles.headings}>
-        <Typography variant="h3">Sign Up</Typography>
-        <Typography variant="h4">Join Our Membership Club</Typography>
-      </Box>
+    <Box component="section" id="onboard" sx={styles.wrap}>
       <Container maxWidth="md">
+        <Box sx={styles.headings}>
+          <Typography variant="h3">Sign Up</Typography>
+          <Typography variant="h4">Join Our Membership Club</Typography>
+        </Box>
         <Typography sx={styles.joinText}>
           Join in on all the fun happening with our phriendly community and reap
           the benefits that the PhanFT club has to offer by filling in your
@@ -44,6 +55,7 @@ const SectionOnboard = (): JSX.Element => {
               <div id="mc_embed_signup_scroll">
                 <div className="mc-field-group">
                   <TextField
+                    sx={styles.input}
                     id="mce-EMAIL_25429"
                     name="EMAIL"
                     type="email"
@@ -51,7 +63,7 @@ const SectionOnboard = (): JSX.Element => {
                     placeholder="colonel.forbin@gamehenge.xyz"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    variant="outlined"
+                    variant="filled"
                     fullWidth
                   />
                 </div>
@@ -95,7 +107,7 @@ const SectionOnboard = (): JSX.Element => {
           </div>
         </Box>
       </Container>
-    </section>
+    </Box>
   );
 };
 
