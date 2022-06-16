@@ -72,7 +72,7 @@ const AppHeader = () => {
   return (
     <AppBar position="sticky" color="default" enableColorOnDark>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar id="back-to-top-anchor" disableGutters>
           {/* Mobile Navigation */}
           <Box sx={styles.mobileNavWrap}>
             <IconButton
