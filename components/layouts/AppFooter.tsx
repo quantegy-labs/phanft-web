@@ -3,6 +3,7 @@ import Image from "next/image";
 
 const styles = {
   footer: {
+    backgroundColor: "#121212",
     display: "flex",
     flexDirection: "column",
     py: 4,
