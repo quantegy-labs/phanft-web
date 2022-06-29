@@ -7,6 +7,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     py: 10,
+    px: 4,
     background: "url('/herobg.png') center center no-repeat",
     backgroundSize: "cover",
     color: "#fff",
@@ -23,10 +24,9 @@ const styles = {
 
 const SectionIntro = (): JSX.Element => (
   <>
-    <Container maxWidth="xl" sx={styles.banner}>
+    <Box sx={styles.banner}>
       <Typography variant="h2">Your Web 3.0 Pass to 4.0 Phandom</Typography>
-    </Container>
-
+    </Box>
     <Box id="intro" component="section">
       <Container maxWidth="md">
         <Typography variant="h3" gutterBottom sx={styles.heading}>
