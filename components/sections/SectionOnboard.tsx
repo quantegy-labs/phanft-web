@@ -33,14 +33,13 @@ const SectionOnboard = (): JSX.Element => {
     <Box component="section" id="onboard" sx={styles.wrap}>
       <Container maxWidth="md">
         <Box sx={styles.headings}>
-          <Typography variant="h3">Sign Up</Typography>
-          <Typography variant="h4">Join Our Membership Club</Typography>
+          <Typography variant="h3" gutterBottom>
+            Surrender to the Flow
+          </Typography>
+          <Typography variant="h5">
+            Enter your email for first access.
+          </Typography>
         </Box>
-        <Typography sx={styles.joinText}>
-          Join in on all the fun happening with our phriendly community and reap
-          the benefits that the PhanFT club has to offer by filling in your
-          email below.
-        </Typography>
         <Box sx={styles.formWrap}>
           <div id="mc_embed_signup" className="mcformpad">
             <form
