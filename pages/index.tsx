@@ -1,4 +1,3 @@
-import { Divider } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import AppLayout from "../components/layouts/AppLayout";
@@ -31,13 +30,9 @@ const Home: NextPage = () => {
         <SectionIntro />
         <SectionLizards />
         <SectionMission />
-        <Divider />
         <SectionRoadmap />
-        <Divider />
         <SectionInfo />
-        <Divider />
         <SectionTeam />
-        <Divider />
         <SectionFAQs />
         <SectionOnboard />
       </AppLayout>

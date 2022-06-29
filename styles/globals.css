@@ -31,3 +31,32 @@ main img {
   margin: 0 4px;
   vertical-align: text-top;
 }
+
+/*
+  Section Stylings
+*/
+section {
+  padding: 4rem 0;
+}
+
+#mission {
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url("/lights1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #f3f3f3;
+}
+
+#info {
+  background-color: #0f190d;
+  color: #f3f3f3;
+}
+
+#info hr {
+  border-color: #ccc;
+}
+
+#team {
+  background-color: #517f7f;
+}

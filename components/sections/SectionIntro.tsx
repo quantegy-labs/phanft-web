@@ -11,26 +11,25 @@ const styles = {
     backgroundSize: "cover",
     color: "#fff",
   },
-  introWrap: {
-    pt: 8,
-    pb: 4,
+  heading: {
     textAlign: "center",
+    mb: 6,
   },
   introText: {
     fontSize: "1.25rem",
     mb: 4,
-    textAlign: "left",
   },
 };
 
 const SectionIntro = (): JSX.Element => (
   <>
-    <Box sx={styles.banner}>
+    <Container maxWidth="xl" sx={styles.banner}>
       <Typography variant="h2">Your Web 3.0 Pass to 4.0 Phandom</Typography>
-    </Box>
-    <Box id="intro" component="section" sx={styles.introWrap}>
+    </Container>
+
+    <Box id="intro" component="section">
       <Container maxWidth="md">
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h3" gutterBottom sx={styles.heading}>
           The Only Rule is it Begins
         </Typography>
         <Typography sx={styles.introText}>

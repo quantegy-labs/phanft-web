@@ -2,7 +2,6 @@ import { Box, Container, Grid, Typography } from "@mui/material";
 
 const styles = {
   headings: {
-    pt: 8,
     textAlign: "center",
     mb: 3,
   },

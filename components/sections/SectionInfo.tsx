@@ -76,8 +76,8 @@ const SectionInfo = (): JSX.Element => (
               blockchain and hosted on IPFS.
             </Typography>
             <Typography sx={styles.text}>
-              If you’re new to the minting process or just want some more info,
-              please see our{" "}
+              If you&apos;re new to the minting process or just want some more
+              info, please see our{" "}
               <Link href="#faq" color="inherit">
                 <strong>FAQs section</strong>
               </Link>{" "}
