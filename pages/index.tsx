@@ -2,10 +2,10 @@ import { Divider } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import AppLayout from "../components/layouts/AppLayout";
-import SectionBenefits from "../components/sections/SectionBenefits";
 import SectionFAQs from "../components/sections/SectionFAQs";
 import SectionInfo from "../components/sections/SectionInfo";
 import SectionIntro from "../components/sections/SectionIntro";
+import SectionLizards from "../components/sections/SectionLizards";
 import SectionMission from "../components/sections/SectionMission";
 import SectionOnboard from "../components/sections/SectionOnboard";
 import SectionRoadmap from "../components/sections/SectionRoadmap";
@@ -29,9 +29,8 @@ const Home: NextPage = () => {
       </Head>
       <AppLayout>
         <SectionIntro />
+        <SectionLizards />
         <SectionMission />
-        <Divider />
-        <SectionBenefits />
         <Divider />
         <SectionRoadmap />
         <Divider />

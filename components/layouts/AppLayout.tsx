@@ -1,24 +1,8 @@
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Box, Fab, Fade, Typography, useScrollTrigger } from "@mui/material";
+import { Box, Fab, Fade, useScrollTrigger } from "@mui/material";
 import type { ReactNode } from "react";
 import AppFooter from "./AppFooter";
 import AppHeader from "./AppHeader";
-
-const styles = {
-  banner: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    py: 10,
-    background: "url('/herobg.png') center center no-repeat",
-    backgroundSize: "cover",
-    color: "#fff",
-  },
-  pageContent: {
-    py: 8,
-  },
-};
 
 type AppLayoutProps = {
   children: ReactNode;
@@ -63,12 +47,7 @@ const AppLayout = (props: AppLayoutProps): JSX.Element => {
   return (
     <>
       <AppHeader />
-      <Box component="main">
-        <Box sx={styles.banner}>
-          <Typography variant="h2">Welcome to the Phanaverse!</Typography>
-        </Box>
-        {children}
-      </Box>
+      <Box component="main">{children}</Box>
       <AppFooter />
       <ScrollTop>
         <Fab size="small" aria-label="scroll back to top">

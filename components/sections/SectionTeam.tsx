@@ -10,6 +10,9 @@ const styles = {
     mb: 6,
     textAlign: "center",
   },
+  memberWrap: {
+    textAlign: "center",
+  },
 };
 
 const SectionTeam = (): JSX.Element => {
@@ -17,55 +20,67 @@ const SectionTeam = (): JSX.Element => {
     <Box component="section" id="team">
       <Container maxWidth="md">
         <Box sx={styles.headings}>
-          <Typography variant="h3">Who We Are</Typography>
-          <Typography variant="h4">Meet the Phounders</Typography>
+          <Typography variant="h3">Meet the Pham</Typography>
         </Box>
         <Typography sx={styles.introText}>
-          Our team consists of tech-savvy, long-time phans who are set on
-          creating the greatest Phan experience in the metaverse. We&rsquo;re
-          dedicated to building a high-value, long-term project.
+          We’re a few tech-savvy, long-time phans who are set on creating the
+          greatest phan experience in Web3.
         </Typography>
         <Grid container spacing={4}>
           <Grid item xs={12} md={4}>
-            <Image
-              width={300}
-              height={300}
-              src="/lizard_unknown.png"
-              alt="Team Member"
-            />
-            <Typography variant="h4">Holy Blankenthal</Typography>
-            <Typography>
-              Creative, Product, Strategy, team QB. Serial entrepreneur in
-              music-tech, experience creator, and community builder. Finally got
-              his Axilla II.
-            </Typography>
+            <Box sx={styles.memberWrap}>
+              <Image
+                width={300}
+                height={300}
+                src="/lizard_david.png"
+                alt="Team Member"
+              />
+              <Typography variant="h4">David</Typography>
+              <Typography variant="h5">
+                Creative, Product, Partnerships, Strategy.
+              </Typography>
+              <Typography>
+                Serial music-tech founder, digital experience creator, and
+                community builder.
+              </Typography>
+              <Typography>
+                <strong>Finally got his Axilla II.</strong>
+              </Typography>
+            </Box>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Image
-              width={300}
-              height={300}
-              src="/lizard_unknown.png"
-              alt="Team Member"
-            />
-            <Typography variant="h4">Brother Wolfman</Typography>
-            <Typography>
-              Partnerships, marketer and in-house hustler. Paving the streets
-              and promoting to the masses. Caught 12.5 of the Baker&apos;s Dozen
-              13.
-            </Typography>
+            <Box sx={styles.memberWrap}>
+              <Image
+                width={300}
+                height={300}
+                src="/lizard_drew.png"
+                alt="Team Member"
+              />
+              <Typography variant="h4">Drew</Typography>
+              <Typography variant="h5">
+                Technology, Code, Contracts, Engineering.
+              </Typography>
+              <Typography>Staff member of a blue-chip DeFi company.</Typography>
+              <Typography>
+                <strong>
+                  Still stuck in the Tahoe Tweezer, or is this still Lawn Boy?
+                </strong>
+              </Typography>
+            </Box>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Image
-              width={300}
-              height={300}
-              src="/lizard_unknown.png"
-              alt="Team Member"
-            />
-            <Typography variant="h4">Oz Zealot</Typography>
-            <Typography>
-              Metaverse futurist. Rages in code, focused on the details, and
-              thinks smoke &amp; mirrors are lame. Loves a good Steam though.
-            </Typography>
+            <Box sx={styles.memberWrap}>
+              <Image
+                width={300}
+                height={300}
+                src="/lizard_ian.png"
+                alt="Team Member"
+              />
+              <Typography variant="h4">Forbin1228</Typography>
+              <Typography variant="h5">
+                Community Builder & Discord Moderator.
+              </Typography>
+            </Box>
           </Grid>
         </Grid>
       </Container>

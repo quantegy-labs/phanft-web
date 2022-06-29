@@ -1,4 +1,14 @@
-import { Box, Container, Link, Typography } from "@mui/material";
+import { Star } from "@mui/icons-material";
+import {
+  Box,
+  Container,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 
 const styles = {
   headings: {
@@ -9,13 +19,7 @@ const styles = {
     textAlign: "center",
   },
   roadmapText: {
-    mb: 4,
-    textAlign: "center",
-  },
-  attentionText: {
-    mt: 8,
-    display: "block",
-    textAlign: "center",
+    mb: 2,
   },
 };
 
@@ -23,83 +27,121 @@ const SectionRoadmap = (): JSX.Element => (
   <Box component="section" id="roadmap">
     <Container maxWidth="md">
       <Box sx={styles.headings}>
-        <Typography variant="h3">
-          Let&apos;s Get This Show On The Road!
+        <Typography variant="h3" gutterBottom>
+          Let&apos;s Get This Show on the Road!
         </Typography>
-        <Typography variant="h4">Phase 1.0 Roadmap</Typography>
+        <Typography variant="h4">Phase 1.0 Benefits and Roadmap</Typography>
       </Box>
       <Typography sx={styles.roadmapText}>
-        We&rsquo;re in it for the long haul-our intent is all for your delight.
+        We&rsquo;re in this for the long haul and our intent is all for your
+        delight. Below is what we plan to deliver in the first phase with a sold
+        out collection. That said, this is a fast evolving space and we&apos;re
+        learning every day. All ideas are subject to modification and change as
+        needed.
       </Typography>
+      <List>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="Own a one-of-a-kind, provably-rare digital collectable" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="Each Lizard holder gets (1) limited edition physical art print" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="Each Lizard holder gets (1) wearable merch item" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="Free airdrops of future collections and artist collabs as we expand the community" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="Access to phan-centric perks from our partners" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="Invitations to Lizard holder events and gatherings during tour. i.e. aftershow parties, pre-show meetups, and more. Your Lizard = your ticket" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="Keys to 'The Corridor', a private sub-section of our public Discord (that we have plans to eventually develop into an interactive gathering place in the metaverse)" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="You own the IP and can do anything with your Lizard artwork" />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="Purchasing a Lizard generates donations to The Waterwheel Foundation and Mockingbird Foundation charity partners." />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="Help save the Lizards from extinction by minting them to the blockchain and join the quest to gain the knowledge that you lack" />
+        </ListItem>
+      </List>
+      <Divider />
+      <Box sx={styles.headings}>
+        <Typography variant="h4" gutterBottom>
+          Phase 2.0 & Beyond
+        </Typography>
+        <Typography variant="h6">
+          This begins after selling out Phase 1.0 and delivering on the roadmap.
+        </Typography>
+      </Box>
       <Typography sx={styles.roadmapText}>
-        We&rsquo;ve set some milestones to keep us accountable and on-track to
-        delivering this project&rsquo;s vision. As each percentage of Lizards
-        sales is met below, we will start work on realizing that stated goal.
+        The below list are ideas and we reserve the right to change or modify
+        them anytime as we learn and grow as a community. Like the spirit of the
+        music, we&apos;re stepping on stage and improvising together with you in
+        uncharted territory.
       </Typography>
-      <Typography variant="h4" sx={styles.roadmapHeading}>
-        25%
-      </Typography>
-      <Typography sx={styles.roadmapText}>
-        The first 555 owners to purchase Lizards will receive a special physical
-        merch item.
-      </Typography>
-      <Typography variant="h4" sx={styles.roadmapHeading}>
-        40%
-      </Typography>
-      <Typography sx={styles.roadmapText}>
-        We free 5 enslaved lizards (NFTs held back from the original sale) to be
-        airdropped at random to existing Lizard holders.
-      </Typography>
-      <Typography variant="h4" sx={styles.roadmapHeading}>
-        50%
-      </Typography>
-      <Typography sx={styles.roadmapText}>Halfway to the moon 🚀🌔</Typography>
-      <Typography variant="h4" sx={styles.roadmapHeading}>
-        60%
-      </Typography>
-      <Typography sx={styles.roadmapText}>
-        Knuckle Bone Broth Avenue gets paved - think of this as a curated
-        digital shakedown experience.
-      </Typography>
-      <Typography variant="h4" sx={styles.roadmapHeading}>
-        75%
-      </Typography>
-      <Typography sx={styles.roadmapText}>
-        The Corridor opens - our members-only interactive site with games,
-        gatherings, guest appearances, and more.
-      </Typography>
-      <Typography variant="h4" sx={styles.roadmapHeading}>
-        85%
-      </Typography>
-      <Typography sx={styles.roadmapText}>
-        The Rhombus appears and a new portal is unlocked revealing a digital
-        treasure hunt. Prizes include up to 2 ETH in rewards and exclusive
-        1-of-1 minted characters including the great and knowledgeable Icculus.
-      </Typography>
-      <Typography variant="h4" sx={styles.roadmapHeading}>
-        90%
-      </Typography>
-      <Typography sx={styles.roadmapText}>
-        We throw a members-only, Lizard-holder party during the next tour
-        complete w/ live music, drinks, raffles, and other fun stuff.
-      </Typography>
-      <Typography variant="h4" sx={styles.roadmapHeading}>
-        100%
-      </Typography>
-      <Typography sx={styles.roadmapText}>
-        We take the proceeds from our first successful mint selling out and
-        invest right back into this community - dosing our brew with fresh
-        batches of new (yet phamiliar) character-driven NFTs, special artist
-        collabs, and even more value for holders digitally and IRL.
-      </Typography>
-      <Typography variant="overline" sx={styles.attentionText}>
-        <strong>Attention artists:</strong> If you&apos;re interested in
-        designing the art for future collections, please{" "}
-        <Link href="mailto:hello@phanft.com" color="inherit">
-          contact us here
-        </Link>{" "}
-        .
-      </Typography>
+      <List>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="We take the proceeds from The Lizards collection and invest right back into this community - dosing our brew with fresh batches of new (yet phamiliar) character-driven NFTs, special artist collabs, and even more value for holders digitally and IRL." />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="The Helping Phriendly DAO launches with a public treasury of funds, where holders get to vote on future goals and direction of the project." />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="We bring the shakedown lot experience into the metaverse before couch tour shows, where Lizards and other creatures that seem oh-so-kind can gather to hang out, buy digital and physical goods from vendors, and get more down at dance parties." />
+        </ListItem>
+        <ListItem>
+          <ListItemIcon>
+            <Star />
+          </ListItemIcon>
+          <ListItemText primary="The Rhombus appears and a new portal is unlocked revealing a digital treasure hunt. Prizes include up to 2 ETH in rewards and exclusive 1-of-1 minted characters including the great and knowledgeable Icculus." />
+        </ListItem>
+      </List>
     </Container>
   </Box>
 );
