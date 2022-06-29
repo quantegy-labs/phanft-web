@@ -14,7 +14,8 @@ const styles = {
   memberWrap: {},
   title: {
     textAlign: "center",
-    mb: 2,
+    fontWeight: "bold",
+    my: 2,
   },
   subtitle: {
     lineHeight: 1.3,
