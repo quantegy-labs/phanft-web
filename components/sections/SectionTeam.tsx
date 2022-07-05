@@ -11,7 +11,9 @@ const styles = {
 		fontSize: '1.25rem',
 		textAlign: 'center',
 	},
-	memberWrap: {},
+	memberWrap: {
+		textAlign: 'center',
+	},
 	title: {
 		textAlign: 'center',
 		fontWeight: 'bold',
@@ -68,7 +70,7 @@ const SectionTeam = (): JSX.Element => {
 								Technology & Engineering.
 							</Typography>
 							<Typography sx={styles.text}>
-								Full-time Web3 native at a major DeFi company, Ballmer peak believer, and lifelong
+								Full-time Web3 native at a major DeFi company, Ballmer Peak believer, and lifelong
 								musician.
 							</Typography>
 							<Typography>
