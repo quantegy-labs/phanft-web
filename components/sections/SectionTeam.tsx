@@ -68,7 +68,7 @@ const SectionTeam = (): JSX.Element => {
 								Technology & Engineering.
 							</Typography>
 							<Typography sx={styles.text}>
-								Full-time Web3 native at a major DeFi company, Ballmer peak coder, and lifelong
+								Full-time Web3 native at a major DeFi company, Ballmer peak believer, and lifelong
 								musician.
 							</Typography>
 							<Typography>
