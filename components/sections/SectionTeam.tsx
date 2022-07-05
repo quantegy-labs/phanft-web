@@ -71,7 +71,8 @@ const SectionTeam = (): JSX.Element => {
 								Technology & Engineering.
 							</Typography>
 							<Typography sx={styles.text}>
-								Web3-native coding guru, a true Ballmer Peak believer, and lifelong musician.
+								Web3-native coding guru, a true Ballmer Peak believer, and lifelong struggling
+								musician.
 							</Typography>
 							<Typography>
 								<strong>
