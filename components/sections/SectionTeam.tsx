@@ -51,7 +51,8 @@ const SectionTeam = (): JSX.Element => {
 								Product Strategy & Partnerships
 							</Typography>
 							<Typography sx={styles.text}>
-								Serial music-tech founder, digital experience creator, and community builder.
+								Serial music-tech founder, digital experience creator, and passionate community
+								builder.
 							</Typography>
 							<Typography>
 								<strong>
@@ -75,7 +76,7 @@ const SectionTeam = (): JSX.Element => {
 							</Typography>
 							<Typography>
 								<strong>
-									<em>Still stuck in the Tahoe Tweezer, or is this still Lawn Boy?</em>
+									<em>Is this still Lawn Boy?</em>
 								</strong>
 							</Typography>
 						</Box>
@@ -90,12 +91,12 @@ const SectionTeam = (): JSX.Element => {
 								Community Builder & Discord Mod
 							</Typography>
 							<Typography sx={styles.text}>
-								Grassroots marketer, wearer of many hats, bobbing on the surface where Cannabis,
-								Art, and Tech intersect
+								Grassroots marketer with many hats, bobbing on the surface where cannabis, art, &
+								tech intersect.
 							</Typography>
 							<Typography>
 								<strong>
-									<em>Has seen more slow Llamas than fast Llamas</em>
+									<em>Seen more slow than fast Llamas.</em>
 								</strong>
 							</Typography>
 						</Box>
