@@ -8,26 +8,27 @@ const styles = {
 		textAlign: 'center',
 	},
 	lizardsText: {
-		mb: 2,
+		fontSize: '1.25rem',
+		mb: 4,
 		textAlign: 'left',
 	},
 }
 
 const SectionLizards = (): JSX.Element => (
 	<Box id="lizards" component="section" sx={styles.lizardsWrap}>
-		<Container maxWidth="md">
+		<Container maxWidth="lg">
 			<Grid container spacing={4}>
 				<Grid item xs={6}>
-					<Image width={500} height={500} src="/lizard13.png" alt="Lizards Genesis PFP" />
+					<Image width={500} height={500} src="/lizard1.png" alt="Lizards Genesis PFP" />
 				</Grid>
 				<Grid item xs={6}>
-					<Image width={500} height={500} src="/lizard6.png" alt="Lizards Genesis PFP" />
+					<Image width={500} height={500} src="/lizard2.png" alt="Lizards Genesis PFP" />
 				</Grid>
 				<Grid item xs={6}>
 					<Image width={500} height={500} src="/lizard3.png" alt="Lizards Genesis PFP" />
 				</Grid>
 				<Grid item xs={6}>
-					<Image width={500} height={500} src="/lizard14.png" alt="Lizards Genesis PFP" />
+					<Image width={500} height={500} src="/lizard4.png" alt="Lizards Genesis PFP" />
 				</Grid>
 			</Grid>
 			<Box sx={{ mb: 4 }} />

@@ -33,6 +33,13 @@ main img {
 }
 
 /*
+  MUI Overrides
+*/
+.MuiTypography-body1 {
+  font-size: 1.25rem;
+}
+
+/*
   Section Stylings
 */
 section {

@@ -21,18 +21,24 @@ const styles = {
 	},
 	subtitle: {
 		lineHeight: 1.3,
+		fontSize: '1rem',
 		textAlign: 'center',
 		mb: 2,
 	},
 	text: {
 		mb: 2,
 	},
+	quote: {
+		fontSize: '1rem !important',
+		fontWeight: 'bold',
+		fontStyle: 'italic',
+	},
 }
 
 const SectionTeam = (): JSX.Element => {
 	return (
 		<Box component="section" id="team">
-			<Container maxWidth="md">
+			<Container maxWidth="lg">
 				<Box sx={styles.headings}>
 					<Typography variant="h3">Meet the Pham</Typography>
 				</Box>
@@ -54,11 +60,7 @@ const SectionTeam = (): JSX.Element => {
 								Serial music-tech founder, digital experience creator, and passionate community
 								builder.
 							</Typography>
-							<Typography>
-								<strong>
-									<em>Finally got his Axilla II.</em>
-								</strong>
-							</Typography>
+							<Typography sx={styles.quote}>Finally got his Axilla II.</Typography>
 						</Box>
 					</Grid>
 					<Grid item xs={12} md={4}>
@@ -68,17 +70,13 @@ const SectionTeam = (): JSX.Element => {
 								Drew
 							</Typography>
 							<Typography variant="overline" component="h6" sx={styles.subtitle}>
-								Technology & Engineering.
+								Technology & Engineering
 							</Typography>
 							<Typography sx={styles.text}>
 								Web3-native coding guru, a true Ballmer Peak believer, and lifelong struggling
 								musician.
 							</Typography>
-							<Typography>
-								<strong>
-									<em>Is this still Lawn Boy?</em>
-								</strong>
-							</Typography>
+							<Typography sx={styles.quote}>Is this still Lawn Boy?</Typography>
 						</Box>
 					</Grid>
 					<Grid item xs={12} md={4}>
@@ -94,11 +92,7 @@ const SectionTeam = (): JSX.Element => {
 								Grassroots marketer with many hats, bobbing on the surface where cannabis, art, &
 								tech intersect.
 							</Typography>
-							<Typography>
-								<strong>
-									<em>Seen more slow than fast Llamas.</em>
-								</strong>
-							</Typography>
+							<Typography sx={styles.quote}>Seen more slow than fast Llamas.</Typography>
 						</Box>
 					</Grid>
 				</Grid>
