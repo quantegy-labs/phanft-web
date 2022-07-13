@@ -46,6 +46,11 @@ section {
   padding: 4rem 0;
 }
 
+#intro, #faq {
+  border-top: 3px solid #ec1f65;
+	border-bottom: 3px solid #ec1f65;
+}
+
 #mission {
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
     url("/lights1.png");
