@@ -33,22 +33,16 @@ main img {
 }
 
 /*
-  MUI Overrides
-*/
-.MuiTypography-body1 {
-  font-size: 1.25rem;
-}
-
-/*
   Section Stylings
 */
 section {
   padding: 4rem 0;
 }
 
-#intro, #faq {
+#intro,
+#faq {
   border-top: 3px solid #ec1f65;
-	border-bottom: 3px solid #ec1f65;
+  border-bottom: 3px solid #ec1f65;
 }
 
 #mission {

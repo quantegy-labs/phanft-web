@@ -51,8 +51,8 @@ const styles = {
 };
 
 const pages = [
+  { name: "Lizards", href: "#lizards" },
   { name: "Mission", href: "#mission" },
-  { name: "Benefits", href: "#benefits" },
   { name: "Roadmap", href: "#roadmap" },
   { name: "Team", href: "#team" },
   { name: "FAQs", href: "#faq" },

@@ -19,6 +19,11 @@ const theme = createTheme({
       default: "#2f4136",
     },
   },
+  typography: {
+    body1: {
+      fontSize: "1.25rem",
+    },
+  },
 });
 
 const PhanFTApp = ({ Component, pageProps }: AppProps): JSX.Element => {
