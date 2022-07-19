@@ -46,7 +46,12 @@ const styles = {
     textDecoration: "none",
   },
   desktopNavWrap: { flexGrow: 1, display: { xs: "none", md: "flex" } },
-  desktopNavMenuItem: { my: 2, color: "white", display: "block" },
+  desktopNavMenuItem: {
+    my: 2,
+    color: "white",
+    display: "block",
+    fontSize: "1rem",
+  },
   connectBtnWrap: { flexGrow: 0 },
 };
 

@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>PhanFT | Welcome</title>
+        <title>PhanFT | Your Web 3.0 Pass to 4.0 Phandom</title>
       </Head>
       <AppLayout>
         <SectionIntro />
