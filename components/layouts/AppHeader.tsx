@@ -198,12 +198,13 @@ const AppHeader = () => {
               onClick={() => console.log("connect wallet")}
               color="secondary"
               size="small"
+              sx={{ display: { xs: "none", sm: "inline-flex" } }}
             >
               <Image
                 src="/icon_wallet.svg"
                 alt="Connect a Wallet"
-                width={30}
-                height={30}
+                width={25}
+                height={25}
               />
             </Button>
           </Box>
