@@ -83,7 +83,7 @@ contract EnlightenedLizards is
         require(_tokenIds.current() < totalSupply, "Collection is sold out");
 
         uint256 newLizardId = _tokenIds.current();
-        _mint(_phan, newLizardId);
+        _safeMint(_phan, newLizardId);
         _setTokenURI(newLizardId, _tokenURI);
         _tokenIds.increment();
 
