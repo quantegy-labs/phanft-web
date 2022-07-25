@@ -8,9 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "web3:test": "npx hardhat test",
-    "web3:compile": "npx hardhat compile",
-    "web3:deploy": "node scripts/deploy-contract.js"
+    "contracts:test": "npx hardhat test",
+    "contracts:compile": "npx hardhat compile",
+    "contracts:deploy": "yarn contracts:compile && scripts/deploy-contracts.js"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -25,6 +25,7 @@
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.7.1",
     "@types/node": "17.0.35",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.5",
