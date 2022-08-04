@@ -13,12 +13,12 @@ contract QuantegyLabsAccessControl is Ownable {
     address payable internal treasury;
 
     modifier onlyCEO() {
-        require(msg.sender == ceoAddress);
+        require(msg.sender == ceoAddress, "Call not permitted: CEO only");
         _;
     }
 
     modifier onlyCTO() {
-        require(msg.sender == ctoAddress);
+        require(msg.sender == ctoAddress, "Call not permitted: CTO only");
         _;
     }
 
@@ -51,10 +51,15 @@ contract QuantegyLabsAccessControl is Ownable {
 
     /// @dev Assigns a new address to act as the CTO. Only available to the current CEO.
     /// @param _newCTO The address of the new CTO
-    function setCFO(address _newCTO) external onlyCEO {
+    function setCTO(address _newCTO) external onlyCEO {
         require(_newCTO != address(0));
         ctoAddress = _newCTO;
         emit CTOUpdated(_newCTO);
+    }
+
+    /// @dev Update the treasury address if/when need be
+    function getTreasury() external view returns (address) {
+        return treasury;
     }
 
     /// @dev Update the treasury address if/when need be
