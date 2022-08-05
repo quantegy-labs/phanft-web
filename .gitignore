@@ -37,9 +37,12 @@ yarn-error.log*
 *.tsbuildinfo
 typechain
 
-#Hardhat files
+# Hardhat files
 cache
 artifacts
+
+# Collection files
+collection
 
 # IDE
 .vscode
