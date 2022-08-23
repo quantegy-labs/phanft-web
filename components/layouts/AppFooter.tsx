@@ -20,7 +20,7 @@ const AppFooter = (): JSX.Element => (
   <Box component="footer" sx={styles.footer}>
     <Box sx={styles.socialWrap}>
       <a
-        href="https://discord.com/invite/P5VpF5f7qx"
+        href="https://discord.gg/pxwNvgMQaU"
         target="_blank"
         rel="noopener noreferrer"
         className="social-icon-link"

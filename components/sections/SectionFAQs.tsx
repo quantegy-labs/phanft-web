@@ -71,7 +71,7 @@ const SectionFAQs = (): JSX.Element => {
             </Typography>
             <Typography sx={styles.text}>
               <Link
-                href="https://discord.com/invite/P5VpF5f7qx"
+                href="https://discord.gg/pxwNvgMQaU"
                 target="_blank"
                 rel="noreferrer"
               >
