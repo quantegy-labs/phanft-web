@@ -66,6 +66,7 @@ const pages = [
   { name: "Roadmap", href: "#roadmap" },
   { name: "Team", href: "#team" },
   { name: "FAQs", href: "#faq" },
+  { name: "Mint", href: "/mint" },
 ];
 
 const AppHeader = () => {
@@ -91,12 +92,10 @@ const AppHeader = () => {
   };
 
   const handleConnectWallet = () => {
-    console.log("from appbar")
     connectWallet()
   }
 
   const handleDisconnectWallet = () => {
-    console.log("from appbar")
     disconnectWallet()
     handleClose()
   }

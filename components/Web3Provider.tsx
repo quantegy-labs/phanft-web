@@ -1,15 +1,26 @@
 import React, { ReactElement, useContext, useEffect, useState } from 'react';
-import { ethers } from 'ethers'
-import detectEthereumProvider from '@metamask/detect-provider'
+import { ethers, BigNumber } from 'ethers'
 import { ExternalProvider, Web3Provider } from '@ethersproject/providers';
+import detectEthereumProvider from '@metamask/detect-provider'
+import { CircularProgress } from '@mui/material';
+import CollectionConfig from '../collection/smart-contract/config/CollectionConfig';
+import Whitelist from '../collection/minting-dapp/src/scripts/lib/Whitelist'
+import { EnlightenedLizards as NftContractType } from '../collection/smart-contract/typechain/index';
+import type { NetworkConfigInterface } from './minting/MintingForm';
+
+const ContractAbi = require('../collection/smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
 export type Web3Data = {
-  provider: Web3Provider;
-  connectWallet: () => void;
-  disconnectWallet: () => void;
-  connectedAddress: string;
-  connected: boolean;
-  loading: boolean;
+  web3Provider: Web3Provider | null
+  contract: NftContractType | null
+  otherState: OtherState
+  contractState: ContractState
+  refreshContractState: () => Promise<void>
+  connectWallet: () => void
+  disconnectWallet: () => void
+  connected: boolean
+  connectedAddress: string
+  web3Error: JSX.Element | string | null
 };
 
 export type Web3ContextData = {
@@ -18,81 +29,135 @@ export type Web3ContextData = {
 
 export const Web3Context = React.createContext({} as Web3ContextData);
 
+interface ContractState {
+  totalSupply: number;
+  maxSupply: number;
+  maxMintAmountPerTx: number;
+  tokenPrice: BigNumber;
+  isPaused: boolean;
+  isWhitelistMintEnabled: boolean;
+  isUserInWhitelist: boolean;
+}
+
+interface OtherState {
+  userAddress: string|null;
+  network: ethers.providers.Network|null;
+  networkConfig: NetworkConfigInterface;
+}
+
+const defaultContractState: ContractState = {
+  totalSupply: 0,
+  maxSupply: 0,
+  maxMintAmountPerTx: 0,
+  tokenPrice: BigNumber.from(0),
+  isPaused: true,
+  isWhitelistMintEnabled: false,
+  isUserInWhitelist: false,
+};
+
+const defaultOtherState: OtherState = {
+  userAddress: null,
+  network: null,
+  networkConfig: CollectionConfig.mainnet,
+}
+
 export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const [connected, setConnected] = useState<boolean>(false);
 	const [connectedAddress, setConnectedAddress] = useState<string>('');
-  const [loading, setLoading] = useState(false);
-  const [provider, setProvider] = useState<ExternalProvider>()
+  const [web3Error, setWeb3Error] = useState<JSX.Element | string | null>(null)
+  const [web3Provider, setWeb3Provider] = useState<Web3Provider | null>(null)
+  const [contract, setContract] = useState<NftContractType | null>(null)
+  const [contractState, setContractState] = useState<ContractState>(defaultContractState)
+  const [otherState, setOtherState] = useState<OtherState>(defaultOtherState)
 
   useEffect(() => {
     const getWeb3 = async () => {
       const browserProvider = await detectEthereumProvider() as ExternalProvider
-
       if (browserProvider) {
         console.log('Ethereum successfully detected!')
-        const web3Provider = new ethers.providers.Web3Provider(browserProvider);
-
-        console.log(browserProvider, web3Provider)
-        setProvider(web3Provider)
-
-        // From now on, this should always be true:
-        // provider === window.ethereum
-
-        // Legacy providers may only have ethereum.sendAsync
-        // const chainId = await web3Provider.request({
-        //   method: 'eth_chainId'
-        // })
-        // console.log({chainId})
+        const ethersProvider = new ethers.providers.Web3Provider(browserProvider);
+        setWeb3Provider(ethersProvider)
+        registerWalletEvents(browserProvider);
+        await initWallet();
+        setLoading(false)
       } else {
         // if the provider is not detected, detectEthereumProvider resolves to null
         console.error('Please install MetaMask!')
+        setWeb3Error(
+          <>
+            We were not able to detect <strong>MetaMask</strong>. We value <strong>privacy and security</strong> a lot so we limit the wallet options on our minting dapp.<br />
+            <br />
+            But don&apos;t worry! <span className="emoji">😃</span> You can always interact with the smart-contract through <a href={generateContractUrl()} target="_blank" rel="noreferrer">{state.networkConfig.blockExplorer.name}</a> and <strong>we do our best to provide you with the best user experience possible</strong>, even from there.<br />
+            <br />
+            You can also get your <strong>Whitelist Proof</strong> manually, using the tool below.
+          </>,
+        );
       }
     }
-
     getWeb3()
   }, [])
 
+  // Refreshes the contract data in state with the most lastest data from contract state, useful for updating UIs after transactions
+  const refreshContractState = async (): Promise<void> => {
+    setContractState({
+      maxSupply: (await contract?.maxSupply() ?? BigNumber.from(0)).toNumber(),
+      totalSupply: (await contract?.totalSupply() ?? BigNumber.from(0)).toNumber(),
+      maxMintAmountPerTx: (await contract?.maxMintAmountPerTx() ?? BigNumber.from(0)).toNumber(),
+      tokenPrice: await contract?.cost() ?? BigNumber.from(0),
+      isPaused: await contract?.paused() ?? true,
+      isWhitelistMintEnabled: await contract?.whitelistMintEnabled() ?? false,
+      isUserInWhitelist: Whitelist.contains(otherState.userAddress ?? ''),
+    });
+  }
+
+  // Initializes wallet, network, & contract data
   const initWallet = async () => {
-    // const walletAccounts = await this.provider.listAccounts();
+    // Reset contract state
+    setContractState(defaultContractState);
 
-    // this.setState(defaultState);
+    // Get connected wallets
+    const walletAccounts = await web3Provider?.listAccounts() ?? [];
+    if (walletAccounts.length === 0) {
+      return;
+    }
 
-    // if (walletAccounts.length === 0) {
-    //   return;
-    // }
+    // Get network
+    const network = await web3Provider?.getNetwork();
+    let networkConfig: NetworkConfigInterface;
+    if (!network) {
+      setWeb3Error('Unsupported network!');
+      return;
+    } else if (network.chainId === CollectionConfig.mainnet.chainId) {
+      networkConfig = CollectionConfig.mainnet;
+    } else if (network.chainId === CollectionConfig.testnet.chainId) {
+      networkConfig = CollectionConfig.testnet;
+    } else {
+      setWeb3Error('Unsupported network!');
+      return;
+    }
 
-    // const network = await this.provider.getNetwork();
-    // let networkConfig: NetworkConfigInterface;
+    // Set network and connected address data
+    setOtherState({
+      userAddress: walletAccounts[0],
+      network,
+      networkConfig,
+    });
+    setConnectedAddress(walletAccounts[0])
 
-    // if (network.chainId === CollectionConfig.mainnet.chainId) {
-    //   networkConfig = CollectionConfig.mainnet;
-    // } else if (network.chainId === CollectionConfig.testnet.chainId) {
-    //   networkConfig = CollectionConfig.testnet;
-    // } else {
-    //   this.setError('Unsupported network!');
-
-    //   return;
-    // }
-
-    // this.setState({
-    //   userAddress: walletAccounts[0],
-    //   network,
-    //   networkConfig,
-    // });
-
-    // if (await this.provider.getCode(CollectionConfig.contractAddress!) === '0x') {
-    //   this.setError('Could not find the contract, are you connected to the right chain?');
-
-    //   return;
-    // }
-
-    // this.contract = new ethers.Contract(
-    //   CollectionConfig.contractAddress!,
-    //   ContractAbi,
-    //   this.provider.getSigner(),
-    // ) as NftContractType;
-
-    // this.refreshContractState();
+    // Get/Set contract data
+    if (await web3Provider?.getCode(CollectionConfig.contractAddress!) === '0x') {
+      setWeb3Error('Could not find the contract, are you connected to the right chain?');
+      return;
+    }
+    const enlightenedLizards = new ethers.Contract(
+      CollectionConfig.contractAddress!,
+      ContractAbi,
+      web3Provider?.getSigner(),
+    ) as NftContractType;
+    console.log({enlightenedLizards, addy: CollectionConfig.contractAddress, signer: web3Provider?.getSigner()})
+    setContract(enlightenedLizards)
+    refreshContractState();
   }
 
   const registerWalletEvents = (browserProvider: ExternalProvider): void => {
@@ -107,14 +172,17 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     });
   }
 
-	const connectWallet = async () => {
-		console.log('connect wallet')
-		setConnected(true)
-		setConnectedAddress('0x00000123456789')
-	}
+  const connectWallet = async (): Promise<void> => {
+    try {
+        await web3Provider?.provider.request!({ method: 'eth_requestAccounts' });
+        await initWallet();
+      	setConnected(true)
+    } catch (e: any) {
+      setWeb3Error(e);
+    }
+  }
 
 	const disconnectWallet = () => {
-		console.log('disconnect wallet')
 		setConnected(false)
 		setConnectedAddress('')
 	}
@@ -123,16 +191,20 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
     <Web3Context.Provider
       value={{
         web3ProviderData: {
-          provider,
+          web3Provider,
+          contract,
+          otherState,
+          contractState,
+          refreshContractState,
           connectWallet,
           disconnectWallet,
           connected,
 					connectedAddress,
-          loading,
+          web3Error,
         },
       }}
     >
-      {children}
+      {loading ? <CircularProgress /> : children}
     </Web3Context.Provider>
   );
 }
