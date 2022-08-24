@@ -19,7 +19,8 @@ contract EnlightenedLizards is
     uint256 public totalSupply = 555;
 
     uint256 public cost = 0.1 ether;
-    string baseURI = "https://gateway.pinata.cloud/ipfs/QmcWekLBmhyUW18LzC3ExfCHesijgmiQwMTDjrfADRbkd1";
+    string baseURI =
+        "https://gateway.pinata.cloud/ipfs/QmcWekLBmhyUW18LzC3ExfCHesijgmiQwMTDjrfADRbkd1";
 
     /// Events
     ////////////////////////////////////
@@ -81,12 +82,13 @@ contract EnlightenedLizards is
     /// @dev Mints a new token and updates the URI for the token metadata
     function mintLizard(address _phan, string memory _tokenURI)
         public
+        payable
         returns (uint256)
     {
         require(_tokenIds.current() < totalSupply, "Collection is sold out");
 
         if (msg.sender != owner()) {
-            require(msg.value >= cost)
+            require(msg.value >= cost);
         }
 
         uint256 newLizardId = _tokenIds.current();

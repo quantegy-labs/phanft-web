@@ -3,8 +3,9 @@ pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-contract QuantegyLabsAccessControl is Ownable {
+contract QuantegyLabsAccessControl is Ownable, ReentrancyGuard {
     /// @dev The CEO's address
     address public ceoAddress;
     /// @dev The CTO's address
