@@ -7,12 +7,17 @@ import {
   IconButton,
   Menu,
   MenuItem,
+  MenuList,
+  SvgIcon,
   Toolbar,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useWeb3Context } from '../Web3Provider';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import VerifiedUserSharpIcon from '@mui/icons-material/VerifiedUserSharp';
 
 const styles = {
   hidden: {
@@ -65,6 +70,17 @@ const pages = [
 
 const AppHeader = () => {
   const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const { connected, connectWallet, disconnectWallet, connectedAddress } = useWeb3Context()
+
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -73,6 +89,27 @@ const AppHeader = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const handleConnectWallet = () => {
+    console.log("from appbar")
+    connectWallet()
+  }
+
+  const handleDisconnectWallet = () => {
+    console.log("from appbar")
+    disconnectWallet()
+    handleClose()
+  }
+
+  /**
+   * Converts a long wallet address to a somewhat hidden one, showing the first two characters and the last 4 characters
+   * @param address The wallet address abcdefg12345678
+   * @returns An obfuscated address ab.................5678
+   */
+  const formatAddress = (address: string): string => {
+    if (!address) return ''
+    return address.substring(0, 2) + '...........' + address.substring(address.length - 4)
+  }
 
   return (
     <AppBar position="sticky" color="default" enableColorOnDark>
@@ -194,19 +231,55 @@ const AppHeader = () => {
                 Join Now
               </Button>
             </Link>
-            <Button
-              onClick={() => console.log("connect wallet")}
-              color="secondary"
-              size="small"
-              sx={{ display: { xs: "none", sm: "inline-flex" } }}
-            >
-              <Image
-                src="/icon_wallet.svg"
-                alt="Connect a Wallet"
-                width={25}
-                height={25}
-              />
-            </Button>
+            {connected ? (
+              <>
+                <Button
+                  id="connect-wallet-btn"
+                  onClick={handleMenu}
+                  color="secondary"
+                  size="small"
+                  aria-controls="wallet-menu"
+                  aria-haspopup="true"
+                  disableFocusRipple
+                  disableTouchRipple
+                  variant="outlined"
+                  startIcon={<SvgIcon><AccountBalanceWalletIcon /></SvgIcon>}
+                  endIcon={<SvgIcon><VerifiedUserSharpIcon /></SvgIcon>}
+                  sx={{ display: { xs: "none", sm: "inline-flex" }, py: .6, ml: 1, borderWidth: 2}}
+                >
+                  <Typography color="text.primary" variant="caption">
+                    {formatAddress(connectedAddress)}
+                  </Typography>
+                </Button>
+                <Menu
+                  id="wallet-menu"
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'connect-wallet-btn',
+                  }}
+                >
+                  <MenuList dense sx={{ py: 0 }}>
+                    <MenuItem onClick={handleDisconnectWallet}>Disconnect</MenuItem>
+                  </MenuList>
+                </Menu>
+              </>
+            ) : (
+              <IconButton
+                onClick={handleConnectWallet}
+                color="secondary"
+                size="small"
+                sx={{ display: { xs: "none", sm: "inline-flex" }, ml: 2 }}
+              >
+                <Image
+                  src="/icon_wallet.svg"
+                  alt="Connect a Wallet"
+                  width={25}
+                  height={25}
+                />
+              </IconButton>
+            )}
           </Box>
         </Toolbar>
       </Container>

@@ -5,6 +5,7 @@ describe("EnlightenedLizards", function () {
   let accounts = []
   let owner
   let enlightenedLizards
+  let treasury
 
   before(async () => {
     // Get account addresses
@@ -13,11 +14,15 @@ describe("EnlightenedLizards", function () {
       accounts.push(signer.address)
     }
     owner = accounts[0]
+    treasury = accounts[9]
 
     // Deploy contract
     const EnlightenedLizards = await ethers.getContractFactory("EnlightenedLizards");
     enlightenedLizards = await EnlightenedLizards.deploy();
     await enlightenedLizards.deployed();
+
+    // Set treasury
+    await enlightenedLizards.setTreasury(treasury)
   })
 
   it('has been deployed', async () => {
@@ -48,4 +53,20 @@ describe("EnlightenedLizards", function () {
     const expectedTotalSupply = 555
     expect(actualTotalSupply).to.equal(expectedTotalSupply);
   })
+
+  it('should mint a token', async () => {})
+
+  it('should not mint more than the max supply', async () => {})
+
+  it('should allow to a tokens URI metadata', async () => {})
+
+  it('should send a royalty to the treasury during a transfer (sale)', async () => {})
+
+  it('should allow the CEO to withdraw the funds to the treasury', async () => {
+    const treasuryBalance = treasury.balance
+    const contractBalance = enlightenedLizards.address.balance
+    console.log(treasuryBalance, contractBalance)
+  })
+
+  // it('should allow a token to have two redeemables', async () => {})
 });

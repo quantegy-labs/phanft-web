@@ -18,6 +18,9 @@ contract EnlightenedLizards is
     /// @dev Collection size and token supply is 555 🐠
     uint256 public totalSupply = 555;
 
+    uint256 public cost = 0.1 ether;
+    string baseURI = "https://gateway.pinata.cloud/ipfs/QmcWekLBmhyUW18LzC3ExfCHesijgmiQwMTDjrfADRbkd1";
+
     /// Events
     ////////////////////////////////////
     /// @dev Emitted when a new token is minted
@@ -81,6 +84,10 @@ contract EnlightenedLizards is
         returns (uint256)
     {
         require(_tokenIds.current() < totalSupply, "Collection is sold out");
+
+        if (msg.sender != owner()) {
+            require(msg.value >= cost)
+        }
 
         uint256 newLizardId = _tokenIds.current();
         _safeMint(_phan, newLizardId);
