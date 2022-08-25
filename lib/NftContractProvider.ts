@@ -4,7 +4,8 @@
 // Please DO NOT change it manually!
 import { EnlightenedLizards as ContractType } from '../typechain/index';
 
-import { ethers } from 'hardhat';
+import '@nomiclabs/hardhat-ethers'
+import hre from 'hardhat';
 import CollectionConfig from '../config/CollectionConfig';
 
 export default class NftContractProvider {
@@ -14,11 +15,11 @@ export default class NftContractProvider {
       throw '\x1b[31merror\x1b[0m ' + 'Please add the contract address to the configuration before running this command.';
     }
 
-    if (await ethers.provider.getCode(CollectionConfig.contractAddress) === '0x') {
+    if (await hre.ethers.provider.getCode(CollectionConfig.contractAddress) === '0x') {
       throw '\x1b[31merror\x1b[0m ' + `Can't find a contract deployed to the target address: ${CollectionConfig.contractAddress}`;
     }
 
-    return await ethers.getContractAt(CollectionConfig.contractName, CollectionConfig.contractAddress) as ContractType;
+    return await hre.ethers.getContractAt(CollectionConfig.contractName, CollectionConfig.contractAddress) as ContractType;
   }
 };
 

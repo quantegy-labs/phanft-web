@@ -1,3 +1,4 @@
+/* ts-ignore */
 import chai, { expect } from 'chai';
 import ChaiAsPromised from 'chai-as-promised';
 import { BigNumber, utils } from 'ethers';

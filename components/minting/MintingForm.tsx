@@ -99,7 +99,8 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 									totalPrice: "<SELECTED_PRICE>", // in ETH as string * mintAmount 0.9 * 2 = "0.18"
 									// other contract function minting arguments
 									phan: connectedAddress,
-									tokenUri: "ipfs://cid/1.json"
+									tokenUri: "ipfs://cid/1.json",
+									type: 'any',
 								}}
 								mintTo={connectedAddress}
 							/>
