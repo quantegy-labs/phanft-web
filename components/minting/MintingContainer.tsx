@@ -1,23 +1,70 @@
-import { useState } from 'react';
+import { useState, isValidElement } from 'react';
 import { toast } from 'react-toastify';
+import { Alert, Box, Button, CircularProgress, Link, Paper, TextField, Typography } from '@mui/material';
 import CollectionConfig from '../../collection/smart-contract/config/CollectionConfig';
-import Whitelist from '../../collection/minting-dapp/src/scripts/lib/Whitelist'
+import Whitelist from '../../lib/Whitelist'
+import { useWeb3Context } from '../Web3Provider';
 import MintingStatus from './MintingStatus';
 import MintingForm from './MintingForm';
-import { useWeb3Context } from '../Web3Provider';
+
+const styles = {
+  loadingContract: {
+		display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    py: 6,
+    px: 4,
+  },
+  loadingSpinner: {
+		mb: 2,
+  },
+  noConnectContainer: {
+		backgroundColor: '#fafafa',
+		color: '#222',
+    p: 4,
+  },
+  connectContainer: {
+		backgroundColor: '#fafafa',
+		color: '#222',
+    p: 4,
+  },
+  connectBtn: {
+    mt: 2,
+		mb: 4,
+  },
+  merkleProof: {
+    mt: 4,
+  },
+	merkleProofForm: {
+		backgroundColor: '#333',
+		mt: 4,
+		p: 2,
+		pb: 4,
+		borderRadius: 2,
+	},
+	merkleProofInput: {
+		mb: 2,
+	},
+	proofResponseText: {
+		color: '#fff',
+		mt: 2,
+		fontStyle: 'italic',
+		textAlign: 'center',
+	}
+}
 
 const MintingContainer = (): JSX.Element => {
-  let merkleProofManualAddressInput!: HTMLInputElement;
-
+	// State
   const [loading, setLoading] = useState<boolean>(false)
   const [mintError, setMintError] = useState<string | null>(null)
   const [merkleProofManualAddress, setMerkleProofManualAddress] = useState<string>('')
   const [merkleProofManualAddressFeedbackMessage, setMerkleProofManualAddressFeedbackMessage] = useState<JSX.Element | null>(null)
-
+	// Context
   const web3Context = useWeb3Context()
   const { web3Error, web3Provider, contract, contractState, refreshContractState, connectWallet, connected, connectedAddress, otherState } = web3Context
 
-
+	// Minting Tokens - Public Sale
   const mintTokens = async (amount: number): Promise<void> => {
     try {
       setLoading(true)
@@ -25,14 +72,14 @@ const MintingContainer = (): JSX.Element => {
 
       toast.info(<>
         Transaction sent! Please wait...<br/>
-        <a href={generateTransactionUrl(transaction?.hash ?? '')} target="_blank" rel="noopener noreferrer">View on {otherState.networkConfig.blockExplorer.name}</a>
+        <Link color="inherit" href={generateTransactionUrl(transaction?.hash ?? '')} target="_blank" rel="noopener noreferrer">View on {otherState.networkConfig.blockExplorer.name}</Link>
       </>);
 
       const receipt = await transaction?.wait();
 
       toast.success(<>
         Success!<br />
-        <a href={generateTransactionUrl(receipt?.transactionHash ?? '')} target="_blank" rel="noopener noreferrer">View on {otherState.networkConfig.blockExplorer.name}</a>
+        <Link color="inherit" href={generateTransactionUrl(receipt?.transactionHash ?? '')} target="_blank" rel="noopener noreferrer">View on {otherState.networkConfig.blockExplorer.name}</Link>
       </>);
 
       await refreshContractState();
@@ -43,6 +90,7 @@ const MintingContainer = (): JSX.Element => {
     }
   }
 
+	// Minting Tokens - Whitelist
   const whitelistMintTokens = async (amount: number): Promise<void> => {
     try {
       setLoading(true)
@@ -50,14 +98,14 @@ const MintingContainer = (): JSX.Element => {
 
       toast.info(<>
         Transaction sent! Please wait...<br/>
-        <a href={generateTransactionUrl(transaction?.hash ?? '')} target="_blank" rel="noopener noreferrer">View on {otherState.networkConfig.blockExplorer.name}</a>
+        <Link color="inherit" href={generateTransactionUrl(transaction?.hash ?? '')} target="_blank" rel="noopener noreferrer">View on {otherState.networkConfig.blockExplorer.name}</Link>
       </>);
 
       const receipt = await transaction?.wait();
 
       toast.success(<>
         Success!<br />
-        <a href={generateTransactionUrl(receipt?.transactionHash ?? '')} target="_blank" rel="noopener noreferrer">View on {otherState.networkConfig.blockExplorer.name}</a>
+        <Link color="inherit" href={generateTransactionUrl(receipt?.transactionHash ?? '')} target="_blank" rel="noopener noreferrer">View on {otherState.networkConfig.blockExplorer.name}</Link>
       </>);
 
       await refreshContractState();
@@ -68,9 +116,15 @@ const MintingContainer = (): JSX.Element => {
     }
   }
 
-  const setError = (error: any = null): void => {
+	// Utility Helpers
+  const isContractReady = (): boolean => contract !== undefined;
+  const isSoldOut = (): boolean => contractState.maxSupply !== 0 && contractState.totalSupply >= contractState.maxSupply;
+  const isNotMainnet = (): boolean => otherState.network !== null && otherState.network?.chainId !== CollectionConfig.mainnet.chainId;
+  const generateContractUrl = (): string => otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!);
+  const generateMarketplaceUrl = (): string => CollectionConfig.marketplaceConfig.generateCollectionUrl(CollectionConfig.marketplaceIdentifier, !isNotMainnet());
+  const generateTransactionUrl = (transactionHash: string): string => otherState.networkConfig.blockExplorer.generateTransactionUrl(transactionHash);
+	const setError = (error: any = null): void => {
     let errorMessage = 'Unknown error...';
-
     if (null === error || typeof error === 'string') {
       setMintError(null)
       return
@@ -82,7 +136,7 @@ const MintingContainer = (): JSX.Element => {
         errorMessage = error.data.message;
       } else if (error?.message !== undefined) {
         errorMessage = error.message;
-      } else if (React.isValidElement(error)) {
+      } else if (isValidElement(error)) {
         setMintError(error.toString());
         return;
       }
@@ -90,27 +144,12 @@ const MintingContainer = (): JSX.Element => {
     setMintError(errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1));
   }
 
-  const isWalletConnected = (): boolean => {
-    return connected;
-  }
-
-  const isContractReady = (): boolean => {
-    return contract !== undefined;
-  }
-
-  const isSoldOut = (): boolean => {
-    return contractState.maxSupply !== 0 && contractState.totalSupply >= contractState.maxSupply;
-  }
-
-  const isNotMainnet = (): boolean => {
-    return otherState.network !== null && otherState.network?.chainId !== CollectionConfig.mainnet.chainId;
-  }
-
+	// Copy to Clipboard
   const copyMerkleProofToClipboard = (): void => {
-    const merkleProof = Whitelist.getRawProofForAddress(connectedAddress ?? merkleProofManualAddress);
+    const merkleProof = Whitelist.getRawProofForAddress(connectedAddress !== '' ? connectedAddress : merkleProofManualAddress);
 
     if (merkleProof.length < 1) {
-      setMerkleProofManualAddressFeedbackMessage(<>The given address is not in the whitelist, please double-check.</>);
+      setMerkleProofManualAddressFeedbackMessage(<>The given address is not in the whitelist. You can <Link color="inherit" href="https://forms.bueno.art/phanft" target="_blank">sign up here</Link>.</>);
       return;
     }
 
@@ -119,109 +158,126 @@ const MintingContainer = (): JSX.Element => {
     setMerkleProofManualAddressFeedbackMessage(
       <>
         <strong>Congratulations!</strong> <span className="emoji">🎉</span><br />
-        Your Merkle Proof <strong>has been copied to the clipboard</strong>. You can paste it into <a href={generateContractUrl()} target="_blank" rel="noreferrer">{otherState.networkConfig.blockExplorer.name}</a> to claim your tokens.
+        Your Merkle Proof <strong>has been copied to the clipboard</strong>. You can paste it into <Link color="inherit" href={generateContractUrl()} target="_blank" rel="noreferrer">{otherState.networkConfig.blockExplorer.name}</Link> to claim your tokens.
       </>,
     );
   }
 
-  const generateContractUrl = (): string => {
-    return otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!);
-  }
+	// Disconnected UI
+  const renderDisconnectedState = (): JSX.Element => (
+    <Paper sx={styles.noConnectContainer}>
+			<Typography variant="h4" gutterBottom>Connect Your Wallet</Typography>
+			<Typography gutterBottom>Connect your wallet to interact with the Enlightened Lizards NFT smart contract on the blockchain and mint your token.</Typography>
+      <Button
+				sx={styles.connectBtn}
+				variant="contained"
+				color="primary"
+				size="large"
+				disabled={web3Provider === undefined}
+				onClick={connectWallet}
+				fullWidth
+			>
+				Connect Wallet
+			</Button>
+      <Typography gutterBottom>Hey, looking for a <strong>super-safe experience</strong>? 😃</Typography>
+      <Typography gutterBottom>You can interact with the smart-contract directly through <Link color="inherit" href={generateContractUrl()} target="_blank" rel="noreferrer">{otherState.networkConfig.blockExplorer.name}</Link>, without even connecting your wallet to our minting dapp! 🚀</Typography>
+      <Typography gutterBottom>Keep safe! ❤️</Typography>
+      {!contractState.isWhitelistMintEnabled && (
+        <Box sx={styles.merkleProof}>
+          <Typography variant="h4" gutterBottom>Whitelist Proof</Typography>
+          <Typography gutterBottom>
+            Anyone can generate the proof using any public address in the list, but <strong>only the owner of that address</strong> will be able to make a successful transaction by using it.
+          </Typography>
+					<Typography gutterBottom>
+            Enter in your wallet address below to generate a proof stating that your&apos;re in the whitelist. This is the only way you&apos;ll be able to mint during the pre-sale period for a discounted price.
+          </Typography>
+					<Box sx={styles.merkleProofForm}>
+						<TextField
+							sx={styles.merkleProofInput}
+							fullWidth
+							label="Public Address"
+							variant="outlined"
+							color="secondary"
+							placeholder="0x000..."
+							disabled={connectedAddress !== ""}
+							value={connectedAddress !== "" ? connectedAddress : merkleProofManualAddress}
+							onChange={(e) => setMerkleProofManualAddress(e.target.value)}
+							margin="normal"
+						/>
+						<Button
+							variant="contained"
+							color="secondary"
+							size="large"
+							onClick={copyMerkleProofToClipboard}
+							fullWidth
+						>
+							Generate and copy to clipboard
+						</Button>
+						{merkleProofManualAddressFeedbackMessage && <Typography variant="body2" sx={styles.proofResponseText}>{merkleProofManualAddressFeedbackMessage}</Typography>}
+					</Box>
+        </Box>
+      )}
+    </Paper>
+  )
 
-  const generateMarketplaceUrl = (): string => {
-    return CollectionConfig.marketplaceConfig.generateCollectionUrl(CollectionConfig.marketplaceIdentifier, !isNotMainnet());
-  }
+	// Connected UI
+  const renderConnectedState = (): JSX.Element => (
+    <Paper sx={styles.connectContainer}>
+      {isNotMainnet() && (
+        <Alert severity='warning' variant="filled" sx={{ mb: 2 }}>
+					<Typography variant="body2">You are not connected to the main network.</Typography>
+					<Typography variant="body2">Current network: <strong>{otherState.network?.name}</strong></Typography>
+        </Alert>
+      )}
 
-  const generateTransactionUrl = (transactionHash: string): string => {
-    return otherState.networkConfig.blockExplorer.generateTransactionUrl(transactionHash);
-  }
+      {web3Error && (
+        <Alert severity="error" variant="filled" sx={{ mb: 2 }}>
+          <Typography variant="body2">{web3Error}</Typography>
+        </Alert>
+      )}
 
-  return (
-    <>
-      {isNotMainnet() ?
-        <div className="not-mainnet">
-          You are not connected to the main network.
-          <span className="small">Current network: <strong>{otherState.network?.name}</strong></span>
-        </div>
-        : null}
+      {mintError && (
+        <Alert severity="error" variant="filled" sx={{ mb: 2 }}>
+          <Typography variant="body2" gutterBottom>{mintError}</Typography>
+          <Button variant="outlined" color="inherit" size="small" onClick={() => setError()}>Close</Button>
+        </Alert>
+      )}
 
-      {connected && web3Error && <div className="error"><p>{web3Error}</p></div>}
-      {mintError && <div className="error"><p>{mintError}</p><button onClick={() => setError()}>Close</button></div>}
-
-      {isWalletConnected() ?
+      {!isContractReady() ? (
+        <Box sx={styles.loadingContract}>
+          <CircularProgress size={50} color="secondary" sx={styles.loadingSpinner} />
+          <Typography variant="subtitle1"><em>Loading collection data...</em></Typography>
+        </Box>
+      ) : (
         <>
-          {isContractReady() ?
-            <>
-              <MintingStatus
-                userAddress={connectedAddress}
-                maxSupply={contractState.maxSupply}
-                totalSupply={contractState.totalSupply}
-                isPaused={contractState.isPaused}
-                isWhitelistMintEnabled={contractState.isWhitelistMintEnabled}
-                isUserInWhitelist={contractState.isUserInWhitelist}
-                isSoldOut={isSoldOut()}
-              />
-              {!isSoldOut() ?
-                <MintingForm
-                  networkConfig={otherState.networkConfig}
-                  maxSupply={contractState.maxSupply}
-                  totalSupply={contractState.totalSupply}
-                  tokenPrice={contractState.tokenPrice}
-                  maxMintAmountPerTx={contractState.maxMintAmountPerTx}
-                  isPaused={contractState.isPaused}
-                  isWhitelistMintEnabled={contractState.isWhitelistMintEnabled}
-                  isUserInWhitelist={contractState.isUserInWhitelist}
-                  mintTokens={(mintAmount) => mintTokens(mintAmount)}
-                  whitelistMintTokens={(mintAmount) => whitelistMintTokens(mintAmount)}
-                  loading={loading}
-                />
-                :
-                <div className="collection-sold-out">
-                  <h2>Tokens have been <strong>sold out</strong>! <span className="emoji">🥳</span></h2>
-
-                  You can buy from our beloved holders on <a href={generateMarketplaceUrl()} target="_blank" rel="noreferrer">{CollectionConfig.marketplaceConfig.name}</a>.
-                </div>
-              }
-            </>
+          <MintingStatus isSoldOut={isSoldOut()} />
+          {!isSoldOut() ?
+            <MintingForm
+              networkConfig={otherState.networkConfig}
+              maxSupply={contractState.maxSupply}
+              totalSupply={contractState.totalSupply}
+              tokenPrice={contractState.tokenPrice}
+              maxMintAmountPerTx={contractState.maxMintAmountPerTx}
+              isPaused={contractState.isPaused}
+              isWhitelistMintEnabled={contractState.isWhitelistMintEnabled}
+              isUserInWhitelist={contractState.isUserInWhitelist}
+              mintTokens={(mintAmount) => mintTokens(mintAmount)}
+              whitelistMintTokens={(mintAmount) => whitelistMintTokens(mintAmount)}
+              loading={loading}
+            />
             :
-            <div className="collection-not-ready">
-              <svg className="spinner" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
+            <div className="collection-sold-out">
+              <h2>Tokens have been <strong>sold out</strong>! <span className="emoji">🥳</span></h2>
 
-              Loading collection data...
+              You can buy from our beloved holders on <Link color="inherit" href={generateMarketplaceUrl()} target="_blank" rel="noreferrer">{CollectionConfig.marketplaceConfig.name}</Link>.
             </div>
           }
         </>
-      :
-        <div className="no-wallet">
-          {!isWalletConnected() ? <button className="primary" disabled={web3Provider === undefined} onClick={connectWallet}>Connect Wallet</button> : null}
+      )}
+    </Paper>
+  )
 
-          <div className="use-block-explorer">
-            Hey, looking for a <strong>super-safe experience</strong>? <span className="emoji">😃</span><br />
-            You can interact with the smart-contract <strong>directly</strong> through <a href={generateContractUrl()} target="_blank" rel="noreferrer">{otherState.networkConfig.blockExplorer.name}</a>, without even connecting your wallet to this DAPP! <span className="emoji">🚀</span><br />
-            <br />
-            Keep safe! <span className="emoji">❤️</span>
-          </div>
-
-          {!isWalletConnected() || contractState.isWhitelistMintEnabled ?
-            <div className="merkle-proof-manual-address">
-              <h2>Whitelist Proof</h2>
-              <p>
-                Anyone can generate the proof using any public address in the list, but <strong>only the owner of that address</strong> will be able to make a successful transaction by using it.
-              </p>
-
-              {merkleProofManualAddressFeedbackMessage && <div className="feedback-message">{merkleProofManualAddressFeedbackMessage}</div>}
-
-              <label htmlFor="merkle-proof-manual-address">Public address:</label>
-              <input id="merkle-proof-manual-address" type="text" placeholder="0x000..." disabled={connectedAddress !== ""} value={connectedAddress ?? merkleProofManualAddress} ref={(input) => merkleProofManualAddressInput = input!} onChange={() => setMerkleProofManualAddress(merkleProofManualAddressInput.value)} /> <button onClick={copyMerkleProofToClipboard}>Generate and copy to clipboard</button>
-            </div>
-            : null}
-        </div>
-      }
-    </>
-  );
+  return connected ? renderConnectedState() : renderDisconnectedState()
 }
 
 export default MintingContainer

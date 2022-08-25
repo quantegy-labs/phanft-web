@@ -18,6 +18,7 @@ import { useState } from "react";
 import { useWeb3Context } from '../Web3Provider';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import VerifiedUserSharpIcon from '@mui/icons-material/VerifiedUserSharp';
+import formatAddress from '../../lib/formatAddress';
 
 const styles = {
   hidden: {
@@ -61,12 +62,11 @@ const styles = {
 };
 
 const pages = [
-  { name: "Lizards", href: "#lizards" },
-  { name: "Mission", href: "#mission" },
-  { name: "Roadmap", href: "#roadmap" },
-  { name: "Team", href: "#team" },
-  { name: "FAQs", href: "#faq" },
-  { name: "Mint", href: "/mint" },
+  { name: "Lizards", href: "/#lizards" },
+  { name: "Mission", href: "/#mission" },
+  { name: "Roadmap", href: "/#roadmap" },
+  { name: "Team", href: "/#team" },
+  { name: "FAQs", href: "/#faq" },
 ];
 
 const AppHeader = () => {
@@ -98,16 +98,6 @@ const AppHeader = () => {
   const handleDisconnectWallet = () => {
     disconnectWallet()
     handleClose()
-  }
-
-  /**
-   * Converts a long wallet address to a somewhat hidden one, showing the first two characters and the last 4 characters
-   * @param address The wallet address abcdefg12345678
-   * @returns An obfuscated address ab.................5678
-   */
-  const formatAddress = (address: string): string => {
-    if (!address) return ''
-    return address.substring(0, 2) + '...........' + address.substring(address.length - 4)
   }
 
   return (
@@ -219,7 +209,7 @@ const AppHeader = () => {
                 height={20}
               />
             </a>
-            <Link href="#onboard">
+            <Link href="/mint">
               <Button
                 onClick={handleCloseNavMenu}
                 variant="contained"
@@ -227,7 +217,7 @@ const AppHeader = () => {
                 size="small"
                 sx={{ ml: 1 }}
               >
-                Join Now
+                 Mint Now!
               </Button>
             </Link>
             {connected ? (

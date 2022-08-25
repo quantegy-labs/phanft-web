@@ -1,6 +1,7 @@
-import { Container, Paper } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from 'next/image';
 import AppLayout from "../components/layouts/AppLayout";
 import MintingContainer from '../components/minting/MintingContainer';
 
@@ -12,9 +13,22 @@ const AdminPage: NextPage = () => {
       </Head>
       <AppLayout>
         <Container maxWidth="xl" sx={{my: 8 }}>
-          <Paper sx={{ p: 4 }}>
-            <MintingContainer />
-          </Paper>
+          <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" mb={10}>
+            <Typography variant="h2">Mint A Lizard</Typography>
+            <Typography variant="h5">Enlighten the Lizards by minting a token.</Typography>
+          </Box>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={5}>
+              <Typography sx={{ mb: 3 }}>Have the Lizards died? Not yet! They&apos;re practically extinct from doing things smart people don&apos;t do, but you can be smart and help save them from extinction by minting a token on the blockchain. Just select how many you&apos;d like to free and click the &apos;Mint&apos; button.</Typography>
+              <Typography sx={{ mb: 3 }}>You can choose to pay with ETH through your wallet like MetaMask, or you can you choose to pay directly with credit card.</Typography>
+							<Box sx={{ maxWidth: '500px', m: 'auto', mt: 8 }}>
+								<Image width={600} height={600} src="/lizard4.png" alt="Lizards Genesis PFP" />
+							</Box>
+            </Grid>
+            <Grid item xs={12} md={7}>
+              <MintingContainer />
+            </Grid>
+          </Grid>
         </Container>
       </AppLayout>
     </>
