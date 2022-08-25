@@ -68,7 +68,7 @@ const MintingContainer = (): JSX.Element => {
   const mintTokens = async (amount: number): Promise<void> => {
     try {
       setLoading(true)
-      const transaction = await contract?.mint(amount, {value: contractState.tokenPrice.mul(amount)});
+      const transaction = await contract?.mintLizard(connectedAddress.toUpperCase(), amount, {value: contractState.tokenPrice.mul(amount)});
 
       toast.info(<>
         Transaction sent! Please wait...<br/>
@@ -94,7 +94,7 @@ const MintingContainer = (): JSX.Element => {
   const whitelistMintTokens = async (amount: number): Promise<void> => {
     try {
       setLoading(true)
-      const transaction = await contract?.whitelistMint(amount, Whitelist.getProofForAddress(connectedAddress!), {value: contractState.tokenPrice.mul(amount)});
+      const transaction = await contract?.whitelistMintLizard(connectedAddress.toUpperCase(), amount, Whitelist.getProofForAddress(connectedAddress!), {value: contractState.tokenPrice.mul(amount)});
 
       toast.info(<>
         Transaction sent! Please wait...<br/>
@@ -253,17 +253,9 @@ const MintingContainer = (): JSX.Element => {
           <MintingStatus isSoldOut={isSoldOut()} />
           {!isSoldOut() ?
             <MintingForm
-              networkConfig={otherState.networkConfig}
-              maxSupply={contractState.maxSupply}
-              totalSupply={contractState.totalSupply}
-              tokenPrice={contractState.tokenPrice}
-              maxMintAmountPerTx={contractState.maxMintAmountPerTx}
-              isPaused={contractState.isPaused}
-              isWhitelistMintEnabled={contractState.isWhitelistMintEnabled}
-              isUserInWhitelist={contractState.isUserInWhitelist}
+							loading={loading}
               mintTokens={(mintAmount) => mintTokens(mintAmount)}
               whitelistMintTokens={(mintAmount) => whitelistMintTokens(mintAmount)}
-              loading={loading}
             />
             :
             <div className="collection-sold-out">

@@ -44,7 +44,6 @@ const MintingStatus = ({ isSoldOut }: MintingStatusProps): JSX.Element => {
     return (isWhitelistMintEnabled || !isPaused) && !isSoldOut;
   }
 
-
   return (
     <Paper sx={styles.container}>
       <Box sx={[styles.statusItemBox, styles.statusItemWallet]}>
@@ -71,7 +70,6 @@ const MintingStatus = ({ isSoldOut }: MintingStatusProps): JSX.Element => {
 					</Box>
 				</Grid>
 			</Grid>
-
     </Paper>
   );
 }
