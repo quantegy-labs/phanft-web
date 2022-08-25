@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-describe("EnlightenedLizards", function () {
+describe("EnlightenedLizardsOld", function () {
   let accounts = []
   let owner
   let enlightenedLizards
@@ -17,7 +17,7 @@ describe("EnlightenedLizards", function () {
     treasury = accounts[9]
 
     // Deploy contract
-    const EnlightenedLizards = await ethers.getContractFactory("EnlightenedLizards");
+    const EnlightenedLizards = await ethers.getContractFactory("EnlightenedLizardsOld");
     enlightenedLizards = await EnlightenedLizards.deploy();
     await enlightenedLizards.deployed();
 
