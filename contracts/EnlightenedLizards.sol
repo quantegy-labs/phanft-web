@@ -133,8 +133,8 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
         );
 
         // mark the minter as having claimed
-        whitelistClaimed[_msgSender()] = true;
-        _safeMint(_msgSender(), _mintAmount);
+        whitelistClaimed[_phan] = true;
+        _safeMint(_phan, _mintAmount);
 
         // _safeMint(_phan, newLizardId);
         // _setTokenURI(newLizardId, _tokenURI);
@@ -154,7 +154,7 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
         mintPriceCompliance(_mintAmount)
     {
         require(!paused, "The contract is paused!");
-        _safeMint(_msgSender(), _mintAmount);
+        _safeMint(_phan, _mintAmount);
 
         // uint256 newLizardId = _tokenIds.current();
         // _safeMint(_phan, newLizardId);
@@ -245,7 +245,7 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
     }
 
     function withdraw() public onlyOwner nonReentrant {
-        // This will pay a 5% of the initial sale to a dcook.eth alt
+        // This will withdraw 5% out to an alternate address, secondary treasury, etc.
         // =============================================================================
         // (bool hs, ) = payable(0x847F115314b635F58A53471768D14E67e587cb56).call{
         //     value: (address(this).balance * 5) / 100
