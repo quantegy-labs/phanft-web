@@ -90,7 +90,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           <>
             We were not able to detect <strong>MetaMask</strong>. We value <strong>privacy and security</strong> a lot so we limit the wallet options on our minting dapp.<br />
             <br />
-            But don&apos;t worry! <span className="emoji">😃</span> You can always interact with the smart-contract through <a href={generateContractUrl()} target="_blank" rel="noreferrer">{state.networkConfig.blockExplorer.name}</a> and <strong>we do our best to provide you with the best user experience possible</strong>, even from there.<br />
+            But don&apos;t worry! <span className="emoji">😃</span> You can always interact with the smart-contract through <a href={generateContractUrl()} target="_blank" rel="noreferrer">{otherState.networkConfig.blockExplorer.name}</a> and <strong>we do our best to provide you with the best user experience possible</strong>, even from there.<br />
             <br />
             You can also get your <strong>Whitelist Proof</strong> manually, using the tool below.
           </>,
