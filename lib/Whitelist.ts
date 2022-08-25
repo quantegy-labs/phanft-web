@@ -13,8 +13,6 @@ class Whitelist {
 
       this.merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
     }
-
-		console.log(this.merkleTree)
     return this.merkleTree;
   }
 

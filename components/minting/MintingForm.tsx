@@ -51,11 +51,11 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 
   const mint = async (): Promise<void>  => {
     if (!isPaused) {
+			console.log('unpaused')
       await mintTokens(mintAmount);
-
       return;
     }
-
+		console.log('paused')
     await whitelistMintTokens(mintAmount);
   }
 
