@@ -71,6 +71,8 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
   const [contractState, setContractState] = useState<ContractState>(defaultContractState)
   const [otherState, setOtherState] = useState<OtherState>(defaultOtherState)
 
+	const generateContractUrl = (): string => otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!);
+
   useEffect(() => {
     const getWeb3 = async () => {
       const browserProvider = await detectEthereumProvider() as ExternalProvider
