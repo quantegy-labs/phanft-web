@@ -1,7 +1,7 @@
 import { useState, isValidElement } from 'react';
 import { toast } from 'react-toastify';
 import { Alert, Box, Button, CircularProgress, Link, Paper, TextField, Typography } from '@mui/material';
-import CollectionConfig from '../../collection/smart-contract/config/CollectionConfig';
+import CollectionConfig from '../../config/CollectionConfig';
 import Whitelist from '../../lib/Whitelist'
 import { useWeb3Context } from '../Web3Provider';
 import MintingStatus from './MintingStatus';
