@@ -5,7 +5,7 @@ import detectEthereumProvider from '@metamask/detect-provider'
 import { CircularProgress } from '@mui/material'
 import CollectionConfig from '../smart-contract/config/CollectionConfig'
 import Whitelist from '../smart-contract/lib/Whitelist'
-import { EnlightenedLizards as NftContractType } from '../smart-contract/typechain/index'
+import { EnlightenedLizards as NftContractType } from '../lib/EnlightenedLizards'
 import type { NetworkConfigInterface } from './minting/MintingForm'
 
 const ContractAbi = require('../smart-contract/artifacts/contracts/' +
