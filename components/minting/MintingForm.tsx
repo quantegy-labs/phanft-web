@@ -98,28 +98,31 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 					</Box>
 
 					<Box sx={{ my: 2 }}>
-						<Button variant="contained" color="primary" size="large" onClick={() => loading ? null : mint()} fullWidth>
-							{loading ? <CircularProgress size={24} color="inherit" /> : "Mint A Lizard"}
+						<Button
+							variant="contained"
+							color="primary"
+							size="large"
+							onClick={() => (loading ? null : mint())}
+							fullWidth
+						>
+							{loading ? <CircularProgress size={24} color="inherit" /> : 'Mint A Lizard'}
 						</Button>
 					</Box>
 
 					<Box sx={{ my: 2 }}>
 						<CrossmintPayButton
-							collectionTitle="Enlightened Lizards"
-							collectionDescription="Help save the Lizards from extinction by minting them on the blockchain!"
-							collectionPhoto="<OPT_URL_TO_PHOTO_COVER>"
-							clientId="<YOUR_CLIENT_ID>"
-							environment="staging" // Rinkeby is staging
+							collectionTitle="The Enlightened Lizards"
+							collectionDescription="Your web 3.0 pass to 4.0 phandom. Help save the lizards from extinction!"
+							collectionPhoto="ipfs://QmVpJjcba7VW2zDg1tPiKb7CJRLSL4qDsZGWxwFY2KexPg/hidden.png"
+							clientId="f97b9c73-64c2-4b59-ad8d-31a1d5b36892"
+							// totalPrice should contain the total price of all NFTs to mint in a single transaction - in ETH as string * mintAmount 0.9 * 2 = "0.18"
 							mintConfig={{
-								count: mintAmount.toString(), // as string "2"
-								// totalPrice should contain the total price of all NFTs to mint in a single transaction.
-								totalPrice: '<SELECTED_PRICE>', // in ETH as string * mintAmount 0.9 * 2 = "0.18"
-								// other contract function minting arguments
-								phan: connectedAddress,
-								tokenUri: 'ipfs://cid/1.json',
-								type: 'any',
+								type: 'erc-721',
+								totalPrice: '0.1',
+								_mintAmount: mintAmount.toString(),
+								_phan: connectedAddress,
 							}}
-							mintTo={connectedAddress}
+							environment="staging"
 						/>
 					</Box>
 				</Grid>
