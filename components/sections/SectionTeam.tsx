@@ -43,8 +43,8 @@ const SectionTeam = (): JSX.Element => {
 					<Typography variant="h3">Meet the Pham</Typography>
 				</Box>
 				<Typography sx={styles.introText}>
-					We&apos;re a small team of tech-savvy, long-time phans who are set on creating the
-					greatest phan experience in Web3.
+					We&apos;re a small team of tech-savvy, long-time phans who are set on creating the greatest phan experience in
+					Web3.
 				</Typography>
 				<Grid container spacing={4}>
 					<Grid item xs={12} md={4}>
@@ -57,8 +57,7 @@ const SectionTeam = (): JSX.Element => {
 								Product Strategy & Partnerships
 							</Typography>
 							<Typography sx={styles.text}>
-								Serial music-tech founder, digital experience creator, and passionate community
-								builder.
+								Serial music-tech founder, digital experience creator, and passionate community builder.
 							</Typography>
 							<Typography sx={styles.quote}>Finally got his Axilla II.</Typography>
 						</Box>
@@ -73,8 +72,7 @@ const SectionTeam = (): JSX.Element => {
 								Technology & Engineering
 							</Typography>
 							<Typography sx={styles.text}>
-								Web3-native coding guru, a true Ballmer Peak believer, and lifelong struggling
-								musician.
+								Web3-native coding guru, a true Ballmer Peak believer, and lifelong struggling musician.
 							</Typography>
 							<Typography sx={styles.quote}>Is this still Lawn Boy?</Typography>
 						</Box>
@@ -89,8 +87,7 @@ const SectionTeam = (): JSX.Element => {
 								Community Builder & Discord Mod
 							</Typography>
 							<Typography sx={styles.text}>
-								Grassroots marketer with many hats, bobbing on the surface where cannabis, art, &
-								tech intersect.
+								Grassroots marketer with many hats, bobbing on the surface where cannabis, art, & tech intersect.
 							</Typography>
 							<Typography sx={styles.quote}>Seen more slow than fast Llamas.</Typography>
 						</Box>

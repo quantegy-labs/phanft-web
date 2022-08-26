@@ -1,6 +1,6 @@
 node_modules
-artifacts
-cache
-coverage*
-gasReporterOutput.json
-collection
+.next
+.vscode
+.smart-contract
+
+ .gitignore

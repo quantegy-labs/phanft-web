@@ -33,18 +33,16 @@ const SectionIntro = (): JSX.Element => (
 					The Only Rule is it Begins
 				</Typography>
 				<Typography sx={styles.introText}>
-					By phans, for phans, PhanFT is a series of utility-driven NFT collections to celebrate and
-					unify our amazing music & art loving community in Web3 & IRL.
+					By phans, for phans, PhanFT is a series of utility-driven NFT collections to celebrate and unify our amazing
+					music & art loving community in Web3 & IRL.
 				</Typography>
 				<Typography sx={styles.introText}>
-					We&apos;re on a mission to redefine what our passionate community can do and be, build a
-					digital platform for artists in our community to shine, and raise funds for some awesome
-					charities.
+					We&apos;re on a mission to redefine what our passionate community can do and be, build a digital platform for
+					artists in our community to shine, and raise funds for some awesome charities.
 				</Typography>
 				<Typography sx={styles.introText}>
-					Together, we&apos;re lighting the torch for a whole new paradigm for phans to connect,
-					collect, commune, and continue sharin&apos; in the groove around Vermont&apos;s Phinest.
-					⭕️
+					Together, we&apos;re lighting the torch for a whole new paradigm for phans to connect, collect, commune, and
+					continue sharin&apos; in the groove around Vermont&apos;s Phinest. ⭕️
 				</Typography>
 			</Container>
 		</Box>

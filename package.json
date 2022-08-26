@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint && prettier ./",
     "lint:fix": "next lint --fix",
+		"lint:formatting": "npx prettier --config .prettierrc.js ./**/* --check",
+		"fix:formatting": "npx prettier --config .prettierrc.js ./**/* --write",
     "update_collection_info": "node ./scripts/update_collection_info.js"
   },
   "dependencies": {
