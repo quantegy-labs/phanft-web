@@ -3,12 +3,12 @@ import { ethers, BigNumber } from 'ethers'
 import { ExternalProvider, Web3Provider } from '@ethersproject/providers';
 import detectEthereumProvider from '@metamask/detect-provider'
 import { CircularProgress } from '@mui/material';
-import CollectionConfig from '../config/CollectionConfig';
-import Whitelist from '../lib/Whitelist'
-import { EnlightenedLizards as NftContractType } from '../typechain/index';
+import CollectionConfig from '../smart-contract/config/CollectionConfig';
+import Whitelist from '../smart-contract/lib/Whitelist'
+import { EnlightenedLizards as NftContractType } from '../smart-contract/typechain/index';
 import type { NetworkConfigInterface } from './minting/MintingForm';
 
-const ContractAbi = require('../contracts/abi/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
+const ContractAbi = require('../smart-contract/artifacts/contracts/' + CollectionConfig.contractName + '.sol/' + CollectionConfig.contractName + '.json').abi;
 
 export type Web3Data = {
   web3Provider: Web3Provider | null
