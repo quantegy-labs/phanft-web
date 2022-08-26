@@ -43,7 +43,8 @@
 	"scripts": {
 		"accounts": "hardhat accounts",
 		"rename-contract": "hardhat rename-contract",
-		"compile": "hardhat compile --force",
+		"compile": "hardhat compile --force && yarn copy-abi",
+		"copy-abi": "rm -rf ../lib/abi && mkdir ../lib/abi && cp -R ./artifacts/contracts/ ../lib/abi/",
 		"test": "hardhat test",
 		"test-extended": "EXTENDED_TESTS=1 hardhat test",
 		"test-gas": "REPORT_GAS=1 hardhat test",
