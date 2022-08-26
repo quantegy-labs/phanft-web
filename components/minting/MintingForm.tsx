@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { utils } from 'ethers'
-import { Box, Button, Grid, IconButton, Typography } from '@mui/material'
+import { Box, Button, CircularProgress, Grid, IconButton, Typography } from '@mui/material'
 import { CrossmintPayButton } from '@crossmint/client-sdk-react-ui'
 import { useWeb3Context } from '../Web3Provider'
 import Image from 'next/image'
@@ -98,8 +98,8 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 					</Box>
 
 					<Box sx={{ my: 2 }}>
-						<Button variant="contained" size="large" disabled={loading} onClick={() => mint()}>
-							Mint
+						<Button variant="contained" color="primary" size="large" onClick={() => loading ? null : mint()} fullWidth>
+							{loading ? <CircularProgress size={24} color="inherit" /> : "Mint A Lizard"}
 						</Button>
 					</Box>
 
