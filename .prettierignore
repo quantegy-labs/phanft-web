@@ -1,6 +1,9 @@
 node_modules
 .next
 .vscode
-.smart-contract
+.gitignore
 
- .gitignore
+public
+smart-contract
+collection
+
