@@ -39,7 +39,7 @@ contract Claimables {
 	}
 
 	function cliamItem(string memory _tokenURI, string memory _itemName) public {
-		Claimable[] memory itemClaimables = tokenToClaimables[_tokenURI];
+		// Claimable[] memory itemClaimables = tokenToClaimables[_tokenURI];
 		// TODO: Use an array slice, store index in some way and access it by that
 		// Claimable itemToClaim = itemClaimables.find(c => c.itemName == _itemName);
 		// itemToClaim.isClaimed = true;

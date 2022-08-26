@@ -79,7 +79,7 @@ const MintingContainer = (): JSX.Element => {
 	const mintTokens = async (amount: number): Promise<void> => {
 		try {
 			setLoading(true)
-			const transaction = await contract?.mintLizard(connectedAddress.toUpperCase(), amount, {
+			const transaction = await contract?.mintLizard(connectedAddress, amount, {
 				value: contractState.tokenPrice.mul(amount),
 			})
 
@@ -128,7 +128,7 @@ const MintingContainer = (): JSX.Element => {
 		try {
 			setLoading(true)
 			const transaction = await contract?.whitelistMintLizard(
-				connectedAddress.toUpperCase(),
+				connectedAddress,
 				amount,
 				Whitelist.getProofForAddress(connectedAddress!),
 				{ value: contractState.tokenPrice.mul(amount) },
@@ -266,13 +266,13 @@ const MintingContainer = (): JSX.Element => {
 			</Typography>
 			<Typography gutterBottom>
 				You can interact with the smart-contract directly through{' '}
-				<Link color="inherit" href={generateContractUrl()} target="_blank" rel="noreferrer">
+				<Link color="inherit" href={generateContractUrl() + '#writeContract#F23'} target="_blank" rel="noreferrer">
 					{otherState.networkConfig.blockExplorer.name}
 				</Link>
 				, without even connecting your wallet to our minting dapp! 🚀
 			</Typography>
 			<Typography gutterBottom>Keep safe! ❤️</Typography>
-			{!contractState.isWhitelistMintEnabled && (
+			{contractState.isWhitelistMintEnabled && (
 				<Box sx={styles.merkleProof}>
 					<Typography variant="h4" gutterBottom>
 						Whitelist Proof

@@ -15,21 +15,21 @@ const CollectionConfig: CollectionConfigInterface = {
 	hiddenMetadataUri: 'ipfs://Qmbq4mEyewmumf7htMMTKtzj7zE8GxmBf3UwyKpd64BmHC/hidden.json', // fuzzy lizard with '?' overlay
 	maxSupply: 50,
 	whitelistSale: {
-		price: 0.09,
+		price: 0.05,
 		maxMintAmountPerTx: 1,
 	},
 	preSale: {
-		price: 0.07,
+		price: 0.09,
 		maxMintAmountPerTx: 2,
 	},
 	publicSale: {
 		price: 0.1,
 		maxMintAmountPerTx: 5,
 	},
-	contractAddress: '0x46ccC16CE082cc23fc9a2b00b515b4EaA4C80C0c', // The deployed contract address (Rinkeby/Mainnet)
+	contractAddress: '0x56FF2F2B2F49441095E19d998F43e4ec38D94b54', // The deployed contract address (Rinkeby/Mainnet)
 	marketplaceIdentifier: 'enlightened-lizards',
 	marketplaceConfig: Marketplaces.openSea,
-	whitelistAddresses: whitelistAddresses.map(a => a.toUpperCase()),
+	whitelistAddresses,
 }
 
 export default CollectionConfig

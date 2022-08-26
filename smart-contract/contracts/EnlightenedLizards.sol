@@ -32,15 +32,19 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
     address payable private _feeRecipient; // Address to send the MINTangible fee
     address private _rightsProtocolAddr; // Address of Rights Protocol Smart Contract
 
-    mapping(uint256 => bool) public tokenIdHasCliamedMerch;
-    mapping(uint256 => bool) public tokenIdHasCliamedPoster;
+    mapping(uint256 => bool) public tokenToClaimedWearableItem;
+    mapping(uint256 => bool) public tokenToClaimedPosterItem;
 
     /// Events
     ////////////////////////////////////
     /// @dev Emitted when a new token is minted
-    event NewLizardMinted(uint256 tokenId, address phan, string tokenURI);
+    event NewLizardMinted(uint256 tokenId, address phan);
     /// @dev Emitted when the contract owner withdraws the contract funds out to the treasury
     event FundsWithdrawn(uint256 balance);
+		/// @dev Emitted when a token holder claims claimable rewards, initiated by contract owner on behalf of the recipient
+		event WearableItemClaimed(uint256 tokenId, address phan);
+		event PosterItemClaimed(uint256 tokenId, address phan);
+
 
     /// Modifiers
     ////////////////////////////////////
@@ -140,8 +144,8 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
         _safeMint(_phan, _mintAmount);
 
         // Update claimables to false for new token
-        tokenIdHasCliamedMerch[_mintAmount] = false;
-        tokenIdHasCliamedPoster[_mintAmount] = false;
+        tokenToClaimedWearableItem[_mintAmount] = false;
+        tokenToClaimedPosterItem[_mintAmount] = false;
 
         // _safeMint(_phan, newLizardId);
         // _setTokenURI(newLizardId, _tokenURI);
@@ -152,7 +156,7 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
         uint256 feeValue = cost.mul(33).div(1000);
         Address.sendValue(_feeRecipient, feeValue);
 
-        emit NewLizardMinted(_mintAmount, _phan, _tokenURI);
+        emit NewLizardMinted(_mintAmount, _phan);
     }
 
     function mintLizard(address _phan, uint256 _mintAmount)
@@ -165,8 +169,8 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
         _safeMint(_phan, _mintAmount);
 
         // Update claimables to false for new token
-        tokenIdHasCliamedMerch[_mintAmount] = false;
-        tokenIdHasCliamedPoster[_mintAmount] = false;
+        tokenToClaimedWearableItem[_mintAmount] = false;
+        tokenToClaimedPosterItem[_mintAmount] = false;
 
         // uint256 newLizardId = _tokenIds.current();
         // _safeMint(_phan, newLizardId);
@@ -178,7 +182,7 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
         uint256 feeValue = cost.mul(33).div(1000);
         Address.sendValue(_feeRecipient, feeValue);
 
-        emit NewLizardMinted(_mintAmount, _phan, _tokenURI);
+        emit NewLizardMinted(_mintAmount, _phan);
     }
 
     /// @dev Gets the given Digital IP Rights & Licensing URI from MINTangible for the given token ID
@@ -194,7 +198,23 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
             );
     }
 
-		function claimPoster(uint256 _tokenId) public
+		function claimWearableItem(uint256 _tokenId, address _phan) public onlyOwner {
+			// Only token owner can claim
+			require(_phan == ownerOf(_tokenId), "Only the token owner can claim redeemables");
+			// Reward can only be claimed once per token
+			require(tokenToClaimedWearableItem[_tokenId] == false, "Wearable item for this token has already been claimed");
+			tokenToClaimedWearableItem[_tokenId] = true;
+			emit WearableItemClaimed(_tokenId, _phan);
+		}
+
+		function claimPosterItem(uint256 _tokenId, address _phan) public onlyOwner {
+			// Only token owner can claim
+			require(_phan == ownerOf(_tokenId), "Only the token owner can claim redeemables");
+			// Reward can only be claimed once per token
+			require(tokenToClaimedPosterItem[_tokenId] == false, "Poster item for this token has already been claimed");
+			tokenToClaimedPosterItem[_tokenId] = true;
+			emit PosterItemClaimed(_tokenId, _phan);
+		}
 
     /// Owner Methods
     ////////////////////////////////////
