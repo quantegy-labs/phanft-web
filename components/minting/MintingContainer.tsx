@@ -296,6 +296,7 @@ const MintingContainer = (): JSX.Element => {
 						// totalPrice should contain the total price of all NFTs to mint in a single transaction - in ETH as string * mintAmount 0.9 * 2 = "0.18"
 						mintConfig={{ type: 'erc-721', totalPrice: '0.1', _mintAmount: '1', _phan: connectedAddress }}
 						environment="staging"
+						mintTo={connected ? connectedAddress : undefined}
 					/>
 				</Box>
 			</Box>

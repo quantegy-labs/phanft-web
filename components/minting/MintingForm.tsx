@@ -27,6 +27,7 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 	const {
 		contractState,
 		otherState: { networkConfig },
+		connected,
 		connectedAddress,
 	} = useWeb3Context()
 	const {
@@ -123,6 +124,7 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 								_phan: connectedAddress,
 							}}
 							environment="staging"
+							mintTo={connected ? connectedAddress : undefined}
 						/>
 					</Box>
 				</Grid>
