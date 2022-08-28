@@ -280,6 +280,10 @@ contract EnlightenedLizards is ERC721AQueryable, Claimables {
         _rightsProtocolAddress = rightsProtocolAddress_;
     }
 
+		function rightsProtocolAddress() public onlyCTO returns (address) {
+			return _rightsProtocolAddress;
+		}
+
 		/// Claim Center
 		////////////////////////////////////
     function setClaimCenterAddress(address _claimCenterAddress)

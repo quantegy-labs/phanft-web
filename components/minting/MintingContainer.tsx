@@ -274,32 +274,35 @@ const MintingContainer = (): JSX.Element => {
 				, without even connecting your wallet to our minting dapp! 🚀
 			</Typography>
 			<Typography gutterBottom>Keep safe! ❤️</Typography>
-			<Box sx={{ mt: 4 }}>
-				<Typography variant="h4" gutterBottom>
-					Buy With Fiat
-				</Typography>
-				<Typography gutterBottom>
-					If you don't have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhanFT
-					membership. We partner with{' '}
-					<Link href="https://crossmint.io" target="_blank" color="inherit">
-						Crossmint
-					</Link>{' '}
-					to pay with credit card directly without any crypto hassle. The token is transferred to a custodial Crossmint
-					wallet, where you may choose to transfer out to another wallet at any given time.
-				</Typography>
-				<Box sx={{ mt: 2 }}>
-					<CrossmintPayButton
-						collectionTitle="The Enlightened Lizards"
-						collectionDescription="Your web 3.0 pass to 4.0 phandom. Help save the lizards from extinction!"
-						collectionPhoto="ipfs://QmVpJjcba7VW2zDg1tPiKb7CJRLSL4qDsZGWxwFY2KexPg/hidden.png"
-						clientId="f97b9c73-64c2-4b59-ad8d-31a1d5b36892"
-						// totalPrice should contain the total price of all NFTs to mint in a single transaction - in ETH as string * mintAmount 0.9 * 2 = "0.18"
-						mintConfig={{ type: 'erc-721', totalPrice: '0.1', _mintAmount: '1', _phan: connectedAddress }}
-						environment="staging"
-						mintTo={connected ? connectedAddress : undefined}
-					/>
+			{/* Show Crossmint button for whitelisted users during white whitelist or when on public sale */}
+			{!contractState.isPaused || (contractState.isUserInWhitelist && contractState.isWhitelistMintEnabled) && (
+				<Box sx={{ mt: 4 }}>
+					<Typography variant="h4" gutterBottom>
+						Buy With Fiat
+					</Typography>
+					<Typography gutterBottom>
+						If you don't have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhanFT
+						membership. We partner with{' '}
+						<Link href="https://crossmint.io" target="_blank" color="inherit">
+							Crossmint
+						</Link>{' '}
+						to pay with credit card directly without any crypto hassle. The token is transferred to a custodial Crossmint
+						wallet, where you may choose to transfer out to another wallet at any given time.
+					</Typography>
+					<Box sx={{ mt: 2 }}>
+						<CrossmintPayButton
+							collectionTitle="The Enlightened Lizards"
+							collectionDescription="Your web 3.0 pass to 4.0 phandom. Help save the lizards from extinction!"
+							collectionPhoto="ipfs://QmVpJjcba7VW2zDg1tPiKb7CJRLSL4qDsZGWxwFY2KexPg/hidden.png"
+							clientId="f97b9c73-64c2-4b59-ad8d-31a1d5b36892"
+							// totalPrice should contain the total price of all NFTs to mint in a single transaction - in ETH as string * mintAmount 0.9 * 2 = "0.18"
+							mintConfig={{ type: 'erc-721', totalPrice: '0.1', _mintAmount: '1', _phan: connectedAddress }}
+							environment="staging"
+							mintTo={connected ? connectedAddress : undefined}
+						/>
+					</Box>
 				</Box>
-			</Box>
+			)}
 			{contractState.isWhitelistMintEnabled && (
 				<Box sx={styles.merkleProof}>
 					<Typography variant="h4" gutterBottom>
