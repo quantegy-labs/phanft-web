@@ -3,26 +3,13 @@
 pragma solidity >=0.8.9 <0.9.0;
 
 import "erc721a/contracts/extensions/ERC721AQueryable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 import "./IRightsProtocol.sol";
 import "./Claimables.sol";
 
-/*
-	Post-deploy steps:
-	0. Update ./config/CollectionConfig.ts w/ deployed address
-	1. Run 'yarn verify [contract-address] --network truffle
-	2. Set treasury address
-	3. Set CTO address (optional)
-	4.
-	Mintangible steps:
-	1. Rinkeby operator & fee recipient - setRightsFeeRecipient(0x0060ca998a581D2929842e9d54bbC84566860fe9)
-	2. Rinkby RightsProtocol.sol contract - setRightsProtocolAddr(0xDEAC20254655FaC4b508e2c57D64fbC098CA6537)
-	3. Update approveContractOperator for this contract https://rinkeby.etherscan.io/address/0xdeac20254655fac4b508e2c57d64fbc098ca6537#writeContract
-*/
-
+// The Lizards would be saved, he said, if they could be enlightened...
 contract EnlightenedLizards is ERC721AQueryable, Claimables {
     using Strings for uint256;
     using SafeMath for uint256;
@@ -49,9 +36,12 @@ contract EnlightenedLizards is ERC721AQueryable, Claimables {
     bool public paused = true;
     bool public revealed = false;
 
-		// MINTangible ditial NFT rights
-    address payable private _rightsFeeRecipient; // Address to send the MINTangible fee
-    address private _rightsProtocolAddr; // Address of Rights Protocol Smart Contract
+		// IP & rights for digital collectibles by MINTangible
+    address payable private _rightsFeeRecipient;
+    address private _rightsProtocolAddress;
+
+		// Claim center management for token redeemables
+		address public claimCenterAddress;
 
 
     /// Events
@@ -60,9 +50,6 @@ contract EnlightenedLizards is ERC721AQueryable, Claimables {
     event NewLizardMinted(uint256 tokenId, string tokenURI, address phan);
     /// @dev Emitted when the contract owner withdraws the contract funds out to the treasury
     event FundsWithdrawn(uint256 balance);
-		/// @dev Emitted when a token holder claims claimable rewards, initiated by contract owner on behalf of the recipient
-		event WearableItemClaimed(uint256 tokenId, address phan);
-		event PosterItemClaimed(uint256 tokenId, address phan);
 
 
     /// Modifiers
@@ -164,26 +151,19 @@ contract EnlightenedLizards is ERC721AQueryable, Claimables {
             "Invalid proof!"
         );
 
-				// Token ID tracking, internal minting ids is in ERC721A
-				// First increment, so we can start at 1 and mint for next token id available
+				// Local tokenID tracking, incrementing
 				_tokenIdCounter.increment();
 				uint256 newLizardId = _tokenIdCounter.current();
 
 				// Mint the given quantity for a singular tx
         _safeMint(_phan, _mintAmount);
 
-        // mark the minter as having claimed
+        // Mark the minter as having claimed
         whitelistClaimed[_phan] = true;
 
-				// Add the tokenId to the token claimables mapping
-				// _tokenClaimablesSize.increment();
-				// Create two claimables for the new token
-				// addClaimableForToken(newLizardId, ClaimableType.PhysicalItem, 'poster', 'Limited Edition Poster');
-				// addClaimableForToken(newLizardId, ClaimableType.PhysicalItem, 'wearable', 'Custom PhanF Wearable');
-
-        // Transfer MINTangible fee 3.3% for digital IP rights and licensing
-        uint256 feeValue = cost.mul(33).div(1000);
-        Address.sendValue(_rightsFeeRecipient, feeValue);
+        // Send digital collectible rights fee
+        uint256 _rightsFeeValue = cost.mul(33).div(1000);
+        Address.sendValue(_rightsFeeRecipient, _rightsFeeValue);
 
 				// Emit event with new metadata url
         string memory newTokenURI = tokenURI(newLizardId);
@@ -198,26 +178,16 @@ contract EnlightenedLizards is ERC721AQueryable, Claimables {
     {
 			require(!paused, "The contract is paused!");
 
-			// Token ID tracking, internal minting ids is in ERC721A
-			// First increment, so we can start at 1 and mint for next token id available
+			// Local tokenID tracking, incrementing
 			_tokenIdCounter.increment();
 			uint256 newLizardId = _tokenIdCounter.current();
 
 			// Mint the given quantity for a singular tx
 			_safeMint(_phan, _mintAmount);
 
-			// mark the minter as having claimed
-			whitelistClaimed[_phan] = true;
-
-			// Add the tokenId to the token claimables mapping
-			// _tokenClaimablesSize.increment();
-			//Create two claimables for the new token
-			// addClaimableForToken(newLizardId, ClaimableType.PhysicalItem, 'poster', 'Limited Edition Poster');
-			// addClaimableForToken(newLizardId, ClaimableType.PhysicalItem, 'wearable', 'Custom PhanFT Wearable');
-
-			// Transfer MINTangible fee 3.3% for digital IP rights and licensing
-			uint256 feeValue = cost.mul(33).div(1000);
-			Address.sendValue(_rightsFeeRecipient, feeValue);
+			// Send digital collectible rights fee
+			uint256 _rightsFeeValue = cost.mul(33).div(1000);
+			Address.sendValue(_rightsFeeRecipient, _rightsFeeValue);
 
 			// Emit event with new metadata url
 			string memory newTokenURI = tokenURI(newLizardId);
@@ -233,7 +203,7 @@ contract EnlightenedLizards is ERC721AQueryable, Claimables {
     {
 			if (revealed == true) {
 				return
-					IRightsProtocol(_rightsProtocolAddr).rightsURIs(
+					IRightsProtocol(_rightsProtocolAddress).rightsURIs(
 							address(this),
 							_tokenId
 					);
@@ -303,35 +273,29 @@ contract EnlightenedLizards is ERC721AQueryable, Claimables {
         _rightsFeeRecipient = rightsFeeRecipient_;
     }
 
-    function setRightsProtocolAddr(address rightsProtocolAddr_)
+    function setRightsProtocolAddress(address rightsProtocolAddress_)
         public
         onlyCTO
     {
-        _rightsProtocolAddr = rightsProtocolAddr_;
+        _rightsProtocolAddress = rightsProtocolAddress_;
     }
 
-		function getBank() public view onlyCTO returns (address) {
-			return this.getTreasury();
-		}
-
-
-		/// Banking
+		/// Claim Center
 		////////////////////////////////////
+    function setClaimCenterAddress(address _claimCenterAddress)
+        public
+        onlyCTO
+    {
+        claimCenterAddress = _claimCenterAddress;
+    }
+
+    /// @dev Withdraw all the fund from the contract balance out to the Quantegy Labs treasury
     function fundTreasury() public onlyCEO nonReentrant {
-        // TODO: withdraw out to other addresses automatically, i.e. 5%:
-        // (bool hs, ) = payable(0x847F115314b635F58A53471768D14E67e587cb56).call{
-        //     value: (address(this).balance * 5) / 100
-        // }("");
-        // require(hs);
-
-        /// @dev Withdraw the contract balance out to the Quantegy Labs TODO: treasury
-        // treasury.transfer(balance);
-
-        // This will transfer the remaining contract balance to the treasury address.
         uint256 balance = address(this).balance;
         (bool os, ) = payable(this.getTreasury()).call{value: balance}("");
         require(os);
 
+				// Emit the event
         emit FundsWithdrawn(balance);
     }
 }

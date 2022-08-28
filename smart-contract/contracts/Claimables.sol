@@ -51,7 +51,7 @@ contract Claimables is QuantegyLabsAccessControl {
 	constructor() {}
 
 	/// @dev Adds a claimable item for a given token ID
-	function addClaimableForToken(uint256 _tokenId, ClaimableType _claimableType, string memory _key, string memory _name) internal adminOnly returns (Claimable memory)
+	function addClaimableForToken(uint256 _tokenId, ClaimableType _claimableType, string memory _key, string memory _name) public adminOnly returns (Claimable memory)
 	{
 		// Instantiate a new claimable with some default values
 		Claimable memory newClaimable = Claimable(_claimableType, _key, _name, false, block.timestamp, address(0));
