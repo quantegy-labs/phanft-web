@@ -4,41 +4,60 @@ pragma solidity >=0.8.9 <0.9.0;
 
 import "erc721a/contracts/extensions/ERC721AQueryable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "./QuantegyLabsAccessControl.sol";
+import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 import "./IRightsProtocol.sol";
+import "./Claimables.sol";
 
-contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
+/*
+	Post-deploy steps:
+	0. Update ./config/CollectionConfig.ts w/ deployed address
+	1. Run 'yarn verify [contract-address] --network truffle
+	2. Set treasury address
+	3. Set CTO address (optional)
+	4.
+	Mintangible steps:
+	1. Rinkeby operator & fee recipient - setRightsFeeRecipient(0x0060ca998a581D2929842e9d54bbC84566860fe9)
+	2. Rinkby RightsProtocol.sol contract - setRightsProtocolAddr(0xDEAC20254655FaC4b508e2c57D64fbC098CA6537)
+	3. Update approveContractOperator for this contract https://rinkeby.etherscan.io/address/0xdeac20254655fac4b508e2c57d64fbc098ca6537#writeContract
+*/
+
+contract EnlightenedLizards is ERC721AQueryable, Claimables {
     using Strings for uint256;
     using SafeMath for uint256;
+		using Counters for Counters.Counter;
+		Counters.Counter private _tokenIdCounter;
 
+		// Whitelisting
     bytes32 public merkleRoot;
     mapping(address => bool) public whitelistClaimed;
+    bool public whitelistMintEnabled = false;
 
+		// Token Metadata
     string public uriPrefix = ""; // IPFS directory containing all NFT metadata files
     string public uriSuffix = ".json";
     string public hiddenMetadataUri;
+		string public hiddenRightsUri = "this is not allowed to be seen until reveal";
 
-    uint256 public cost;
+    // Minting tokens
+		uint256 public cost;
     uint256 public maxSupply;
     uint256 public maxMintAmountPerTx;
 
+		// Collection status
     bool public paused = true;
-    bool public whitelistMintEnabled = false;
     bool public revealed = false;
 
-    address payable private _feeRecipient; // Address to send the MINTangible fee
+		// MINTangible ditial NFT rights
+    address payable private _rightsFeeRecipient; // Address to send the MINTangible fee
     address private _rightsProtocolAddr; // Address of Rights Protocol Smart Contract
 
-    mapping(uint256 => bool) public tokenToClaimedWearableItem;
-    mapping(uint256 => bool) public tokenToClaimedPosterItem;
 
     /// Events
     ////////////////////////////////////
     /// @dev Emitted when a new token is minted
-    event NewLizardMinted(uint256 tokenId, address phan);
+    event NewLizardMinted(uint256 tokenId, string tokenURI, address phan);
     /// @dev Emitted when the contract owner withdraws the contract funds out to the treasury
     event FundsWithdrawn(uint256 balance);
 		/// @dev Emitted when a token holder claims claimable rewards, initiated by contract owner on behalf of the recipient
@@ -48,78 +67,84 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
 
     /// Modifiers
     ////////////////////////////////////
-    modifier mintCompliance(uint256 _mintAmount) {
-        require(
-            _mintAmount > 0 && _mintAmount <= maxMintAmountPerTx,
-            "Invalid mint amount!"
-        );
-        // if (msg.sender != owner()) {
-        require(
-            totalSupply() + _mintAmount <= maxSupply,
-            "Max supply exceeded!"
-        );
-        // }
-        _;
+    modifier mintQtyCompliance(uint256 _mintAmount) {
+			require(
+				_mintAmount > 0 && _mintAmount <= maxMintAmountPerTx,
+				"Invalid mint amount!"
+			);
+			require(
+				totalSupply() + _mintAmount <= maxSupply,
+				"Max supply exceeded!"
+			);
+			_;
     }
 
     modifier mintPriceCompliance(uint256 _mintAmount) {
-        require(msg.value >= cost * _mintAmount, "Insufficient funds!");
-        _;
+			require(msg.value >= cost * _mintAmount, "Insufficient funds!");
+			_;
     }
 
     constructor(
-        string memory _tokenName,
-        string memory _tokenSymbol,
-        uint256 _cost,
-        uint256 _maxSupply,
-        uint256 _maxMintAmountPerTx,
-        string memory _hiddenMetadataUri
+			string memory _tokenName,
+			string memory _tokenSymbol,
+			uint256 _cost,
+			uint256 _maxSupply,
+			uint256 _maxMintAmountPerTx,
+			string memory _hiddenMetadataUri
     ) ERC721A(_tokenName, _tokenSymbol) {
-        setCost(_cost);
-        maxSupply = _maxSupply;
-        setMaxMintAmountPerTx(_maxMintAmountPerTx);
-        setHiddenMetadataUri(_hiddenMetadataUri);
+			setCost(_cost);
+			maxSupply = _maxSupply;
+			setMaxMintAmountPerTx(_maxMintAmountPerTx);
+			setHiddenMetadataUri(_hiddenMetadataUri);
     }
 
-    /// Methods
+
+    /// Overrides
+		/// https://github.com/chiru-labs/ERC721A/blob/main/contracts/ERC721A.sol
     ////////////////////////////////////
     function _baseURI() internal view virtual override returns (string memory) {
-        return uriPrefix;
+			return uriPrefix;
     }
 
+		/// @dev Start our token counting for this collection at 1 rather than 0
     function _startTokenId() internal view virtual override returns (uint256) {
-        return 1;
+			return 1;
     }
 
+		/// @dev This stitches togther bits of dynamic data to a singular string
+		/// @return // ipfs://[CID]/[tokenId].json or "" as a fallback
     function tokenURI(uint256 _tokenId)
-        public
-        view
-        virtual
-        override
-        returns (string memory)
+			public
+			view
+			virtual
+			override
+			returns (string memory)
     {
-        require(
-            _exists(_tokenId),
-            "ERC721Metadata: URI query for nonexistent token"
-        );
+			require(
+				_exists(_tokenId),
+				"ERC721Metadata: URI query for nonexistent token"
+			);
 
-        if (revealed == false) {
-            return hiddenMetadataUri;
-        }
+			if (revealed == false) {
+				return hiddenMetadataUri;
+			}
 
-        string memory currentBaseURI = _baseURI();
-        return
-            bytes(currentBaseURI).length > 0
-                ? string(
-                    abi.encodePacked(
-                        currentBaseURI,
-                        _tokenId.toString(),
-                        uriSuffix
-                    ) // ipfs://[CID]/[tokenId].json
-                )
-                : ""; // fallback if no baseURI set
+			string memory currentBaseURI = _baseURI();
+			return
+				bytes(currentBaseURI).length > 0
+					? string(
+						abi.encodePacked(
+							currentBaseURI,
+							_tokenId.toString(),
+							uriSuffix
+						)
+					)
+					: "";
     }
 
+
+		/// Methods
+    ////////////////////////////////////
     function whitelistMintLizard(
         address _phan,
         uint256 _mintAmount,
@@ -127,7 +152,7 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
     )
         public
         payable
-        mintCompliance(_mintAmount)
+        mintQtyCompliance(_mintAmount)
         mintPriceCompliance(_mintAmount)
     {
         // Verify whitelist requirements
@@ -139,165 +164,174 @@ contract EnlightenedLizards is ERC721AQueryable, Ownable, ReentrancyGuard {
             "Invalid proof!"
         );
 
-        // mark the minter as having claimed
-        whitelistClaimed[_phan] = true;
+				// Token ID tracking, internal minting ids is in ERC721A
+				// First increment, so we can start at 1 and mint for next token id available
+				_tokenIdCounter.increment();
+				uint256 newLizardId = _tokenIdCounter.current();
+
+				// Mint the given quantity for a singular tx
         _safeMint(_phan, _mintAmount);
 
-        // Update claimables to false for new token
-        tokenToClaimedWearableItem[_mintAmount] = false;
-        tokenToClaimedPosterItem[_mintAmount] = false;
+        // mark the minter as having claimed
+        whitelistClaimed[_phan] = true;
 
-        // _safeMint(_phan, newLizardId);
-        // _setTokenURI(newLizardId, _tokenURI);
-        // _tokenIds.increment();
-        // return newLizardId;
+				// Add the tokenId to the token claimables mapping
+				// _tokenClaimablesSize.increment();
+				// Create two claimables for the new token
+				// addClaimableForToken(newLizardId, ClaimableType.PhysicalItem, 'poster', 'Limited Edition Poster');
+				// addClaimableForToken(newLizardId, ClaimableType.PhysicalItem, 'wearable', 'Custom PhanF Wearable');
 
         // Transfer MINTangible fee 3.3% for digital IP rights and licensing
         uint256 feeValue = cost.mul(33).div(1000);
-        Address.sendValue(_feeRecipient, feeValue);
+        Address.sendValue(_rightsFeeRecipient, feeValue);
 
-        emit NewLizardMinted(_mintAmount, _phan);
+				// Emit event with new metadata url
+        string memory newTokenURI = tokenURI(newLizardId);
+        emit NewLizardMinted(newLizardId, newTokenURI, _phan);
     }
 
     function mintLizard(address _phan, uint256 _mintAmount)
         public
         payable
-        mintCompliance(_mintAmount)
+        mintQtyCompliance(_mintAmount)
         mintPriceCompliance(_mintAmount)
     {
-        require(!paused, "The contract is paused!");
-        _safeMint(_phan, _mintAmount);
+			require(!paused, "The contract is paused!");
 
-        // Update claimables to false for new token
-        tokenToClaimedWearableItem[_mintAmount] = false;
-        tokenToClaimedPosterItem[_mintAmount] = false;
+			// Token ID tracking, internal minting ids is in ERC721A
+			// First increment, so we can start at 1 and mint for next token id available
+			_tokenIdCounter.increment();
+			uint256 newLizardId = _tokenIdCounter.current();
 
-        // uint256 newLizardId = _tokenIds.current();
-        // _safeMint(_phan, newLizardId);
-        // _setTokenURI(newLizardId, _tokenURI);
-        // _tokenIds.increment();
-        // return newLizardId;
+			// Mint the given quantity for a singular tx
+			_safeMint(_phan, _mintAmount);
 
-        // Transfer MINTangible fee 3.3% for digital IP rights and licensing
-        uint256 feeValue = cost.mul(33).div(1000);
-        Address.sendValue(_feeRecipient, feeValue);
+			// mark the minter as having claimed
+			whitelistClaimed[_phan] = true;
 
-        emit NewLizardMinted(_mintAmount, _phan);
+			// Add the tokenId to the token claimables mapping
+			// _tokenClaimablesSize.increment();
+			//Create two claimables for the new token
+			// addClaimableForToken(newLizardId, ClaimableType.PhysicalItem, 'poster', 'Limited Edition Poster');
+			// addClaimableForToken(newLizardId, ClaimableType.PhysicalItem, 'wearable', 'Custom PhanFT Wearable');
+
+			// Transfer MINTangible fee 3.3% for digital IP rights and licensing
+			uint256 feeValue = cost.mul(33).div(1000);
+			Address.sendValue(_rightsFeeRecipient, feeValue);
+
+			// Emit event with new metadata url
+			string memory newTokenURI = tokenURI(newLizardId);
+			emit NewLizardMinted(newLizardId, newTokenURI, _phan);
     }
 
     /// @dev Gets the given Digital IP Rights & Licensing URI from MINTangible for the given token ID
+		/// Only shows the rights URIs post-reveal, as one could find image referneces in the rights metadata
     function rightsURIs(uint256 _tokenId)
         public
         view
-        returns (string[] memory)
+        returns (string[] memory tokenRightsUris)
     {
-        return
-            IRightsProtocol(_rightsProtocolAddr).rightsURIs(
-                address(this),
-                _tokenId
-            );
+			if (revealed == true) {
+				return
+					IRightsProtocol(_rightsProtocolAddr).rightsURIs(
+							address(this),
+							_tokenId
+					);
+			}
+
+			return tokenRightsUris;
     }
 
-		function claimWearableItem(uint256 _tokenId, address _phan) public onlyOwner {
-			// Only token owner can claim
-			require(_phan == ownerOf(_tokenId), "Only the token owner can claim redeemables");
-			// Reward can only be claimed once per token
-			require(tokenToClaimedWearableItem[_tokenId] == false, "Wearable item for this token has already been claimed");
-			tokenToClaimedWearableItem[_tokenId] = true;
-			emit WearableItemClaimed(_tokenId, _phan);
-		}
-
-		function claimPosterItem(uint256 _tokenId, address _phan) public onlyOwner {
-			// Only token owner can claim
-			require(_phan == ownerOf(_tokenId), "Only the token owner can claim redeemables");
-			// Reward can only be claimed once per token
-			require(tokenToClaimedPosterItem[_tokenId] == false, "Poster item for this token has already been claimed");
-			tokenToClaimedPosterItem[_tokenId] = true;
-			emit PosterItemClaimed(_tokenId, _phan);
-		}
 
     /// Owner Methods
-    ////////////////////////////////////
-    function mintForAddress(uint256 _mintAmount, address _receiver)
+    // ////////////////////////////////////
+		/// @dev Mint a token for free on behalf of, this could be useful for airdropping, minting for free
+    function adminMintLizard(address _receiver, uint256 _mintAmount)
         public
-        mintCompliance(_mintAmount)
-        onlyOwner
+        mintQtyCompliance(_mintAmount)
+        adminOnly
     {
         _safeMint(_receiver, _mintAmount);
     }
 
-    function setRevealed(bool _state) public onlyOwner {
+    function setPaused(bool _state) public onlyCTO {
+        paused = _state;
+    }
+
+    function setRevealed(bool _state) public onlyCTO {
         revealed = _state;
     }
 
-    function setCost(uint256 _cost) public onlyOwner {
+    function setCost(uint256 _cost) public adminOnly {
         cost = _cost;
     }
 
     function setMaxMintAmountPerTx(uint256 _maxMintAmountPerTx)
         public
-        onlyOwner
+        onlyCTO
     {
         maxMintAmountPerTx = _maxMintAmountPerTx;
     }
 
-    function setHiddenMetadataUri(string memory _hiddenMetadataUri)
+    function setWhitelistMintEnabled(bool _state) public onlyCTO {
+        whitelistMintEnabled = _state;
+    }
+
+		function setMerkleRoot(bytes32 _merkleRoot) public onlyCTO {
+        merkleRoot = _merkleRoot;
+    }
+
+		function setHiddenMetadataUri(string memory _hiddenMetadataUri)
         public
-        onlyOwner
+        onlyCTO
     {
         hiddenMetadataUri = _hiddenMetadataUri;
     }
 
-    function setUriPrefix(string memory _uriPrefix) public onlyOwner {
+    function setUriPrefix(string memory _uriPrefix) public onlyCTO {
         uriPrefix = _uriPrefix;
     }
 
-    function setUriSuffix(string memory _uriSuffix) public onlyOwner {
+    function setUriSuffix(string memory _uriSuffix) public onlyCTO {
         uriSuffix = _uriSuffix;
     }
 
-    function setPaused(bool _state) public onlyOwner {
-        paused = _state;
-    }
 
-    function setMerkleRoot(bytes32 _merkleRoot) public onlyOwner {
-        merkleRoot = _merkleRoot;
-    }
-
-    function setWhitelistMintEnabled(bool _state) public onlyOwner {
-        whitelistMintEnabled = _state;
-    }
-
-    function setFeeRecipient(address payable feeRecipient_) public onlyOwner {
-        _feeRecipient = feeRecipient_;
+		/// Digital Rights
+		////////////////////////////////////
+    function setRightsFeeRecipient(address payable rightsFeeRecipient_) public onlyCTO {
+        _rightsFeeRecipient = rightsFeeRecipient_;
     }
 
     function setRightsProtocolAddr(address rightsProtocolAddr_)
         public
-        onlyOwner
+        onlyCTO
     {
         _rightsProtocolAddr = rightsProtocolAddr_;
     }
 
-    function withdraw() public onlyOwner nonReentrant {
-        // This will withdraw 5% out to an alternate address, secondary treasury, etc.
-        // =============================================================================
+		function getBank() public view onlyCTO returns (address) {
+			return this.getTreasury();
+		}
+
+
+		/// Banking
+		////////////////////////////////////
+    function fundTreasury() public onlyCEO nonReentrant {
+        // TODO: withdraw out to other addresses automatically, i.e. 5%:
         // (bool hs, ) = payable(0x847F115314b635F58A53471768D14E67e587cb56).call{
         //     value: (address(this).balance * 5) / 100
         // }("");
         // require(hs);
-        // =============================================================================
 
-        // This will transfer the remaining contract balance to the owner.
-        // Do not remove this otherwise you will not be able to withdraw the funds.
-        // =============================================================================
-        uint256 balance = address(this).balance;
-        (bool os, ) = payable(owner()).call{value: balance}("");
-        require(os);
-        // =============================================================================
-
-        /// @dev Withdraw the contract balance out to the Quantegy Labs treasury
+        /// @dev Withdraw the contract balance out to the Quantegy Labs TODO: treasury
         // treasury.transfer(balance);
+
+        // This will transfer the remaining contract balance to the treasury address.
+        uint256 balance = address(this).balance;
+        (bool os, ) = payable(this.getTreasury()).call{value: balance}("");
+        require(os);
+
         emit FundsWithdrawn(balance);
     }
 }

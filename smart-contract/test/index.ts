@@ -85,13 +85,13 @@ describe(CollectionConfig.contractName, function () {
     await expect(contract.connect(owner).mintLizard(owner.address, 1, {value: getPrice(SaleType.WHITELIST, 1)})).to.be.revertedWith('The contract is paused!');
     await expect(contract.connect(owner).whitelistMintLizard(owner.address, 1, [], {value: getPrice(SaleType.WHITELIST, 1)})).to.be.revertedWith('The whitelist sale is not enabled!');
 
-    // The owner should always be able to run mintForAddress
-    await (await contract.mintForAddress(1, await owner.getAddress())).wait();
-    await (await contract.mintForAddress(1, await whitelistedUser.getAddress())).wait();
+    // The owner should always be able to run adminMintLizard
+    await (await contract.adminMintLizard(await owner.getAddress(), 1)).wait();
+    await (await contract.adminMintLizard(await whitelistedUser.getAddress(), 1)).wait();
     // But not over the maxMintAmountPerTx
-    await expect(contract.mintForAddress(
-      await (await contract.maxMintAmountPerTx()).add(1),
+    await expect(contract.adminMintLizard(
       await holder.getAddress(),
+      await (await contract.maxMintAmountPerTx()).add(1),
     )).to.be.revertedWith('Invalid mint amount!');
 
     // Check balances
@@ -198,17 +198,17 @@ describe(CollectionConfig.contractName, function () {
   });
 
   it('Owner only functions', async function () {
-    await expect(contract.connect(externalUser).mintForAddress(1, await externalUser.getAddress())).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).setRevealed(false)).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).setCost(utils.parseEther('0.0000001'))).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).setMaxMintAmountPerTx(99999)).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).setHiddenMetadataUri('INVALID_URI')).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).setUriPrefix('INVALID_PREFIX')).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).setUriSuffix('INVALID_SUFFIX')).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).setPaused(false)).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).setMerkleRoot('0x0000000000000000000000000000000000000000000000000000000000000000')).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).setWhitelistMintEnabled(false)).to.be.revertedWith('Ownable: caller is not the owner');
-    await expect(contract.connect(externalUser).withdraw()).to.be.revertedWith('Ownable: caller is not the owner');
+    await expect(contract.connect(externalUser).adminMintLizard(await externalUser.getAddress(), 1)).to.be.revertedWith('QuantegyLabsAccessControl: Admins only');
+    await expect(contract.connect(externalUser).setRevealed(false)).to.be.revertedWith('QuantegyLabsAccessControl: CTO only');
+    await expect(contract.connect(externalUser).setCost(utils.parseEther('0.0000001'))).to.be.revertedWith('QuantegyLabsAccessControl: Admins only');
+    await expect(contract.connect(externalUser).setMaxMintAmountPerTx(99999)).to.be.revertedWith('QuantegyLabsAccessControl: CTO only');
+    await expect(contract.connect(externalUser).setHiddenMetadataUri('INVALID_URI')).to.be.revertedWith('QuantegyLabsAccessControl: CTO only');
+    await expect(contract.connect(externalUser).setUriPrefix('INVALID_PREFIX')).to.be.revertedWith('QuantegyLabsAccessControl: CTO only');
+    await expect(contract.connect(externalUser).setUriSuffix('INVALID_SUFFIX')).to.be.revertedWith('QuantegyLabsAccessControl: CTO only');
+    await expect(contract.connect(externalUser).setPaused(false)).to.be.revertedWith('QuantegyLabsAccessControl: CTO only');
+    await expect(contract.connect(externalUser).setMerkleRoot('0x0000000000000000000000000000000000000000000000000000000000000000')).to.be.revertedWith('QuantegyLabsAccessControl: CTO only');
+    await expect(contract.connect(externalUser).setWhitelistMintEnabled(false)).to.be.revertedWith('QuantegyLabsAccessControl: CTO only');
+    await expect(contract.connect(externalUser).fundTreasury()).to.be.revertedWith('QuantegyLabsAccessControl: CEO only');
   });
 
   it('Wallet of owner', async function () {

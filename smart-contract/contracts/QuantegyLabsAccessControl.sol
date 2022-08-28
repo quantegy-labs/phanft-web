@@ -7,19 +7,24 @@ import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 
 contract QuantegyLabsAccessControl is Ownable, ReentrancyGuard {
 	/// @dev The CEO's address
-	address public ceoAddress;
+	address internal ceoAddress;
 	/// @dev The CTO's address
-	address public ctoAddress;
+	address internal ctoAddress;
 	/// @dev The Quantegy Labs treasury multi-sig address
-	address payable internal treasury;
+	address internal treasury;
 
 	modifier onlyCEO() {
-		require(msg.sender == ceoAddress, 'Call not permitted: CEO only');
+		require(msg.sender == ceoAddress, 'QuantegyLabsAccessControl: CEO only');
 		_;
 	}
 
 	modifier onlyCTO() {
-		require(msg.sender == ctoAddress, 'Call not permitted: CTO only');
+		require(msg.sender == ctoAddress, 'QuantegyLabsAccessControl: CTO only');
+		_;
+	}
+
+	modifier adminOnly() {
+		require(msg.sender == ceoAddress || msg.sender == ctoAddress || msg.sender == owner(), 'QuantegyLabsAccessControl: Admins only');
 		_;
 	}
 
@@ -39,6 +44,11 @@ contract QuantegyLabsAccessControl is Ownable, ReentrancyGuard {
 		ctoAddress = msg.sender;
 	}
 
+	/// @dev Admin only call to get the CEO address
+	function getCEO() external view adminOnly returns (address) {
+		return ceoAddress;
+	}
+
 	/// @dev Assigns a new address to act as the CEO. Only available to the current CEO.
 	/// @param _newCEO The address of the new CEO
 	function setCEO(address _newCEO) external onlyCEO {
@@ -47,16 +57,21 @@ contract QuantegyLabsAccessControl is Ownable, ReentrancyGuard {
 		emit CEOUpdated(_newCEO);
 	}
 
+	/// @dev Admin only call to get the CTO address
+	function getCTO() external view adminOnly returns (address) {
+		return ctoAddress;
+	}
+
 	/// @dev Assigns a new address to act as the CTO. Only available to the current CEO.
 	/// @param _newCTO The address of the new CTO
-	function setCTO(address _newCTO) external onlyCEO {
+	function setCTO(address _newCTO) external adminOnly {
 		require(_newCTO != address(0));
 		ctoAddress = _newCTO;
 		emit CTOUpdated(_newCTO);
 	}
 
-	/// @dev Update the treasury address if/when need be
-	function getTreasury() external view returns (address) {
+	/// @dev Admin only call to get the treasury address
+	function getTreasury() external view adminOnly returns (address) {
 		return treasury;
 	}
 
