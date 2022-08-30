@@ -112,18 +112,14 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 
 					<Box sx={{ my: 2 }}>
 						<CrossmintPayButton
-						collectionTitle="EL Test"
-                collectionDescription="Testing the Crossmint collection description"
-                collectionPhoto="https://animage.com"
-                clientId="bb4a3582-277b-4b4f-9e7c-94a234945ff3"
-							// collectionTitle="EL Test"
-							// collectionDescription="Your web 3.0 pass to 4.0 phandom. Help save the lizards from extinction!"
-							// collectionPhoto="ipfs://QmVpJjcba7VW2zDg1tPiKb7CJRLSL4qDsZGWxwFY2KexPg/hidden.png"
-							// clientId="bb4a3582-277b-4b4f-9e7c-94a234945ff3"
+							collectionTitle="Enlightened Lizards"
+							collectionDescription="Your web 3.0 pass to 4.0 phandom. Help save the lizards from extinction!"
+							collectionPhoto="ipfs://QmVpJjcba7VW2zDg1tPiKb7CJRLSL4qDsZGWxwFY2KexPg/hidden.png"
+							clientId=""
 							// totalPrice should contain the total price of all NFTs to mint in a single transaction - in ETH as string * mintAmount 0.9 * 2 = "0.18"
 							mintConfig={{
 								type: 'erc-721',
-								totalPrice: '0',
+								totalPrice: utils.formatEther(tokenPrice.mul(mintAmount)),
 								_mintAmount: mintAmount.toString(),
 							}}
 							environment="staging"

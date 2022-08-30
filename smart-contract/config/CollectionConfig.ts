@@ -26,7 +26,7 @@ const CollectionConfig: CollectionConfigInterface = {
 		price: 0.1,
 		maxMintAmountPerTx: 5,
 	},
-	contractAddress: '0x979250FdF725C74Ec26d38e9C0d7d00819bF1a13',
+	contractAddress: '0x65e9007173B8583589bF01ae9c1C972cF09cbf55',
 	marketplaceIdentifier: 'enlightened-lizards',
 	marketplaceConfig: Marketplaces.openSea,
 	whitelistAddresses,

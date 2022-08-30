@@ -26,7 +26,7 @@ contract EnlightenedLizards is ERC721AQueryable, QuantegyLabsAccessControl {
     string public uriPrefix = ""; // IPFS directory containing all NFT metadata files
     string public uriSuffix = ".json";
     string public hiddenMetadataUri;
-		string public hiddenRightsUri = "this is not allowed to be seen until reveal";
+		string public hiddenRightsUri = "Rights URIs are hidden until reveal";
 
     // Minting tokens
 		uint256 public cost;
@@ -223,7 +223,15 @@ contract EnlightenedLizards is ERC721AQueryable, QuantegyLabsAccessControl {
         mintQtyCompliance(_mintAmount)
         adminOnly
     {
-        _safeMint(_receiver, _mintAmount);
+			// Local tokenID tracking, incrementing
+			_tokenIdCounter.increment();
+			uint256 newLizardId = _tokenIdCounter.current();
+
+			_safeMint(_receiver, _mintAmount);
+
+				// Emit event with new metadata url
+			string memory newTokenURI = tokenURI(newLizardId);
+			emit NewLizardMinted(newLizardId, newTokenURI, _receiver);
     }
 
     function setPaused(bool _state) public onlyCTO {
@@ -305,9 +313,7 @@ contract EnlightenedLizards is ERC721AQueryable, QuantegyLabsAccessControl {
     /// @dev Withdraw all the fund from the contract balance out to the Quantegy Labs treasury
     function fundTreasury() public onlyCEO nonReentrant {
         uint256 balance = address(this).balance;
-        (bool os, ) = payable(this.getTreasury()).call{value: balance}("");
-        require(os);
-
+				Address.sendValue(treasury, balance);
 				// Emit the event
         emit FundsWithdrawn(balance);
     }

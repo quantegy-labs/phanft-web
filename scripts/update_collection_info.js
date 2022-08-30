@@ -14,18 +14,24 @@ fs.rmSync(destDir, { recursive: true, force: true })
 fs.mkdirSync(destDir)
 
 // General metadata for Ethereum
-const namePrefix = 'The Enlightened Lizards'
+const namePrefix = 'Enlightened Lizard'
 const imagesBaseUri = 'ipfs://{cid}' // UPDATE THIS
 const contractAddress = '0xC715D21FEe866DfB40024eF71C8a452090A14e00' // UPDATE THIS
 
 const generateDescription = (id) => `
-The Enlightened Lizards is a collection of utility-driven, digital collectibles that celebrate and unify our amazing community centered around music, art, and positivity. As the genesis collection from [PhanFT](https://phanft.xyz), created for phans by phans, these NFTs grant membership access into the PhanFT ecosystem and unlock all the benefits that come with it. It's your web3 pass to 4.0 phandom!
+**About Enlightened Lizards**
+
+Enlightened Lizards is a NFT collection of utility-driven, digital collectibles that celebrate and unify our amazing community centered around music, art, and positivity. As the genesis collection from [PhanFT](https://phanft.xyz), created for phans by phans, these NFTs grant membership access into the PhanFT ecosystem and unlock all the benefits that come with it. It's your web3 pass to 4.0 phandom!
+
+**Utility-Driven Digital Collectibles**
 
 The utility comes in the form of redeemable items attached to the given token's ID. These can be loaded on retro-actively from PhanFT and can be claimed on-chain. Items can take the form of IRL swag and collaborations with community artists, event tickets, token airdrops, and etc. Check out the [PhanFT roadmap](https://phanft.xyz#roadmap) for more information.
 
 Each token keeps its own state of redeemable items, including what has or hasn't been claimed. For the latest state of this token's redeemable items, view its [NFT status page](https://phanft.xyz/enlightened-lizards/${id}).
 
-This token is licensed as a digital collectible bound to its own rights and IP. View this token's rights and IP licensing agreement [here](Add Rights Registry Link Here - provided by Mintangible).`
+**NFT Rights & Licensing**
+
+This NFT Collection has been MINTangible™ Pre-Certified. Pre-Certification ensures that each NFT in the collection includes granted license rights for a registered work from a self-verified NFT creator. Access terms here [<https://rightsregistry.xyz/<phanFT blockchain>/<phanFT smart contract address>](https://rightsregistry.xyz/<phanFT blockchain>/<phanFT smart contract address>)`
 
 // update the pertinant fields
 data.collection.forEach((item, idx) => {
