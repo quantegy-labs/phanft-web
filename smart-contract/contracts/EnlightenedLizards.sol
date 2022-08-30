@@ -6,11 +6,12 @@ import "erc721a/contracts/extensions/ERC721AQueryable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
+import "./QuantegyLabsAccessControl.sol";
+import "./IClaimCenter.sol";
 import "./IRightsProtocol.sol";
-import "./Claimables.sol";
 
 // The Lizards would be saved, he said, if they could be enlightened...
-contract EnlightenedLizards is ERC721AQueryable, Claimables {
+contract EnlightenedLizards is ERC721AQueryable, QuantegyLabsAccessControl {
     using Strings for uint256;
     using SafeMath for uint256;
 		using Counters for Counters.Counter;
@@ -42,6 +43,7 @@ contract EnlightenedLizards is ERC721AQueryable, Claimables {
 
 		// Claim center management for token redeemables
 		address public claimCenterAddress;
+		IClaimCenter private _claimCenter;
 
 
     /// Events
@@ -280,18 +282,31 @@ contract EnlightenedLizards is ERC721AQueryable, Claimables {
         _rightsProtocolAddress = rightsProtocolAddress_;
     }
 
-		function rightsProtocolAddress() public onlyCTO returns (address) {
+		function rightsProtocolAddress() public view onlyCTO returns (address) {
 			return _rightsProtocolAddress;
 		}
 
 		/// Claim Center
 		////////////////////////////////////
-    function setClaimCenterAddress(address _claimCenterAddress)
-        public
-        onlyCTO
+		/// @dev Sets the claim center address that manages the collection's redeemable items
+    function setClaimCenterAddress(address _claimCenterAddress) public onlyCTO
     {
-        claimCenterAddress = _claimCenterAddress;
-    }
+			claimCenterAddress = _claimCenterAddress;
+		}
+
+		/// @dev Gets the redeemable items relating to the given token ID, as managed by the claim center
+		function tokenRedeemables(uint256 _tokenId) public returns (RedeemableItem[] memory redeemableItems)
+		{
+			if (claimCenterAddress == address(0)) return redeemableItems;
+			return IClaimCenter(claimCenterAddress).getTokenRedeemables(address(this), _tokenId);
+		}
+
+		/// @dev Gets the redeemable items relating to all tokens within the collection, as managed by the claim center
+		function collectionRedeemables() public returns (RedeemableItem[][] memory redeemableItems)
+		{
+			if (claimCenterAddress == address(0)) return redeemableItems;
+			return IClaimCenter(claimCenterAddress).getCollectionRedeemables(address(this));
+		}
 
     /// @dev Withdraw all the fund from the contract balance out to the Quantegy Labs treasury
     function fundTreasury() public onlyCEO nonReentrant {

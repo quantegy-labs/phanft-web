@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 /**
- * @dev Partial Rights Protocol Smart Contract  interface
+ * @dev Partial Rights Protocol Smart Contract interface
  */
 interface IRightsProtocol {
 	/**
