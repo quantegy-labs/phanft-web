@@ -35,17 +35,9 @@ struct RedeemableItem {
  * These functions should be called by the NFT contracts
  */
 interface IClaimCenter {
-	// Getting
-	function getClaimCenterCollections() external returns (address[] memory);
-	function getCollectionRedeemables(address collectionContractAddr) external returns (RedeemableItem[][] memory);
-	function getTokenRedeemables(address collectionContractAddr, uint256 _tokenId) external returns (RedeemableItem[] memory);
+	function getTokenRedeemables(address _collectionContractAddr, uint256 _tokenId) external view returns (RedeemableItem[] memory);
 
-	// Adding
-	function addCollectionToClaimCenter(address collectionContractAddr) external returns (address[] memory);
-	function addTokenToClaimCenterCollection(address collectionContractAddr, uint256 _tokenId) external returns (RedeemableItem[][] memory);
-	function addCollectionRedeemable(address collectionContractAddr, RedeemableType _redeemableType, string memory _key, string memory _name) external returns (RedeemableItem[][] memory);
-	function addTokenRedeemable(address collectionContractAddr, uint256 _tokenId, RedeemableType _redeemableType, string memory _key, string memory _name) external returns (RedeemableItem[] memory);
+	function addTokenRedeemable(address _collectionContractAddr, uint256 _tokenId, RedeemableType _type, string memory _key, string memory _name) external returns (RedeemableItem[] memory);
 
-	// Claiming
-	function claimTokenRedeemable(address collectionContractAddr, uint256 _tokenId, string memory _key) external returns (RedeemableItem memory);
+	function claimTokenRedeemable(address _collectionContractAddr, uint256 _tokenId, string memory _key) external returns (RedeemableItem memory);
 }

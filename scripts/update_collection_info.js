@@ -1,43 +1,63 @@
 const basePath = process.cwd()
 const fs = require('fs')
 
-// General metadata for Ethereum
-const namePrefix = 'The Enlightened Lizards'
-const description = 'Your web 3.0 pass to 4.0 phandom. Help save the lizards from extinction!'
-const imagesBaseUri = 'ipfs://QmVbyzrSTb8HNZ96FALJMntEgPyjLscxfMRhst8NJ4D4wM'
+// src & dest
+const srcFile = `${basePath}/collection/555/full metadata/metadata.json`
+const destDir = `${basePath}/collection/final/metadata/`
 
 // read json data
-let rawdata = fs.readFileSync(`${basePath}/collection/metadata/metadata.json`)
+let rawdata = fs.readFileSync(srcFile)
 let data = JSON.parse(rawdata)
 
 // Clear out final asset directories
-const destDir = `${basePath}/collection/final/metadata/`
 fs.rmSync(destDir, { recursive: true, force: true })
 fs.mkdirSync(destDir)
+
+// General metadata for Ethereum
+const namePrefix = 'The Enlightened Lizards'
+const imagesBaseUri = 'ipfs://{cid}' // UPDATE THIS
+const contractAddress = '0xC715D21FEe866DfB40024eF71C8a452090A14e00' // UPDATE THIS
+
+const generateDescription = (id) => `
+The Enlightened Lizards is a collection of utility-driven, digital collectibles that celebrate and unify our amazing community centered around music, art, and positivity. As the genesis collection from [PhanFT](https://phanft.xyz), created for phans by phans, these NFTs grant membership access into the PhanFT ecosystem and unlock all the benefits that come with it. It's your web3 pass to 4.0 phandom!
+
+The utility comes in the form of redeemable items attached to the given token's ID. These can be loaded on retro-actively from PhanFT and can be claimed on-chain. Items can take the form of IRL swag and collaborations with community artists, event tickets, token airdrops, and etc. Check out the [PhanFT roadmap](https://phanft.xyz#roadmap) for more information.
+
+Each token keeps its own state of redeemable items, including what has or hasn't been claimed. For the latest state of this token's redeemable items, view its [NFT status page](https://phanft.xyz/enlightened-lizards/${id}).
+
+This token is licensed as a digital collectible bound to its own rights and IP. View this token's rights and IP licensing agreement [here](Add Rights Registry Link Here - provided by Mintangible).`
 
 // update the pertinant fields
 data.collection.forEach((item, idx) => {
 	const id = idx + 1
 
+	// remove compiler field
+	delete item.compiler
+
 	// update name & description
 	item.name = `${namePrefix} ${item.name}`
-	item.description = description
+	item.description = generateDescription(id)
 
 	// update image URI - ipfs://[cid]/1.png
 	item.image = `${imagesBaseUri}/${item.image}`
 
-	// add in creators information
-	item.properties.creators = ['Drew Cook (@dcodev_)', 'David Blutenthal (@phanft_official)']
-	item['external_url'] = 'https://phanft.xyz'
+	// point to NFT viewer on PhanFT website
+	item.external_url = `https://phanft.xyz/enligtened-lizards/${id}`
 
 	// add in MINTangible digital IP rights URIs
 	item.rights = {
-		rights_registry_listing: `https://rightsregistry.xyz/<blockchain>/<contractAddr>/${id}`,
+		rights_registry_listing: `https://rightsregistry.xyz/ethereum/<contractAddr>/${id}`,
 		rights_metadata_url: `ipfs://<folder hash>/rights-metadata/${id}.json`,
 	}
 
-	// remove compiler field
-	delete item.compiler
+	// tie them in with the deployed NFT smart contract
+	item.contract_address = contractAddress
+
+	// add in creators information
+	item.properties.creators = ['PhanFT (@phanft_official Twitter)']
+
+	// update genesis field
+	item.properties.is_genesis = true
 
 	// rewrite the individual token metadata file
 	fs.writeFileSync(`${destDir + id}.json`, JSON.stringify(item, null, 2))
@@ -48,5 +68,5 @@ fs.writeFileSync(`${destDir}_metadata.json`, JSON.stringify(data, null, 2))
 
 // log
 console.log(`Updated imagesBaseUri for images to ===> ${imagesBaseUri}`)
-console.log(`Updated description for images to ===> ${description}`)
+console.log(`Updated description for images to ===> ${generateDescription('id')}`)
 console.log(`Updated name prefix for images to ===> ${namePrefix}`)

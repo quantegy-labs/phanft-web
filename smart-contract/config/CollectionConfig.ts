@@ -10,24 +10,23 @@ const CollectionConfig: CollectionConfigInterface = {
 	// yarn rename-contract NEW_CONTRACT_NAME
 	// Please DO NOT change it manually!
 	contractName: 'EnlightenedLizards',
-	tokenName: 'Enlightened Lizards 10', // Update when iterating
+	tokenName: 'Enlightened Lizards', // Update when iterating
 	tokenSymbol: 'LIZARD',
 	hiddenMetadataUri: 'ipfs://Qmbq4mEyewmumf7htMMTKtzj7zE8GxmBf3UwyKpd64BmHC/hidden.json', // fuzzy lizard with '?' overlay
-	maxSupply: 10,
+	maxSupply: 555,
 	whitelistSale: {
-		price: 0.05,
+		price: 0.09,
 		maxMintAmountPerTx: 1,
 	},
-	preSale: {
-		price: 0.075,
-		maxMintAmountPerTx: 2,
-	},
+	// preSale: {
+	// 	price: 0.075,
+	// 	maxMintAmountPerTx: 2,
+	// },
 	publicSale: {
 		price: 0.1,
 		maxMintAmountPerTx: 5,
 	},
-	// contractAddress: '0x56FF2F2B2F49441095E19d998F43e4ec38D94b54', // since 8/25 The deployed contract address (Rinkeby/Mainnet)
-	contractAddress: '0x747E92b3Ab2ed861aA6EfFe3c49eeC7e38EF2567', // since 8/27 11:34pm
+	contractAddress: '0x979250FdF725C74Ec26d38e9C0d7d00819bF1a13',
 	marketplaceIdentifier: 'enlightened-lizards',
 	marketplaceConfig: Marketplaces.openSea,
 	whitelistAddresses,

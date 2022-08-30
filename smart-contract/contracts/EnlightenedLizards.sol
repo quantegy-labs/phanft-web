@@ -286,6 +286,7 @@ contract EnlightenedLizards is ERC721AQueryable, QuantegyLabsAccessControl {
 			return _rightsProtocolAddress;
 		}
 
+
 		/// Claim Center
 		////////////////////////////////////
 		/// @dev Sets the claim center address that manages the collection's redeemable items
@@ -295,17 +296,10 @@ contract EnlightenedLizards is ERC721AQueryable, QuantegyLabsAccessControl {
 		}
 
 		/// @dev Gets the redeemable items relating to the given token ID, as managed by the claim center
-		function tokenRedeemables(uint256 _tokenId) public returns (RedeemableItem[] memory redeemableItems)
+		function tokenRedeemables(uint256 _tokenId) public view returns (RedeemableItem[] memory redeemableItems)
 		{
 			if (claimCenterAddress == address(0)) return redeemableItems;
 			return IClaimCenter(claimCenterAddress).getTokenRedeemables(address(this), _tokenId);
-		}
-
-		/// @dev Gets the redeemable items relating to all tokens within the collection, as managed by the claim center
-		function collectionRedeemables() public returns (RedeemableItem[][] memory redeemableItems)
-		{
-			if (claimCenterAddress == address(0)) return redeemableItems;
-			return IClaimCenter(claimCenterAddress).getCollectionRedeemables(address(this));
 		}
 
     /// @dev Withdraw all the fund from the contract balance out to the Quantegy Labs treasury

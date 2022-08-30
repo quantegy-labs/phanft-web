@@ -14,7 +14,6 @@ chai.use(ChaiAsPromised);
 
 enum SaleType {
   WHITELIST = CollectionConfig.whitelistSale.price,
-  PRE_SALE = CollectionConfig.preSale.price,
   PUBLIC_SALE = CollectionConfig.publicSale.price,
 };
 
@@ -162,8 +161,7 @@ describe(CollectionConfig.contractName, function () {
 
     // Pause whitelist sale
     await contract.setWhitelistMintEnabled(false);
-    await contract.setCost(utils.parseEther(CollectionConfig.preSale.price.toString()));
-
+  	await contract.setCost(utils.parseEther(CollectionConfig.publicSale.price.toString()));
     // Check balances
     expect(await contract.balanceOf(await owner.getAddress())).to.equal(1);
     expect(await contract.balanceOf(await whitelistedUser.getAddress())).to.equal(2);
@@ -171,18 +169,18 @@ describe(CollectionConfig.contractName, function () {
     expect(await contract.balanceOf(await externalUser.getAddress())).to.equal(0);
   });
 
-  it('Pre-sale (same as public sale)', async function () {
-    await contract.setMaxMintAmountPerTx(CollectionConfig.preSale.maxMintAmountPerTx);
+  it('Public sale', async function () {
+    await contract.setMaxMintAmountPerTx(CollectionConfig.publicSale.maxMintAmountPerTx);
     await contract.setPaused(false);
-    await contract.connect(holder).mintLizard(holder.address, 2, {value: getPrice(SaleType.PRE_SALE, 2)});
-    await contract.connect(whitelistedUser).mintLizard(whitelistedUser.address, 1, {value: getPrice(SaleType.PRE_SALE, 1)});
+    await contract.connect(holder).mintLizard(holder.address, 2, {value: getPrice(SaleType.PUBLIC_SALE, 2)});
+    await contract.connect(whitelistedUser).mintLizard(whitelistedUser.address, 1, {value: getPrice(SaleType.PUBLIC_SALE, 1)});
     // Sending insufficient funds
-    await expect(contract.connect(holder).mintLizard(holder.address, 1, {value: getPrice(SaleType.PRE_SALE, 1).sub(1)})).to.be.rejectedWith(Error, 'insufficient funds for intrinsic transaction cost');
+    await expect(contract.connect(holder).mintLizard(holder.address, 1, {value: getPrice(SaleType.PUBLIC_SALE, 1).sub(1)})).to.be.rejectedWith(Error, 'insufficient funds for intrinsic transaction cost');
     // Sending an invalid mint amount
     await expect(contract.connect(whitelistedUser).mintLizard(
 			whitelistedUser.address,
       await (await contract.maxMintAmountPerTx()).add(1),
-      {value: getPrice(SaleType.PRE_SALE, await (await contract.maxMintAmountPerTx()).add(1).toNumber())},
+      {value: getPrice(SaleType.PUBLIC_SALE, await (await contract.maxMintAmountPerTx()).add(1).toNumber())},
     )).to.be.revertedWith('Invalid mint amount!');
     // Sending a whitelist mint transaction
     await expect(contract.connect(whitelistedUser).whitelistMintLizard(
