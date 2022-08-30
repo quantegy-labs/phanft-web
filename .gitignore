@@ -43,3 +43,7 @@ artifacts
 
 # IDE
 .vscode
+
+# NFT collection files
+collection
+smart-contract
