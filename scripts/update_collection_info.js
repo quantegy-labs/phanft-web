@@ -2,8 +2,8 @@ const basePath = process.cwd()
 const fs = require('fs')
 
 // src & dest
-const srcFile = `${basePath}/collection/555/full metadata/metadata.json`
-const destDir = `${basePath}/collection/final/metadata/`
+const srcFile = `${basePath}/collection/src/full metadata/metadata.json`
+const destDir = `${basePath}/collection/dist/`
 
 // read json data
 let rawdata = fs.readFileSync(srcFile)
@@ -15,8 +15,8 @@ fs.mkdirSync(destDir)
 
 // General metadata for Ethereum
 const namePrefix = 'Enlightened Lizard'
-const imagesBaseUri = 'ipfs://{cid}' // UPDATE THIS
-const contractAddress = '0xC715D21FEe866DfB40024eF71C8a452090A14e00' // UPDATE THIS
+const imagesBaseUri = 'ipfs://QmRiee4BAoP45758bn5jaGyMfWtYxKA4v7bXxVNC6bGCWJ' // UPDATE THIS
+const contractAddress = '0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2' // UPDATE THIS
 
 const generateDescription = (id) => `
 **About Enlightened Lizards**
@@ -31,7 +31,7 @@ Each token keeps its own state of redeemable items, including what has or hasn't
 
 **NFT Rights & Licensing**
 
-This NFT Collection has been MINTangible™ Pre-Certified. Pre-Certification ensures that each NFT in the collection includes granted license rights for a registered work from a self-verified NFT creator. Access terms here [<https://rightsregistry.xyz/<phanFT blockchain>/<phanFT smart contract address>](https://rightsregistry.xyz/<phanFT blockchain>/<phanFT smart contract address>)`
+This NFT Collection has been MINTangible™ Pre-Certified. Pre-Certification ensures that each NFT in the collection includes granted license rights for a registered work from a self-verified NFT creator. Access terms [here](https://rightsregistry.xyz/ethereum/${contractAddress})`
 
 // update the pertinant fields
 data.collection.forEach((item, idx) => {
@@ -52,7 +52,7 @@ data.collection.forEach((item, idx) => {
 
 	// add in MINTangible digital IP rights URIs
 	item.rights = {
-		rights_registry_listing: `https://rightsregistry.xyz/ethereum/<contractAddr>/${id}`,
+		rights_registry_listing: `https://rightsregistry.xyz/ethereum/${contractAddress}/${id}`,
 		rights_metadata_url: `ipfs://<folder hash>/rights-metadata/${id}.json`,
 	}
 

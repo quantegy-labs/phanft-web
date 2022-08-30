@@ -121,6 +121,11 @@ const config: HardhatUserConfig = {
 		},
 	},
 	networks: {
+		mainnet: {
+			url: 'http://localhost:24012/rpc',
+			timeout: 60000,
+			gasMultiplier: DEFAULT_GAS_MULTIPLIER,
+		},
 		truffle: {
 			url: 'http://localhost:24012/rpc',
 			timeout: 60000,
