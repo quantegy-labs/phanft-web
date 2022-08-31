@@ -214,17 +214,27 @@ const MintingContainer = (): JSX.Element => {
 				Connect your Metamask wallet to interact with the Enlightened Lizards NFT smart contract on the blockchain and
 				mint your token. Must have .10 ether in your wallet + .01 extra to cover the transaction fee (gas).
 			</Typography>
-			<Button
-				sx={styles.connectBtn}
-				variant="contained"
-				color="primary"
-				size="large"
-				disabled={web3Provider === undefined}
-				onClick={connectWallet}
-				fullWidth
-			>
-				Connect Wallet
-			</Button>
+			{web3Provider ? (
+				<Button
+					sx={styles.connectBtn}
+					variant="contained"
+					color="primary"
+					size="large"
+					onClick={connectWallet}
+					fullWidth
+				>
+					Connect Wallet
+				</Button>
+			) : (
+				<Alert variant="filled" severity="warning" sx={{ mt: 4 }}>
+					<Typography variant="subtitle2" gutterBottom>
+						It looks like you might not have Metamask yet.{' '}
+						<Link href="https://metamask.io" color="inherit" target="_blank" rel="noopener noreferrer">
+							Install here
+						</Link>
+					</Typography>
+				</Alert>
+			)}
 			<Box sx={{ mt: 4 }}>
 				<Typography variant="h4" gutterBottom>
 					Buy With $USD Available 9/1
