@@ -32,7 +32,7 @@ const styles = {
 	},
 	connectBtn: {
 		mt: 2,
-		mb: 4,
+		mb: 2,
 	},
 	merkleProof: {
 		mt: 4,
@@ -226,7 +226,7 @@ const MintingContainer = (): JSX.Element => {
 					Connect Wallet
 				</Button>
 			) : (
-				<Alert variant="filled" severity="warning" sx={{ mt: 4 }}>
+				<Alert variant="filled" severity="warning" sx={{ mt: 3, mb: 4 }}>
 					<Typography variant="subtitle2" gutterBottom>
 						It looks like you might not have Metamask yet.{' '}
 						<Link href="https://metamask.io" color="inherit" target="_blank" rel="noopener noreferrer">
@@ -235,7 +235,7 @@ const MintingContainer = (): JSX.Element => {
 					</Typography>
 				</Alert>
 			)}
-			<Box sx={{ mt: 4 }}>
+			<Box sx={{ mt: 2 }}>
 				<Typography variant="h4" gutterBottom>
 					Buy With $USD Available 9/1
 				</Typography>
