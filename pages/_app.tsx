@@ -47,7 +47,6 @@ const PhanFTApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 				/>
 				<Component {...pageProps} />
 				<CssBaseline enableColorScheme />
-				<ToastContainer position="top-left" autoClose={5000} closeOnClick={true} pauseOnHover={true} theme="light" />
 			</ThemeProvider>
 		</Web3ContextProvider>
 	)
