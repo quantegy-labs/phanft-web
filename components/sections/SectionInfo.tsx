@@ -19,12 +19,7 @@ const SectionInfo = (): JSX.Element => (
 			<Container maxWidth="lg">
 				<Grid container spacing={4}>
 					<Grid item xs={12} md={4}>
-						<Image
-							width={460}
-							height={320}
-							src="/charities.png"
-							alt="Waterwheel &amp; Mockingbird Foundation"
-						/>
+						<Image width={460} height={320} src="/charities.png" alt="Waterwheel &amp; Mockingbird Foundation" />
 					</Grid>
 					<Grid item xs={12} md={8}>
 						<Typography variant="h3" gutterBottom>
@@ -32,24 +27,19 @@ const SectionInfo = (): JSX.Element => (
 						</Typography>
 						<Typography sx={styles.text}>
 							A 15% portion of net proceeds from the Lizards mint will be donated to the{' '}
-							<Link
-								href="https://phish.com/waterwheel/"
-								target="_blank"
-								rel="noreferrer"
-								color="inherit"
-							>
+							<Link href="https://phish.com/waterwheel/" target="_blank" rel="noreferrer" color="inherit">
 								<strong>Waterwheel Foundation</strong>
 							</Link>{' '}
 							and{' '}
 							<Link href="https://mbird.org/" target="_blank" rel="noreferrer" color="inherit">
 								<strong>The Mockingbird Foundation</strong>
 							</Link>
-							. These initial contributions will set the stage for a charitable component to our
-							digital community going forward.
+							. These initial contributions will set the stage for a charitable component to our digital community going
+							forward.
 						</Typography>
 						<Typography sx={styles.text}>
-							The rest of the proceeds will be used as operating expenses to manifest our big dreams
-							and execute on the slew of benefits we have planned for you.
+							The rest of the proceeds will be used as operating expenses to manifest our big dreams and execute on the
+							slew of benefits we have planned for you.
 						</Typography>
 					</Grid>
 				</Grid>
@@ -65,8 +55,7 @@ const SectionInfo = (): JSX.Element => (
 							Tech Specs and How To Mint
 						</Typography>
 						<Typography sx={styles.text}>
-							The Lizards are stored as ERC-721 tokens on the Ethereum blockchain and hosted on
-							IPFS.
+							The Lizards are stored as ERC-721 tokens on the Ethereum blockchain and hosted on IPFS.
 						</Typography>
 						<Typography sx={styles.text}>
 							If you&apos;re new to the minting process or just want some more info, please see our{' '}

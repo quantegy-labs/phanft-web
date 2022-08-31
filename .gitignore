@@ -35,9 +35,8 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-typechain
 
-#Hardhat files
+# Hardhat files
 cache
 artifacts
 

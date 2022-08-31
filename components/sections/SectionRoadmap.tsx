@@ -1,14 +1,5 @@
 import { Star } from '@mui/icons-material'
-import {
-	Box,
-	Container,
-	Divider,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
-	Typography,
-} from '@mui/material'
+import { Box, Container, Divider, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material'
 
 const styles = {
 	headings: {
@@ -34,10 +25,9 @@ const SectionRoadmap = (): JSX.Element => (
 				<Typography variant="h4">Phase 1.0 Benefits and Roadmap</Typography>
 			</Box>
 			<Typography sx={styles.roadmapText}>
-				We&rsquo;re in this for the long haul and our intent is all for your delight. Below is what
-				we plan to deliver in the first phase with a sold out collection. That said, this is a fast
-				evolving space and we&apos;re learning every day. All ideas are subject to modification and
-				change as needed.
+				We&rsquo;re in this for the long haul and our intent is all for your delight. Below is what we plan to deliver
+				in the first phase with a sold out collection. That said, this is a fast evolving space and we&apos;re learning
+				every day. All ideas are subject to modification and change as needed.
 			</Typography>
 			<List>
 				<ListItem sx={{ fontSize: '1.5rem' }}>
@@ -100,14 +90,12 @@ const SectionRoadmap = (): JSX.Element => (
 				<Typography variant="h4" gutterBottom>
 					Phase 2.0 & Beyond
 				</Typography>
-				<Typography variant="h6">
-					This begins after selling out Phase 1.0 and delivering on the roadmap.
-				</Typography>
+				<Typography variant="h6">This begins after selling out Phase 1.0 and delivering on the roadmap.</Typography>
 			</Box>
 			<Typography sx={styles.roadmapText}>
-				The below list are ideas and we reserve the right to change or modify them anytime as we
-				learn and grow as a community. Like the spirit of the music, we&apos;re stepping on stage
-				and improvising together with you in uncharted territory.
+				The below list are ideas and we reserve the right to change or modify them anytime as we learn and grow as a
+				community. Like the spirit of the music, we&apos;re stepping on stage and improvising together with you in
+				uncharted territory.
 			</Typography>
 			<List>
 				<ListItem>
