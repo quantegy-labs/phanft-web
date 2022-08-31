@@ -6,7 +6,7 @@ import Whitelist from '../../smart-contract/lib/Whitelist'
 import { useWeb3Context } from '../Web3Provider'
 import MintingStatus from './MintingStatus'
 import MintingForm from './MintingForm'
-import CrossmintButton from './CrossmintButton'
+// import CrossmintButton from './CrossmintButton'
 
 const styles = {
 	loadingContract: {

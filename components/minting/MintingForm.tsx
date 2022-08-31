@@ -113,7 +113,6 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 	) : (
 		<Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
 			<Typography fontSize={36}>⏳</Typography>
-
 			{isWhitelistMintEnabled ? (
 				<Typography>
 					You are not included in the <strong>whitelist</strong>.
