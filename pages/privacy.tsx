@@ -12,6 +12,8 @@ const styles = {
 		px: 4,
 		py: 6,
 		my: 8,
+		backgroundColor: '#fcfcfc',
+		color: '#141414'
 	},
 	heading: {
 		mt: 2,
@@ -44,7 +46,7 @@ const PrivacyPage: NextPage = () => {
 		<AppLayout>
 			<Container maxWidth="lg">
 				<Typography variant="h2" sx={styles.title}>Privacy Policy</Typography>
-				<Paper sx={styles.paper}>
+				<Paper sx={styles.paper} elevation={3}>
 					<Typography sx={styles.effectiveDate}>Effective Date: August 30, 2022</Typography>
 					<Typography variant="h5" component="h3" gutterBottom>Quantegy Labs LLC</Typography>
 					<Typography sx={styles.heading}>Introduction and Overview.</Typography>
