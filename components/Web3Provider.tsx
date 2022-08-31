@@ -97,10 +97,9 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 				// Provider
 				const ethersProvider = new ethers.providers.Web3Provider(browserProvider)
 				setWeb3Provider(ethersProvider)
-				// Show UI after we get web3
-				setLoading(false)
 
-				// Initiate other calls in bg while UI is loaded
+				// Show UI after we get web3 & initiate other calls in background
+				setLoading(false)
 				// Wallet
 				await initWallet(true)
 				registerWalletEvents(browserProvider)
