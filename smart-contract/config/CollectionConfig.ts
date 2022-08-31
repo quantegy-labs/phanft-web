@@ -12,7 +12,7 @@ const CollectionConfig: CollectionConfigInterface = {
 	contractName: 'EnlightenedLizards',
 	tokenName: 'Enlightened Lizards', // Update when iterating
 	tokenSymbol: 'LIZARD',
-	hiddenMetadataUri: 'ipfs://Qmbq4mEyewmumf7htMMTKtzj7zE8GxmBf3UwyKpd64BmHC/hidden.json', // fuzzy lizard with '?' overlay
+	hiddenMetadataUri: 'ipfs://QmQ1BdefQ9nuqJXCCgGdgB9fRjhW5U2tmS2XNbh63zqjKP/metadata.json', // uploaded 8/31 9:45am
 	maxSupply: 555,
 	whitelistSale: {
 		price: 0.09,
