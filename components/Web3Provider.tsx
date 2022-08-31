@@ -97,12 +97,15 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 				// Provider
 				const ethersProvider = new ethers.providers.Web3Provider(browserProvider)
 				setWeb3Provider(ethersProvider)
+				// Show UI after we get web3
+				setLoading(false)
+
+				// Initiate other calls in bg while UI is loaded
 				// Wallet
 				await initWallet(true)
 				registerWalletEvents(browserProvider)
 				// Contract
 				await initContract(ethersProvider, null)
-				setLoading(false)
 			} else {
 				// if the provider is not detected, detectEthereumProvider resolves to null
 				console.error('Please install MetaMask!')
