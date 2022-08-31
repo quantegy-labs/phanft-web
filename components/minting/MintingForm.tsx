@@ -50,25 +50,21 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 
 	const incrementMintAmount = (): void => {
 		const value = Math.min(maxMintAmountPerTx, mintAmount + 1)
-		console.log(value)
 		if (mintAmount === maxMintAmountPerTx) return
 		setMintAmount(mintAmount + 1)
 	}
 
 	const decrementMintAmount = (): void => {
 		const value = Math.max(1, mintAmount - 1)
-		console.log(value)
 		if (mintAmount === 1) return
 		setMintAmount(mintAmount - 1)
 	}
 
 	const mint = async (): Promise<void> => {
 		if (!isPaused) {
-			console.log('unpaused')
 			await mintTokens(mintAmount)
 			return
 		}
-		console.log('paused')
 		await whitelistMintTokens(mintAmount)
 	}
 

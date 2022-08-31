@@ -247,8 +247,6 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 export const useWeb3Context = () => {
 	const { web3ProviderData } = useContext(Web3Context)
 
-	// console.log(web3ProviderData)
-
 	if (Object.keys(web3ProviderData).length === 0) {
 		throw new Error(
 			'useWeb3Context() can only be used inside of <Web3ContextProvider />, ' + 'please declare it at a higher level.',
