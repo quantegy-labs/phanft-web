@@ -6,4 +6,4 @@ node_modules
 public
 smart-contract
 collection
-
+lib/abi

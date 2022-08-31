@@ -111,7 +111,11 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 				setWeb3Error(
 					<>
 						We were not able to detect <strong>MetaMask</strong>. We value <strong>privacy and security</strong> a lot
-						so we limit the wallet options on our minting dapp. Please install it <a href="https://metamask.io/" target="_blank" rel="noreferrer">here</a>.
+						so we limit the wallet options on our minting dapp. Please install it{' '}
+						<a href="https://metamask.io/" target="_blank" rel="noreferrer">
+							here
+						</a>
+						.
 						<br />
 						<br />
 						But don&apos;t worry! <span className="emoji">😃</span> You can always interact with the smart-contract
