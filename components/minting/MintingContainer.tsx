@@ -1,11 +1,11 @@
 import { useState, isValidElement } from 'react'
-import { toast } from 'react-toastify'
 import { Alert, Box, Button, CircularProgress, Link, Paper, Typography } from '@mui/material'
 import CollectionConfig from '../../smart-contract/config/CollectionConfig'
 import Whitelist from '../../smart-contract/lib/Whitelist'
 import { useWeb3Context } from '../Web3Provider'
 import MintingStatus from './MintingStatus'
 import MintingForm from './MintingForm'
+import Notification from '../Notification'
 // import CrossmintButton from './CrossmintButton'
 
 const styles = {
@@ -105,6 +105,23 @@ const MintingContainer = (): JSX.Element => {
 		setMintError(errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1))
 	}
 
+	// Notifications
+	const [successOpen, setSuccessOpen] = useState(false);
+	const [infoOpen, setInfoOpen] = useState(false);
+	const [errorOpen, setErrorOpen] = useState(false);
+	const [successMsg, setSuccessMsg] = useState('');
+	const [infoMsg, setInfoMsg] = useState('');
+	const [errorMsg, setErrorMsg] = useState('');
+	const onNotificationClose = () => {
+		setSuccessOpen(false)
+		setInfoOpen(false)
+		setErrorOpen(false)
+		setSuccessMsg('')
+		setInfoMsg('')
+		setErrorMsg('')
+	}
+
+
 	// Minting Tokens - Public Sale
 	const mintTokens = async (amount: number): Promise<void> => {
 		try {
@@ -113,37 +130,13 @@ const MintingContainer = (): JSX.Element => {
 				value: contractState.tokenPrice.mul(amount),
 			})
 
-			toast.info(
-				<>
-					Transaction sent! Please wait...
-					<br />
-					<Link
-						color="inherit"
-						href={generateTransactionUrl(transaction?.hash ?? '')}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						View on {otherState.networkConfig.blockExplorer.name}
-					</Link>
-				</>,
-			)
+			setInfoOpen(true)
+			setInfoMsg(`Transaction sent! Please wait... View tx at ${generateTransactionUrl(transaction?.hash ?? '')}`)
 
 			const receipt = await transaction?.wait()
 
-			toast.success(
-				<>
-					Success!
-					<br />
-					<Link
-						color="inherit"
-						href={generateTransactionUrl(receipt?.transactionHash ?? '')}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						View on {otherState.networkConfig.blockExplorer.name}
-					</Link>
-				</>,
-			)
+			setSuccessOpen(true)
+			setSuccessMsg(`Success! View tx at ${generateTransactionUrl(receipt?.transactionHash ?? '')}`)
 
 			await refreshContractState(contract, connectedAddress)
 			setLoading(false)
@@ -164,37 +157,13 @@ const MintingContainer = (): JSX.Element => {
 				{ value: contractState.tokenPrice.mul(amount) },
 			)
 
-			toast.info(
-				<>
-					Transaction sent! Please wait...
-					<br />
-					<Link
-						color="inherit"
-						href={generateTransactionUrl(transaction?.hash ?? '')}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						View on {otherState.networkConfig.blockExplorer.name}
-					</Link>
-				</>,
-			)
+			setInfoOpen(true)
+			setInfoMsg(`Transaction sent! Please wait... View tx at ${generateTransactionUrl(transaction?.hash ?? '')}`)
 
 			const receipt = await transaction?.wait()
 
-			toast.success(
-				<>
-					Success!
-					<br />
-					<Link
-						color="inherit"
-						href={generateTransactionUrl(receipt?.transactionHash ?? '')}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						View on {otherState.networkConfig.blockExplorer.name}
-					</Link>
-				</>,
-			)
+			setSuccessOpen(true)
+			setSuccessMsg(`Success! View tx at ${generateTransactionUrl(receipt?.transactionHash ?? '')}`)
 
 			await refreshContractState(contract, connectedAddress)
 			setLoading(false)
@@ -306,7 +275,16 @@ const MintingContainer = (): JSX.Element => {
 		</Paper>
 	)
 
-	return connected ? renderConnectedState() : renderDisconnectedState()
+	return connected
+		? (
+			<>
+			{renderConnectedState()}
+			{infoOpen && <Notification open={infoOpen} msg={infoMsg} type="info" onClose={onNotificationClose} />}
+			{successOpen && <Notification open={successOpen} msg={successMsg} type="success" onClose={onNotificationClose} />}
+			{errorOpen && <Notification open={errorOpen} msg={errorMsg} type="error" onClose={onNotificationClose} />}
+			</>
+		)
+		: renderDisconnectedState()
 }
 
 export default MintingContainer
