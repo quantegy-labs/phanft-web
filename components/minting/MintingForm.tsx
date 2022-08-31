@@ -4,7 +4,7 @@ import { Box, Button, CircularProgress, Grid, IconButton, Typography } from '@mu
 import { useWeb3Context } from '../Web3Provider'
 import Image from 'next/image'
 import { Add, Remove } from '@mui/icons-material'
-import CrossmintButton from './CrossmintButton'
+// import CrossmintButton from './CrossmintButton'
 
 export interface NetworkConfigInterface {
 	chainId: number
