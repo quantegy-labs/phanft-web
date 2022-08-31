@@ -1,12 +1,12 @@
 import { useState, isValidElement } from 'react'
 import { toast } from 'react-toastify'
-import { CrossmintPayButton } from '@crossmint/client-sdk-react-ui'
-import { Alert, Box, Button, CircularProgress, Link, Paper, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, CircularProgress, Link, Paper, Typography } from '@mui/material'
 import CollectionConfig from '../../smart-contract/config/CollectionConfig'
 import Whitelist from '../../smart-contract/lib/Whitelist'
 import { useWeb3Context } from '../Web3Provider'
 import MintingStatus from './MintingStatus'
 import MintingForm from './MintingForm'
+import CrossmintButton from './CrossmintButton'
 
 const styles = {
 	loadingContract: {
@@ -59,9 +59,6 @@ const MintingContainer = (): JSX.Element => {
 	// State
 	const [loading, setLoading] = useState<boolean>(false)
 	const [mintError, setMintError] = useState<string | null>(null)
-	const [merkleProofManualAddress, setMerkleProofManualAddress] = useState<string>('')
-	const [merkleProofManualAddressFeedbackMessage, setMerkleProofManualAddressFeedbackMessage] =
-		useState<JSX.Element | null>(null)
 	// Context
 	const web3Context = useWeb3Context()
 	const {
@@ -75,6 +72,38 @@ const MintingContainer = (): JSX.Element => {
 		connectedAddress,
 		otherState,
 	} = web3Context
+
+	// Utility Helpers
+	const isContractReady = (): boolean => contract !== undefined
+	const isSoldOut = (): boolean => contractState.maxSupply !== 0 && contractState.totalSupply >= contractState.maxSupply
+	const isNotMainnet = (): boolean =>
+		otherState.network !== null && otherState.network?.chainId !== CollectionConfig.mainnet.chainId
+	const generateContractUrl = (): string =>
+		otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!)
+	const generateMarketplaceUrl = (): string =>
+		CollectionConfig.marketplaceConfig.generateCollectionUrl(CollectionConfig.marketplaceIdentifier, !isNotMainnet())
+	const generateTransactionUrl = (transactionHash: string): string =>
+		otherState.networkConfig.blockExplorer.generateTransactionUrl(transactionHash)
+	const setError = (error: any = null): void => {
+		let errorMessage = 'Unknown error...'
+		if (null === error || typeof error === 'string') {
+			setMintError(null)
+			return
+		} else if (typeof error === 'object') {
+			// Support any type of error from the Web3 Provider...
+			if (error?.error?.message !== undefined) {
+				errorMessage = error.error.message
+			} else if (error?.data?.message !== undefined) {
+				errorMessage = error.data.message
+			} else if (error?.message !== undefined) {
+				errorMessage = error.message
+			} else if (isValidElement(error)) {
+				setMintError(error.toString())
+				return
+			}
+		}
+		setMintError(errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1))
+	}
 
 	// Minting Tokens - Public Sale
 	const mintTokens = async (amount: number): Promise<void> => {
@@ -116,7 +145,7 @@ const MintingContainer = (): JSX.Element => {
 				</>,
 			)
 
-			await refreshContractState()
+			await refreshContractState(contract, connectedAddress)
 			setLoading(false)
 		} catch (e) {
 			setError(e)
@@ -167,78 +196,12 @@ const MintingContainer = (): JSX.Element => {
 				</>,
 			)
 
-			await refreshContractState()
+			await refreshContractState(contract, connectedAddress)
 			setLoading(false)
 		} catch (e) {
 			setError(e)
 			setLoading(false)
 		}
-	}
-
-	// Utility Helpers
-	const isContractReady = (): boolean => contract !== undefined
-	const isSoldOut = (): boolean => contractState.maxSupply !== 0 && contractState.totalSupply >= contractState.maxSupply
-	const isNotMainnet = (): boolean =>
-		otherState.network !== null && otherState.network?.chainId !== CollectionConfig.mainnet.chainId
-	const generateContractUrl = (): string =>
-		otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!)
-	const generateMarketplaceUrl = (): string =>
-		CollectionConfig.marketplaceConfig.generateCollectionUrl(CollectionConfig.marketplaceIdentifier, !isNotMainnet())
-	const generateTransactionUrl = (transactionHash: string): string =>
-		otherState.networkConfig.blockExplorer.generateTransactionUrl(transactionHash)
-	const setError = (error: any = null): void => {
-		let errorMessage = 'Unknown error...'
-		if (null === error || typeof error === 'string') {
-			setMintError(null)
-			return
-		} else if (typeof error === 'object') {
-			// Support any type of error from the Web3 Provider...
-			if (error?.error?.message !== undefined) {
-				errorMessage = error.error.message
-			} else if (error?.data?.message !== undefined) {
-				errorMessage = error.data.message
-			} else if (error?.message !== undefined) {
-				errorMessage = error.message
-			} else if (isValidElement(error)) {
-				setMintError(error.toString())
-				return
-			}
-		}
-		setMintError(errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1))
-	}
-
-	// Copy to Clipboard
-	const copyMerkleProofToClipboard = (): void => {
-		const merkleProof = Whitelist.getRawProofForAddress(
-			connectedAddress !== '' ? connectedAddress : merkleProofManualAddress,
-		)
-
-		if (merkleProof.length < 1) {
-			setMerkleProofManualAddressFeedbackMessage(
-				<>
-					The given address is not in the whitelist. You can{' '}
-					<Link color="inherit" href="https://forms.bueno.art/phanft" target="_blank">
-						sign up here
-					</Link>
-					.
-				</>,
-			)
-			return
-		}
-
-		navigator.clipboard.writeText(merkleProof)
-
-		setMerkleProofManualAddressFeedbackMessage(
-			<>
-				<strong>Congratulations!</strong> <span className="emoji">🎉</span>
-				<br />
-				Your Merkle Proof <strong>has been copied to the clipboard</strong>. You can paste it into{' '}
-				<Link color="inherit" href={generateContractUrl()} target="_blank" rel="noreferrer">
-					{otherState.networkConfig.blockExplorer.name}
-				</Link>{' '}
-				to claim your tokens.
-			</>,
-		)
 	}
 
 	// Disconnected UI
@@ -264,87 +227,32 @@ const MintingContainer = (): JSX.Element => {
 				Connect Wallet
 			</Button>
 			<Typography gutterBottom>
-				Hey, looking for a <strong>super-safe experience</strong>? 😃
+				There are other ways you can mint a token due to the decentralized nature of blockchains.
 			</Typography>
 			<Typography gutterBottom>
-				You can interact with the smart-contract directly through{' '}
+				If you don't want to use our UI, you can interact with the smart contract directly through{' '}
 				<Link color="inherit" href={generateContractUrl() + '#writeContract#F23'} target="_blank" rel="noreferrer">
 					{otherState.networkConfig.blockExplorer.name}
 				</Link>
 				, without even connecting your wallet to our minting dapp! 🚀
 			</Typography>
-			<Typography gutterBottom>Keep safe! ❤️</Typography>
-			{/* Show Crossmint button for whitelisted users during white whitelist or when on public sale */}
-			{!contractState.isPaused || (contractState.isUserInWhitelist && contractState.isWhitelistMintEnabled) && (
-				<Box sx={{ mt: 4 }}>
-					<Typography variant="h4" gutterBottom>
-						Buy With Fiat
-					</Typography>
-					<Typography gutterBottom>
-						If you don't have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhanFT
-						membership. We partner with{' '}
-						<Link href="https://crossmint.io" target="_blank" color="inherit">
-							Crossmint
-						</Link>{' '}
-						to pay with credit card directly without any crypto hassle. The token is transferred to a custodial Crossmint
-						wallet, where you may choose to transfer out to another wallet at any given time.
-					</Typography>
-					<Box sx={{ mt: 2 }}>
-						<CrossmintPayButton
-							collectionTitle="Enlightened Lizards"
-							collectionDescription="Your web 3.0 pass to 4.0 phandom. Help save the lizards from extinction!"
-							collectionPhoto="ipfs://QmVpJjcba7VW2zDg1tPiKb7CJRLSL4qDsZGWxwFY2KexPg/hidden.png"
-							clientId=""
-							// totalPrice should contain the total price of all NFTs to mint in a single transaction - in ETH as string * mintAmount 0.9 * 2 = "0.18"
-							mintConfig={{
-								type: 'erc-721',
-								totalPrice: '0.9', //utils.formatEther(tokenPrice.mul(mintAmount)),
-								_mintAmount: '1', //mintAmount.toString(),
-							}}
 
-							environment="staging"
-							mintTo={connected ? connectedAddress : undefined}
-						/>
-					</Box>
-				</Box>
-			)}
-			{/* {contractState.isWhitelistMintEnabled && (
-				<Box sx={styles.merkleProof}>
-					<Typography variant="h4" gutterBottom>
-						Whitelist Proof
-					</Typography>
-					<Typography gutterBottom>
-						Anyone can generate the proof using any public address in the list, but{' '}
-						<strong>only the owner of that address</strong> will be able to make a successful transaction by using it.
-					</Typography>
-					<Typography gutterBottom>
-						Enter in your wallet address below to generate a proof stating that your&apos;re in the whitelist. This is
-						the only way you&apos;ll be able to mint during the pre-sale period for a discounted price.
-					</Typography>
-					<Box sx={styles.merkleProofForm}>
-						<TextField
-							sx={styles.merkleProofInput}
-							fullWidth
-							label="Public Address"
-							variant="outlined"
-							color="secondary"
-							placeholder="0x000..."
-							disabled={connectedAddress !== ''}
-							value={connectedAddress !== '' ? connectedAddress : merkleProofManualAddress}
-							onChange={e => setMerkleProofManualAddress(e.target.value)}
-							margin="normal"
-						/>
-						<Button variant="contained" color="secondary" size="large" onClick={copyMerkleProofToClipboard} fullWidth>
-							Generate and copy to clipboard
-						</Button>
-						{merkleProofManualAddressFeedbackMessage && (
-							<Typography variant="body2" sx={styles.proofResponseText}>
-								{merkleProofManualAddressFeedbackMessage}
-							</Typography>
-						)}
-					</Box>
-				</Box>
-			)} */}
+			<Box sx={{ mt: 4 }}>
+				<Typography variant="h4" gutterBottom>
+					Buy With Fiat
+				</Typography>
+				<Typography gutterBottom>
+					If you don't have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhanFT
+					membership. We partner with{' '}
+					<Link href="https://crossmint.io" target="_blank" color="inherit">
+						Crossmint
+					</Link>{' '}
+					to pay with credit card directly without any crypto hassle. The token is transferred to a custodial Crossmint
+					wallet, where you may choose to transfer out to another wallet at any given time.
+				</Typography>
+				{/* Show Crossmint button for whitelisted users during white whitelist or when on public sale */}
+				{(!contractState.isPaused || (contractState.isUserInWhitelist && contractState.isWhitelistMintEnabled)) && <CrossmintButton mintAmount={1} tokenPrice="0.09" />}
+			</Box>
 		</Paper>
 	)
 

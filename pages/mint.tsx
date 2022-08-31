@@ -29,7 +29,7 @@ const AdminPage: NextPage = () => {
 								with credit card.
 							</Typography>
 							<Box sx={{ maxWidth: '500px', m: 'auto', mt: 8 }}>
-								<Image width={600} height={600} src="/lizard4.png" alt="Lizards Genesis PFP" />
+								<Image width={600} height={600} src="/lizard5.png" alt="Lizards Genesis PFP" />
 							</Box>
 						</Grid>
 						<Grid item xs={12} md={7}>

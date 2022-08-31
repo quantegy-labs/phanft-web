@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { utils } from 'ethers'
 import { Box, Button, CircularProgress, Grid, IconButton, Typography } from '@mui/material'
-import { CrossmintPayButton } from '@crossmint/client-sdk-react-ui'
 import { useWeb3Context } from '../Web3Provider'
 import Image from 'next/image'
 import { Add, Remove } from '@mui/icons-material'
+import CrossmintButton from './CrossmintButton'
 
 export interface NetworkConfigInterface {
 	chainId: number
@@ -110,22 +110,7 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 						</Button>
 					</Box>
 
-					<Box sx={{ my: 2 }}>
-						<CrossmintPayButton
-							collectionTitle="Enlightened Lizards"
-							collectionDescription="Your web 3.0 pass to 4.0 phandom. Help save the lizards from extinction!"
-							collectionPhoto="ipfs://QmVpJjcba7VW2zDg1tPiKb7CJRLSL4qDsZGWxwFY2KexPg/hidden.png"
-							clientId=""
-							// totalPrice should contain the total price of all NFTs to mint in a single transaction - in ETH as string * mintAmount 0.9 * 2 = "0.18"
-							mintConfig={{
-								type: 'erc-721',
-								totalPrice: utils.formatEther(tokenPrice.mul(mintAmount)),
-								_mintAmount: mintAmount.toString(),
-							}}
-							environment="staging"
-							mintTo={connected ? connectedAddress : undefined}
-						/>
-					</Box>
+					<CrossmintButton mintAmount={mintAmount} tokenPrice={tokenPrice} />
 				</Grid>
 			</Grid>
 		</Box>
