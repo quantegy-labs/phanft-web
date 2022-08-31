@@ -13,17 +13,18 @@ const MintPage: NextPage = () => {
 	let _interval: NodeJS.Timer | null
 
 	useEffect(() => {
-		console.log({currImg})
+		console.log({ currImg })
 
 		const initCarousel = () => {
-			if (!_interval) _interval = setInterval(() => {
-				let currIdx = currImgIdx
-				if (currIdx === images.length - 1) {
-					setCurrImgIdx(0)
-				} else {
-					setCurrImgIdx(currIdx + 1)
-				}
-			}, 1500)
+			if (!_interval)
+				_interval = setInterval(() => {
+					let currIdx = currImgIdx
+					if (currIdx === images.length - 1) {
+						setCurrImgIdx(0)
+					} else {
+						setCurrImgIdx(currIdx + 1)
+					}
+				}, 1500)
 		}
 
 		// Delay cycling for 3s til after page load
@@ -36,7 +37,6 @@ const MintPage: NextPage = () => {
 			}
 		}
 	}, [])
-
 
 	return (
 		<>
