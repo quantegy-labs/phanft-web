@@ -67,7 +67,7 @@ const AppFooter = (): JSX.Element => (
         color="inherit"
       >
         Quantegy Labs
-      </Link>
+      </Link> | <Link href="/privacy" underline="hover" color="inherit">Privacy Policy</Link> | <Link href="/terms" underline="hover" color="inherit">Terms of Use</Link>
     </Typography>
   </Box>
 );

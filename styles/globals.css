@@ -22,6 +22,10 @@ a {
   text-decoration: none;
 }
 
+ul, ol, li {
+  margin-top: 0;
+}
+
 main img {
   border: 4px solid #54c6eb !important;
   border-radius: 8px;
