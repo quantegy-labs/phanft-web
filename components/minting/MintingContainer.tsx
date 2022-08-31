@@ -1,5 +1,5 @@
 import { useState, isValidElement } from 'react'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 import { Alert, Box, Button, CircularProgress, Link, Paper, Typography } from '@mui/material'
 import CollectionConfig from '../../smart-contract/config/CollectionConfig'
 import Whitelist from '../../smart-contract/lib/Whitelist'
@@ -113,37 +113,38 @@ const MintingContainer = (): JSX.Element => {
 				value: contractState.tokenPrice.mul(amount),
 			})
 
-			toast.info(
-				<>
-					Transaction sent! Please wait...
-					<br />
-					<Link
-						color="inherit"
-						href={generateTransactionUrl(transaction?.hash ?? '')}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						View on {otherState.networkConfig.blockExplorer.name}
-					</Link>
-				</>,
-			)
+			// toast.info(
+			// 	<>
+			// 		Transaction sent! Please wait...
+			// 		<br />
+			// 		<Link
+			// 			color="inherit"
+			// 			href={generateTransactionUrl(transaction?.hash ?? '')}
+			// 			target="_blank"
+			// 			rel="noopener noreferrer"
+			// 		>
+			// 			View on {otherState.networkConfig.blockExplorer.name}
+			// 		</Link>
+			// 	</>,
+			// )
 
 			const receipt = await transaction?.wait()
 
-			toast.success(
-				<>
-					Success!
-					<br />
-					<Link
-						color="inherit"
-						href={generateTransactionUrl(receipt?.transactionHash ?? '')}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						View on {otherState.networkConfig.blockExplorer.name}
-					</Link>
-				</>,
-			)
+			// toast.success(
+			// 	<>
+			// 		Success!
+			// 		<br />
+			// 		<Link
+			// 			color="inherit"
+			const href = generateTransactionUrl(receipt?.transactionHash ?? '')
+			// 			target="_blank"
+			// 			rel="noopener noreferrer"
+			// 		>
+			const msg = `View on ${otherState.networkConfig.blockExplorer.name} at ${href}.`
+			// 		</Link>
+			// 	</>,
+			// )
+			alert(`Success! You've helped save a Lizard from extinction! ${msg}`)
 
 			await refreshContractState(contract, connectedAddress)
 			setLoading(false)
@@ -164,37 +165,39 @@ const MintingContainer = (): JSX.Element => {
 				{ value: contractState.tokenPrice.mul(amount) },
 			)
 
-			toast.info(
-				<>
-					Transaction sent! Please wait...
-					<br />
-					<Link
-						color="inherit"
-						href={generateTransactionUrl(transaction?.hash ?? '')}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						View on {otherState.networkConfig.blockExplorer.name}
-					</Link>
-				</>,
-			)
+			// toast.info(
+			// 	<>
+			// 		Transaction sent! Please wait...
+			// 		<br />
+			// 		<Link
+			// 			color="inherit"
+			// 			href={generateTransactionUrl(transaction?.hash ?? '')}
+			// 			target="_blank"
+			// 			rel="noopener noreferrer"
+			// 		>
+			// 			View on {otherState.networkConfig.blockExplorer.name}
+			// 		</Link>
+			// 	</>,
+			// )
 
 			const receipt = await transaction?.wait()
-
-			toast.success(
-				<>
-					Success!
-					<br />
-					<Link
-						color="inherit"
-						href={generateTransactionUrl(receipt?.transactionHash ?? '')}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						View on {otherState.networkConfig.blockExplorer.name}
-					</Link>
-				</>,
-			)
+			const href = generateTransactionUrl(receipt?.transactionHash ?? '')
+			const msg = `View on ${otherState.networkConfig.blockExplorer.name} at ${href}.`
+			alert(`Success! You've helped save a Lizard from extinction! ${msg}`)
+			// toast.success(
+			// 	<>
+			// 		Success!
+			// 		<br />
+			// 		<Link
+			// 			color="inherit"
+			// 			href={generateTransactionUrl(receipt?.transactionHash ?? '')}
+			// 			target="_blank"
+			// 			rel="noopener noreferrer"
+			// 		>
+			// 			View on {otherState.networkConfig.blockExplorer.name}
+			// 		</Link>
+			// 	</>,
+			// )
 
 			await refreshContractState(contract, connectedAddress)
 			setLoading(false)

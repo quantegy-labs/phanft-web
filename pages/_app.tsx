@@ -2,7 +2,7 @@ import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
 import type { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
 import { Web3ContextProvider } from '../components/Web3Provider'
-import { ToastContainer } from 'react-toastify'
+// import { ToastContainer } from 'react-toastify'
 import '../styles/globals.css'
 
 const theme = createTheme({
@@ -31,6 +31,8 @@ const theme = createTheme({
 		},
 	},
 })
+
+// const notifications = <ToastContainer position="top-left" autoClose={5000} closeOnClick={true} pauseOnHover={true} theme="light" />
 
 const PhanFTApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 	return (
