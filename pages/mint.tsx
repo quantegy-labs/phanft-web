@@ -1,11 +1,43 @@
-import { Box, Container, Grid, Typography } from '@mui/material'
+import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { Box, Container, Grid, Typography } from '@mui/material'
 import AppLayout from '../components/layouts/AppLayout'
 import MintingContainer from '../components/minting/MintingContainer'
 
-const AdminPage: NextPage = () => {
+const MintPage: NextPage = () => {
+	const images = ['lizard1.png', 'lizard2.png', 'lizard3.png', 'lizard4.png', 'lizard5.png']
+	const [currImgIdx, setCurrImgIdx] = useState(0)
+	const [currImg, setCurrImg] = useState(images[0])
+	let _interval: NodeJS.Timer | null
+
+	useEffect(() => {
+		console.log({currImg})
+
+		const initCarousel = () => {
+			if (!_interval) _interval = setInterval(() => {
+				let currIdx = currImgIdx
+				if (currIdx === images.length - 1) {
+					setCurrImgIdx(0)
+				} else {
+					setCurrImgIdx(currIdx + 1)
+				}
+			}, 1500)
+		}
+
+		// Delay cycling for 3s til after page load
+		setTimeout(() => initCarousel(), 3000)
+
+		return () => {
+			if (_interval) {
+				clearInterval(_interval)
+				_interval = null
+			}
+		}
+	}, [])
+
+
 	return (
 		<>
 			<Head>
@@ -28,7 +60,7 @@ const AdminPage: NextPage = () => {
 								a credit card.
 							</Typography>
 							<Box sx={{ maxWidth: '500px', m: 'auto', mt: 8 }}>
-								<Image width={600} height={600} src="/lizard5.png" alt="Lizards Genesis PFP" />
+								<Image width={600} height={600} src={`/${images[currImgIdx]}`} alt="Enlightened Lizard" priority />
 							</Box>
 						</Grid>
 						<Grid item xs={12} md={7}>
@@ -41,4 +73,4 @@ const AdminPage: NextPage = () => {
 	)
 }
 
-export default AdminPage
+export default MintPage
