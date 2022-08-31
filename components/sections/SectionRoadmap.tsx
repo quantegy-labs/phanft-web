@@ -40,7 +40,7 @@ const SectionRoadmap = (): JSX.Element => (
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Each Lizard holder gets (1) limited edition physical art print" />
+					<ListItemText primary="Each Lizard holder gets (1) LE art print by Nate Duval (this perk gets triggered on our 100th mint)" />
 				</ListItem>
 				<ListItem>
 					<ListItemIcon>
