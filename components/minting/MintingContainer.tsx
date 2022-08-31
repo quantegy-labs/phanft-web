@@ -1,5 +1,5 @@
 import { useState, isValidElement } from 'react'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 import { Alert, Box, Button, CircularProgress, Link, Paper, Typography } from '@mui/material'
 import CollectionConfig from '../../smart-contract/config/CollectionConfig'
 import Whitelist from '../../smart-contract/lib/Whitelist'
