@@ -6,7 +6,7 @@ import Whitelist from '../../smart-contract/lib/Whitelist'
 import { useWeb3Context } from '../Web3Provider'
 import MintingStatus from './MintingStatus'
 import MintingForm from './MintingForm'
-import CrossmintButton from './CrossmintButton'
+// import CrossmintButton from './CrossmintButton'
 
 const styles = {
 	loadingContract: {
@@ -32,7 +32,7 @@ const styles = {
 	},
 	connectBtn: {
 		mt: 2,
-		mb: 4,
+		mb: 2,
 	},
 	merkleProof: {
 		mt: 4,
@@ -214,18 +214,28 @@ const MintingContainer = (): JSX.Element => {
 				Connect your Metamask wallet to interact with the Enlightened Lizards NFT smart contract on the blockchain and
 				mint your token. Must have .10 ether in your wallet + .01 extra to cover the transaction fee (gas).
 			</Typography>
-			<Button
-				sx={styles.connectBtn}
-				variant="contained"
-				color="primary"
-				size="large"
-				disabled={web3Provider === undefined}
-				onClick={connectWallet}
-				fullWidth
-			>
-				Connect Wallet
-			</Button>
-			<Box sx={{ mt: 4 }}>
+			{web3Provider ? (
+				<Button
+					sx={styles.connectBtn}
+					variant="contained"
+					color="primary"
+					size="large"
+					onClick={connectWallet}
+					fullWidth
+				>
+					Connect Wallet
+				</Button>
+			) : (
+				<Alert variant="filled" severity="warning" sx={{ mt: 3, mb: 4 }}>
+					<Typography variant="subtitle2" gutterBottom>
+						It looks like you might not have Metamask yet.{' '}
+						<Link href="https://metamask.io" color="inherit" target="_blank" rel="noopener noreferrer">
+							Install here
+						</Link>
+					</Typography>
+				</Alert>
+			)}
+			<Box sx={{ mt: 2 }}>
 				<Typography variant="h4" gutterBottom>
 					Buy With $USD Available 9/1
 				</Typography>
