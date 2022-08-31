@@ -22,8 +22,10 @@ a {
 	text-decoration: none;
 }
 
-ul, ol, li {
-  margin-top: 0;
+ul,
+ol,
+li {
+	margin-top: 0;
 }
 
 main img {
