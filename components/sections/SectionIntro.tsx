@@ -1,4 +1,5 @@
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Button, Container, Typography } from '@mui/material'
+import Link from 'next/link'
 
 const styles = {
 	banner: {
@@ -44,6 +45,13 @@ const SectionIntro = (): JSX.Element => (
 					Together, we&apos;re lighting the torch for a whole new paradigm for phans to connect, collect, commune, and
 					continue sharin&apos; in the groove around Vermont&apos;s Phinest. ⭕️
 				</Typography>
+				<Box display="flex" justifyContent="center">
+					<Link href="/mint">
+						<Button variant="contained" color="primary" size="large">
+							Access List Minting is Live!
+						</Button>
+					</Link>
+				</Box>
 			</Container>
 		</Box>
 	</>

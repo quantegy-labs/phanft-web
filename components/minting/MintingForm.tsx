@@ -106,7 +106,7 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 						</Button>
 					</Box>
 
-					<CrossmintButton mintAmount={mintAmount} tokenPrice={tokenPrice} />
+					{/* <CrossmintButton mintAmount={mintAmount} tokenPrice={tokenPrice} /> */}
 				</Grid>
 			</Grid>
 		</Box>

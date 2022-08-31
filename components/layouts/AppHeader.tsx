@@ -33,6 +33,7 @@ const styles = {
 	mobileNavWrap: { flexGrow: 1, display: { xs: 'flex', md: 'none' } },
 	mobileNavMenu: { display: { xs: 'block', md: 'none' } },
 	mobileNavLogo: {
+		cursor: 'pointer',
 		mr: 2,
 		display: { xs: 'flex', md: 'none' },
 		flexGrow: 1,
@@ -43,6 +44,7 @@ const styles = {
 		textDecoration: 'none',
 	},
 	desktopNavLogo: {
+		cursor: 'pointer',
 		mr: 2,
 		display: { xs: 'none', md: 'flex' },
 		fontFamily: 'monospace',
@@ -147,7 +149,9 @@ const AppHeader = () => {
 						<Typography variant="h1" sx={styles.hidden}>
 							PhanFT
 						</Typography>
-						<Image src="/logo.png" width={200} height={40} alt="PhanFT Logo" />
+						<Link href="/">
+							<Image src="/logo.png" width={200} height={40} alt="PhanFT Logo" />
+						</Link>
 					</Box>
 
 					{/* Desktop Navigation */}
@@ -155,7 +159,9 @@ const AppHeader = () => {
 						<Typography variant="h1" sx={styles.hidden}>
 							PhanFT
 						</Typography>
-						<Image src="/logo.png" width={200} height={40} alt="PhanFT Logo" />
+						<Link href="/">
+							<Image src="/logo.png" width={200} height={40} alt="PhanFT Logo" />
+						</Link>
 					</Box>
 					<Box component="nav" sx={styles.desktopNavWrap}>
 						{pages.map(page => (

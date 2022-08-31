@@ -18,7 +18,7 @@ const namePrefix = 'Enlightened Lizard'
 const imagesBaseUri = 'ipfs://QmRiee4BAoP45758bn5jaGyMfWtYxKA4v7bXxVNC6bGCWJ' // UPDATE THIS
 const contractAddress = '0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2' // UPDATE THIS
 
-const generateDescription = (id) => `
+const generateDescription = id => `
 **About Enlightened Lizards**
 
 Enlightened Lizards is a NFT collection of utility-driven, digital collectibles that celebrate and unify our amazing community centered around music, art, and positivity. As the genesis collection from [PhanFT](https://phanft.xyz), created for phans by phans, these NFTs grant membership access into the PhanFT ecosystem and unlock all the benefits that come with it. It's your web3 pass to 4.0 phandom!

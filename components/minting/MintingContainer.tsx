@@ -211,9 +211,8 @@ const MintingContainer = (): JSX.Element => {
 				Buy With ETH
 			</Typography>
 			<Typography gutterBottom>
-				Connect your wallet to interact with the Enlightened Lizards NFT smart contract on the blockchain and mint your
-				token. Pay with the ether that is in your wallet and cover gas fees. The token is transferred directly to your
-				non-custodial wallet.
+				Connect your Metamask wallet to interact with the Enlightened Lizards NFT smart contract on the blockchain and
+				mint your token. Must have .10 ether in your wallet + .01 extra to cover the transaction fee (gas).
 			</Typography>
 			<Button
 				sx={styles.connectBtn}
@@ -226,24 +225,13 @@ const MintingContainer = (): JSX.Element => {
 			>
 				Connect Wallet
 			</Button>
-			<Typography gutterBottom>
-				There are other ways you can mint a token due to the decentralized nature of blockchains.
-			</Typography>
-			<Typography gutterBottom>
-				If you don't want to use our UI, you can interact with the smart contract directly through{' '}
-				<Link color="inherit" href={generateContractUrl() + '#writeContract#F23'} target="_blank" rel="noreferrer">
-					{otherState.networkConfig.blockExplorer.name}
-				</Link>
-				, without even connecting your wallet to our minting dapp! 🚀
-			</Typography>
-
 			<Box sx={{ mt: 4 }}>
 				<Typography variant="h4" gutterBottom>
-					Buy With Fiat
+					Buy With $USD Available 9/1
 				</Typography>
 				<Typography gutterBottom>
 					If you don't have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhanFT
-					membership. We partner with{' '}
+					membership. We partnered with{' '}
 					<Link href="https://crossmint.io" target="_blank" color="inherit">
 						Crossmint
 					</Link>{' '}
@@ -251,7 +239,7 @@ const MintingContainer = (): JSX.Element => {
 					wallet, where you may choose to transfer out to another wallet at any given time.
 				</Typography>
 				{/* Show Crossmint button for whitelisted users during white whitelist or when on public sale */}
-				{(!contractState.isPaused || (contractState.isUserInWhitelist && contractState.isWhitelistMintEnabled)) && <CrossmintButton mintAmount={1} tokenPrice="0.09" />}
+				{/* {(!contractState.isPaused || (contractState.isUserInWhitelist && contractState.isWhitelistMintEnabled)) && <CrossmintButton mintAmount={1} tokenPrice="0.09" />} */}
 			</Box>
 		</Paper>
 	)

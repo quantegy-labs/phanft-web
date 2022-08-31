@@ -139,7 +139,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 			tokenPrice: await contract.cost(),
 			isPaused: await contract.paused(),
 			isWhitelistMintEnabled: await contract.whitelistMintEnabled(),
-			isUserInWhitelist: Whitelist.contains(account ? account : connectedAddress || otherState.userAddress || '')
+			isUserInWhitelist: Whitelist.contains(account ? account : connectedAddress || otherState.userAddress || ''),
 		})
 	}
 
@@ -179,7 +179,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 		// set user whitelist
 		setContractState({
 			...contractState,
-			isUserInWhitelist: Whitelist.contains(connectedWallet)
+			isUserInWhitelist: Whitelist.contains(connectedWallet),
 		})
 
 		// Get/Set contract data
@@ -194,7 +194,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 
 	const registerWalletEvents = (browserProvider: ExternalProvider): void => {
 		// @ts-ignore
-		browserProvider.on('accountsChanged', async (accts) => {
+		browserProvider.on('accountsChanged', async accts => {
 			setConnectedAddress(accts[0])
 			await initWallet()
 			const ethersProvider = new ethers.providers.Web3Provider(browserProvider)
@@ -202,7 +202,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 		})
 
 		// @ts-ignore
-		browserProvider.on('chainChanged', (chain) => {
+		browserProvider.on('chainChanged', chain => {
 			window.location.reload()
 		})
 	}
@@ -239,7 +239,26 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 				},
 			}}
 		>
-			{loading ? <Box sx={{ backgroundColor: 'text.primary', width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}><CircularProgress size={60} color="info" /><Typography variant="overline" sx={{ mt: 3, color: '#fafafa'}}>Loading Web3...</Typography></Box> : children}
+			{loading ? (
+				<Box
+					sx={{
+						backgroundColor: 'text.primary',
+						width: '100vw',
+						height: '100vh',
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<CircularProgress size={60} color="info" />
+					<Typography variant="overline" sx={{ mt: 3, color: '#fafafa' }}>
+						Loading Web3...
+					</Typography>
+				</Box>
+			) : (
+				children
+			)}
 		</Web3Context.Provider>
 	)
 }
