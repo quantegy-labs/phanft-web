@@ -56,11 +56,11 @@ const styles = {
 };
 
 const pages = [
-  { name: "Lizards", href: "#lizards" },
-  { name: "Mission", href: "#mission" },
-  { name: "Roadmap", href: "#roadmap" },
-  { name: "Team", href: "#team" },
-  { name: "FAQs", href: "#faq" },
+  { name: "Lizards", href: "/#lizards" },
+  { name: "Mission", href: "/#mission" },
+  { name: "Roadmap", href: "/#roadmap" },
+  { name: "Team", href: "/#team" },
+  { name: "FAQs", href: "/#faq" },
 ];
 
 const AppHeader = () => {
