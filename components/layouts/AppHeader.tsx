@@ -75,7 +75,7 @@ const AppHeader = () => {
 	const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
-	const { connected, connectWallet, disconnectWallet, connectedAddress } = useWeb3Context()
+	const { connected, connectWallet, disconnectWallet, connectedAddress, web3Provider } = useWeb3Context()
 
 	const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget)
@@ -202,58 +202,60 @@ const AppHeader = () => {
 								Mint Now!
 							</Button>
 						</Link>
-						{connected ? (
-							<>
-								<Button
-									id="connect-wallet-btn"
-									onClick={handleMenu}
+						{web3Provider &&
+							(connected ? (
+								<>
+									<Button
+										id="connect-wallet-btn"
+										onClick={handleMenu}
+										color="secondary"
+										size="small"
+										aria-controls="wallet-menu"
+										aria-haspopup="true"
+										disableFocusRipple
+										disableTouchRipple
+										variant="outlined"
+										startIcon={
+											<SvgIcon>
+												<AccountBalanceWalletIcon />
+											</SvgIcon>
+										}
+										endIcon={
+											<SvgIcon>
+												<VerifiedUserSharpIcon />
+											</SvgIcon>
+										}
+										sx={{ display: { xs: 'none', sm: 'inline-flex' }, py: 0.6, ml: 1, borderWidth: 2 }}
+									>
+										<Typography color="text.primary" variant="caption">
+											{formatAddress(connectedAddress)}
+										</Typography>
+									</Button>
+									<Menu
+										id="wallet-menu"
+										anchorEl={anchorEl}
+										open={Boolean(anchorEl)}
+										onClose={handleClose}
+										MenuListProps={{
+											'aria-labelledby': 'connect-wallet-btn',
+										}}
+									>
+										<MenuList dense sx={{ py: 0 }}>
+											<MenuItem onClick={handleDisconnectWallet}>Disconnect</MenuItem>
+										</MenuList>
+									</Menu>
+								</>
+							) : (
+								<IconButton
+									onClick={handleConnectWallet}
 									color="secondary"
 									size="small"
-									aria-controls="wallet-menu"
-									aria-haspopup="true"
-									disableFocusRipple
-									disableTouchRipple
-									variant="outlined"
-									startIcon={
-										<SvgIcon>
-											<AccountBalanceWalletIcon />
-										</SvgIcon>
-									}
-									endIcon={
-										<SvgIcon>
-											<VerifiedUserSharpIcon />
-										</SvgIcon>
-									}
-									sx={{ display: { xs: 'none', sm: 'inline-flex' }, py: 0.6, ml: 1, borderWidth: 2 }}
+									sx={{ display: { xs: 'none', sm: 'inline-flex' }, ml: 2 }}
+									disabled={!web3Provider}
 								>
-									<Typography color="text.primary" variant="caption">
-										{formatAddress(connectedAddress)}
-									</Typography>
-								</Button>
-								<Menu
-									id="wallet-menu"
-									anchorEl={anchorEl}
-									open={Boolean(anchorEl)}
-									onClose={handleClose}
-									MenuListProps={{
-										'aria-labelledby': 'connect-wallet-btn',
-									}}
-								>
-									<MenuList dense sx={{ py: 0 }}>
-										<MenuItem onClick={handleDisconnectWallet}>Disconnect</MenuItem>
-									</MenuList>
-								</Menu>
-							</>
-						) : (
-							<IconButton
-								onClick={handleConnectWallet}
-								color="secondary"
-								size="small"
-								sx={{ display: { xs: 'none', sm: 'inline-flex' }, ml: 2 }}
-							>
-								<Image src="/icon_wallet.svg" alt="Connect a Wallet" width={25} height={25} />
-							</IconButton>
-						)}
+									<Image src="/icon_wallet.svg" alt="Connect a Wallet" width={25} height={25} />
+								</IconButton>
+							))}
 					</Box>
 				</Toolbar>
 			</Container>

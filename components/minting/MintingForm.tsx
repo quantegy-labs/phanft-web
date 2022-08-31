@@ -4,7 +4,7 @@ import { Box, Button, CircularProgress, Grid, IconButton, Typography } from '@mu
 import { useWeb3Context } from '../Web3Provider'
 import Image from 'next/image'
 import { Add, Remove } from '@mui/icons-material'
-import CrossmintButton from './CrossmintButton'
+// import CrossmintButton from './CrossmintButton'
 
 export interface NetworkConfigInterface {
 	chainId: number
@@ -113,7 +113,6 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 	) : (
 		<Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
 			<Typography fontSize={36}>⏳</Typography>
-
 			{isWhitelistMintEnabled ? (
 				<Typography>
 					You are not included in the <strong>whitelist</strong>.
