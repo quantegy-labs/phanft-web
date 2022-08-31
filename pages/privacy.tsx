@@ -45,7 +45,7 @@ const PrivacyPage: NextPage = () => {
 			<Container maxWidth="lg">
 				<Typography variant="h2" sx={styles.title}>Privacy Policy</Typography>
 				<Paper sx={styles.paper}>
-					<Typography sx={styles.effectiveDate}>Effective Date: April 20, 2022</Typography>
+					<Typography sx={styles.effectiveDate}>Effective Date: August 30, 2022</Typography>
 					<Typography variant="h5" component="h3" gutterBottom>Quantegy Labs LLC</Typography>
 					<Typography sx={styles.heading}>Introduction and Overview.</Typography>
 					<Typography sx={styles.p}>This Privacy Policy (“<strong>Privacy Policy</strong>”)  provides a comprehensive description of how Quantegy Labs LLC (&quot;<strong>PHANFT</strong>&quot;, &quot;<strong>we</strong>&quot;, &quot;<strong>our</strong>&quot;, or &quot;<strong>us</strong>&quot;) collects, uses, and discloses information about you as well as your rights and choices regarding such information. It applies to any online location controlled by us that links to this Privacy Policy (the &quot;<strong>Services</strong>&quot;).</Typography>
@@ -126,7 +126,7 @@ const PrivacyPage: NextPage = () => {
 						</ul>
 					<Typography sx={styles.p}>Please be aware that if you disable or remove tracking technologies some parts of the Services may not function correctly.</Typography>
 					<Typography sx={styles.heading}>Analytics Management.</Typography>
-					<Typography sx={styles.p}>Google provides tools to allow you to opt out of the use of certain information collected by Google Analytics at <Link href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noreferrer noopener">https://tools.google.com/dlpage/gaoptout</Link>.</Typography>
+					<Typography sx={styles.p}>Google provides tools to allow you to opt out of the use of certain information collected by Google Analytics at <Link href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noreferrer noopener" color="inherit">https://tools.google.com/dlpage/gaoptout</Link>.</Typography>
 					<Typography sx={styles.p}>Please note that the above opt out only applies to the specific browser from which you opt out. We are not responsible for the effectiveness of any opt outs offered by other entities.</Typography>
 					<ul>
 						<li><Typography sx={styles.li}><strong>E-mails.</strong> You can unsubscribe from receiving promotional emails by following the unsubscribe instructions at the bottom of the email, or emailing us at <Link href="mailto:gm@phanft.xyz" color="inherit">gm@phanft.xyz</Link> with the word UNSUBSCRIBE in the subject field of the email. Please note that you cannot opt out of transactional messages.</Typography></li>
