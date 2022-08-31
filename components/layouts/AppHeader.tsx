@@ -174,7 +174,7 @@ const AppHeader = () => {
 					</Box>
 					<Box sx={styles.connectBtnWrap}>
 						<a
-							href="https://discord.com/invite/P5VpF5f7qx"
+							href="https://discord.gg/pxwNvgMQaU"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="social-icon-link"

@@ -40,8 +40,9 @@ yarn-error.log*
 cache
 artifacts
 
-# Collection files
-collection/
-
 # IDE
 .vscode
+
+# NFT collection files
+collection
+smart-contract
