@@ -51,7 +51,7 @@ const MintingStatus = ({ isSoldOut }: MintingStatusProps): JSX.Element => {
 					Wallet address:
 				</Typography>
 				<Typography sx={styles.statusItemValue} component="span">
-					{formatAddress(connectedAddress)}
+					{connectedAddress ? formatAddress(connectedAddress) : 'Not connected'}
 				</Typography>
 			</Box>
 			<Grid container spacing={2}>
