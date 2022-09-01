@@ -1,12 +1,15 @@
 import { useState, isValidElement } from 'react'
 // import { toast } from 'react-toastify'
-import { Alert, Box, Button, CircularProgress, Link, Paper, Typography } from '@mui/material'
+import { Alert, Box, Button, CircularProgress, Grid, IconButton, Link, Paper, Typography } from '@mui/material'
+import { Add, Remove } from '@mui/icons-material'
+// @ts-ignore
+import cryptoPrice from 'crypto-price'
 import CollectionConfig from '../../smart-contract/config/CollectionConfig'
 import Whitelist from '../../smart-contract/lib/Whitelist'
 import { useWeb3Context } from '../Web3Provider'
 import MintingStatus from './MintingStatus'
 import MintingForm from './MintingForm'
-// import CrossmintButton from './CrossmintButton'
+import CrossmintButton from './CrossmintButton'
 
 const styles = {
 	loadingContract: {
@@ -59,6 +62,9 @@ const MintingContainer = (): JSX.Element => {
 	// State
 	const [loading, setLoading] = useState<boolean>(false)
 	const [mintError, setMintError] = useState<string | null>(null)
+	const [mintAmount, setMintAmount] = useState<number>(1)
+	const [totalCostUSD, setTotalCostUSD] = useState<string>('')
+
 	// Context
 	const web3Context = useWeb3Context()
 	const {
@@ -78,8 +84,8 @@ const MintingContainer = (): JSX.Element => {
 	const isSoldOut = (): boolean => contractState.maxSupply !== 0 && contractState.totalSupply >= contractState.maxSupply
 	const isNotMainnet = (): boolean =>
 		otherState.network !== null && otherState.network?.chainId !== CollectionConfig.mainnet.chainId
-	const generateContractUrl = (): string =>
-		otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!)
+	// const generateContractUrl = (): string =>
+	// 	otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!)
 	const generateMarketplaceUrl = (): string =>
 		CollectionConfig.marketplaceConfig.generateCollectionUrl(CollectionConfig.marketplaceIdentifier, !isNotMainnet())
 	const generateTransactionUrl = (transactionHash: string): string =>
@@ -103,6 +109,25 @@ const MintingContainer = (): JSX.Element => {
 			}
 		}
 		setMintError(errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1))
+	}
+
+	const incrementMintAmount = (): void => {
+		if (mintAmount === contractState.maxMintAmountPerTx) return
+		setMintAmount(mintAmount + 1)
+	}
+
+	const decrementMintAmount = (): void => {
+		if (mintAmount === 1) return
+		setMintAmount(mintAmount - 1)
+	}
+
+	const calculateTotalCostUSD = async () => {
+		// Get current USD/ETH price
+		const resp = await cryptoPrice.getCryptoPrice('USD', 'ETH')
+		const ethUSD = parseFloat(resp.price)
+		// Get total ETH for multiple tokens
+		const costUSD = 0.1 * mintAmount * ethUSD
+		setTotalCostUSD(costUSD.toFixed())
 	}
 
 	// Minting Tokens - Public Sale
@@ -251,8 +276,30 @@ const MintingContainer = (): JSX.Element => {
 					to pay with credit card directly without any crypto hassle. The token is transferred to a custodial Crossmint
 					wallet, where you may choose to transfer out to another wallet at any given time.
 				</Typography>
-				{/* Show Crossmint button for whitelisted users during white whitelist or when on public sale */}
-				{/* {(!contractState.isPaused || (contractState.isUserInWhitelist && contractState.isWhitelistMintEnabled)) && <CrossmintButton mintAmount={1} tokenPrice="0.09" />} */}
+				{contractState.isPaused && (
+					<Grid container spacing={2}>
+						<Grid item xs={6}>
+							{/* <Button variant="outlined" onClick={() => calculateTotalCostUSD()}>GetPrice</Button> */}
+							<CrossmintButton mintAmount={mintAmount} tokenPrice="0.1" />
+						</Grid>
+						<Grid item xs={6}>
+							<Box sx={{ my: 2 }}>
+								<IconButton disabled={loading} onClick={() => decrementMintAmount()} color="primary">
+									<Remove />
+								</IconButton>
+								<Typography component="span" sx={{ mx: 1 }}>
+									{mintAmount}
+								</Typography>
+								<IconButton disabled={loading} onClick={() => incrementMintAmount()} color="primary">
+									<Add />
+								</IconButton>
+								<Typography component="span" variant="subtitle1" sx={{ ml: 1 }}>
+									Qty.
+								</Typography>
+							</Box>
+						</Grid>
+					</Grid>
+				)}
 			</Box>
 		</Paper>
 	)
