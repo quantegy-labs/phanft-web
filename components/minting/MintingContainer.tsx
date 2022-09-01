@@ -276,30 +276,28 @@ const MintingContainer = (): JSX.Element => {
 					to pay with credit card directly without any crypto hassle. The token is transferred to a custodial Crossmint
 					wallet, where you may choose to transfer out to another wallet at any given time.
 				</Typography>
-				{!contractState.isPaused && (
-					<Grid container spacing={2}>
-						<Grid item xs={6}>
-							{/* <Button variant="outlined" onClick={() => calculateTotalCostUSD()}>GetPrice</Button> */}
-							<CrossmintButton mintAmount={mintAmount} tokenPrice="0.1" />
-						</Grid>
-						<Grid item xs={6}>
-							<Box sx={{ my: 2 }}>
-								<IconButton disabled={loading} onClick={() => decrementMintAmount()} color="primary">
-									<Remove />
-								</IconButton>
-								<Typography component="span" sx={{ mx: 1 }}>
-									{mintAmount}
-								</Typography>
-								<IconButton disabled={loading} onClick={() => incrementMintAmount()} color="primary">
-									<Add />
-								</IconButton>
-								<Typography component="span" variant="subtitle1" sx={{ ml: 1 }}>
-									Qty.
-								</Typography>
-							</Box>
-						</Grid>
+				<Grid container spacing={2}>
+					<Grid item xs={6}>
+						{/* <Button variant="outlined" onClick={() => calculateTotalCostUSD()}>GetPrice</Button> */}
+						<CrossmintButton mintAmount={mintAmount} tokenPrice="0.1" />
 					</Grid>
-				)}
+					<Grid item xs={6}>
+						<Box sx={{ my: 2 }}>
+							<IconButton disabled={loading} onClick={() => decrementMintAmount()} color="primary">
+								<Remove />
+							</IconButton>
+							<Typography component="span" sx={{ mx: 1 }}>
+								{mintAmount}
+							</Typography>
+							<IconButton disabled={loading} onClick={() => incrementMintAmount()} color="primary">
+								<Add />
+							</IconButton>
+							<Typography component="span" variant="subtitle1" sx={{ ml: 1 }}>
+								Qty.
+							</Typography>
+						</Box>
+					</Grid>
+				</Grid>
 			</Box>
 		</Paper>
 	)
