@@ -276,7 +276,7 @@ const MintingContainer = (): JSX.Element => {
 					to pay with credit card directly without any crypto hassle. The token is transferred to a custodial Crossmint
 					wallet, where you may choose to transfer out to another wallet at any given time.
 				</Typography>
-				{contractState.isPaused && (
+				{!contractState.isPaused && (
 					<Grid container spacing={2}>
 						<Grid item xs={6}>
 							{/* <Button variant="outlined" onClick={() => calculateTotalCostUSD()}>GetPrice</Button> */}
