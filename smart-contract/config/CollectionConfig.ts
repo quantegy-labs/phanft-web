@@ -27,8 +27,8 @@ const CollectionConfig: CollectionConfigInterface = {
 		price: 0.1,
 		maxMintAmountPerTx: 5,
 	},
-	// contractAddress: '0x56ff2f2b2f49441095e19d998f43e4ec38d94b54', // rinkeby
-	contractAddress: '0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2', // mainnet
+	contractAddress: '0x9a1511bd23cd9eDc8aA5311284835Ecd1d477201', // rinkeby
+	// contractAddress: '0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2', // mainnet
 	marketplaceIdentifier: 'enlightened-lizards',
 	marketplaceConfig: Marketplaces.openSea,
 	whitelistAddresses,
