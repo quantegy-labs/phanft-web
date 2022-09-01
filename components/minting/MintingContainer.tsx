@@ -1,12 +1,14 @@
-import { useState, isValidElement } from 'react'
+import { useState, isValidElement, useEffect } from 'react'
 // import { toast } from 'react-toastify'
-import { Alert, Box, Button, CircularProgress, Link, Paper, Typography } from '@mui/material'
+import { Alert, Box, Button, CircularProgress, Grid, IconButton, Link, Paper, Typography } from '@mui/material'
+import { Add, Remove } from '@mui/icons-material'
 import CollectionConfig from '../../smart-contract/config/CollectionConfig'
 import Whitelist from '../../smart-contract/lib/Whitelist'
 import { useWeb3Context } from '../Web3Provider'
 import MintingStatus from './MintingStatus'
 import MintingForm from './MintingForm'
-// import CrossmintButton from './CrossmintButton'
+import CrossmintButton from './CrossmintButton'
+// import ethApi from 'etherscan-api'
 
 const styles = {
 	loadingContract: {
@@ -59,6 +61,9 @@ const MintingContainer = (): JSX.Element => {
 	// State
 	const [loading, setLoading] = useState<boolean>(false)
 	const [mintError, setMintError] = useState<string | null>(null)
+	const [mintAmount, setMintAmount] = useState<number>(1)
+	const [totalCostUSD, setTotalCostUSD] = useState<string>('')
+
 	// Context
 	const web3Context = useWeb3Context()
 	const {
@@ -78,8 +83,8 @@ const MintingContainer = (): JSX.Element => {
 	const isSoldOut = (): boolean => contractState.maxSupply !== 0 && contractState.totalSupply >= contractState.maxSupply
 	const isNotMainnet = (): boolean =>
 		otherState.network !== null && otherState.network?.chainId !== CollectionConfig.mainnet.chainId
-	const generateContractUrl = (): string =>
-		otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!)
+	// const generateContractUrl = (): string =>
+	// 	otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!)
 	const generateMarketplaceUrl = (): string =>
 		CollectionConfig.marketplaceConfig.generateCollectionUrl(CollectionConfig.marketplaceIdentifier, !isNotMainnet())
 	const generateTransactionUrl = (transactionHash: string): string =>
@@ -104,6 +109,45 @@ const MintingContainer = (): JSX.Element => {
 		}
 		setMintError(errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1))
 	}
+
+	// useEffect(() => {
+	// 	calculateTotalCostUSD()
+	// })
+
+	const incrementMintAmount = (): void => {
+		if (mintAmount === contractState.maxMintAmountPerTx) return
+		setMintAmount(mintAmount + 1)
+	}
+
+	const decrementMintAmount = (): void => {
+		if (mintAmount === 1) return
+		setMintAmount(mintAmount - 1)
+	}
+
+	// const calculateTotalCostUSD = async () => {
+		// Get current USD/ETH price
+		// const key = 'AKMAJNPZ6RSJRNCQZZJVAJ4DXWQ9IH9KMX'
+		// const url = `https://api-rinkeby.etherscan.io/api?module=stats&action=ethprice&apiKey=${key}`
+		// fetch(url, {
+		// 	method: 'GET',
+		// 	credentials:'include',
+		// 	mode: 'cors',
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// }).then(res => res.json()).then(data => {
+		// 	console.log({data})
+		// })
+
+		// var resp = api.stats.ethprice();
+	// const api = ethApi.init('AKMAJNPZ6RSJRNCQZZJVAJ4DXWQ9IH9KMX', 'rinkeby', '3000');
+		// console.log(resp.result.ethusd)
+		// const resp = await cryptoPrice.getCryptoPrice('USD', 'ETH')
+		// Get total ETH for multiple tokens
+	// 	const currPriceUSD = 1575
+	// 	const costUSD = 0.1 * mintAmount * currPriceUSD
+	// 	setTotalCostUSD(costUSD.toFixed())
+	// }
 
 	// Minting Tokens - Public Sale
 	const mintTokens = async (amount: number): Promise<void> => {
@@ -210,6 +254,7 @@ const MintingContainer = (): JSX.Element => {
 	// Disconnected UI
 	const renderDisconnectedState = (): JSX.Element => (
 		<Paper sx={styles.noConnectContainer}>
+			<MintingStatus isSoldOut={isSoldOut()} />
 			<Typography variant="h4" gutterBottom>
 				Buy With ETH
 			</Typography>
@@ -240,7 +285,7 @@ const MintingContainer = (): JSX.Element => {
 			)}
 			<Box sx={{ mt: 2 }}>
 				<Typography variant="h4" gutterBottom>
-					Buy With $USD Available 9/1
+					Buy With $USD
 				</Typography>
 				<Typography gutterBottom>
 					If you don't have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhanFT
@@ -249,11 +294,35 @@ const MintingContainer = (): JSX.Element => {
 						Crossmint
 					</Link>{' '}
 					to pay with credit card directly without any crypto hassle. The token is transferred to a custodial Crossmint
-					wallet, where you may choose to transfer out to another wallet at any given time.
+					wallet, where you may choose to transfer out to another wallet at any given time. If you experience any issues during your mint, please visit their <Link href="https://www.crossmint.io/support" target="_blank" rel="noopener noreferrer" color="inherit">support page</Link> for help, or reach out to us on Discord.
 				</Typography>
-				{/* Show Crossmint button for whitelisted users during white whitelist or when on public sale */}
-				{/* {(!contractState.isPaused || (contractState.isUserInWhitelist && contractState.isWhitelistMintEnabled)) && <CrossmintButton mintAmount={1} tokenPrice="0.09" />} */}
+				<Grid container spacing={2}>
+					<Grid item xs={6}>
+						<CrossmintButton mintAmount={mintAmount} tokenPrice="0.1" />
+					</Grid>
+					<Grid item xs={6}>
+						{/* <Typography variant="h5" component="p">
+							<strong>Total price:</strong> ~${totalCostUSD}
+						</Typography> */}
+
+						<Box sx={{ my: 2 }}>
+							<IconButton disabled={loading} onClick={() => decrementMintAmount()} color="primary">
+								<Remove />
+							</IconButton>
+							<Typography component="span" sx={{ mx: 1 }}>
+								{mintAmount}
+							</Typography>
+							<IconButton disabled={loading} onClick={() => incrementMintAmount()} color="primary">
+								<Add />
+							</IconButton>
+							<Typography component="span" variant="subtitle1" sx={{ ml: 1 }}>
+								Qty.
+							</Typography>
+						</Box>
+					</Grid>
+				</Grid>
 			</Box>
+			{/* <Button variant="outlined" onClick={() => calculateTotalCostUSD()}>GetPrice (testing)</Button> */}
 		</Paper>
 	)
 

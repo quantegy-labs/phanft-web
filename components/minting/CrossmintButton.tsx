@@ -14,10 +14,14 @@ const CrossmintButton = ({ mintAmount, tokenPrice }: CrossmintButtonProps) => {
 	return (
 		<Box sx={{ my: 2 }}>
 			<CrossmintPayButton
-				collectionTitle="Enlightened Lizards"
-				collectionDescription="Your web 3.0 pass to 4.0 phandom. Help save the lizards from extinction!"
-				collectionPhoto="ipfs://QmVpJjcba7VW2zDg1tPiKb7CJRLSL4qDsZGWxwFY2KexPg/hidden.png"
-				clientId="f97b9c73-64c2-4b59-ad8d-31a1d5b36892"
+				collectionTitle="Enlightened Lizards Test"
+				collectionDescription="The crossmint enlightened lizards description will show up here"
+				clientId="5babf5bb-a4f3-4367-bcf7-0077a81e0aa1"
+				environment="staging"
+				// collectionTitle="Enlightened Lizards"
+				// collectionDescription="Enlightened Lizards is a NFT collection of utility-driven, digital collectibles that celebrate and unify our amazing community centered around music, art, and positivity. As the genesis collection from PhanFT, created for phans by phans, these NFTs grant membership access into the PhanFT ecosystem and unlock all the benefits that come with it. It's your web3 pass to 4.0 phandom!"
+				// collectionPhoto="https://gateway.pinata.cloud/ipfs/QmVbyzrSTb8HNZ96FALJMntEgPyjLscxfMRhst8NJ4D4wM/50.png"
+				// clientId="1e29006f-d959-4976-86a5-a836c52c25d4"
 				// totalPrice should contain the total price of all NFTs to mint in a single transaction - in ETH as string * mintAmount 0.9 * 2 = "0.18"
 				mintConfig={{
 					type: 'erc-721',
