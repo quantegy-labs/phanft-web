@@ -125,25 +125,25 @@ const MintingContainer = (): JSX.Element => {
 	}
 
 	// const calculateTotalCostUSD = async () => {
-		// Get current USD/ETH price
-		// const key = 'AKMAJNPZ6RSJRNCQZZJVAJ4DXWQ9IH9KMX'
-		// const url = `https://api-rinkeby.etherscan.io/api?module=stats&action=ethprice&apiKey=${key}`
-		// fetch(url, {
-		// 	method: 'GET',
-		// 	credentials:'include',
-		// 	mode: 'cors',
-		// 	headers: {
-		// 		'Content-Type': 'application/json'
-		// 	},
-		// }).then(res => res.json()).then(data => {
-		// 	console.log({data})
-		// })
+	// Get current USD/ETH price
+	// const key = 'AKMAJNPZ6RSJRNCQZZJVAJ4DXWQ9IH9KMX'
+	// const url = `https://api-rinkeby.etherscan.io/api?module=stats&action=ethprice&apiKey=${key}`
+	// fetch(url, {
+	// 	method: 'GET',
+	// 	credentials:'include',
+	// 	mode: 'cors',
+	// 	headers: {
+	// 		'Content-Type': 'application/json'
+	// 	},
+	// }).then(res => res.json()).then(data => {
+	// 	console.log({data})
+	// })
 
-		// var resp = api.stats.ethprice();
+	// var resp = api.stats.ethprice();
 	// const api = ethApi.init('AKMAJNPZ6RSJRNCQZZJVAJ4DXWQ9IH9KMX', 'rinkeby', '3000');
-		// console.log(resp.result.ethusd)
-		// const resp = await cryptoPrice.getCryptoPrice('USD', 'ETH')
-		// Get total ETH for multiple tokens
+	// console.log(resp.result.ethusd)
+	// const resp = await cryptoPrice.getCryptoPrice('USD', 'ETH')
+	// Get total ETH for multiple tokens
 	// 	const currPriceUSD = 1575
 	// 	const costUSD = 0.1 * mintAmount * currPriceUSD
 	// 	setTotalCostUSD(costUSD.toFixed())
@@ -294,7 +294,12 @@ const MintingContainer = (): JSX.Element => {
 						Crossmint
 					</Link>{' '}
 					to pay with credit card directly without any crypto hassle. The token is transferred to a custodial Crossmint
-					wallet, where you may choose to transfer out to another wallet at any given time. If you experience any issues during your mint, please visit their <Link href="https://www.crossmint.io/support" target="_blank" rel="noopener noreferrer" color="inherit">support page</Link> for help, or reach out to us on Discord.
+					wallet, where you may choose to transfer out to another wallet at any given time. If you experience any issues
+					during your mint, please visit their{' '}
+					<Link href="https://www.crossmint.io/support" target="_blank" rel="noopener noreferrer" color="inherit">
+						support page
+					</Link>{' '}
+					for help, or reach out to us on Discord.
 				</Typography>
 				<Grid container spacing={2}>
 					<Grid item xs={6}>

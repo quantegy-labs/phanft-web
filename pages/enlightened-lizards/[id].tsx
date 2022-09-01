@@ -7,7 +7,7 @@ type Props = {
 	id: string
 }
 
-const EnlightenedLizardDetailsPage: NextPage = (props) => {
+const EnlightenedLizardDetailsPage: NextPage = props => {
 	// @ts-ignore
 	const { id } = props
 
@@ -26,7 +26,6 @@ const EnlightenedLizardDetailsPage: NextPage = (props) => {
 	)
 }
 
-
 export const getServerSideProps: GetServerSideProps = async context => {
 	// Get user object
 	let id = context.query.id
@@ -34,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 	else id = id?.toLowerCase()
 	return {
 		props: {
-			id: id
+			id: id,
 		},
 	}
 }
