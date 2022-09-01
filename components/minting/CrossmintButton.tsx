@@ -21,11 +21,10 @@ const CrossmintButton = ({ mintAmount, tokenPrice }: CrossmintButtonProps) => {
 				// totalPrice should contain the total price of all NFTs to mint in a single transaction - in ETH as string * mintAmount 0.9 * 2 = "0.18"
 				mintConfig={{
 					type: 'erc-721',
-					totalPrice: typeof tokenPrice === 'string' ? tokenPrice : utils.formatEther(tokenPrice.mul(mintAmount)),
+					totalPrice: typeof tokenPrice === 'string' ? (parseFloat(tokenPrice) * mintAmount).toFixed(2) : utils.formatEther(tokenPrice.mul(mintAmount)),
 					_mintAmount: mintAmount.toString(),
 				}}
-				environment="staging"
-				mintTo={connected ? connectedAddress : ''}
+				mintTo={connected ? connectedAddress : undefined}
 			/>
 		</Box>
 	)
