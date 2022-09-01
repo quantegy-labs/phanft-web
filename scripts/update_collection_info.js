@@ -48,7 +48,7 @@ data.collection.forEach((item, idx) => {
 	item.image = `${imagesBaseUri}/${item.image}`
 
 	// point to NFT viewer on PhanFT website
-	item.external_url = `https://phanft.xyz/enligtened-lizards/${id}`
+	item.external_url = `https://phanft.xyz/enlightened-lizards/${id}`
 
 	// add in MINTangible digital IP rights URIs
 	item.rights = {
