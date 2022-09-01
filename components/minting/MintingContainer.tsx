@@ -278,7 +278,6 @@ const MintingContainer = (): JSX.Element => {
 				</Typography>
 				<Grid container spacing={2}>
 					<Grid item xs={6}>
-						{/* <Button variant="outlined" onClick={() => calculateTotalCostUSD()}>GetPrice</Button> */}
 						<CrossmintButton mintAmount={mintAmount} tokenPrice="0.1" />
 					</Grid>
 					<Grid item xs={6}>
@@ -299,6 +298,7 @@ const MintingContainer = (): JSX.Element => {
 					</Grid>
 				</Grid>
 			</Box>
+			<Button variant="outlined" onClick={() => calculateTotalCostUSD()}>GetPrice (testing)</Button>
 		</Paper>
 	)
 
