@@ -8,6 +8,12 @@ const styles = {
 	spacer: {
 		my: 6,
 	},
+	heading: {
+		fontSize: 30,
+		'@media (min-width: 900px)': {
+			fontSize: 40,
+		}
+	},
 	text: {
 		mb: 2,
 	},
@@ -18,11 +24,11 @@ const SectionInfo = (): JSX.Element => (
 		<Box id="info" component="section" sx={styles.infoWrap}>
 			<Container maxWidth="lg">
 				<Grid container spacing={4}>
-					<Grid item xs={12} md={4}>
+					<Grid item xs={12} sm={4}>
 						<Image width={460} height={320} src="/charities.png" alt="Waterwheel &amp; Mockingbird Foundation" />
 					</Grid>
-					<Grid item xs={12} md={8}>
-						<Typography variant="h3" gutterBottom>
+					<Grid item xs={12} sm={8}>
+						<Typography variant="h3" gutterBottom sx={styles.heading}>
 							Sharin&apos; in the Groove
 						</Typography>
 						<Typography sx={styles.text}>
@@ -47,8 +53,8 @@ const SectionInfo = (): JSX.Element => (
 				<Divider />
 				<Box sx={styles.spacer} />
 				<Grid container spacing={4}>
-					<Grid item xs={12} md={8}>
-						<Typography variant="h3" gutterBottom>
+					<Grid item xs={12} sm={8}>
+						<Typography variant="h3" gutterBottom sx={styles.heading}>
 							The Nitty Gritty
 						</Typography>
 						<Typography variant="h5" gutterBottom>
@@ -65,7 +71,7 @@ const SectionInfo = (): JSX.Element => (
 							that helps make the process super easy for you. N00b friendly.
 						</Typography>
 					</Grid>
-					<Grid item xs={12} md={4}>
+					<Grid item xs={12} sm={4}>
 						<Image width={300} height={300} src="/lizard_unknown.png" alt="Lizards Genesis PFP" />
 					</Grid>
 				</Grid>

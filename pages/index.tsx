@@ -10,16 +10,6 @@ import SectionOnboard from '../components/sections/SectionOnboard'
 import SectionRoadmap from '../components/sections/SectionRoadmap'
 import SectionTeam from '../components/sections/SectionTeam'
 
-const styles = {
-	leadWrap: {
-		textAlign: 'center',
-	},
-	leadText: {
-		fontSize: '1.2rem',
-		mb: 3,
-	},
-}
-
 const Home: NextPage = () => {
 	return (
 		<>

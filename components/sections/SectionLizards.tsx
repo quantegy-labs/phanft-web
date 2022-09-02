@@ -7,10 +7,21 @@ const styles = {
 		py: 8,
 		textAlign: 'center',
 	},
+	heading: {
+		mb: 6,
+		fontSize: 30,
+		'@media (min-width: 900px)': {
+			fontSize: 40,
+		}
+	},
 	lizardsText: {
-		fontSize: '1.25rem',
-		mb: 4,
 		textAlign: 'left',
+		fontSize: '1.1rem',
+		mb: 2,
+		'@media (min-width: 900px)': {
+			fontSize: '1.25rem',
+			mb: 4,
+		}
 	},
 }
 
@@ -32,7 +43,7 @@ const SectionLizards = (): JSX.Element => (
 				</Grid>
 			</Grid>
 			<Box sx={{ mb: 4 }} />
-			<Typography variant="h3" gutterBottom>
+			<Typography variant="h3" gutterBottom sx={styles.heading}>
 				The Enlightened Lizards
 			</Typography>
 			<Typography sx={styles.lizardsText}>
@@ -51,10 +62,6 @@ const SectionLizards = (): JSX.Element => (
 			<Typography sx={styles.lizardsText}>
 				As a lizard holder, you are early. You are 1.0. Everything that we create going forward you will get to
 				participate in and benefit from, including future collections, airdrops and more as we expand exponentially.
-			</Typography>
-			<Typography sx={styles.lizardsText}>
-				This is just the beginning and owning a Lizard grants you ground floor access to all future PhanFT collections,
-				airdrops, special privileges, and more, as our community expands exponentially (like some recursive virus).{' '}
 			</Typography>
 		</Container>
 	</Box>
