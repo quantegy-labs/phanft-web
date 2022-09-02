@@ -199,7 +199,7 @@ const AppHeader = () => {
 						</a>
 						<Link href="/mint">
 							<Button onClick={handleCloseNavMenu} variant="contained" color="primary" size="small" sx={{ ml: 1 }}>
-								Mint Now!
+								Mint Now
 							</Button>
 						</Link>
 						{web3Provider &&

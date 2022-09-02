@@ -48,7 +48,7 @@ const SectionIntro = (): JSX.Element => (
 				<Box display="flex" justifyContent="center">
 					<Link href="/mint">
 						<Button variant="contained" color="primary" size="large">
-							Access List Minting is Live!
+							Mint Now
 						</Button>
 					</Link>
 				</Box>
