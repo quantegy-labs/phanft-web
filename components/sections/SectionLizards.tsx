@@ -63,10 +63,6 @@ const SectionLizards = (): JSX.Element => (
 				As a lizard holder, you are early. You are 1.0. Everything that we create going forward you will get to
 				participate in and benefit from, including future collections, airdrops and more as we expand exponentially.
 			</Typography>
-			<Typography sx={styles.lizardsText}>
-				This is just the beginning and owning a Lizard grants you ground floor access to all future PhanFT collections,
-				airdrops, special privileges, and more, as our community expands exponentially (like some recursive virus).{' '}
-			</Typography>
 		</Container>
 	</Box>
 )
