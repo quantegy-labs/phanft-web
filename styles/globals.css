@@ -28,9 +28,19 @@ li {
 	margin-top: 0;
 }
 
+/*
+	Images
+*/
 main img {
 	border: 4px solid #54c6eb !important;
 	border-radius: 8px;
+}
+
+.guide-img {
+	width: 100%;
+	height: auto;
+	max-width: 600px;
+	margin-bottom: 32px;
 }
 
 .social-icon-link {

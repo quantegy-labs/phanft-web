@@ -27,7 +27,12 @@ const theme = createTheme({
 	},
 	typography: {
 		body1: {
-			fontSize: '1.25rem',
+			fontSize: '1.1rem',
+			mb: 2,
+			'@media (min-width: 900px)': {
+				fontSize: '1.25rem',
+				mb: 4,
+			}
 		},
 	},
 })

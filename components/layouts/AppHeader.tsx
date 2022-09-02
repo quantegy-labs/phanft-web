@@ -69,6 +69,7 @@ const pages = [
 	{ name: 'Roadmap', href: '/#roadmap' },
 	{ name: 'Team', href: '/#team' },
 	{ name: 'FAQs', href: '/#faq' },
+	{ name: 'Guide', href: '/guide' },
 ]
 
 const AppHeader = () => {

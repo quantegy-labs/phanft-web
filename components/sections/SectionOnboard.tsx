@@ -13,7 +13,11 @@ const styles = {
 		textAlign: 'center',
 	},
 	headings: {
-		mb: 2,
+		mb: 4,
+	},
+	heading: {
+		fontSize: 36,
+		mb: 1,
 	},
 	joinText: {
 		mb: 4,
@@ -33,7 +37,7 @@ const SectionOnboard = (): JSX.Element => {
 		<Box component="section" id="onboard" sx={styles.wrap}>
 			<Container maxWidth="md">
 				<Box sx={styles.headings}>
-					<Typography variant="h3" gutterBottom>
+					<Typography variant="h3" gutterBottom sx={styles.heading}>
 						Surrender to the Flow
 					</Typography>
 					<Typography variant="h5">Enter your email for first access.</Typography>

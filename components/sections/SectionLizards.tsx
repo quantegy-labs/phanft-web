@@ -7,10 +7,21 @@ const styles = {
 		py: 8,
 		textAlign: 'center',
 	},
+	heading: {
+		mb: 6,
+		fontSize: 30,
+		'@media (min-width: 900px)': {
+			fontSize: 40,
+		}
+	},
 	lizardsText: {
-		fontSize: '1.25rem',
-		mb: 4,
 		textAlign: 'left',
+		fontSize: '1.1rem',
+		mb: 2,
+		'@media (min-width: 900px)': {
+			fontSize: '1.25rem',
+			mb: 4,
+		}
 	},
 }
 
@@ -32,7 +43,7 @@ const SectionLizards = (): JSX.Element => (
 				</Grid>
 			</Grid>
 			<Box sx={{ mb: 4 }} />
-			<Typography variant="h3" gutterBottom>
+			<Typography variant="h3" gutterBottom sx={styles.heading}>
 				The Enlightened Lizards
 			</Typography>
 			<Typography sx={styles.lizardsText}>
