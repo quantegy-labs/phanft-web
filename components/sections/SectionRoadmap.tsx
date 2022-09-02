@@ -4,14 +4,29 @@ import { Box, Container, Divider, List, ListItem, ListItemIcon, ListItemText, Ty
 const styles = {
 	headings: {
 		textAlign: 'center',
-		mb: 2,
+		mb: 6,
 	},
-	roadmapHeading: {
+	heading: {
 		textAlign: 'center',
+		mb: 1,
+		fontSize: 30,
+		'@media (min-width: 900px)': {
+			fontSize: 40,
+		}
+	},
+	subheading: {
+		fontSize: 24,
+		'@media (min-width: 900px)': {
+			fontSize: 30,
+		}
 	},
 	roadmapText: {
-		fontSize: '1.25rem',
-		mb: 4,
+		fontSize: '1.1rem',
+		mb: 2,
+		'@media (min-width: 900px)': {
+			fontSize: '1.25rem',
+			mb: 4,
+		}
 	},
 }
 
@@ -19,10 +34,10 @@ const SectionRoadmap = (): JSX.Element => (
 	<Box component="section" id="roadmap">
 		<Container maxWidth="lg">
 			<Box sx={styles.headings}>
-				<Typography variant="h3" gutterBottom>
+				<Typography variant="h3" sx={styles.heading}>
 					Let&apos;s Get This Show on the Road!
 				</Typography>
-				<Typography variant="h4">Phase 1.0 Benefits and Roadmap</Typography>
+				<Typography variant="h4" sx={styles.subheading}>Phase 1.0 Benefits and Roadmap</Typography>
 			</Box>
 			<Typography sx={styles.roadmapText}>
 				We&rsquo;re in this for the long haul and our intent is all for your delight. Below is what we plan to deliver
@@ -87,10 +102,10 @@ const SectionRoadmap = (): JSX.Element => (
 			</List>
 			<Divider />
 			<Box sx={styles.headings}>
-				<Typography variant="h4" gutterBottom>
+				<Typography variant="h4" sx={styles.heading}>
 					Phase 2.0 & Beyond
 				</Typography>
-				<Typography variant="h6">This begins after selling out Phase 1.0 and delivering on the roadmap.</Typography>
+				<Typography variant="h5" sx={styles.subheading}>This begins after selling out Phase 1.0 and delivering on the roadmap.</Typography>
 			</Box>
 			<Typography sx={styles.roadmapText}>
 				The below list are ideas and we reserve the right to change or modify them anytime as we learn and grow as a

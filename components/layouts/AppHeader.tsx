@@ -69,6 +69,7 @@ const pages = [
 	{ name: 'Roadmap', href: '/#roadmap' },
 	{ name: 'Team', href: '/#team' },
 	{ name: 'FAQs', href: '/#faq' },
+	{ name: 'Guide', href: '/guide' },
 ]
 
 const AppHeader = () => {
@@ -199,7 +200,7 @@ const AppHeader = () => {
 						</a>
 						<Link href="/mint">
 							<Button onClick={handleCloseNavMenu} variant="contained" color="primary" size="small" sx={{ ml: 1 }}>
-								Mint Now!
+								Mint Now
 							</Button>
 						</Link>
 						{web3Provider &&

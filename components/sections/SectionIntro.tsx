@@ -13,20 +13,40 @@ const styles = {
 		backgroundSize: 'cover',
 		color: '#fff',
 	},
+	headline: {
+		fontSize: 36,
+		'@media (min-width: 900px)': {
+			fontSize: 42,
+		}
+	},
 	heading: {
 		textAlign: 'center',
 		mb: 6,
+		fontSize: 28,
+		'@media (min-width: 900px)': {
+			fontSize: 36,
+		}
 	},
 	introText: {
-		fontSize: '1.25rem',
-		mb: 4,
+		fontSize: '1.1rem',
+		mb: 2,
+		'@media (min-width: 900px)': {
+			fontSize: '1.25rem',
+			mb: 4,
+		}
 	},
+	btn: {
+		mt: 4,
+		py: 1,
+		px: 6,
+		fontSize: 22,
+	}
 }
 
 const SectionIntro = (): JSX.Element => (
 	<>
 		<Box sx={styles.banner}>
-			<Typography variant="h2">Your Web 3.0 Pass to 4.0 Phandom</Typography>
+			<Typography variant="h2" sx={styles.headline}>Your Web 3.0 Pass to 4.0 Phandom</Typography>
 		</Box>
 		<Box id="intro" component="section">
 			<Container maxWidth="lg">
@@ -47,8 +67,8 @@ const SectionIntro = (): JSX.Element => (
 				</Typography>
 				<Box display="flex" justifyContent="center">
 					<Link href="/mint">
-						<Button variant="contained" color="primary" size="large">
-							Access List Minting is Live!
+						<Button variant="contained" color="primary" size="large" sx={styles.btn}>
+							Mint Now
 						</Button>
 					</Link>
 				</Box>

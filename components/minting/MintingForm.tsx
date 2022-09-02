@@ -4,7 +4,7 @@ import { Box, Button, CircularProgress, Grid, IconButton, Typography } from '@mu
 import { useWeb3Context } from '../Web3Provider'
 import Image from 'next/image'
 import { Add, Remove } from '@mui/icons-material'
-// import CrossmintButton from './CrossmintButton'
+import CrossmintButton from './CrossmintButton'
 
 export interface NetworkConfigInterface {
 	chainId: number
@@ -27,18 +27,8 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 	const {
 		contractState,
 		otherState: { networkConfig },
-		connected,
-		connectedAddress,
 	} = useWeb3Context()
-	const {
-		maxSupply,
-		totalSupply,
-		tokenPrice,
-		maxMintAmountPerTx,
-		isPaused,
-		isWhitelistMintEnabled,
-		isUserInWhitelist,
-	} = contractState
+	const { tokenPrice, maxMintAmountPerTx, isPaused, isWhitelistMintEnabled, isUserInWhitelist } = contractState
 
 	const canMint = (): boolean => {
 		return !isPaused || canWhitelistMint()
@@ -49,13 +39,11 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 	}
 
 	const incrementMintAmount = (): void => {
-		const value = Math.min(maxMintAmountPerTx, mintAmount + 1)
 		if (mintAmount === maxMintAmountPerTx) return
 		setMintAmount(mintAmount + 1)
 	}
 
 	const decrementMintAmount = (): void => {
-		const value = Math.max(1, mintAmount - 1)
 		if (mintAmount === 1) return
 		setMintAmount(mintAmount - 1)
 	}
@@ -106,7 +94,7 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 						</Button>
 					</Box>
 
-					{/* <CrossmintButton mintAmount={mintAmount} tokenPrice={tokenPrice} /> */}
+					<CrossmintButton mintAmount={mintAmount} tokenPrice={tokenPrice} />
 				</Grid>
 			</Grid>
 		</Box>
