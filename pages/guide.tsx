@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import NextLink from 'next/link'
 import { Container, Link, Paper, Typography } from '@mui/material'
 import AppLayout from '../components/layouts/AppLayout'
-import NextLink from 'next/link'
 
 const styles = {
 	title: {
