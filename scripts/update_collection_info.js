@@ -59,7 +59,7 @@ data.collection.forEach((item, idx) => {
 	item.contract_address = contractAddress
 
 	// add in creators information
-	item.properties.creators = ['PhanFT (@phanft_official Twitter)']
+	item.properties.creators = ['PhanFT (@phanft_official Twitter)', 'dco (@dcodev_ Twitter)']
 
 	// update genesis field
 	item.properties.is_genesis = true
