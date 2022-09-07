@@ -15,8 +15,8 @@ fs.mkdirSync(destDir)
 
 // General metadata for Ethereum
 const namePrefix = 'Enlightened Lizard'
-const imagesBaseUri = 'ipfs://QmRiee4BAoP45758bn5jaGyMfWtYxKA4v7bXxVNC6bGCWJ' // UPDATE THIS
-const contractAddress = '0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2' // UPDATE THIS
+const imagesBaseUri = 'ipfs://QmRiee4BAoP45758bn5jaGyMfWtYxKA4v7bXxVNC6bGCWJ'
+const contractAddress = '0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2'
 
 const generateDescription = id => `**About Enlightened Lizards**
 
@@ -30,7 +30,7 @@ Each token keeps its own state of redeemable items, including what has or hasn't
 
 **NFT Rights & Licensing**
 
-This NFT collection has been MINTangible™ Pre-Certified. Pre-Certification ensures that each NFT in the collection includes granted license rights for a registered work from a self-verified NFT creator. View terms [here](https://rightsregistry.xyz/ethereum/${contractAddress}).`
+This NFT collection has been MINTangible™ Pre-Certified. Pre-Certification ensures that each NFT in the collection includes granted license rights for a registered work from a self-verified NFT creator. View the [terms](https://rightsregistry.xyz/ethereum/${contractAddress}/${id}).`
 
 // update the pertinant fields
 data.collection.forEach((item, idx) => {
@@ -47,7 +47,7 @@ data.collection.forEach((item, idx) => {
 	item.image = `${imagesBaseUri}/${item.image}`
 
 	// point to NFT viewer on PhanFT website
-	item.external_url = `https://phanft.xyz/enligtened-lizards/${id}`
+	item.external_url = `https://phanft.xyz/enlightened-lizards/${id}`
 
 	// add in MINTangible digital IP rights URIs
 	item.rights = {
