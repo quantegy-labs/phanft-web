@@ -81,6 +81,8 @@ const MintingContainer = (): JSX.Element => {
 	// Utility Helpers
 	const isContractReady = (): boolean => contract !== undefined
 	const isSoldOut = (): boolean => contractState.maxSupply !== 0 && contractState.totalSupply >= contractState.maxSupply
+	const canWhitelistMint = (): boolean => contractState.isWhitelistMintEnabled && contractState.isUserInWhitelist
+	const canMint = (): boolean => !contractState.isPaused || canWhitelistMint()
 	const isNotMainnet = (): boolean =>
 		otherState.network !== null && otherState.network?.chainId !== CollectionConfig.mainnet.chainId
 	// const generateContractUrl = (): string =>
@@ -255,6 +257,21 @@ const MintingContainer = (): JSX.Element => {
 	const renderDisconnectedState = (): JSX.Element => (
 		<Paper sx={styles.noConnectContainer}>
 			<MintingStatus isSoldOut={isSoldOut()} />
+			{!canMint() && (
+				<Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" mb={4}>
+					<Typography fontSize={36}>⏳</Typography>
+					{contractState.isWhitelistMintEnabled ? (
+						<Typography>
+							You are not included in the <strong>whitelist</strong>.
+						</Typography>
+					) : (
+						<Typography>
+							The contract is <strong>paused</strong>.
+						</Typography>
+					)}
+					<Typography>Please come back during the next sale!</Typography>
+				</Box>
+			)}
 			<Typography variant="h4" gutterBottom>
 				Buy With ETH
 			</Typography>
@@ -301,15 +318,12 @@ const MintingContainer = (): JSX.Element => {
 					</Link>{' '}
 					for help, or reach out to us on Discord.
 				</Typography>
-				<Grid container spacing={2}>
+				{canMint() && (
+					<Grid container spacing={2}>
 					<Grid item xs={6}>
 						<CrossmintButton mintAmount={mintAmount} tokenPrice="0.1" />
 					</Grid>
 					<Grid item xs={6}>
-						{/* <Typography variant="h5" component="p">
-							<strong>Total price:</strong> ~${totalCostUSD}
-						</Typography> */}
-
 						<Box sx={{ my: 2 }}>
 							<IconButton disabled={loading} onClick={() => decrementMintAmount()} color="primary">
 								<Remove />
@@ -325,9 +339,8 @@ const MintingContainer = (): JSX.Element => {
 							</Typography>
 						</Box>
 					</Grid>
-				</Grid>
+				</Grid>)}
 			</Box>
-			{/* <Button variant="outlined" onClick={() => calculateTotalCostUSD()}>GetPrice (testing)</Button> */}
 		</Paper>
 	)
 
