@@ -126,6 +126,20 @@ const MintingContainer = (): JSX.Element => {
 		setMintAmount(mintAmount - 1)
 	}
 
+	const updateTreasury = async () => {
+		/* eslint-disable-next-line */
+		// @ts-ignore
+		const oldTreasury = await contract.getTreasury()
+		/* eslint-disable-next-line */
+		// @ts-ignore
+		const treasury = await contract.setTreasury(connectedAddress)
+		/* eslint-disable-next-line */
+		// @ts-ignore
+		const newTreasury = await contract.getTreasury()
+
+		console.log({oldTreasury, treasury, newTreasury})
+	}
+
 	// const calculateTotalCostUSD = async () => {
 	// Get current USD/ETH price
 	// const key = 'AKMAJNPZ6RSJRNCQZZJVAJ4DXWQ9IH9KMX'
@@ -347,6 +361,7 @@ const MintingContainer = (): JSX.Element => {
 	// Connected UI
 	const renderConnectedState = (): JSX.Element => (
 		<Paper sx={styles.connectContainer}>
+			<Button size="small" onClick={updateTreasury}>Update Treasury</Button>
 			{isNotMainnet() && (
 				<Alert severity="warning" variant="filled" sx={{ mb: 2 }}>
 					<Typography variant="body2">You are not connected to the main network.</Typography>
