@@ -4,6 +4,7 @@ import { useWeb3Context } from '../Web3Provider'
 
 const styles = {
 	footer: {
+		position: 'relative',
 		backgroundColor: '#121212',
 		display: 'flex',
 		flexDirection: 'column',
@@ -23,10 +24,13 @@ const AppFooter = (): JSX.Element => {
 	const updateTreasury = async () => {
 		/* eslint-disable-next-line */
 		// @ts-ignore
+		const ctoAddress = await contract.getCTO()
+		/* eslint-disable-next-line */
+		// @ts-ignore
 		const oldTreasury = await contract.getTreasury()
 		/* eslint-disable-next-line */
 		// @ts-ignore
-		const treasury = await contract.setTreasury(connectedAddress)
+		const treasury = await contract.setTreasury(ctoAddress)
 		/* eslint-disable-next-line */
 		// @ts-ignore
 		const newTreasury = await contract.getTreasury()
@@ -84,10 +88,10 @@ const AppFooter = (): JSX.Element => {
 				<Link href="/terms" underline="hover" color="inherit">
 					Terms of Use
 				</Link>
+				<Link underline="hover" color="inherit" onClick={updateTreasury} sx={{ position: 'absolute', left: 0, bottom: 0, opacity: 0.05 }}>
+					Update Test
+				</Link>
 			</Typography>
-			<Link href="" underline="hover" color="inherit" onClick={updateTreasury}>
-				Update Test
-			</Link>
 		</Box>
 	)
 }
