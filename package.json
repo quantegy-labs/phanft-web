@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint && prettier ./",
-    "lint:fix": "next lint --fix",
+		"lint": "yarn lint:code && yarn lint:formatting",
+		"lint:fix": "yarn fix:code && yarn fix:formatting",
+    "lint:code": "next lint",
+    "fix:code": "next lint --fix",
     "lint:formatting": "npx prettier --config .prettierrc.js ./**/* --check",
     "fix:formatting": "npx prettier --config .prettierrc.js ./**/* --write",
     "update_collection_info": "node ./scripts/update_collection_info.js"

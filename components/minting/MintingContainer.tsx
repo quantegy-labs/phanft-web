@@ -62,7 +62,7 @@ const MintingContainer = (): JSX.Element => {
 	const [loading, setLoading] = useState<boolean>(false)
 	const [mintError, setMintError] = useState<string | null>(null)
 	const [mintAmount, setMintAmount] = useState<number>(1)
-	const [totalCostUSD, setTotalCostUSD] = useState<string>('')
+	// const [totalCostUSD, setTotalCostUSD] = useState<string>('')
 
 	// Context
 	const web3Context = useWeb3Context()
@@ -320,26 +320,27 @@ const MintingContainer = (): JSX.Element => {
 				</Typography>
 				{canMint() && (
 					<Grid container spacing={2}>
-					<Grid item xs={6}>
-						<CrossmintButton mintAmount={mintAmount} tokenPrice="0.1" />
+						<Grid item xs={6}>
+							<CrossmintButton mintAmount={mintAmount} tokenPrice="0.1" />
+						</Grid>
+						<Grid item xs={6}>
+							<Box sx={{ my: 2 }}>
+								<IconButton disabled={loading} onClick={() => decrementMintAmount()} color="primary">
+									<Remove />
+								</IconButton>
+								<Typography component="span" sx={{ mx: 1 }}>
+									{mintAmount}
+								</Typography>
+								<IconButton disabled={loading} onClick={() => incrementMintAmount()} color="primary">
+									<Add />
+								</IconButton>
+								<Typography component="span" variant="subtitle1" sx={{ ml: 1 }}>
+									Qty.
+								</Typography>
+							</Box>
+						</Grid>
 					</Grid>
-					<Grid item xs={6}>
-						<Box sx={{ my: 2 }}>
-							<IconButton disabled={loading} onClick={() => decrementMintAmount()} color="primary">
-								<Remove />
-							</IconButton>
-							<Typography component="span" sx={{ mx: 1 }}>
-								{mintAmount}
-							</Typography>
-							<IconButton disabled={loading} onClick={() => incrementMintAmount()} color="primary">
-								<Add />
-							</IconButton>
-							<Typography component="span" variant="subtitle1" sx={{ ml: 1 }}>
-								Qty.
-							</Typography>
-						</Box>
-					</Grid>
-				</Grid>)}
+				)}
 			</Box>
 		</Paper>
 	)

@@ -29,7 +29,11 @@ const AdminPage: NextPage = () => {
 								a credit card.
 							</Typography>
 							<Typography sx={{ mb: 3 }}>
-								Please check out our <NextLink href="/mint" passHref><Link>How to Mint Guide</Link></NextLink> if this is your first time minting an NFT.
+								Please check out our{' '}
+								<NextLink href="/mint" passHref>
+									<Link>How to Mint Guide</Link>
+								</NextLink>{' '}
+								if this is your first time minting an NFT.
 							</Typography>
 							<Box sx={{ maxWidth: '500px', m: 'auto', mt: 8 }}>
 								<Image width={600} height={600} src="/lizard5.png" alt="Lizards Genesis PFP" />

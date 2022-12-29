@@ -32,7 +32,7 @@ const theme = createTheme({
 			'@media (min-width: 900px)': {
 				fontSize: '1.25rem',
 				mb: 4,
-			}
+			},
 		},
 	},
 })

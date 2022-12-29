@@ -12,7 +12,7 @@ const styles = {
 		fontSize: 30,
 		'@media (min-width: 900px)': {
 			fontSize: 40,
-		}
+		},
 	},
 	text: {
 		mb: 2,

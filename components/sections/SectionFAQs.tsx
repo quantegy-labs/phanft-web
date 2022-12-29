@@ -34,7 +34,7 @@ const styles = {
 		fontSize: 30,
 		'@media (min-width: 900px)': {
 			fontSize: 40,
-		}
+		},
 	},
 	text: {
 		fontSize: '1.1rem',
@@ -42,7 +42,7 @@ const styles = {
 		'@media (min-width: 900px)': {
 			fontSize: '1.25rem',
 			mb: 4,
-		}
+		},
 	},
 }
 
@@ -57,7 +57,9 @@ const SectionFAQs = (): JSX.Element => {
 		<Box component="section" id="faq">
 			<Container maxWidth="md">
 				<Box sx={styles.headings}>
-					<Typography variant="h3" sx={styles.heading}>Frequently Asked Questions</Typography>
+					<Typography variant="h3" sx={styles.heading}>
+						Frequently Asked Questions
+					</Typography>
 				</Box>
 
 				<Accordion expanded={expanded === 'q1'} onChange={handleChange('q1')}>
