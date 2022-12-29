@@ -19,7 +19,12 @@ const styles = {
 const AppFooter = (): JSX.Element => (
 	<Box component="footer" sx={styles.footer}>
 		<Box sx={styles.socialWrap}>
-			<a href="https://discord.gg/pxwNvgMQaU" target="_blank" rel="noopener noreferrer" className="social-icon-link">
+			<a
+				href="https://discord.gg/pxwNvgMQaU"
+				target="_blank"
+				rel="noopener noreferrer"
+				className="social-icon-link"
+			>
 				<Image src="/icon_discord.svg" alt="Discord" width={20} height={20} />
 			</a>
 			<a
@@ -40,9 +45,9 @@ const AppFooter = (): JSX.Element => (
 			</a>
 		</Box>
 		<Typography variant="overline">
-			<strong>Attention artists:</strong> If you&apos;re interested in designing the art for future collections,
-			please{' '}
-			<Link href="mailto:gm@phanft.com" color="inherit">
+			<strong>Attention artists:</strong> If you&apos;re interested in designing the art for future
+			collections, please{' '}
+			<Link href="mailto:gm@phanft.xyz" color="inherit">
 				contact us
 			</Link>{' '}
 			.
