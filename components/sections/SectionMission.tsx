@@ -11,13 +11,13 @@ const styles = {
 		fontSize: 30,
 		'@media (min-width: 900px)': {
 			fontSize: 40,
-		}
+		},
 	},
 	subheading: {
 		fontSize: 24,
 		'@media (min-width: 900px)': {
 			fontSize: 30,
-		}
+		},
 	},
 	missionText: {
 		fontSize: '1.1rem',
@@ -25,7 +25,7 @@ const styles = {
 		'@media (min-width: 900px)': {
 			fontSize: '1.25rem',
 			mb: 4,
-		}
+		},
 	},
 }
 
@@ -36,7 +36,9 @@ const SectionMission = (): JSX.Element => (
 				<Typography variant="h3" sx={styles.heading}>
 					Why PhanFT?
 				</Typography>
-				<Typography variant="h4" sx={styles.subheading}>Our Time is Near, the Mission&apos;s Clear</Typography>
+				<Typography variant="h4" sx={styles.subheading}>
+					Our Time is Near, the Mission&apos;s Clear
+				</Typography>
 			</Box>
 			<Grid container spacing={4}>
 				<Grid item md={6}>

@@ -17,7 +17,7 @@ const styles = {
 		fontSize: 36,
 		'@media (min-width: 900px)': {
 			fontSize: 42,
-		}
+		},
 	},
 	heading: {
 		textAlign: 'center',
@@ -25,7 +25,7 @@ const styles = {
 		fontSize: 28,
 		'@media (min-width: 900px)': {
 			fontSize: 36,
-		}
+		},
 	},
 	introText: {
 		fontSize: '1.1rem',
@@ -33,20 +33,22 @@ const styles = {
 		'@media (min-width: 900px)': {
 			fontSize: '1.25rem',
 			mb: 4,
-		}
+		},
 	},
 	btn: {
 		mt: 4,
 		py: 1,
 		px: 6,
 		fontSize: 22,
-	}
+	},
 }
 
 const SectionIntro = (): JSX.Element => (
 	<>
 		<Box sx={styles.banner}>
-			<Typography variant="h2" sx={styles.headline}>Your Web 3.0 Pass to 4.0 Phandom</Typography>
+			<Typography variant="h2" sx={styles.headline}>
+				Your Web 3.0 Pass to 4.0 Phandom
+			</Typography>
 		</Box>
 		<Box id="intro" component="section">
 			<Container maxWidth="lg">

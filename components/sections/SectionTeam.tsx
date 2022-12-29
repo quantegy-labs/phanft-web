@@ -10,7 +10,7 @@ const styles = {
 		fontSize: 30,
 		'@media (min-width: 900px)': {
 			fontSize: 40,
-		}
+		},
 	},
 	introText: {
 		textAlign: 'center',
@@ -19,7 +19,7 @@ const styles = {
 		'@media (min-width: 900px)': {
 			fontSize: '1.25rem',
 			mb: 4,
-		}
+		},
 	},
 	memberWrap: {
 		textAlign: 'center',
@@ -50,7 +50,9 @@ const SectionTeam = (): JSX.Element => {
 		<Box component="section" id="team">
 			<Container maxWidth="lg">
 				<Box sx={styles.headings}>
-					<Typography variant="h3" sx={styles.heading}>Meet the Pham</Typography>
+					<Typography variant="h3" sx={styles.heading}>
+						Meet the Pham
+					</Typography>
 				</Box>
 				<Typography sx={styles.introText}>
 					We&apos;re a small team of tech-savvy, long-time phans who are set on creating the greatest phan experience in

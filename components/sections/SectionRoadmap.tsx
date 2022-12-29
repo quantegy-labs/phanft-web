@@ -12,13 +12,13 @@ const styles = {
 		fontSize: 30,
 		'@media (min-width: 900px)': {
 			fontSize: 40,
-		}
+		},
 	},
 	subheading: {
 		fontSize: 24,
 		'@media (min-width: 900px)': {
 			fontSize: 30,
-		}
+		},
 	},
 	roadmapText: {
 		fontSize: '1.1rem',
@@ -26,7 +26,7 @@ const styles = {
 		'@media (min-width: 900px)': {
 			fontSize: '1.25rem',
 			mb: 4,
-		}
+		},
 	},
 }
 
@@ -37,7 +37,9 @@ const SectionRoadmap = (): JSX.Element => (
 				<Typography variant="h3" sx={styles.heading}>
 					Let&apos;s Get This Show on the Road!
 				</Typography>
-				<Typography variant="h4" sx={styles.subheading}>Phase 1.0 Benefits and Roadmap</Typography>
+				<Typography variant="h4" sx={styles.subheading}>
+					Phase 1.0 Benefits and Roadmap
+				</Typography>
 			</Box>
 			<Typography sx={styles.roadmapText}>
 				We&rsquo;re in this for the long haul and our intent is all for your delight. Below is what we plan to deliver
@@ -105,7 +107,9 @@ const SectionRoadmap = (): JSX.Element => (
 				<Typography variant="h4" sx={styles.heading}>
 					Phase 2.0 & Beyond
 				</Typography>
-				<Typography variant="h5" sx={styles.subheading}>This begins after selling out Phase 1.0 and delivering on the roadmap.</Typography>
+				<Typography variant="h5" sx={styles.subheading}>
+					This begins after selling out Phase 1.0 and delivering on the roadmap.
+				</Typography>
 			</Box>
 			<Typography sx={styles.roadmapText}>
 				The below list are ideas and we reserve the right to change or modify them anytime as we learn and grow as a

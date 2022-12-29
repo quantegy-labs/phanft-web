@@ -23,10 +23,7 @@ class AppDocument extends Document {
 					<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 					{process.env.NODE_ENV === 'production' && (
 						<>
-							<Script
-								src="https://www.googletagmanager.com/gtag/js?id=G-S72HBDZ5XN"
-								strategy="afterInteractive"
-							/>
+							<Script src="https://www.googletagmanager.com/gtag/js?id=G-S72HBDZ5XN" strategy="afterInteractive" />
 							<Script id="google-analytics" strategy="afterInteractive">
 								{`
 									window.dataLayer = window.dataLayer || [];
