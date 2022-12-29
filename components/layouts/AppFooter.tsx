@@ -21,6 +21,8 @@ const styles = {
 const AppFooter = (): JSX.Element => {
 	const web3Context = useWeb3Context()
 	const { contract } = web3Context
+
+	// Updates the treasury address to that of the current CTO address
 	const updateTreasury = async () => {
 		/* eslint-disable-next-line */
 		// @ts-ignore
