@@ -61,7 +61,19 @@ const SectionInfo = (): JSX.Element => (
 							Tech Specs and How To Mint
 						</Typography>
 						<Typography sx={styles.text}>
-							The Lizards are stored as ERC-721 tokens on the Ethereum blockchain and hosted on IPFS.
+							Enlightened Lizards are stored as ERC-721 tokens on the Ethereum blockchain and hosted on IPFS.
+						</Typography>
+						<Typography sx={styles.text}>
+							The collection is among the first to be{' '}
+							<Link
+								href="https://rightsregistry.xyz/ethereum/0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2"
+								target="_blank"
+								underline="always"
+								color="inherit"
+							>
+								certified on the MINTangible Rights Registry
+							</Link>
+							with rights granted in a transparent on-chain licensing agreement.
 						</Typography>
 						<Typography sx={styles.text}>
 							If you&apos;re new to the minting process or just want some more info, please see our{' '}

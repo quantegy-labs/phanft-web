@@ -44,15 +44,19 @@ const SectionLizards = (): JSX.Element => (
 			</Grid>
 			<Box sx={{ mb: 4 }} />
 			<Typography variant="h3" gutterBottom sx={styles.heading}>
-				The Enlightened Lizards
+				Enlightened Lizards
 			</Typography>
 			<Typography sx={styles.lizardsText}>
-				Our genesis project is The Enlightened Lizards - a limited collection of 555 utility-driven NFTs, where
-				ownership doubles as your membership to the ultimate “phan club” loaded with benefits, rewards, and perks.
+				PhanFT&apos;s first collection is Enlightened Lizards - 555 unique digital collectibles on the Ethereum
+				blockchain.
 			</Typography>
 			<Typography sx={styles.lizardsText}>
-				Each Lizard is unique digital art and generated from a variety of illustrated traits, including facial
-				expression, clothing, accessories, and other attributes that give a wink and a nod to song folklore or phan
+				Ownership grants you access to an early adopter community of phans passionate about web3, music culture, and new
+				forms of participatory fandom.
+			</Typography>
+			<Typography sx={styles.lizardsText}>
+				Each Lizard is unique digital art and algorithmically generated from a variety of illustrated traits, including
+				facial expression, clothing, accessories, and other attributes that give a wink and a nod to song lore or phan
 				culture.
 			</Typography>
 			<Typography sx={styles.lizardsText}>
