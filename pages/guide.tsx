@@ -1,20 +1,29 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import NextLink from 'next/link'
-import { Container, Link, Paper, Typography } from '@mui/material'
+import { Box, Container, Link, Paper, Typography } from '@mui/material'
 import AppLayout from '../components/layouts/AppLayout'
 
 const styles = {
+	wrap: {
+		a: {
+			fontStyle: 'italic',
+		},
+	},
 	title: {
-		textAlign: 'center',
 		mt: 8,
+		color: '#fff',
+	},
+	subtitle: {
+		color: '#fff',
 	},
 	paper: {
 		px: 4,
 		py: 6,
-		my: 8,
-		backgroundColor: '#fcfcfc',
-		color: '#141414',
+		mb: 8,
+		color: '#fff',
+		border: '2px solid #8DFF9C',
+		borderRadius: '4px',
 	},
 	heading: {
 		mt: 2,
@@ -66,10 +75,16 @@ const GuidePage: NextPage = () => {
 				<title>PhanFT | How to Mint Guide</title>
 			</Head>
 			<AppLayout>
-				<Container maxWidth="lg">
-					<Typography variant="h2" sx={styles.title}>
-						How to Mint Guide
-					</Typography>
+				<Container maxWidth="lg" sx={styles.wrap}>
+					<Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" mb={4}>
+						<Typography variant="h2" sx={styles.title}>
+							How to Mint Guide
+						</Typography>
+						<Typography variant="h5" sx={styles.subtitle}>
+							Follow this helpful phriendly guide to better understand minting tokens.
+						</Typography>
+						<Box className="large-block" />
+					</Box>
 					<Paper sx={styles.paper} elevation={3}>
 						<Typography variant="h4" sx={{ mb: 4 }}>
 							Split Open and Mint!
@@ -96,7 +111,9 @@ const GuidePage: NextPage = () => {
 						<Typography sx={styles.p}>
 							Here, you click the “Buy with Credit Card” button on our{' '}
 							<NextLink href="/mint" passHref>
-								<Link>Mint page</Link>
+								<Link underline="always" color="inherit">
+									Mint page
+								</Link>
 							</NextLink>
 							, follow the basic instructions, and you&apos;re done! This NFT will live in a custodial wallet on
 							Crossmint, until you choose to transfer it to a traditional NFT wallet where you hold the private keys,
@@ -144,8 +161,9 @@ const GuidePage: NextPage = () => {
 							When collecting an NFTs, you&apos;ll need a digital wallet to store it in. We recommend using Metamask.
 							Check out{' '}
 							<Link
-								href="https://www.youtube.com/watch?v=WAStJtjYI_c."
+								underline="always"
 								color="inherit"
+								href="https://www.youtube.com/watch?v=WAStJtjYI_c."
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -153,8 +171,9 @@ const GuidePage: NextPage = () => {
 							</Link>{' '}
 							that will walk you through setting up a secure metamask wallet. For a step-by-step written tutorial,{' '}
 							<Link
-								href="https://codehs.com/tutorial/jkeesh/how-to-set-up-an-ethereum-wallet-on-metamask"
+								underline="always"
 								color="inherit"
+								href="https://codehs.com/tutorial/jkeesh/how-to-set-up-an-ethereum-wallet-on-metamask"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
@@ -165,12 +184,24 @@ const GuidePage: NextPage = () => {
 						<Typography sx={styles.p}>
 							<strong>Follow these steps to get MetaMask installed:</strong>
 						</Typography>
-						<Link href="https://metamask.io" target="_blank" rel="noopener noreferrer"></Link>
+						<Link
+							underline="always"
+							color="inherit"
+							href="https://metamask.io"
+							target="_blank"
+							rel="noopener noreferrer"
+						></Link>
 						<ol>
 							<li>
 								<Typography sx={styles.li}>
 									Download and install{' '}
-									<Link href="https://metamask.io" target="_blank" rel="noopener noreferrer">
+									<Link
+										underline="always"
+										color="inherit"
+										href="https://metamask.io"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
 										MetaMask
 									</Link>
 									.
@@ -235,7 +266,13 @@ const GuidePage: NextPage = () => {
 						<Typography sx={styles.p}>
 							You&apos;ll need to transfer some ethereum into your digital wallet. If you are buying ethereum on
 							Coinbase and using a metamask wallet,{' '}
-							<Link href="https://www.youtube.com/watch?v=9NQgCyOXQlY" target="_blank" rel="noopener noreferrer">
+							<Link
+								underline="always"
+								color="inherit"
+								href="https://www.youtube.com/watch?v=9NQgCyOXQlY"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								watch this tutorial
 							</Link>{' '}
 							on how to transfer your ETH into your wallet. If you are minting any NFT, your digital wallet needs to
@@ -248,7 +285,9 @@ const GuidePage: NextPage = () => {
 						<Typography sx={styles.p}>
 							Once you have enough ETH in your wallet, visit our{' '}
 							<NextLink href="/mint" passHref>
-								<Link>Mint page</Link>
+								<Link underline="always" color="inherit">
+									Mint page
+								</Link>
 							</NextLink>{' '}
 							and connect your wallet. Icon on upper right hand corner of site navigation bar.
 						</Typography>
@@ -272,7 +311,13 @@ const GuidePage: NextPage = () => {
 						<Typography sx={styles.p}>
 							You&apos;ll know whether the mint was successful and will soon see the NFT appear in your Metamask mobile
 							wallet. Or by going to{' '}
-							<Link href="https://opensea.io" target="_blank" rel="noopener noreferrer">
+							<Link
+								underline="always"
+								color="inherit"
+								href="https://opensea.io"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								OpenSea
 							</Link>
 							, connecting your wallet, and clicking “Profile” to see all the NFTs in your wallet.
@@ -286,6 +331,8 @@ const GuidePage: NextPage = () => {
 								<Typography sx={styles.li}>
 									Login to your Crossmint account{' '}
 									<Link
+										underline="always"
+										color="inherit"
 										href="https://www.crossmint.io/signin?callbackUrl=https%3A%2F%2Fwww.crossmint.io%2F"
 										target="_blank"
 										rel="noopener noreferrer"
@@ -316,6 +363,8 @@ const GuidePage: NextPage = () => {
 								<Typography sx={styles.li}>
 									Go back to{' '}
 									<Link
+										underline="always"
+										color="inherit"
 										href="https://www.crossmint.io/signin?callbackUrl=https%3A%2F%2Fwww.crossmint.io%2F"
 										target="_blank"
 										rel="noopener noreferrer"
@@ -347,7 +396,13 @@ const GuidePage: NextPage = () => {
 						</Typography>
 						<Typography sx={styles.p}>
 							To view your Enlightened Lizard NFT from your desktop or mobile browser go to{' '}
-							<Link href="https://opensea.io" target="_blank" rel="noopener noreferrer">
+							<Link
+								underline="always"
+								color="inherit"
+								href="https://opensea.io"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
 								OpenSea
 							</Link>{' '}
 							connect your wallet, and then click Profile.

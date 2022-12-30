@@ -36,7 +36,7 @@ const styles = {
 		my: 2,
 	},
 	subtitle: {
-		color: '#fff',
+		color: '#fafafa',
 		lineHeight: 1.3,
 		fontSize: '1rem',
 		textAlign: 'center',

@@ -27,9 +27,10 @@ const AdminPage: NextPage = () => {
 			</Head>
 			<AppLayout>
 				<Container maxWidth="xl" sx={styles.container}>
-					<Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" mb={10}>
+					<Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" mb={4}>
 						<Typography variant="h2">Mint A Lizard</Typography>
 						<Typography variant="h5">Enlighten the Lizards by minting a token.</Typography>
+						<Box className="large-block" />
 					</Box>
 					<Grid container spacing={6}>
 						<Grid item xs={12} md={5}>
