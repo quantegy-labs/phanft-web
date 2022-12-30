@@ -57,7 +57,7 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 	}
 
 	return canMint() ? (
-		<Box className={`mint-widget ${loading ? 'animate-pulse saturate-0 pointer-events-none' : ''}`}>
+		<Box className={loading ? 'animate-pulse saturate-0 pointer-events-none' : ''}>
 			<Grid container spacing={3}>
 				<Grid item xs={6}>
 					<Image src="/lizard_unknown.png" alt="Collection preview" width={400} height={400} />

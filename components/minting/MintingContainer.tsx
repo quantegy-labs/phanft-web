@@ -23,13 +23,13 @@ const styles = {
 		mb: 2,
 	},
 	noConnectContainer: {
-		backgroundColor: '#fafafa',
-		color: '#222',
+		border: '2px solid #8DFF9C',
+		color: '#fff',
 		p: 4,
 	},
 	connectContainer: {
-		backgroundColor: '#fafafa',
-		color: '#222',
+		border: '2px solid #8DFF9C',
+		color: '#fff',
 		p: 4,
 	},
 	connectBtn: {

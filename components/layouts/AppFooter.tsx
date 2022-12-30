@@ -3,11 +3,11 @@ import Image from 'next/image'
 
 const styles = {
 	footer: {
-		backgroundColor: '#121212',
+		backgroundColor: '#000',
+		color: '#fff',
 		display: 'flex',
 		flexDirection: 'column',
 		py: 4,
-		borderTop: '1px solid #eaeaea',
 		justifyContent: 'center',
 		alignItems: 'center',
 	},

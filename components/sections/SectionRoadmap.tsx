@@ -3,10 +3,11 @@ import { Box, Container, Divider, List, ListItem, ListItemIcon, ListItemText, Ty
 
 const styles = {
 	headings: {
+		color: '#fff',
 		textAlign: 'center',
-		mb: 6,
 	},
 	heading: {
+		color: '#fff',
 		textAlign: 'center',
 		mb: 1,
 		fontSize: 30,
@@ -15,18 +16,25 @@ const styles = {
 		},
 	},
 	subheading: {
-		fontSize: 24,
+		color: '#fff',
+		fontSize: 20,
+		fontStyle: 'italic',
+		fontWeight: 300,
 		'@media (min-width: 900px)': {
-			fontSize: 30,
+			fontSize: 26,
 		},
 	},
 	roadmapText: {
+		color: '#fff',
 		fontSize: '1.1rem',
 		mb: 2,
 		'@media (min-width: 900px)': {
 			fontSize: '1.25rem',
 			mb: 4,
 		},
+	},
+	listItem: {
+		color: '#fff',
 	},
 }
 
@@ -41,6 +49,7 @@ const SectionRoadmap = (): JSX.Element => (
 					Phase 1.0 Benefits and Roadmap
 				</Typography>
 			</Box>
+			<Box className="large-block secondary" />
 			<Typography sx={styles.roadmapText}>
 				We&apos;ve set the mint price low at .02 ETH to make owning a Lizard affordable to all at current market
 				conditions. This however leaves a smaller budget than originally conceived to bundle-in physical items such as
@@ -55,37 +64,37 @@ const SectionRoadmap = (): JSX.Element => (
 				modification and change as needed.
 			</Typography>
 			<List>
-				<ListItem sx={{ fontSize: '1.5rem' }}>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
 					<ListItemText primary="Own a one-of-a-kind, provably-rare digital collectable. Rock it as your Twitter or IG profile pic as a subtle wink that you’re in the club!" />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
 					<ListItemText primary="Free airdrops of future collections and special artist collaborations as we expand the community" />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
 					<ListItemText primary="Access to phan-centric perks from future partners (Merch, art, custom craft beer...once our collection is sold out, all becomes possible!)" />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
 					<ListItemText primary="Invitations to Lizard-holder events and gatherings during tour. i.e. pre-show meetups, aftershow concerts, and other occasional token-gated events" />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
 					<ListItemText primary="Purchasing a Lizard generates donations to The Waterwheel Foundation and Mockingbird Foundation." />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
@@ -101,36 +110,44 @@ const SectionRoadmap = (): JSX.Element => (
 					This begins after selling out Phase 1.0 and delivering on the roadmap.
 				</Typography>
 			</Box>
+			<Box className="large-block" />
 			<Typography sx={styles.roadmapText}>
 				Ultimately, the goal for PhanFT is to be a rich community-driven project. This means that with all the sale
-				proceeds from the NFT collection, these funds will be decided by the community on how they will be spent through
-				the form of the Helping Friendly DAO. Members of the DAO will have a place to be able to offer up ideas and
-				discuss on forums about the spending. Then this will go through a voting period for the holders, and anything
-				that passes majority votes will be executed on and paid for by treasury funds. Here are just a few potential
-				ideas that we&apos;ve come up with that funds could be used for:
+				proceeds from the NFT collection,{' '}
+				<em>
+					these funds will be decided by the community on how they will be spent through the form of the Helping
+					Friendly DAO
+				</em>
+				.
+			</Typography>
+			<Typography sx={styles.roadmapText}>
+				Members of the DAO will have a place to be able to offer up ideas and discuss on forums about the spending. Then
+				this will go through a voting period for the holders, and anything that passes majority votes will be executed
+				on and paid for by treasury funds. Here are just a few potential ideas that we&apos;ve come up with that funds
+				could be used for:
 			</Typography>
 			<List>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
-						<Star color="secondary" />
+						<Star color="primary" />
 					</ListItemIcon>
 					<ListItemText primary="We partner with a well-established and respected poster artist to design the next NFT collection, where each ones comes with a physical poster twin, linked on-chain." />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
-						<Star color="secondary" />
+						<Star color="primary" />
 					</ListItemIcon>
 					<ListItemText primary="We bring the shakedown lot experience into the metaverse before couch tour shows, where Lizards and other creatures that seem oh-so-kind can gather to hang out, buy digital and physical goods from vendors, and get more down at virtual dance parties." />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
-						<Star color="secondary" />
+						<Star color="primary" />
 					</ListItemIcon>
 					<ListItemText primary="The Rhombus appears and a new portal is unlocked revealing a digital treasure hunt. Prizes include up to 2 ETH in rewards and exclusive 1-of-1 minted characters including the great and knowledgeable Icculus." />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
-						<Star color="secondary" />
+						<Star color="primary" />
 					</ListItemIcon>
 					<ListItemText primary="Pre-shows and post-show parties in and around the venues of major shows in your city!" />
 				</ListItem>

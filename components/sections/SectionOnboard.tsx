@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 const styles = {
 	wrap: {
+		color: '#fff',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'center',
@@ -12,9 +13,7 @@ const styles = {
 		backgroundSize: 'cover',
 		textAlign: 'center',
 	},
-	headings: {
-		mb: 4,
-	},
+	headings: {},
 	heading: {
 		fontSize: 36,
 		mb: 1,
@@ -27,6 +26,7 @@ const styles = {
 	},
 	input: {
 		borderRadius: '4px',
+		backgroundColor: 'rgba(255, 255, 255, 0.8)',
 	},
 }
 
@@ -41,6 +41,7 @@ const SectionOnboard = (): JSX.Element => {
 						Surrender to the Flow
 					</Typography>
 					<Typography variant="h5">Enter your email for first access.</Typography>
+					<Box className="large-block secondary" />
 				</Box>
 				<Box sx={styles.formWrap}>
 					<div id="mc_embed_signup" className="mcformpad">

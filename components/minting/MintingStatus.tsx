@@ -5,9 +5,9 @@ import { useWeb3Context } from '../Web3Provider'
 
 const styles = {
 	container: {
-		backgroundColor: '#fff',
-		border: '1px solid #ccc',
-		borderRadius: 1,
+		backgroundColor: '#0d0d0d',
+		border: '1px solid #8dff9c',
+		borderRadius: 2,
 		mb: 4,
 	},
 	statusItemBox: {
@@ -25,10 +25,11 @@ const styles = {
 		fontWeight: 700,
 		display: 'block',
 		fontSize: '1rem',
-		color: '#54c6eb',
+		color: '#ff0087',
 	},
 	statusItemValue: {
-		color: '#777',
+		color: '#ddd',
+		fontWeight: 300,
 	},
 }
 

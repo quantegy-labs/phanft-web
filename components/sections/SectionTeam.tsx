@@ -4,41 +4,50 @@ import Image from 'next/image'
 const styles = {
 	headings: {
 		textAlign: 'center',
-		mb: 2,
+		maxWidth: '800px',
+		mx: 'auto',
 	},
 	heading: {
+		color: '#fff',
 		fontSize: 30,
+		mb: 2,
 		'@media (min-width: 900px)': {
 			fontSize: 40,
 		},
 	},
 	introText: {
+		color: '#fff',
 		textAlign: 'center',
-		mb: 8,
-		fontSize: '1.1rem',
+		fontSize: 20,
+		fontStyle: 'italic',
+		fontWeight: 300,
 		'@media (min-width: 900px)': {
-			fontSize: '1.25rem',
-			mb: 4,
+			fontSize: 26,
 		},
 	},
 	memberWrap: {
+		color: '#fff',
 		textAlign: 'center',
 	},
 	title: {
+		color: '#fff',
 		textAlign: 'center',
 		fontWeight: 'bold',
 		my: 2,
 	},
 	subtitle: {
+		color: '#fff',
 		lineHeight: 1.3,
 		fontSize: '1rem',
 		textAlign: 'center',
 		mb: 2,
 	},
 	text: {
+		color: '#fff',
 		mb: 2,
 	},
 	quote: {
+		color: '#fff',
 		fontSize: '1rem !important',
 		fontWeight: 'bold',
 		fontStyle: 'italic',
@@ -53,11 +62,12 @@ const SectionTeam = (): JSX.Element => {
 					<Typography variant="h3" sx={styles.heading}>
 						Meet the Pham
 					</Typography>
+					<Typography sx={styles.introText}>
+						We&apos;re a small team of tech-savvy, long-time phans who are set on creating the greatest phan experience
+						in Web3.
+					</Typography>
+					<Box className="large-block secondary" />
 				</Box>
-				<Typography sx={styles.introText}>
-					We&apos;re a small team of tech-savvy, long-time phans who are set on creating the greatest phan experience in
-					Web3.
-				</Typography>
 				<Grid container spacing={4}>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>

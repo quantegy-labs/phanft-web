@@ -29,10 +29,39 @@ li {
 }
 
 /*
+	Blocks
+*/
+.small-block {
+	height: 3px;
+	width: 40px;
+	display: flex;
+	margin: 24px auto;
+	background-color: #ff0087;
+}
+
+.large-block {
+	height: 6px;
+	width: 80px;
+	display: flex;
+	margin: 36px auto;
+	background-color: #ff0087;
+}
+
+.small-block.secondary,
+.large-block.secondary {
+	background-color: #8dff9c;
+}
+
+.small-block.left,
+.large-block.left {
+	margin-left: 0;
+}
+
+/*
 	Images
 */
 main img {
-	border: 4px solid #54c6eb !important;
+	border: 4px solid #8dff9c !important;
 	border-radius: 8px;
 }
 
@@ -62,10 +91,9 @@ section {
 	padding: 4rem 0;
 }
 
-#intro,
-#faq {
-	border-top: 3px solid #ec1f65;
-	border-bottom: 3px solid #ec1f65;
+#intro {
+	border-top: 3px solid #ff0087;
+	border-bottom: 3px solid #ff0087;
 }
 
 #mission {
@@ -73,12 +101,11 @@ section {
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
-	color: #f3f3f3;
+	color: #fff;
 }
 
-#info {
-	background-color: #0f190d;
-	color: #f3f3f3;
+#roadmap {
+	border-top: 3px solid #8dff9c;
 }
 
 #info hr {
@@ -86,5 +113,10 @@ section {
 }
 
 #team {
-	background-color: #517f7f;
+	background-color: #ff0087;
+}
+
+#onboard {
+	border-top: 3px solid #8dff9c;
+	border-bottom: 3px solid #8dff9c;
 }

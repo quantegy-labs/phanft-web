@@ -21,6 +21,9 @@ import VerifiedUserSharpIcon from '@mui/icons-material/VerifiedUserSharp'
 import formatAddress from '../../lib/formatAddress'
 
 const styles = {
+	appbar: {
+		backgroundColor: '#000',
+	},
 	hidden: {
 		width: '1px',
 		height: '1px',
@@ -30,8 +33,6 @@ const styles = {
 		whiteSpace: 'no-wrap',
 		overflow: 'hidden',
 	},
-	mobileNavWrap: { flexGrow: 1, display: { xs: 'flex', md: 'none' } },
-	mobileNavMenu: { display: { xs: 'block', md: 'none' } },
 	mobileNavLogo: {
 		cursor: 'pointer',
 		mr: 2,
@@ -40,8 +41,18 @@ const styles = {
 		fontFamily: 'monospace',
 		fontWeight: 700,
 		letterSpacing: '.3rem',
-		color: 'inherit',
 		textDecoration: 'none',
+	},
+	mobileNavWrap: { flexGrow: 1, display: { xs: 'flex', md: 'none' } },
+	mobileNavMenu: { display: { xs: 'block', md: 'none' } },
+	mobileNavItem: {
+		'&:hover': {
+			backgroundColor: '#ff0087',
+		},
+	},
+	mobileNavMenuItem: {
+		textAlign: 'right',
+		color: '#fff',
 	},
 	desktopNavLogo: {
 		cursor: 'pointer',
@@ -50,15 +61,17 @@ const styles = {
 		fontFamily: 'monospace',
 		fontWeight: 700,
 		letterSpacing: '.3rem',
-		color: 'inherit',
 		textDecoration: 'none',
 	},
 	desktopNavWrap: { flexGrow: 1, display: { xs: 'none', md: 'flex' } },
 	desktopNavMenuItem: {
 		my: 2,
-		color: 'white',
 		display: 'block',
 		fontSize: '1rem',
+		color: '#fff',
+		'&:hover': {
+			color: '#ff0087',
+		},
 	},
 	connectBtnWrap: { flexGrow: 0 },
 }
@@ -104,7 +117,7 @@ const AppHeader = () => {
 	}
 
 	return (
-		<AppBar position="sticky" color="default" enableColorOnDark>
+		<AppBar position="sticky" enableColorOnDark sx={styles.appbar}>
 			<Container maxWidth="xl">
 				<Toolbar id="back-to-top-anchor" disableGutters>
 					{/* Mobile Navigation */}
@@ -138,8 +151,8 @@ const AppHeader = () => {
 							<nav>
 								{pages.map(page => (
 									<Link href={page.href} key={page.name}>
-										<MenuItem onClick={handleCloseNavMenu}>
-											<Typography textAlign="center">{page.name}</Typography>
+										<MenuItem onClick={handleCloseNavMenu} sx={styles.mobileNavItem}>
+											<Typography sx={styles.mobileNavMenuItem}>{page.name}</Typography>
 										</MenuItem>
 									</Link>
 								))}
@@ -226,9 +239,14 @@ const AppHeader = () => {
 												<VerifiedUserSharpIcon />
 											</SvgIcon>
 										}
-										sx={{ display: { xs: 'none', sm: 'inline-flex' }, py: 0.6, ml: 1, borderWidth: 2 }}
+										sx={{
+											display: { xs: 'none', sm: 'inline-flex' },
+											py: 0.6,
+											ml: 1,
+											borderWidth: 2,
+										}}
 									>
-										<Typography color="text.primary" variant="caption">
+										<Typography color="text.primary" variant="caption" color="secondary">
 											{formatAddress(connectedAddress)}
 										</Typography>
 									</Button>
@@ -241,7 +259,7 @@ const AppHeader = () => {
 											'aria-labelledby': 'connect-wallet-btn',
 										}}
 									>
-										<MenuList dense sx={{ py: 0 }}>
+										<MenuList dense sx={{ py: 0, color: '#fff', '&:hover': { backgroundColor: '#ff0087' } }}>
 											<MenuItem onClick={handleDisconnectWallet}>Disconnect</MenuItem>
 										</MenuList>
 									</Menu>

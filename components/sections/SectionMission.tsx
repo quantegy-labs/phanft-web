@@ -3,20 +3,21 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 const styles = {
 	headings: {
 		textAlign: 'center',
-		mb: 6,
 	},
 	heading: {
-		textAlign: 'center',
-		mb: 1,
+		mb: 2,
 		fontSize: 30,
 		'@media (min-width: 900px)': {
 			fontSize: 40,
 		},
 	},
 	subheading: {
-		fontSize: 24,
+		color: '#fff',
+		fontSize: 20,
+		fontStyle: 'italic',
+		fontWeight: 300,
 		'@media (min-width: 900px)': {
-			fontSize: 30,
+			fontSize: 26,
 		},
 	},
 	missionText: {
@@ -39,6 +40,7 @@ const SectionMission = (): JSX.Element => (
 				<Typography variant="h4" sx={styles.subheading}>
 					Our Time is Near, the Mission&apos;s Clear
 				</Typography>
+				<Box className="large-block" />
 			</Box>
 			<Grid container spacing={4}>
 				<Grid item md={6}>

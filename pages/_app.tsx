@@ -7,22 +7,22 @@ import '../styles/globals.css'
 
 const theme = createTheme({
 	palette: {
-		mode: 'dark',
+		mode: 'light',
 		primary: {
-			main: '#ec1f65',
+			main: '#ff0087',
 			contrastText: '#fff',
 		},
 		secondary: {
-			main: '#54c6eb',
-			contrastText: '#fff',
+			main: '#8DFF9C',
+			contrastText: '#111',
 		},
 		info: {
 			main: '#201c1c',
 			contrastText: '#fff',
 		},
 		background: {
-			paper: '#2f4136',
-			default: '#2f4136',
+			paper: '#0e130e',
+			default: '#000',
 		},
 	},
 	typography: {

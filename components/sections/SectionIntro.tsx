@@ -11,23 +11,24 @@ const styles = {
 		px: 4,
 		background: "url('/herobg.png') center center no-repeat",
 		backgroundSize: 'cover',
-		color: '#fff',
 	},
 	headline: {
+		color: '#fff',
 		fontSize: 36,
 		'@media (min-width: 900px)': {
 			fontSize: 42,
 		},
 	},
 	heading: {
+		color: '#fff',
 		textAlign: 'center',
-		mb: 6,
 		fontSize: 28,
 		'@media (min-width: 900px)': {
 			fontSize: 36,
 		},
 	},
 	introText: {
+		color: '#fff',
 		fontSize: '1.1rem',
 		mb: 2,
 		'@media (min-width: 900px)': {
@@ -55,6 +56,7 @@ const SectionIntro = (): JSX.Element => (
 				<Typography variant="h3" gutterBottom sx={styles.heading}>
 					The Only Rule is it Begins
 				</Typography>
+				<Box className="large-block" />
 				<Typography sx={styles.introText}>
 					By phans, for phans, PhanFT is a series of utility-driven NFT collections to celebrate and unify our amazing
 					music & art loving community in Web3 & IRL.

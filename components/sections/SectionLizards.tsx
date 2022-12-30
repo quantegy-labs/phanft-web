@@ -3,24 +3,32 @@ import Image from 'next/image'
 
 const styles = {
 	lizardsWrap: {
-		backgroundColor: '#517f7f',
+		backgroundColor: '#ff0087',
 		py: 8,
 		textAlign: 'center',
 	},
 	heading: {
-		mb: 6,
+		color: '#fff',
 		fontSize: 30,
 		'@media (min-width: 900px)': {
 			fontSize: 40,
 		},
 	},
 	lizardsText: {
+		color: '#fff',
 		textAlign: 'left',
 		fontSize: '1.1rem',
 		mb: 2,
 		'@media (min-width: 900px)': {
 			fontSize: '1.25rem',
 			mb: 4,
+		},
+	},
+	imageWrap: {
+		border: '10px solid #8DFF9C',
+		borderRadius: '8px',
+		img: {
+			borderRadius: 0,
 		},
 	},
 }
@@ -30,22 +38,31 @@ const SectionLizards = (): JSX.Element => (
 		<Container maxWidth="lg">
 			<Grid container spacing={4}>
 				<Grid item xs={6}>
-					<Image width={500} height={500} src="/lizard1.png" alt="Lizards Genesis PFP" />
+					<Box sx={styles.imageWrap}>
+						<Image layout="responsive" width={500} height={500} src="/lizard1.png" alt="Lizards Genesis PFP" />
+					</Box>
 				</Grid>
 				<Grid item xs={6}>
-					<Image width={500} height={500} src="/lizard2.png" alt="Lizards Genesis PFP" />
+					<Box sx={styles.imageWrap}>
+						<Image layout="responsive" width={500} height={500} src="/lizard2.png" alt="Lizards Genesis PFP" />
+					</Box>
 				</Grid>
 				<Grid item xs={6}>
-					<Image width={500} height={500} src="/lizard3.png" alt="Lizards Genesis PFP" />
+					<Box sx={styles.imageWrap}>
+						<Image layout="responsive" width={500} height={500} src="/lizard3.png" alt="Lizards Genesis PFP" />
+					</Box>
 				</Grid>
 				<Grid item xs={6}>
-					<Image width={500} height={500} src="/lizard4.png" alt="Lizards Genesis PFP" />
+					<Box sx={styles.imageWrap}>
+						<Image layout="responsive" width={500} height={500} src="/lizard4.png" alt="Lizards Genesis PFP" />
+					</Box>
 				</Grid>
 			</Grid>
 			<Box sx={{ mb: 4 }} />
 			<Typography variant="h3" gutterBottom sx={styles.heading}>
 				Enlightened Lizards
 			</Typography>
+			<Box className="large-block secondary" />
 			<Typography sx={styles.lizardsText}>
 				PhanFT&apos;s first collection is Enlightened Lizards - 555 unique digital collectibles on the Ethereum
 				blockchain.
