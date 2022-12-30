@@ -8,6 +8,7 @@ import Whitelist from '../smart-contract/lib/Whitelist'
 import { EnlightenedLizards as NftContractType } from '../lib/EnlightenedLizards'
 import type { NetworkConfigInterface } from './minting/MintingForm'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const ContractAbi = require('../lib/abi/' +
 	CollectionConfig.contractName +
 	'.sol/' +
@@ -212,9 +213,11 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 
 	const connectWallet = async (): Promise<void> => {
 		try {
-			await web3Provider?.provider.request!({ method: 'eth_requestAccounts' })
+			if (!web3Provider) return
+			await web3Provider.provider?.request!({ method: 'eth_requestAccounts' })
 			await initWallet()
 			setConnected(true)
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (e: any) {
 			setWeb3Error(e)
 		}

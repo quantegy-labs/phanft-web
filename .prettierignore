@@ -2,6 +2,7 @@ node_modules
 .next
 .vscode
 .gitignore
+yarn.lock
 
 public
 smart-contract

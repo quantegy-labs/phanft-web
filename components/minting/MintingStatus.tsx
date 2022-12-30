@@ -1,5 +1,4 @@
-import { Grid, Paper, Typography } from '@mui/material'
-import { Box } from '@mui/system'
+import { Box, Grid, Paper, Typography } from '@mui/material'
 import formatAddress from '../../lib/formatAddress'
 import { useWeb3Context } from '../Web3Provider'
 
@@ -39,7 +38,7 @@ interface MintingStatusProps {
 
 const MintingStatus = ({ isSoldOut }: MintingStatusProps): JSX.Element => {
 	const { connectedAddress, contractState } = useWeb3Context()
-	const { totalSupply, maxSupply, isPaused, isWhitelistMintEnabled, isUserInWhitelist } = contractState
+	const { totalSupply, maxSupply, isPaused, isWhitelistMintEnabled } = contractState
 
 	const isSaleOpen = (): boolean => {
 		return (isWhitelistMintEnabled || !isPaused) && !isSoldOut

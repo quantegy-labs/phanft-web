@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import AppLayout from '../../components/layouts/AppLayout'
@@ -12,7 +12,7 @@ const EnlightenedLizardsCollectionPage: NextPage = () => {
 			<AppLayout>
 				<Container maxWidth="xl" sx={{ my: 8, textAlign: 'center' }}>
 					<Typography variant="h4">Content coming soon...</Typography>
-					<Typography variant="h6">Everything's right, so just hold tight.</Typography>
+					<Typography variant="h6">Everything&apos;s right, so just hold tight.</Typography>
 				</Container>
 			</AppLayout>
 		</>

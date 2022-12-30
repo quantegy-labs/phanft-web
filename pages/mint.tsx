@@ -34,8 +34,9 @@ const AdminPage: NextPage = () => {
 					<Grid container spacing={6}>
 						<Grid item xs={12} md={5}>
 							<Typography sx={styles.text}>
-								Have the Lizards died? Not yet! They're practically extinct from doing things smart people don't do, but
-								you can be smart and help save them from extinction by minting a token on the blockchain.
+								Have the Lizards died? Not yet! They&apos;re practically extinct from doing things smart people
+								don&apos;t do, but you can be smart and help save them from extinction by minting a token on the
+								blockchain.
 							</Typography>
 							<Typography sx={styles.text}>
 								You can choose to pay with ETH through your MetaMask wallet, or you can you choose to pay directly with

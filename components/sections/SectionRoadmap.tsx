@@ -56,11 +56,11 @@ const SectionRoadmap = (): JSX.Element => (
 				LE posters and wearable merch.
 			</Typography>
 			<Typography sx={styles.roadmapText}>
-				We have an abundance of ideas and ability to deliver a “phyigital experience” in due time, once we establish
-				ourselves and have more resources in our treasury.
+				We have an abundance of ideas and ability to deliver a &quot;phyigital experience&quot; in due time, once we
+				establish ourselves and have more resources in our treasury.
 			</Typography>
 			<Typography sx={styles.roadmapText}>
-				The viable use-cases for NFTs are fast evolving and we’re learning more every day. All ideas are subject to
+				The viable use-cases for NFTs are fast evolving and we&apos;re learning more every day. All ideas are subject to
 				modification and change as needed.
 			</Typography>
 			<List>
@@ -68,7 +68,7 @@ const SectionRoadmap = (): JSX.Element => (
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Own a one-of-a-kind, provably-rare digital collectable. Rock it as your Twitter or IG profile pic as a subtle wink that you’re in the club!" />
+					<ListItemText primary="Own a one-of-a-kind, provably-rare digital collectable. Rock it as your Twitter or IG profile pic as a subtle wink that you're in the club!" />
 				</ListItem>
 				<ListItem sx={styles.listItem}>
 					<ListItemIcon>

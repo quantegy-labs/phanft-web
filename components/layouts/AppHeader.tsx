@@ -246,7 +246,7 @@ const AppHeader = () => {
 											borderWidth: 2,
 										}}
 									>
-										<Typography color="text.primary" variant="caption" color="secondary">
+										<Typography color="secondary" variant="caption">
 											{formatAddress(connectedAddress)}
 										</Typography>
 									</Button>

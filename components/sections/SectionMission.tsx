@@ -78,9 +78,9 @@ const SectionMission = (): JSX.Element => (
 						during this 4.0 era.
 					</Typography>
 					<Typography sx={styles.missionText}>
-						Strut Yo’ Stuff: Got tour tales to tell? Do you like teaching others about web3 concepts? Creating digital
-						art or videos? Lizard holders have the opportunity to contribute your unique gifts, skills, and talents to
-						help the project grow.
+						Strut Yo&apos;Stuff: Got tour tales to tell? Do you like teaching others about web3 concepts? Creating
+						digital art or videos? Lizard holders have the opportunity to contribute your unique gifts, skills, and
+						talents to help the project grow.
 					</Typography>
 				</Grid>
 			</Grid>
