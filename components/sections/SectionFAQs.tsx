@@ -86,6 +86,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>What is Discord?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							Discord hosts our PhanFT community hub. It&apos;s a place to get real time updates on the project, hang
 							out, engage with the community, discuss a variety of interests, and plant seeds for serendipity. It has
@@ -93,7 +94,14 @@ const SectionFAQs = (): JSX.Element => {
 							brand will have one.
 						</Typography>
 						<Typography sx={styles.answer}>
-							<Link href="https://discord.com/invite/P5VpF5f7qx" target="_blank" rel="noreferrer">
+							<Link
+								href="https://discord.com/invite/P5VpF5f7qx"
+								target="_blank"
+								rel="noreferrer"
+								underline="always"
+								color="inherit"
+								sx={{ fontWeight: 400, fontStyle: 'italic' }}
+							>
 								Join ours here!
 							</Link>
 						</Typography>
@@ -105,6 +113,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>What is an NFT?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							NFT stands for “Non-Fungible Token”, and it is a unique, one-of-a-kind digital item that users can buy,
 							own, and trade on the blockchain. NFTs are bought and sold using cryptocurrencies. The most common
@@ -118,6 +127,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>Where on the blockchain do NFTs live?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							Currently, most NFTs on the market live on the Ethereum blockchain. But there are other blockchains as
 							well that support NFTs, including Solana, Polygon, Cardano, and others.
@@ -130,59 +140,62 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>Okay, but what can an NFT be?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
-						<Typography sx={styles.answer}>An NFT can represent almost anything such as:</Typography>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
+						<Typography sx={{ ...styles.answer, mb: '0px !important' }}>
+							An NFT can represent almost anything such as:
+						</Typography>
 						<List>
 							<ListItem>
 								<ListItemIcon>
-									<Collections />
+									<Collections color="secondary" />
 								</ListItemIcon>
 								<ListItemText primary="Digital collectibles" />
 							</ListItem>
 							<ListItem>
 								<ListItemIcon>
-									<ColorLens />
+									<ColorLens color="secondary" />
 								</ListItemIcon>
 								<ListItemText primary="Artwork" />
 							</ListItem>
 							<ListItem>
 								<ListItemIcon>
-									<ConfirmationNumber />
+									<ConfirmationNumber color="secondary" />
 								</ListItemIcon>
 								<ListItemText primary="Concert tickets" />
 							</ListItem>
 							<ListItem>
 								<ListItemIcon>
-									<SportsEsports />
+									<SportsEsports color="secondary" />
 								</ListItemIcon>
 								<ListItemText primary="Video games and in-game items" />
 							</ListItem>
 							<ListItem>
 								<ListItemIcon>
-									<MusicNote />
+									<MusicNote color="secondary" />
 								</ListItemIcon>
 								<ListItemText primary="Music and publishing" />
 							</ListItem>
 							<ListItem>
 								<ListItemIcon>
-									<House />
+									<House color="secondary" />
 								</ListItemIcon>
 								<ListItemText primary="Contracts to real-world assets, such as real estate" />
 							</ListItem>
 							<ListItem>
 								<ListItemIcon>
-									<AccountCircle />
+									<AccountCircle color="secondary" />
 								</ListItemIcon>
 								<ListItemText primary="Digital IDs and avatars" />
 							</ListItem>
 							<ListItem>
 								<ListItemIcon>
-									<CardMembership />
+									<CardMembership color="secondary" />
 								</ListItemIcon>
 								<ListItemText primary="Club membership cards" />
 							</ListItem>
 							<ListItem>
 								<ListItemIcon>
-									<RocketLaunch />
+									<RocketLaunch color="secondary" />
 								</ListItemIcon>
 								<ListItemText primary="And many more..." />
 							</ListItem>
@@ -195,6 +208,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>How is ownership of the NFT guaranteed?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							Ownership is written into the smart contract that lives on the blockchain, forever and immutable, and
 							governs the rights of that digital asset. This is what allows digital items, such as images (which as we
@@ -209,6 +223,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>What are the essential characteristics and benefits of NFTs?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							<strong>Unique -</strong> An NFT&apos;s metadata describes what makes this asset different from all the
 							rest in a collection. This is a permanent, unalterable record that describes what this NFT represents,
@@ -247,6 +262,7 @@ const SectionFAQs = (): JSX.Element => {
 						</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							Sure, you <em>could</em> take a screenshot of it, but you don&apos;t own it. You can&apos;t sell it, trade
 							it, or prove you own it on the blockchain. You can&apos;t redeem it for perks and accessabilities that
@@ -263,6 +279,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>How do I mint an NFT?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							Here&apos;s the general process to buying an NFT from an on-sale (aka minting).
 						</Typography>
@@ -308,6 +325,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>What are gas fees? Do I need gas to buy an NFT?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							“Gas” refers to units of energy that&apos;s burned during a transaction on the Ethereum network, while
 							computers are verifying transactions and adding them to the blockchain. Think of it as a transaction fee,
@@ -325,6 +343,7 @@ const SectionFAQs = (): JSX.Element => {
 						</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							Think of it like opening a baseball card pack and pulling one card. You don&apos;t know which player you
 							will get. With our Lizard collection, each Lizard is unique and contains a different set of traits, with
@@ -345,6 +364,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>What if I want to sell my Lizard NFT sometime after I buy it?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							You can sell your Lizard(s) anytime. There are several marketplaces where you can buy/sell NFTs, the
 							market leader being{' '}
@@ -362,6 +382,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>What are secondary royalties, and how will they be used?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							PhanFT will receive 7.5% of all secondary sales. These proceeds will be used to continue to hire more
 							full-time employees, fund operations, and deliver even more value to our community.
@@ -374,6 +395,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>How do I help save the race of Lizards from extinction?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							Buy at least one (1) Lizard during our minting period. It will remove it from their life of purgatory in
 							Prussia and bring them safely to the Phanaverse where they can live in peace, harmony, and tranquility.
@@ -386,6 +408,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.question}>Other questions you&apos;d like us to add to this FAQ?</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
+						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							Please email them to <Link href="mailto:hello@phanft.com">hello@phanft.com</Link>. We&apos;ll keep this
 							updated and as robust as possible so phans with all levels of tech acumen can understand this and choose

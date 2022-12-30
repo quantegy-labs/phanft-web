@@ -34,7 +34,10 @@ const styles = {
 		},
 	},
 	listItem: {
-		color: '#fff',
+		span: {
+			color: '#fff',
+			fontWeight: 300,
+		},
 	},
 }
 
