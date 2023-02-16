@@ -14,7 +14,7 @@ import {
 } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { SyntheticEvent, useState } from 'react'
 import { useWeb3Context } from '../Web3Provider'
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet'
 import VerifiedUserSharpIcon from '@mui/icons-material/VerifiedUserSharp'
@@ -88,6 +88,9 @@ const pages = [
 const AppHeader = () => {
 	const [anchorElNav, setAnchorElNav] = useState<HTMLElement | null>(null)
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+	const logoSrcPink = '/logo_pink.svg'
+	const logoSrcGreen = '/logo_green.svg'
+	const [logoSrc, setLogoSrc] = useState<string>(logoSrcPink)
 
 	const { connected, connectWallet, disconnectWallet, connectedAddress, web3Provider } = useWeb3Context()
 
@@ -115,6 +118,26 @@ const AppHeader = () => {
 		disconnectWallet()
 		handleClose()
 	}
+
+	const handleToggleLogo = (e: SyntheticEvent) => {
+		// @ts-ignore
+		const src = e.target.src.split('/').reverse()[0]
+		const newSrc = `/${src}` === logoSrcPink ? logoSrcGreen : logoSrcPink
+		setLogoSrc(newSrc)
+	}
+
+	const LogoComponent: JSX.Element = (
+		<Link href="/">
+			<Image
+				src={logoSrc}
+				width={200}
+				height={40}
+				alt="PhanFT Logo"
+				onMouseEnter={handleToggleLogo}
+				onMouseLeave={handleToggleLogo}
+			/>
+		</Link>
+	)
 
 	return (
 		<AppBar position="sticky" enableColorOnDark sx={styles.appbar}>
@@ -163,9 +186,7 @@ const AppHeader = () => {
 						<Typography variant="h1" sx={styles.hidden}>
 							PhanFT
 						</Typography>
-						<Link href="/">
-							<Image src="/logo.png" width={200} height={40} alt="PhanFT Logo" />
-						</Link>
+						{LogoComponent}
 					</Box>
 
 					{/* Desktop Navigation */}
@@ -173,9 +194,7 @@ const AppHeader = () => {
 						<Typography variant="h1" sx={styles.hidden}>
 							PhanFT
 						</Typography>
-						<Link href="/">
-							<Image src="/logo.png" width={200} height={40} alt="PhanFT Logo" />
-						</Link>
+						{LogoComponent}
 					</Box>
 					<Box component="nav" sx={styles.desktopNavWrap}>
 						{pages.map(page => (
