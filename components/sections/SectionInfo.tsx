@@ -80,7 +80,7 @@ const SectionInfo = (): JSX.Element => (
 								The Nitty Gritty
 							</Typography>
 							<Typography variant="h5" gutterBottom sx={styles.subheading}>
-								Technical specs and how to mint
+								Tech specs and how to mint
 							</Typography>
 							<Box className="small-block secondary left" />
 							<Typography sx={styles.text}>
@@ -96,7 +96,7 @@ const SectionInfo = (): JSX.Element => (
 								>
 									<em>certified on the MINTangible Rights Registry</em>
 								</Link>{' '}
-								with rights granted in a transparent on-chain licensing agreement.
+								with rights granted in a transparent, on-chain licensing agreement.
 							</Typography>
 							<Typography sx={styles.text}>
 								If you&apos;re new to the minting process or just want some more info, please see our{' '}

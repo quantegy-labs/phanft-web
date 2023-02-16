@@ -301,7 +301,7 @@ const MintingContainer = (): JSX.Element => {
 			)}
 			<Box sx={{ mt: 2 }}>
 				<Typography variant="h4" gutterBottom>
-					Buy With $USD
+					Buy With USD
 				</Typography>
 				<Typography gutterBottom>
 					If you don&apos;t have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhanFT

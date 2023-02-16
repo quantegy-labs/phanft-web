@@ -45,22 +45,30 @@ const SectionMission = (): JSX.Element => (
 			<Grid container spacing={4}>
 				<Grid item md={6}>
 					<Typography sx={styles.missionText}>
-						The way people interact and engage digitally is evolving faster than ever. Thanks to Web3 technologies,
-						we&apos;re at the forefront of a new era where passionate communities can self-organize to celebrate what
-						they love most, create value in forward-thinking ways, and collaborate to achieve common goals.
+						The way people interact and engage digitally is evolving faster than ever. Thanks to blockchain
+						technologies, we&apos;re at the forefront of a new era where communities with shared passions can
+						self-organize to celebrate what they love most, create value digitally in forward-thinking ways, and
+						collaborate in distributed fashion to achieve common goals.
 					</Typography>
 					<Typography sx={styles.missionText}>
 						Similar to how phans were among the first in the mid-90&apos;s web 1.0 era to congregate and build digital
 						community in newsgroups, AOL chatrooms, and message boards to trade tapes, share show reviews and speculate
-						over rumors; today we have a massive opportunity to become digital pioneers once again, and together define
-						what a passionate music community can do and be.
+						over rumors; today we have a massive opportunity to become digital pioneers once again, and together
+						reinvent and redefine what a passionate music community can do and be.
 					</Typography>
 					<Typography sx={styles.missionText}>
-						We believe in and understand how NFTs are the ideal vehicle to enable and reward fandom, while supporting a
-						healthy digital ecosystem for artists and creators.
+						What we are building is a place &apos;strut yo&apos; stuff&apos;. Got tour tales to tell? Do you like
+						teaching others about web3 concepts? Creating digital art or videos? Lizard holders have the opportunity to
+						contribute your unique gifts, skills, and talents to help the project grow.
 					</Typography>
 				</Grid>
 				<Grid item md={6}>
+					<Typography sx={styles.missionText}>
+						We know it&apos;s a tough time for NFTs right now in the public perception. Markets are cyclical and we
+						believe bright days are ahead. Underneath the noise, we believe in and understand why NFTs are the ideal
+						vehicle to enable and reward fandom, while supporting a healthy digital ecosystem for artists and creators.
+						This tech is here to stay and we want to be leaders who embrace it.
+					</Typography>
 					<Typography sx={styles.missionText}>
 						If PhanFT is fortunate enough to flourish, we plan on doing a variety of partnerships with established
 						artists in the scene. Our digital artist partners will receive a royalty not only on primary sales but also
@@ -69,18 +77,9 @@ const SectionMission = (): JSX.Element => (
 						Pretty awesome.
 					</Typography>
 					<Typography sx={styles.missionText}>
-						We&apos;re excited to see that same model flow into ticketing, and put secondary sales back into the
-						band&apos;s pockets instead of scalpers.
-					</Typography>
-					<Typography sx={styles.missionText}>
-						We&apos;re stoked about this new digital paradigm with endless possibilities. Consider this your invitation
-						to jump in the pond (with us here to guide you) as we create a vibrant and inclusive phan community in Web3
-						during this 4.0 era.
-					</Typography>
-					<Typography sx={styles.missionText}>
-						Strut Yo&apos;Stuff: Got tour tales to tell? Do you like teaching others about web3 concepts? Creating
-						digital art or videos? Lizard holders have the opportunity to contribute your unique gifts, skills, and
-						talents to help the project grow.
+						We&apos;re stoked about this new paradigm with endless possibilities. Consider this your invitation to jump
+						in the pond (with us here to guide you) as we create a vibrant and inclusive phan community in Web3 during
+						this 4.0 era.
 					</Typography>
 				</Grid>
 			</Grid>

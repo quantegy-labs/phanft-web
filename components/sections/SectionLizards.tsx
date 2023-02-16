@@ -64,25 +64,22 @@ const SectionLizards = (): JSX.Element => (
 			</Typography>
 			<Box className="large-block secondary" />
 			<Typography sx={styles.lizardsText}>
-				PhanFT&apos;s first collection is Enlightened Lizards - 555 unique digital collectibles on the Ethereum
-				blockchain.
+				Our first collection is <strong>Enlightened Lizards</strong> - 555 unique pieces of digital phan art on the
+				Ethereum blockchain. No two are the same.
 			</Typography>
 			<Typography sx={styles.lizardsText}>
-				Ownership grants you access to an early adopter community of phans passionate about web3, music culture, and new
-				forms of participatory fandom.
-			</Typography>
-			<Typography sx={styles.lizardsText}>
-				Each Lizard is unique digital art and algorithmically generated from a variety of illustrated traits, including
-				facial expression, clothing, accessories, and other attributes that give a wink and a nod to song lore or phan
+				Each Lizard character is generated from a variety of original illustrated traits including facial expression,
+				clothing, accessories, and other ‘phashionable&apos; attributes, that give a wink and a nod to song lore or phan
 				culture.
 			</Typography>
 			<Typography sx={styles.lizardsText}>
-				This first collection will also include 25 extra-rare ones minted at random of an aging knight in gnarly armor,
-				who was once a lizard too.
+				The collection also includes 25 extra-rare ones minted at random of an aging knight in gnarly armor, who was
+				once a lizard too.
 			</Typography>
 			<Typography sx={styles.lizardsText}>
-				As a lizard holder, you are early. You are 1.0. Everything that we create going forward you will get to
-				participate in and benefit from, including future collections, airdrops and more as we expand exponentially.
+				As a lizard holder, you are early. You are 1.0 at this web3 party. Everything that we create going forward you
+				will get to participate in and benefit from, including future limited edition collections, airdrops, community
+				events, and more as we expand exponentially.
 			</Typography>
 		</Container>
 	</Box>

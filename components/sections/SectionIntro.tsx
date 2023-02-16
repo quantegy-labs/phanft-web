@@ -7,9 +7,9 @@ const styles = {
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		py: 10,
+		py: 20,
 		px: 4,
-		background: "url('/herobg.png') center center no-repeat",
+		background: "url('/banner_msg.webp') center top no-repeat",
 		backgroundSize: 'cover',
 	},
 	headline: {
@@ -54,20 +54,16 @@ const SectionIntro = (): JSX.Element => (
 		<Box id="intro" component="section">
 			<Container maxWidth="lg">
 				<Typography variant="h3" gutterBottom sx={styles.heading}>
-					The Only Rule is it Begins
+					This one is for you, and a few companions on this ride
 				</Typography>
 				<Box className="large-block" />
 				<Typography sx={styles.introText}>
-					By phans, for phans, PhanFT is a series of utility-driven NFT collections to celebrate and unify our amazing
-					music & art loving community in Web3 & IRL.
+					PhanFT is your NFT passport to a helping phriendly community who are excited about the future of web3,
+					music-art culture, and new forms of participatory fandom.
 				</Typography>
 				<Typography sx={styles.introText}>
-					We&apos;re on a mission to redefine what our passionate community can do and be, build a digital platform for
-					artists in our community to shine, and raise funds for some awesome charities.
-				</Typography>
-				<Typography sx={styles.introText}>
-					Together, we&apos;re lighting the torch for a whole new paradigm for phans to connect, collect, commune, and
-					continue sharin&apos; in the groove around Vermont&apos;s Phinest. ⭕️
+					Together, we&apos;re lighting the torch for a whole new paradigm for phans to collect, commune, and continue
+					sharin&apos; in the groove around Vermont&apos;s Phinest. ⭕️
 				</Typography>
 				<Box display="flex" justifyContent="center">
 					<Link href="/mint">

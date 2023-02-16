@@ -39,15 +39,8 @@ const AppFooter = (): JSX.Element => (
 				<Image src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
 			</a>
 		</Box>
-		<Typography variant="overline">
-			<strong>Attention artists:</strong> If you&apos;re interested in designing the art for future collections, please{' '}
-			<Link href="mailto:gm@phanft.xyz" color="inherit">
-				contact us
-			</Link>{' '}
-			.
-		</Typography>
 		<Typography variant="overline" component="p">
-			&copy; 2022 | Property of{' '}
+			&copy;2022 Property of{' '}
 			<Link href="https://quantegylabs.com" target="_blank" rel="noopener noreferrer" underline="hover" color="inherit">
 				Quantegy Labs
 			</Link>{' '}
@@ -58,6 +51,10 @@ const AppFooter = (): JSX.Element => (
 			|{' '}
 			<Link href="/terms" underline="hover" color="inherit">
 				Terms of Use
+			</Link>{' '}
+			|{' '}
+			<Link href="mailto:gm@phanft.xyz" underline="hover" color="inherit">
+				Artist Partner Inquiries
 			</Link>
 		</Typography>
 	</Box>
