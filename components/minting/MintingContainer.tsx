@@ -304,7 +304,7 @@ const MintingContainer = (): JSX.Element => {
 					Buy With USD
 				</Typography>
 				<Typography gutterBottom>
-					If you don&apos;t have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhanFT
+					If you don&apos;t have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhaNFT
 					membership. We partnered with{' '}
 					<Link href="https://crossmint.io" target="_blank" color="inherit">
 						Crossmint

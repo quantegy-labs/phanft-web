@@ -23,7 +23,7 @@ const AdminPage: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>PhanFT | Your Web 3.0 Pass to 4.0 Phandom</title>
+				<title>PhaNFT | Your Web 3.0 Pass to 4.0 Phandom</title>
 			</Head>
 			<AppLayout>
 				<Container maxWidth="xl" sx={styles.container}>

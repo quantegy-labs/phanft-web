@@ -20,11 +20,11 @@ const contractAddress = '0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2'
 
 const generateDescription = id => `**About Enlightened Lizards**
 
-Enlightened Lizards is a NFT collection of utility-driven, digital collectibles that celebrate and unify our amazing community centered around music, art, and positivity. As the genesis collection from [PhanFT](https://phanft.xyz), created for phans by phans, these NFTs grant membership access into the PhanFT ecosystem and unlock all the benefits that come with it. It's your web3 pass to 4.0 phandom!
+Enlightened Lizards is a NFT collection of utility-driven, digital collectibles that celebrate and unify our amazing community centered around music, art, and positivity. As the genesis collection from [PhaNFT](https://phanft.xyz), created for phans by phans, these NFTs grant membership access into the PhaNFT ecosystem and unlock all the benefits that come with it. It's your web3 pass to 4.0 phandom!
 
 **Utility-Driven Digital Collectibles**
 
-The utility comes in the form of redeemable items attached to the given token's ID. These can be loaded on retro-actively from PhanFT and can be claimed on-chain. Items can take the form of IRL swag and collaborations with community artists, event tickets, token airdrops, and more. Check out the [PhanFT roadmap](https://phanft.xyz/roadmap) for more information.
+The utility comes in the form of redeemable items attached to the given token's ID. These can be loaded on retro-actively from PhaNFT and can be claimed on-chain. Items can take the form of IRL swag and collaborations with community artists, event tickets, token airdrops, and more. Check out the [PhaNFT roadmap](https://phanft.xyz/roadmap) for more information.
 
 Each token keeps its own state of redeemable items, including what has or hasn't been claimed. For the latest state of this token's redeemable items, view its [NFT status page](https://phanft.xyz/enlightened-lizards/${id}).
 
@@ -46,7 +46,7 @@ data.collection.forEach((item, idx) => {
 	// update image URI - ipfs://[cid]/1.png
 	item.image = `${imagesBaseUri}/${item.image}`
 
-	// point to NFT viewer on PhanFT website
+	// point to NFT viewer on PhaNFT website
 	item.external_url = `https://phanft.xyz/enlightened-lizards/${id}`
 
 	// add in MINTangible digital IP rights URIs
@@ -59,7 +59,7 @@ data.collection.forEach((item, idx) => {
 	item.contract_address = contractAddress
 
 	// add in creators information
-	item.properties.creators = ['PhanFT (@phanft_official Twitter)', 'dco (@dcodev_ Twitter)']
+	item.properties.creators = ['PhaNFT (@phanft_official Twitter)', 'dco (@dcodev_ Twitter)']
 
 	// update genesis field
 	item.properties.is_genesis = true

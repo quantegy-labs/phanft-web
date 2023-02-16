@@ -59,7 +59,7 @@ const SectionIntro = (): JSX.Element => (
 				</Typography>
 				<Box className="large-block" />
 				<Typography sx={styles.introText}>
-					PhanFT is your NFT passport to a helping phriendly community who are excited about the future of web3,
+					PhaNFT is your NFT passport to a helping phriendly community who are excited about the future of web3,
 					music-art culture, and new forms of participatory fandom.
 				</Typography>
 				<Typography sx={styles.introText}>

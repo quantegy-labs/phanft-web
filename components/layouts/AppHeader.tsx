@@ -132,7 +132,7 @@ const AppHeader = () => {
 				src={logoSrc}
 				width={200}
 				height={40}
-				alt="PhanFT Logo"
+				alt="PhaNFT Logo"
 				onMouseEnter={handleToggleLogo}
 				onMouseLeave={handleToggleLogo}
 			/>
@@ -184,7 +184,7 @@ const AppHeader = () => {
 					</Box>
 					<Box sx={styles.mobileNavLogo}>
 						<Typography variant="h1" sx={styles.hidden}>
-							PhanFT
+							PhaNFT
 						</Typography>
 						{LogoComponent}
 					</Box>
@@ -192,7 +192,7 @@ const AppHeader = () => {
 					{/* Desktop Navigation */}
 					<Box sx={styles.desktopNavLogo}>
 						<Typography variant="h1" sx={styles.hidden}>
-							PhanFT
+							PhaNFT
 						</Typography>
 						{LogoComponent}
 					</Box>

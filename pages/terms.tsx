@@ -41,7 +41,7 @@ const TermsAndConditionsPage: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>PhanFT | Terms and Conditions</title>
+				<title>PhaNFT | Terms and Conditions</title>
 			</Head>
 			<AppLayout>
 				<Container maxWidth="lg">

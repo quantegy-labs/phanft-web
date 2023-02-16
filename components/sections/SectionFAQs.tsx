@@ -88,7 +88,7 @@ const SectionFAQs = (): JSX.Element => {
 					<AccordionDetails>
 						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
-							Discord hosts our PhanFT community hub. It&apos;s a place to get real time updates on the project, hang
+							Discord hosts our PhaNFT community hub. It&apos;s a place to get real time updates on the project, hang
 							out, engage with the community, discuss a variety of interests, and plant seeds for serendipity. It has
 							become the gold standard community platform for NFT projects, and by the end of 2022, we expect every
 							brand will have one.
@@ -330,7 +330,7 @@ const SectionFAQs = (): JSX.Element => {
 							“Gas” refers to units of energy that&apos;s burned during a transaction on the Ethereum network, while
 							computers are verifying transactions and adding them to the blockchain. Think of it as a transaction fee,
 							and it goes directly to Ethereum miners who provide the computer power necessary to verify transactions.
-							Gas prices fluctuate based on the demand at any given time. PhanFT does not receive a percentage of gas
+							Gas prices fluctuate based on the demand at any given time. PhaNFT does not receive a percentage of gas
 							fees and has no control over network congestion or gas prices.
 						</Typography>
 					</AccordionDetails>
@@ -384,7 +384,7 @@ const SectionFAQs = (): JSX.Element => {
 					<AccordionDetails>
 						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
-							PhanFT will receive 7.5% of all secondary sales. These proceeds will be used to continue to hire more
+							PhaNFT will receive 7.5% of all secondary sales. These proceeds will be used to continue to hire more
 							full-time employees, fund operations, and deliver even more value to our community.
 						</Typography>
 					</AccordionDetails>

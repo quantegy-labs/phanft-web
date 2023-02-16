@@ -35,7 +35,7 @@ const SectionMission = (): JSX.Element => (
 		<Container maxWidth="lg">
 			<Box sx={styles.headings}>
 				<Typography variant="h3" sx={styles.heading}>
-					Why PhanFT?
+					Why PhaNFT?
 				</Typography>
 				<Typography variant="h4" sx={styles.subheading}>
 					Our Time is Near, the Mission&apos;s Clear
@@ -70,7 +70,7 @@ const SectionMission = (): JSX.Element => (
 						This tech is here to stay and we want to be leaders who embrace it.
 					</Typography>
 					<Typography sx={styles.missionText}>
-						If PhanFT is fortunate enough to flourish, we plan on doing a variety of partnerships with established
+						If PhaNFT is fortunate enough to flourish, we plan on doing a variety of partnerships with established
 						artists in the scene. Our digital artist partners will receive a royalty not only on primary sales but also
 						on secondary market sales, such as on OpenSea. Imagine a world where instead of artists making a one-time
 						sale at the merch booth, they get a cut every time their work exchanges hands, for years and years to come.

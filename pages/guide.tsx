@@ -72,7 +72,7 @@ const GuidePage: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>PhanFT | How to Mint Guide</title>
+				<title>PhaNFT | How to Mint Guide</title>
 			</Head>
 			<AppLayout>
 				<Container maxWidth="lg" sx={styles.wrap}>
@@ -90,7 +90,7 @@ const GuidePage: NextPage = () => {
 							Split Open and Mint!
 						</Typography>
 						<Typography sx={styles.p}>
-							If you&apos;ve never purchased an NFT before and plan to purchase a PhanFT Enlightened Lizard, you&apos;ll
+							If you&apos;ve never purchased an NFT before and plan to purchase a PhaNFT Enlightened Lizard, you&apos;ll
 							want to read this! NFTs are acquired in one of two ways. The first is via minting, which is the earliest
 							stage you can buy an NFT. By minting a token, you bring it to life on the blockchain, shocking and
 							persuading its metadata to ignite.
@@ -100,12 +100,12 @@ const GuidePage: NextPage = () => {
 							been minted are bought, sold, and exchanged between wallets via secondary marketplaces. Think of it like
 							eBay for NFTs.
 						</Typography>
-						<Typography sx={styles.p}>For now lets focus on how to Mint an Enlightened Lizard from PhanFT.</Typography>
+						<Typography sx={styles.p}>For now lets focus on how to Mint an Enlightened Lizard from PhaNFT.</Typography>
 						<Typography variant="h4" sx={{ mb: 4 }} component="h3">
 							Option 1: The Easiest Way - Buy With Credit Card
 						</Typography>
 						<Typography sx={styles.p}>
-							PhanFT partnered with Crossmint to make purchasing an Enlightened Lizards NFT as easy as possible (no
+							PhaNFT partnered with Crossmint to make purchasing an Enlightened Lizards NFT as easy as possible (no
 							crypto required.)
 						</Typography>
 						<Typography sx={styles.p}>

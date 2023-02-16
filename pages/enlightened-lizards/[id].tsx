@@ -10,7 +10,7 @@ const EnlightenedLizardDetailsPage: NextPage = props => {
 	return (
 		<>
 			<Head>
-				<title>PhanFT | Enlightened Lizards #{id}</title>
+				<title>PhaNFT | Enlightened Lizards #{id}</title>
 			</Head>
 			<AppLayout>
 				<Container maxWidth="xl" sx={{ my: 8, textAlign: 'center' }}>

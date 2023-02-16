@@ -14,7 +14,7 @@ class AppDocument extends Document {
 				<Head>
 					<meta
 						name="description"
-						content="By phans, for phans, PhanFT is a series of utility-driven NFT collections to celebrate and unify our amazing music & art loving community in Web3 & IRL."
+						content="By phans, for phans, PhaNFT is a series of utility-driven NFT collections to celebrate and unify our amazing music & art loving community in Web3 & IRL."
 					/>
 					<link rel="icon" href="/favicon.ico" />
 					<link rel="preconnect" href="https://fonts.googleapis.com" />

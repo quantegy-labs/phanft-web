@@ -41,7 +41,7 @@ const PrivacyPage: NextPage = () => {
 	return (
 		<>
 			<Head>
-				<title>PhanFT | Privacy Policy</title>
+				<title>PhaNFT | Privacy Policy</title>
 			</Head>
 			<AppLayout>
 				<Container maxWidth="lg">

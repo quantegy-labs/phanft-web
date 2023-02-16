@@ -114,7 +114,7 @@ const SectionRoadmap = (): JSX.Element => (
 			</Box>
 			<Box className="large-block" />
 			<Typography sx={styles.roadmapText}>
-				PhanFT aims to be a community-driven project, where the uses of secondary sale proceeds are decided by the
+				PhaNFT aims to be a community-driven project, where the uses of secondary sale proceeds are decided by the
 				community through a Helping Friendly DAO. Members will be able to propose ideas and vote on spending, with
 				decisions made through a majority vote of holders and executed by treasury funds.
 			</Typography>
