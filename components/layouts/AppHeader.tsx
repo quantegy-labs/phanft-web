@@ -207,30 +207,32 @@ const AppHeader = () => {
 						))}
 					</Box>
 					<Box sx={styles.connectBtnWrap}>
-						<a
-							href="https://discord.gg/pxwNvgMQaU"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="social-icon-link"
-						>
-							<Image quality={20} src="/icon_discord.svg" alt="Discord" width={20} height={20} />
-						</a>
-						<a
-							href="https://twitter.com/phanft_official"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="social-icon-link"
-						>
-							<Image quality={20} src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
-						</a>
-						<a
-							href="https://instagram.com/phanft_official"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="social-icon-link"
-						>
-							<Image quality={20} src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
-						</a>
+						<Box display={{ xs: 'none', lg: 'inline-block' }}>
+							<a
+								href="https://discord.gg/pxwNvgMQaU"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="social-icon-link"
+							>
+								<Image quality={20} src="/icon_discord.svg" alt="Discord" width={20} height={20} />
+							</a>
+							<a
+								href="https://twitter.com/phanft_official"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="social-icon-link"
+							>
+								<Image quality={20} src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
+							</a>
+							<a
+								href="https://instagram.com/phanft_official"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="social-icon-link"
+							>
+								<Image quality={20} src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
+							</a>
+						</Box>
 						<Link href="/mint">
 							<Button onClick={handleCloseNavMenu} variant="contained" color="primary" size="small" sx={{ ml: 1 }}>
 								Mint Now
@@ -289,7 +291,7 @@ const AppHeader = () => {
 									onClick={handleConnectWallet}
 									color="secondary"
 									size="small"
-									sx={{ display: { xs: 'none', sm: 'inline-flex' }, ml: 2 }}
+									sx={{ ml: 2 }}
 									disabled={!web3Provider}
 								>
 									<Image quality={20} src="/icon_wallet.svg" alt="Connect a Wallet" width={25} height={25} />
