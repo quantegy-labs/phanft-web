@@ -3,6 +3,14 @@ import Head from 'next/head'
 import NextLink from 'next/link'
 import { Box, Container, Link, Paper, Typography } from '@mui/material'
 import AppLayout from '../components/layouts/AppLayout'
+import Image from 'next/image'
+import image1 from '../public/guide-imgs/image1.png'
+import image2 from '../public/guide-imgs/image2.png'
+import image3 from '../public/guide-imgs/image3.png'
+import image4 from '../public/guide-imgs/image4.png'
+import image5 from '../public/guide-imgs/image5.png'
+import image6 from '../public/guide-imgs/image6.png'
+import image7 from '../public/guide-imgs/image7.png'
 
 const styles = {
 	wrap: {
@@ -216,14 +224,14 @@ const GuidePage: NextPage = () => {
 									extension.
 								</Typography>
 							</li>
-							<img className="guide-img" width="100%" height="auto" src="/guide-imgs/image1.png" />
+							<Image quality={20} src={image1} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									The extension is accessible in the top right corner with the puzzle piece icon, if you click that, you
 									can click the pin to make it easier to find.
 								</Typography>
 							</li>
-							<img className="guide-img" width="100%" height="auto" src="/guide-imgs/image7.png" />
+							<Image quality={20} src={image7} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									After you install the extension you will be redirected to a new page. Click &quote;Create a
@@ -246,7 +254,7 @@ const GuidePage: NextPage = () => {
 									for your seed phrase and no legitimate entity or person will.
 								</Typography>
 							</li>
-							<img className="guide-img" width="100%" height="auto" src="/guide-imgs/image5.png" />
+							<Image quality={20} src={image5} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									Find your Ethereum address. You can open your wallet by clicking the Fox icon in the top right corner
@@ -291,7 +299,7 @@ const GuidePage: NextPage = () => {
 							</NextLink>{' '}
 							and connect your wallet. Icon on upper right hand corner of site navigation bar.
 						</Typography>
-						<img className="guide-img" width="100%" height="auto" src="/guide-imgs/image2.png" />
+						<Image quality={20} src={image2} alt="How to Mint" />
 						<Typography sx={styles.h5} variant="h5">
 							Step 4 - Mint a Lizard!
 						</Typography>
@@ -351,14 +359,14 @@ const GuidePage: NextPage = () => {
 							<li>
 								<Typography sx={styles.li}>On the pop-up dialog, click &quot;Add Wallet&quot;.</Typography>
 							</li>
-							<img className="guide-img" width="100%" height="auto" src="/guide-imgs/image6.png" />
+							<Image quality={20} src={image6} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									Get your ETH address from your MetaMask wallet. Click the “Copy” icon as shown in the MetaMask
 									screenshot below.
 								</Typography>
 							</li>
-							<img className="guide-img" width="100%" height="auto" src="/guide-imgs/image3.png" />
+							<Image quality={20} src={image3} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									Go back to{' '}
@@ -380,7 +388,7 @@ const GuidePage: NextPage = () => {
 									so make sure your ETH address is correct in the field above.
 								</Typography>
 							</li>
-							<img className="guide-img" width="100%" height="auto" src="/guide-imgs/image4.png" />
+							<Image quality={20} src={image4} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>It may take a minute for the transfer to complete...</Typography>
 							</li>

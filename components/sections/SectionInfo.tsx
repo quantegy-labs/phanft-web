@@ -43,7 +43,14 @@ const SectionInfo = (): JSX.Element => (
 				<Paper elevation={3} sx={styles.paper}>
 					<Grid container spacing={4}>
 						<Grid item xs={12} sm={4}>
-							<Image width={460} height={320} src="/charities.png" alt="Waterwheel &amp; Mockingbird Foundation" />
+							<Image
+								quality={20}
+								layout="responsive"
+								width={460}
+								height={320}
+								src="/charities.png"
+								alt="Waterwheel &amp; Mockingbird Foundation"
+							/>
 						</Grid>
 						<Grid item xs={12} sm={8}>
 							<Typography variant="h3" gutterBottom sx={styles.heading}>
@@ -107,7 +114,14 @@ const SectionInfo = (): JSX.Element => (
 							</Typography>
 						</Grid>
 						<Grid item xs={12} sm={4}>
-							<Image width={300} height={300} src="/lizard_unknown.png" alt="Lizards Genesis PFP" />
+							<Image
+								quality={20}
+								layout="responsive"
+								width={300}
+								height={300}
+								src="/lizard_unknown.png"
+								alt="Lizards Genesis PFP"
+							/>
 						</Grid>
 					</Grid>
 				</Paper>

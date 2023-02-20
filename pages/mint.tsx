@@ -51,7 +51,14 @@ const AdminPage: NextPage = () => {
 								if this is your first time minting an NFT.
 							</Typography>
 							<Box sx={{ maxWidth: '500px', m: 'auto', mt: 8 }}>
-								<Image width={600} height={600} src="/lizard5.png" alt="Lizards Genesis PFP" />
+								<Image
+									quality={20}
+									layout="responsive"
+									width={600}
+									height={600}
+									src="/lizard5.png"
+									alt="Lizards Genesis PFP"
+								/>
 							</Box>
 						</Grid>
 						<Grid item xs={12} md={7}>

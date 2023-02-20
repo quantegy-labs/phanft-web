@@ -129,6 +129,7 @@ const AppHeader = () => {
 	const LogoComponent: JSX.Element = (
 		<Link href="/">
 			<Image
+				quality={20}
 				src={logoSrc}
 				width={200}
 				height={40}
@@ -212,7 +213,7 @@ const AppHeader = () => {
 							rel="noopener noreferrer"
 							className="social-icon-link"
 						>
-							<Image src="/icon_discord.svg" alt="Discord" width={20} height={20} />
+							<Image quality={20} src="/icon_discord.svg" alt="Discord" width={20} height={20} />
 						</a>
 						<a
 							href="https://twitter.com/phanft_official"
@@ -220,7 +221,7 @@ const AppHeader = () => {
 							rel="noopener noreferrer"
 							className="social-icon-link"
 						>
-							<Image src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
+							<Image quality={20} src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
 						</a>
 						<a
 							href="https://instagram.com/phanft_official"
@@ -228,7 +229,7 @@ const AppHeader = () => {
 							rel="noopener noreferrer"
 							className="social-icon-link"
 						>
-							<Image src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
+							<Image quality={20} src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
 						</a>
 						<Link href="/mint">
 							<Button onClick={handleCloseNavMenu} variant="contained" color="primary" size="small" sx={{ ml: 1 }}>
@@ -291,7 +292,7 @@ const AppHeader = () => {
 									sx={{ display: { xs: 'none', sm: 'inline-flex' }, ml: 2 }}
 									disabled={!web3Provider}
 								>
-									<Image src="/icon_wallet.svg" alt="Connect a Wallet" width={25} height={25} />
+									<Image quality={20} src="/icon_wallet.svg" alt="Connect a Wallet" width={25} height={25} />
 								</IconButton>
 							))}
 					</Box>

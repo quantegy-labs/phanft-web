@@ -60,7 +60,14 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 		<Box className={loading ? 'animate-pulse saturate-0 pointer-events-none' : ''}>
 			<Grid container spacing={3}>
 				<Grid item xs={6}>
-					<Image src="/lizard_unknown.png" alt="Collection preview" width={400} height={400} />
+					<Image
+						quality={20}
+						layout="responsive"
+						src="/lizard_unknown.png"
+						alt="Collection preview"
+						width={400}
+						height={400}
+					/>
 				</Grid>
 				<Grid item xs={6}>
 					<Typography variant="h5" component="p">

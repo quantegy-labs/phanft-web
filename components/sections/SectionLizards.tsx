@@ -39,22 +39,50 @@ const SectionLizards = (): JSX.Element => (
 			<Grid container spacing={4}>
 				<Grid item xs={6}>
 					<Box sx={styles.imageWrap}>
-						<Image layout="responsive" width={500} height={500} src="/lizard1.png" alt="Lizards Genesis PFP" />
+						<Image
+							quality={20}
+							layout="responsive"
+							width={500}
+							height={500}
+							src="/lizard1.png"
+							alt="Lizards Genesis PFP"
+						/>
 					</Box>
 				</Grid>
 				<Grid item xs={6}>
 					<Box sx={styles.imageWrap}>
-						<Image layout="responsive" width={500} height={500} src="/lizard2.png" alt="Lizards Genesis PFP" />
+						<Image
+							quality={20}
+							layout="responsive"
+							width={500}
+							height={500}
+							src="/lizard2.png"
+							alt="Lizards Genesis PFP"
+						/>
 					</Box>
 				</Grid>
 				<Grid item xs={6}>
 					<Box sx={styles.imageWrap}>
-						<Image layout="responsive" width={500} height={500} src="/lizard3.png" alt="Lizards Genesis PFP" />
+						<Image
+							quality={20}
+							layout="responsive"
+							width={500}
+							height={500}
+							src="/lizard3.png"
+							alt="Lizards Genesis PFP"
+						/>
 					</Box>
 				</Grid>
 				<Grid item xs={6}>
 					<Box sx={styles.imageWrap}>
-						<Image layout="responsive" width={500} height={500} src="/lizard4.png" alt="Lizards Genesis PFP" />
+						<Image
+							quality={20}
+							layout="responsive"
+							width={500}
+							height={500}
+							src="/lizard4.png"
+							alt="Lizards Genesis PFP"
+						/>
 					</Box>
 				</Grid>
 			</Grid>

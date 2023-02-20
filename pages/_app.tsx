@@ -10,7 +10,7 @@ const PhanFTApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 		<Web3ContextProvider>
 			<ThemeProvider theme={theme}>
 				<NextNProgress
-					color={theme.palette.primary.main}
+					color={theme.palette.secondary.main}
 					startPosition={0.3}
 					stopDelayMs={200}
 					height={3}

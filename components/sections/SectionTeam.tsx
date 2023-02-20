@@ -71,7 +71,14 @@ const SectionTeam = (): JSX.Element => {
 				<Grid container spacing={4}>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image width={300} height={300} src="/lizard_david.png" alt="Team Member" />
+							<Image
+								quality={20}
+								layout="responsive"
+								width={300}
+								height={300}
+								src="/lizard_david.png"
+								alt="Team Member"
+							/>
 							<Typography variant="h5" component="h4" sx={styles.title}>
 								David
 							</Typography>
@@ -86,7 +93,14 @@ const SectionTeam = (): JSX.Element => {
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image width={300} height={300} src="/lizard_drew.png" alt="Team Member" />
+							<Image
+								quality={20}
+								layout="responsive"
+								width={300}
+								height={300}
+								src="/lizard_drew.png"
+								alt="Team Member"
+							/>
 							<Typography variant="h5" component="h4" sx={styles.title}>
 								Drew
 							</Typography>
@@ -101,7 +115,14 @@ const SectionTeam = (): JSX.Element => {
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image width={300} height={300} src="/lizard_ian.png" alt="Team Member" />
+							<Image
+								quality={20}
+								layout="responsive"
+								width={300}
+								height={300}
+								src="/lizard_ian.png"
+								alt="Team Member"
+							/>
 							<Typography variant="h5" component="h4" sx={styles.title}>
 								Ian
 							</Typography>

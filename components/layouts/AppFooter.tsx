@@ -20,7 +20,7 @@ const AppFooter = (): JSX.Element => (
 	<Box component="footer" sx={styles.footer}>
 		<Box sx={styles.socialWrap}>
 			<a href="https://discord.gg/pxwNvgMQaU" target="_blank" rel="noopener noreferrer" className="social-icon-link">
-				<Image src="/icon_discord.svg" alt="Discord" width={20} height={20} />
+				<Image quality={20} src="/icon_discord.svg" alt="Discord" width={20} height={20} />
 			</a>
 			<a
 				href="https://twitter.com/phanft_official"
@@ -28,7 +28,7 @@ const AppFooter = (): JSX.Element => (
 				rel="noopener noreferrer"
 				className="social-icon-link"
 			>
-				<Image src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
+				<Image quality={20} src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
 			</a>
 			<a
 				href="https://instagram.com/phanft_official"
@@ -36,7 +36,7 @@ const AppFooter = (): JSX.Element => (
 				rel="noopener noreferrer"
 				className="social-icon-link"
 			>
-				<Image src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
+				<Image quality={20} src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
 			</a>
 		</Box>
 		<Typography variant="overline" component="p">
