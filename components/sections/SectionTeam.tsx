@@ -71,8 +71,7 @@ const SectionTeam = (): JSX.Element => {
 				<Grid container spacing={4}>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image
-								quality={20}
+							<Image priority								quality={20}
 								layout="responsive"
 								width={300}
 								height={300}
@@ -93,8 +92,7 @@ const SectionTeam = (): JSX.Element => {
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image
-								quality={20}
+							<Image priority								quality={20}
 								layout="responsive"
 								width={300}
 								height={300}
@@ -115,8 +113,7 @@ const SectionTeam = (): JSX.Element => {
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image
-								quality={20}
+							<Image priority								quality={20}
 								layout="responsive"
 								width={300}
 								height={300}

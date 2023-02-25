@@ -61,6 +61,7 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 			<Grid container spacing={3}>
 				<Grid item xs={6}>
 					<Image
+						priority
 						quality={20}
 						layout="responsive"
 						src="/lizard_unknown.png"

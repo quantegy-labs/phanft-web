@@ -224,14 +224,14 @@ const GuidePage: NextPage = () => {
 									extension.
 								</Typography>
 							</li>
-							<Image quality={20} src={image1} alt="How to Mint" />
+							<Image priority quality={20} src={image1} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									The extension is accessible in the top right corner with the puzzle piece icon, if you click that, you
 									can click the pin to make it easier to find.
 								</Typography>
 							</li>
-							<Image quality={20} src={image7} alt="How to Mint" />
+							<Image priority quality={20} src={image7} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									After you install the extension you will be redirected to a new page. Click &quote;Create a
@@ -254,7 +254,7 @@ const GuidePage: NextPage = () => {
 									for your seed phrase and no legitimate entity or person will.
 								</Typography>
 							</li>
-							<Image quality={20} src={image5} alt="How to Mint" />
+							<Image priority quality={20} src={image5} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									Find your Ethereum address. You can open your wallet by clicking the Fox icon in the top right corner
@@ -299,7 +299,7 @@ const GuidePage: NextPage = () => {
 							</NextLink>{' '}
 							and connect your wallet. Icon on upper right hand corner of site navigation bar.
 						</Typography>
-						<Image quality={20} src={image2} alt="How to Mint" />
+						<Image priority quality={20} src={image2} alt="How to Mint" />
 						<Typography sx={styles.h5} variant="h5">
 							Step 4 - Mint a Lizard!
 						</Typography>
@@ -359,14 +359,14 @@ const GuidePage: NextPage = () => {
 							<li>
 								<Typography sx={styles.li}>On the pop-up dialog, click &quot;Add Wallet&quot;.</Typography>
 							</li>
-							<Image quality={20} src={image6} alt="How to Mint" />
+							<Image priority quality={20} src={image6} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									Get your ETH address from your MetaMask wallet. Click the “Copy” icon as shown in the MetaMask
 									screenshot below.
 								</Typography>
 							</li>
-							<Image quality={20} src={image3} alt="How to Mint" />
+							<Image priority quality={20} src={image3} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									Go back to{' '}
@@ -388,7 +388,7 @@ const GuidePage: NextPage = () => {
 									so make sure your ETH address is correct in the field above.
 								</Typography>
 							</li>
-							<Image quality={20} src={image4} alt="How to Mint" />
+							<Image priority quality={20} src={image4} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>It may take a minute for the transfer to complete...</Typography>
 							</li>

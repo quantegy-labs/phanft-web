@@ -128,7 +128,8 @@ const AppHeader = () => {
 
 	const LogoComponent: JSX.Element = (
 		<Link href="/">
-			<Image
+			{/* <Image
+				priority
 				quality={20}
 				src={logoSrc}
 				width={200}
@@ -136,7 +137,7 @@ const AppHeader = () => {
 				alt="PhaNFT Logo"
 				onMouseEnter={handleToggleLogo}
 				onMouseLeave={handleToggleLogo}
-			/>
+			/> */}
 		</Link>
 	)
 
@@ -214,7 +215,7 @@ const AppHeader = () => {
 								rel="noopener noreferrer"
 								className="social-icon-link"
 							>
-								<Image quality={20} src="/icon_discord.svg" alt="Discord" width={20} height={20} />
+								<Image priority quality={20} src="/icon_discord.svg" alt="Discord" width={20} height={20} />
 							</a>
 							<a
 								href="https://twitter.com/phanft_official"
@@ -222,7 +223,7 @@ const AppHeader = () => {
 								rel="noopener noreferrer"
 								className="social-icon-link"
 							>
-								<Image quality={20} src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
+								<Image priority quality={20} src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
 							</a>
 							<a
 								href="https://instagram.com/phanft_official"
@@ -230,7 +231,7 @@ const AppHeader = () => {
 								rel="noopener noreferrer"
 								className="social-icon-link"
 							>
-								<Image quality={20} src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
+								<Image priority quality={20} src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
 							</a>
 						</Box>
 						<Link href="/mint">
@@ -293,7 +294,7 @@ const AppHeader = () => {
 									sx={{ ml: { md: 2 } }}
 									disabled={!web3Provider}
 								>
-									<Image quality={20} src="/icon_wallet.svg" alt="Connect a Wallet" width={25} height={25} />
+									<Image priority quality={20} src="/icon_wallet.svg" alt="Connect a Wallet" width={25} height={25} />
 								</IconButton>
 							))}
 					</Box>

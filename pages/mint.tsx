@@ -52,6 +52,7 @@ const AdminPage: NextPage = () => {
 							</Typography>
 							<Box sx={{ maxWidth: '500px', m: 'auto', mt: 8 }}>
 								<Image
+									priority
 									quality={20}
 									layout="responsive"
 									width={600}
