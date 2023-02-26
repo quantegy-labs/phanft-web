@@ -128,7 +128,7 @@ const AppHeader = () => {
 
 	const LogoComponent: JSX.Element = (
 		<Link href="/">
-			{/* <Image
+			<Image
 				priority
 				quality={20}
 				src={logoSrc}
@@ -137,7 +137,7 @@ const AppHeader = () => {
 				alt="PhaNFT Logo"
 				onMouseEnter={handleToggleLogo}
 				onMouseLeave={handleToggleLogo}
-			/> */}
+			/>
 		</Link>
 	)
 

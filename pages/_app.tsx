@@ -5,7 +5,7 @@ import { Web3ContextProvider } from '../components/Web3Provider'
 import theme from '../lib/theme'
 import '../styles/globals.css'
 
-const PhanFTApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+const AppRoot = ({ Component, pageProps }: AppProps): JSX.Element => {
 	return (
 		<Web3ContextProvider>
 			<ThemeProvider theme={theme}>
@@ -23,4 +23,4 @@ const PhanFTApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 	)
 }
 
-export default PhanFTApp
+export default AppRoot

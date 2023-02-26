@@ -71,7 +71,9 @@ const SectionTeam = (): JSX.Element => {
 				<Grid container spacing={4}>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image priority								quality={20}
+							<Image
+								priority
+								quality={20}
 								layout="responsive"
 								width={300}
 								height={300}
@@ -92,7 +94,9 @@ const SectionTeam = (): JSX.Element => {
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image priority								quality={20}
+							<Image
+								priority
+								quality={20}
 								layout="responsive"
 								width={300}
 								height={300}
@@ -106,14 +110,16 @@ const SectionTeam = (): JSX.Element => {
 								Technology & Engineering
 							</Typography>
 							<Typography sx={styles.text}>
-								Web3-native coding guru, a true Ballmer Peak believer, and lifelong struggling musician.
+								Web3-native coding guru, a true Ballmer Peak believer, and lifelong musician/producer.
 							</Typography>
 							<Typography sx={styles.quote}>Is this still Lawn Boy?</Typography>
 						</Box>
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image priority								quality={20}
+							<Image
+								priority
+								quality={20}
 								layout="responsive"
 								width={300}
 								height={300}

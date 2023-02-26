@@ -88,7 +88,7 @@ const SectionRoadmap = (): JSX.Element => (
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Invitations to Lizard-holder events and gatherings during tour. i.e. pre-show meetups, aftershow concerts, and other occasional token-gated events" />
+					<ListItemText primary="Invitations to Lizard-holder events and gatherings during tour. i.e. pre-show meetups, and other occasional token-gated events" />
 				</ListItem>
 				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
@@ -119,7 +119,7 @@ const SectionRoadmap = (): JSX.Element => (
 				decisions made through a majority vote of holders and executed by treasury funds.
 			</Typography>
 			<Typography sx={styles.roadmapText}>
-				Here are just a few ideas that we’ve come up with to propose for use of funds:
+				Here are just a few ideas that we&apos;ve come up with to propose for use of funds:
 			</Typography>
 			<List>
 				<ListItem sx={styles.listItem}>

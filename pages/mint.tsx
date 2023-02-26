@@ -45,8 +45,8 @@ const AdminPage: NextPage = () => {
 							</Typography>
 							<Typography sx={styles.text}>
 								Please check out our{' '}
-								<NextLink href="/mint" passHref>
-									<Link>How to Mint Guide</Link>
+								<NextLink href="/guide" passHref>
+									<Link>helping friendly guide</Link>
 								</NextLink>{' '}
 								if this is your first time minting an NFT.
 							</Typography>

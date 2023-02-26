@@ -55,7 +55,7 @@ const SectionIntro = (): JSX.Element => (
 		<Box id="intro" component="section">
 			<Container maxWidth="lg">
 				<Typography variant="h3" gutterBottom sx={styles.heading}>
-					This one is for you, and a few companions on this ride
+					This one is for you
 				</Typography>
 				<Box className="large-block" />
 				<Typography sx={styles.introText}>

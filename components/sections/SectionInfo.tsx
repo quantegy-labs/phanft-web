@@ -43,7 +43,9 @@ const SectionInfo = (): JSX.Element => (
 				<Paper elevation={3} sx={styles.paper}>
 					<Grid container spacing={4}>
 						<Grid item xs={12} sm={4}>
-							<Image priority								quality={20}
+							<Image
+								priority
+								quality={20}
 								layout="responsive"
 								width={460}
 								height={320}
@@ -113,7 +115,9 @@ const SectionInfo = (): JSX.Element => (
 							</Typography>
 						</Grid>
 						<Grid item xs={12} sm={4}>
-							<Image priority								quality={20}
+							<Image
+								priority
+								quality={20}
 								layout="responsive"
 								width={300}
 								height={300}

@@ -88,10 +88,8 @@ const SectionFAQs = (): JSX.Element => {
 					<AccordionDetails>
 						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
-							Discord hosts our PhaNFT community hub. It&apos;s a place to get real time updates on the project, hang
-							out, engage with the community, discuss a variety of interests, and plant seeds for serendipity. It has
-							become the gold standard community platform for NFT projects, and by the end of 2022, we expect every
-							brand will have one.
+							Discord hosts our PhaNFT public community hub. It&apos;s a place to get real time updates on the project,
+							hang out, engage with the community, discuss a variety of interests, and plant seeds for serendipity.
 						</Typography>
 						<Typography sx={styles.answer}>
 							<Link
@@ -102,7 +100,7 @@ const SectionFAQs = (): JSX.Element => {
 								color="inherit"
 								sx={{ fontWeight: 400, fontStyle: 'italic' }}
 							>
-								Join ours here!
+								Join our Discord here!
 							</Link>
 						</Typography>
 					</AccordionDetails>
@@ -116,8 +114,7 @@ const SectionFAQs = (): JSX.Element => {
 						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							NFT stands for “Non-Fungible Token”, and it is a unique, one-of-a-kind digital item that users can buy,
-							own, and trade on the blockchain. NFTs are bought and sold using cryptocurrencies. The most common
-							cryptocurrency for buying NFTs is ETH, which is the currency that runs on Ethereum.
+							own, and trade on the blockchain. NFTs are bought and sold using cryptocurrencies, such as ETH.
 						</Typography>
 					</AccordionDetails>
 				</Accordion>
@@ -240,8 +237,8 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.answer}>
 							<strong>Ownership -</strong> Blockchain technology proves your ownership while making the change of
 							ownership rights easy. Just like you own a physical piece of art (like a show poster), you own this
-							digital art. You can choose to keep it, sell it, trade it, commercialize it, or exploit it in other ways
-							as you see fit, depending on the rights assigned to you in the smart contract.
+							digital art. You can choose to display it, sell it, trade it, or exploit it in other ways, depending on
+							the rights assigned to you in the smart contract.
 						</Typography>
 						<Typography sx={styles.answer}>
 							<strong>Transferability -</strong> NFTs can be freely traded, transferred, or sold.
@@ -249,8 +246,6 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.answer}>
 							<strong>Security &amp; Authenticity -</strong> The smart contract behind the NFT prevents fraud prevention
 							- a problem affecting everything from art to concert tickets, collectibles, fashion, and even wine.
-							Blockchain-powered NFTs are the perfect weapon against counterfeiting while giving buyers confidence that
-							they&apos;ll get what they paid for.
 						</Typography>
 					</AccordionDetails>
 				</Accordion>
@@ -281,41 +276,11 @@ const SectionFAQs = (): JSX.Element => {
 					<AccordionDetails>
 						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
-							Here&apos;s the general process to buying an NFT from an on-sale (aka minting).
-						</Typography>
-						<Typography sx={styles.answer}>
-							<strong>Step 1 -</strong> You need to buy some Ethererum. It can be purchased easily on Coinbase using
-							dollars or most other global currencies. If you&apos;re new to buying Ethereum (or any other
-							cryptocurrency), we recommend using Coinbase.
-						</Typography>
-						<Typography sx={styles.answer}>
-							<strong>Step 2 -</strong> To transfer the Ethereum you bought (or already owned) to a wallet that can
-							purchase the NFT, we recommend Metamask. You can download and install as a Chrome Extension and/or as a
-							mobile app for iOS and Android. Here&apos;s an instructional{' '}
-							<Link href="https://www.youtube.com/watch?v=ZIGUC9JAAw8" target="_blank" rel="noreferrer" color="inherit">
-								YouTube video
+							Please see our{' '}
+							<Link href="/guide" color="inherit">
+								helping friendly guide
 							</Link>{' '}
-							showing how.
-						</Typography>
-						<Typography sx={styles.answer}>
-							<strong>Step 3 -</strong> Transfer the necessary amount of Ethereum (ETH) + .05 to .10 extra ETH for gas
-							fees (i.e. transactions fees) to your Metamask wallet.
-						</Typography>
-						<Typography sx={styles.answer}>
-							<strong>Step 4 -</strong> Authenticate your wallet on the website where you&apos;ll be buying the NFT by
-							pressing the “Connect Wallet” button.
-						</Typography>
-						<Typography sx={styles.answer}>
-							<strong>Step 5 -</strong> When the mint is live, press the “Mint” or “Buy” button on the website, and
-							enter the number of NFTs you want to buy. Metamask will pop open a dialog box, and you&apos;ll be able to
-							see estimated gas fees and approve or reject the transaction. If you&apos;re okay with the fees, click
-							“approve”. You&apos;re done! You&apos;ll know whether the mint was successful and will soon see the NFT
-							appear in your Metamask mobile wallet.{' '}
-							<em>
-								Note: you can&apos;t view your NFTs in the Metamask desktop Chrome Extension. When we announce the
-								minting date for The Enlightened Lizards, we&apos;ll be publishing a separate “Rollout” section to the
-								website to walk you through our specifics.
-							</em>
+							for instructions on how to mint.
 						</Typography>
 					</AccordionDetails>
 				</Accordion>
@@ -330,6 +295,8 @@ const SectionFAQs = (): JSX.Element => {
 							“Gas” refers to units of energy that&apos;s burned during a transaction on the Ethereum network, while
 							computers are verifying transactions and adding them to the blockchain. Think of it as a transaction fee,
 							and it goes directly to Ethereum miners who provide the computer power necessary to verify transactions.
+						</Typography>
+						<Typography sx={styles.answer}>
 							Gas prices fluctuate based on the demand at any given time. PhaNFT does not receive a percentage of gas
 							fees and has no control over network congestion or gas prices.
 						</Typography>
@@ -347,14 +314,13 @@ const SectionFAQs = (): JSX.Element => {
 						<Typography sx={styles.answer}>
 							Think of it like opening a baseball card pack and pulling one card. You don&apos;t know which player you
 							will get. With our Lizard collection, each Lizard is unique and contains a different set of traits, with
-							some being more rare than others. You have the option of minting up to 5 Lizards per wallet address at the
-							on-sale.
+							some being more rare than others.
 						</Typography>
 						<Typography sx={styles.answer}>
 							If you&apos;re seeking to acquire a rarer one or find another Lizard in the collection whose art you like
 							better, you can always trade with other holders or list and buy on secondary markets like OpenSea.
-							Likewise, you could equally mint one of the rarest, most unique, and coolest looking ones of the whole
-							collection. This includes a Rutherford The Brave, of which 25 are being included in the collection.
+							Likewise, you could luck out and mint one of the rarest, most unique, and coolest looking ones of the
+							whole collection. This includes a Rutherford The Brave, of which 25 are being included in the collection.
 						</Typography>
 					</AccordionDetails>
 				</Accordion>
@@ -366,8 +332,8 @@ const SectionFAQs = (): JSX.Element => {
 					<AccordionDetails>
 						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
-							You can sell your Lizard(s) anytime. There are several marketplaces where you can buy/sell NFTs, the
-							market leader being{' '}
+							You can sell your Lizard(s) anytime. There are several marketplaces where you can buy/sell NFTs, including
+							OpenSea, Blur, and LooksRare, with the current market leader being{' '}
 							<Link href="https://opensea.io" target="_blank" rel="noreferrer" color="inherit">
 								OpenSea
 							</Link>
@@ -384,8 +350,8 @@ const SectionFAQs = (): JSX.Element => {
 					<AccordionDetails>
 						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
-							PhaNFT will receive 7.5% of all secondary sales. These proceeds will be used to continue to hire more
-							full-time employees, fund operations, and deliver even more value to our community.
+							PhaNFT will receive 7.5% of all secondary sales. These proceeds will be used to fund ongoing operations
+							and deliver even more value to our community.
 						</Typography>
 					</AccordionDetails>
 				</Accordion>
@@ -398,7 +364,8 @@ const SectionFAQs = (): JSX.Element => {
 						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
 							Buy at least one (1) Lizard during our minting period. It will remove it from their life of purgatory in
-							Prussia and bring them safely to the Phanaverse where they can live in peace, harmony, and tranquility.
+							Prussia and bring them safely to the blockchain where they can live forever in peace, harmony, and
+							tranquility.
 						</Typography>
 					</AccordionDetails>
 				</Accordion>
@@ -410,9 +377,9 @@ const SectionFAQs = (): JSX.Element => {
 					<AccordionDetails>
 						<Box className="small-block left" sx={{ mt: '0px !important' }} />
 						<Typography sx={styles.answer}>
-							Please email them to <Link href="mailto:hello@phanft.com">hello@phanft.com</Link>. We&apos;ll keep this
-							updated and as robust as possible so phans with all levels of tech acumen can understand this and choose
-							whether to participate.
+							Please email them to <Link href="mailto:gm@phanft.com">gm@phanft.com</Link>. We&apos;ll keep this updated
+							and as robust as possible so phans with all levels of tech acumen can understand this and choose whether
+							to participate.
 						</Typography>
 					</AccordionDetails>
 				</Accordion>
