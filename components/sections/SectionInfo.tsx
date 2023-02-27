@@ -111,8 +111,7 @@ const SectionInfo = (): JSX.Element => (
 								<Link href="/guide" color="inherit">
 									helping friendly guide
 								</Link>
-								. For high level questions about NFTs and the project in general, check out our FAQ section. If
-								you&apos;re new to the minting process or just want some more info, please see our{' '}
+								. For high level questions about NFTs and the project in general, check out our{' '}
 								<Link href="#faq" color="inherit">
 									<em>FAQ section</em>
 								</Link>
