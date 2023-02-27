@@ -43,11 +43,11 @@ const AppLayout = (props: AppLayoutProps): JSX.Element => {
 			<AppHeader />
 			<Box component="main">{children}</Box>
 			<AppFooter />
-			<ScrollTop>
+			{/* <ScrollTop>
 				<Fab size="small" aria-label="scroll back to top">
 					<KeyboardArrowUpIcon />
 				</Fab>
-			</ScrollTop>
+			</ScrollTop> */}
 		</>
 	)
 }

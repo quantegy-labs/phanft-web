@@ -50,7 +50,7 @@ const AdminPage: NextPage = () => {
 								</NextLink>{' '}
 								if this is your first time minting an NFT.
 							</Typography>
-							<Box sx={{ maxWidth: '500px', m: 'auto', mt: 8 }}>
+							{/* <Box sx={{ maxWidth: '500px', m: 'auto', mt: 8 }}>
 								<Image
 									priority
 									quality={20}
@@ -60,7 +60,7 @@ const AdminPage: NextPage = () => {
 									src="/lizard5.png"
 									alt="Lizards Genesis PFP"
 								/>
-							</Box>
+							</Box> */}
 						</Grid>
 						<Grid item xs={12} md={7}>
 							<MintingContainer />

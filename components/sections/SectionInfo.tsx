@@ -107,11 +107,16 @@ const SectionInfo = (): JSX.Element => (
 								with rights granted in a transparent, on-chain licensing agreement.
 							</Typography>
 							<Typography sx={styles.text}>
-								If you&apos;re new to the minting process or just want some more info, please see our{' '}
+								For step-by-step instructions on how to mint please see the{' '}
+								<Link href="/guide" color="inherit">
+									helping friendly guide
+								</Link>
+								. For high level questions about NFTs and the project in general, check out our FAQ section. If
+								you&apos;re new to the minting process or just want some more info, please see our{' '}
 								<Link href="#faq" color="inherit">
-									<em>FAQs section</em>
+									<em>FAQ section</em>
 								</Link>{' '}
-								that helps make the process super easy for you. N00b friendly.
+								N00b friendly.
 							</Typography>
 						</Grid>
 						<Grid item xs={12} sm={4}>

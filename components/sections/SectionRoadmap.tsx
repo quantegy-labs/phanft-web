@@ -58,7 +58,7 @@ const SectionRoadmap = (): JSX.Element => (
 				smaller budget than originally conceived to bundle-in physical items such as LE posters and wearable merch.
 			</Typography>
 			<Typography sx={styles.roadmapText}>
-				We have an abundance of ideas and ability to deliver a &quot;phyigital experience&quot; in due time, once we
+				We have an abundance of ideas and ability to deliver a &quot;phygital experience&quot; in due time, once we
 				establish ourselves and have more resources in our treasury.
 			</Typography>
 			<Typography sx={styles.roadmapText}>

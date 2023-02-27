@@ -47,8 +47,8 @@ const SectionMission = (): JSX.Element => (
 					<Typography sx={styles.missionText}>
 						The way people interact and engage digitally is evolving faster than ever. Thanks to blockchain
 						technologies, we&apos;re at the forefront of a new era where communities with shared passions can
-						self-organize to celebrate what they love most, create value digitally in forward-thinking ways, and
-						collaborate in distributed fashion to achieve common goals.
+						self-organize to celebrate what they love, create value digitally in forward-thinking ways, and collaborate
+						in distributed fashion to achieve common goals.
 					</Typography>
 					<Typography sx={styles.missionText}>
 						Similar to how phans were among the first in the mid-90&apos;s web 1.0 era to congregate and build digital
