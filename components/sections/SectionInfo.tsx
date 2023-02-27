@@ -115,8 +115,8 @@ const SectionInfo = (): JSX.Element => (
 								you&apos;re new to the minting process or just want some more info, please see our{' '}
 								<Link href="#faq" color="inherit">
 									<em>FAQ section</em>
-								</Link>{' '}
-								N00b friendly.
+								</Link>
+								. N00b friendly.
 							</Typography>
 						</Grid>
 						<Grid item xs={12} sm={4}>
