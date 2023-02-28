@@ -108,7 +108,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 				// Wallet
 				await initWallet(true)
 				registerWalletEvents(browserProvider)
-				// // Contract
+				// Contract
 				await initContract(ethersProvider, null)
 			} else {
 				// if the provider is not detected, detectEthereumProvider resolves to null
@@ -149,7 +149,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 	// Refreshes the contract data in state with the most lastest data from contract state, useful for updating UIs after transactions
 	const refreshContractState = async (contract: NftContractType | null, account: string | null): Promise<void> => {
 		try {
-			if (!contract) return
+			if (!contract || !account) return
 			setContractState({
 				maxSupply: (await contract.maxSupply()).toNumber(),
 				totalSupply: (await contract.totalSupply()).toNumber(),
