@@ -10,7 +10,7 @@ const styles = {
 		pt: 20,
 		pb: 30,
 		px: 4,
-		background: "url('/banner_msg_lizards.png') center bottom no-repeat",
+		background: "url('/banner_optimized.jpeg') center bottom no-repeat",
 		backgroundSize: 'cover',
 	},
 	headline: {
