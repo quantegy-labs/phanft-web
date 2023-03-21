@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import NextLink from 'next/link'
-import { Box, Container, Link, Paper, Typography } from '@mui/material'
+import { Alert, Box, Container, Link, Paper, Typography } from '@mui/material'
 import AppLayout from '../components/layouts/AppLayout'
 import Image from 'next/image'
 import image1 from '../public/guide-imgs/image1.png'
@@ -99,74 +99,69 @@ const GuidePage: NextPage = () => {
 						</Typography>
 						<Typography sx={styles.p}>
 							If you&apos;ve never purchased an NFT before and plan to purchase a PhaNFT Enlightened Lizard, you&apos;ll
-							want to read this! NFTs are acquired in one of two ways. The first is via minting, which is the earliest
-							stage you can buy an NFT. By minting a token, you bring it to life on the blockchain, shocking and
-							persuading its metadata to ignite.
+							want to read this! NFTs are acquired in one of two ways. The first is by minting a token. You bring it to
+							life on the blockchain, shocking and persuading its metadata to ignite.
 						</Typography>
 						<Typography sx={styles.p}>
-							The other way NFTs are purchased is via secondary marketplaces like Opensea.io. NFTs that have already
+							The other way NFTs are purchased is via secondary marketplaces such as OpenSea. NFTs that have already
 							been minted are bought, sold, and exchanged between wallets via secondary marketplaces. Think of it like
 							eBay for NFTs.
 						</Typography>
-						<Typography sx={styles.p}>For now lets focus on how to Mint an Enlightened Lizard from PhaNFT.</Typography>
+						<Typography sx={styles.p}>For now lets focus on how to mint an Enlightened Lizard from PhaNFT.</Typography>
 						<Typography variant="h4" sx={{ mb: 4 }} component="h3">
 							Option 1: The Easiest Way - Buy With Credit Card
 						</Typography>
 						<Typography sx={styles.p}>
-							PhaNFT partnered with Crossmint to make purchasing an Enlightened Lizards NFT as easy as possible (no
-							crypto required.)
+							PhaNFT partnered with Crossmint to make purchasing an Enlightened Lizard as easy as possible (no crypto
+							required).
 						</Typography>
 						<Typography sx={styles.p}>
 							Here, you click the “Buy with Credit Card” button on our{' '}
 							<NextLink href="/mint" passHref>
 								<Link underline="always" color="inherit">
-									Mint page
+									mint page
 								</Link>
 							</NextLink>
 							, follow the basic instructions, and you&apos;re done! This NFT will live in a custodial wallet on
-							Crossmint, until you choose to transfer it to a traditional NFT wallet where you hold the private keys,
-							such as Metamask. We encourage you to transfer it to a Metamask wallet shortly after making your purchase.
+							Crossmint, or you can choose to transfer it to a non-custodian wallet such as MetaMask. See below for
+							instructions on how to do this.
 						</Typography>
-
 						<Typography variant="h4" sx={{ mb: 4 }} component="h3">
-							Option 2: The Traditional Way - Buy With Ether
+							Option 2: The Crypto Way - Buy With Ether
 						</Typography>
-						<Typography sx={styles.p}>Here&apos;s how this works for Option 2…</Typography>
 						<Typography sx={styles.p}>
-							Ether (doniminated as ETH) is the cryptocurrency of the Ethereum blockchain network that is hosting the
+							Ether (denominated as ETH) is the cryptocurrency of the Ethereum blockchain network that is hosting the
 							Enlightened Lizards collection. It can easily be purchased on a cryptocurrency exchange such as Coinbase,
 							Gemini, or Binance. (Coinbase is likely your easiest experience and it&apos;s a public company in the U.S.
-							that is FDIC insured.)
+							that is FDIC insured).
 						</Typography>
-						<Typography sx={styles.p}>
-							<u>Important note on ETH transfer delays:</u> if you don&apos;t currently own any ETH, and need to buy
-							some using fiat currency (such as U.S. Dollars), most of these cryptocurrency exchanges will let you trade
-							dollars for ETH before the dollars are actually in your crypto wallet. An example of this would be
-							Coinbase letting you do an ACH transfer of $USD from your banking institution into Coinbase, and making it
-							available to trade immediately for ETH – even though it will take 3-5 business days for the actual money
-							to land in Coinbase. Wire transfers speed this process up but will cost you $25-$40 for that transfer fee.
-							In this event, Coinbase (or another exchange you&apos;re using) won&apos;t let you transfer the ETH you
-							have bought, from your wallet on that exchange into your Metamask wallet (or any external wallet) until
-							those dollars have been deposited and cleared.
-						</Typography>
-						<Typography sx={styles.p}>
-							This means, if you&apos;re planning to mint, <u>and don&apos;t currently own any ETH</u>, you should plan
-							at least 5 business days ahead of time to start the process and buy your ETH at Coinbase or your chosen
-							exchange. This way, by 8/31 you&apos;ll be able to transfer the required amount of ETH to your Metamask
-							wallet so you can use it to mint.
-						</Typography>
-						<Typography sx={styles.p}>
-							<strong>
+						<Alert severity="info" sx={{ mb: 4 }}>
+							<strong>Important note on ETH transfer delays</strong> - if you don&apos;t currently own any ETH, and need
+							to buy some using fiat currency (such as U.S. Dollars), most of these cryptocurrency exchanges will let
+							you trade dollars for ETH before the dollars are actually in your crypto wallet. An example of this would
+							be Coinbase letting you do an ACH transfer of $USD from your banking institution into Coinbase, and making
+							it available to trade immediately for ETH – even though it will take 3-5 business days for the actual
+							money to land in Coinbase. Wire transfers speed this process up but will cost you $25-$40 for that
+							transfer fee. In this event, Coinbase (or another exchange you&apos;re using) won&apos;t let you transfer
+							the ETH you have bought, from your wallet on that exchange into your MetaMask wallet (or any external
+							wallet) until those dollars have been deposited and cleared.
+							<br />
+							<br />
+							This means, if you&apos;re planning to mint, <em>and don&apos;t currently own any ETH</em>, you should
+							plan at least 5 business days ahead of time to start the process and buy your ETH at Coinbase or your
+							chosen exchange.
+							<br />
+							<br />
+							<em>
 								If you&apos;re rolling your eyes at this already and it sounds like a pain, we highly recommend minting
 								using your credit card via Crossmint.
-							</strong>
-						</Typography>
-
+							</em>
+						</Alert>
 						<Typography sx={styles.h5} variant="h5">
 							Step 1 - Install a MetaMask Wallet
 						</Typography>
 						<Typography sx={styles.p}>
-							When collecting an NFTs, you&apos;ll need a digital wallet to store it in. We recommend using Metamask.
+							When collecting an NFT, you&apos;ll need a digital wallet to store it in. We recommend using MetaMask.
 							Check out{' '}
 							<Link
 								underline="always"
@@ -177,17 +172,7 @@ const GuidePage: NextPage = () => {
 							>
 								this video
 							</Link>{' '}
-							that will walk you through setting up a secure metamask wallet. For a step-by-step written tutorial,{' '}
-							<Link
-								underline="always"
-								color="inherit"
-								href="https://codehs.com/tutorial/jkeesh/how-to-set-up-an-ethereum-wallet-on-metamask"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Install a MetaMask wallet
-							</Link>{' '}
-							or follow the steps below:
+							that will walk you through setting up a secure MetaMask wallet.
 						</Typography>
 						<Typography sx={styles.p}>
 							<strong>Follow these steps to get MetaMask installed:</strong>
@@ -202,7 +187,7 @@ const GuidePage: NextPage = () => {
 						<ol>
 							<li>
 								<Typography sx={styles.li}>
-									Download and install{' '}
+									Go to the{' '}
 									<Link
 										underline="always"
 										color="inherit"
@@ -210,61 +195,51 @@ const GuidePage: NextPage = () => {
 										target="_blank"
 										rel="noopener noreferrer"
 									>
-										MetaMask
-									</Link>
-									.
+										MetaMask website
+									</Link>{' '}
 								</Typography>
 							</li>
 							<li>
-								<Typography sx={styles.li}>Click &quote;Install MetaMask for Chrome&quote;.</Typography>
+								<Typography sx={styles.li}>Download for your supported browser</Typography>
 							</li>
 							<li>
 								<Typography sx={styles.li}>
-									Click &quote;Add to Chrome&quote;, and then &quote;Add Extension&quote; to install the browser
-									extension.
+									Click &quot;Add to Chrome&quot;, and then &quot;Add Extension&quot; to install the browser extension.
 								</Typography>
 							</li>
 							<Image priority quality={20} src={image1} alt="How to Mint" />
+							<Box sx={{ mb: 4 }} />
 							<li>
 								<Typography sx={styles.li}>
-									The extension is accessible in the top right corner with the puzzle piece icon, if you click that, you
-									can click the pin to make it easier to find.
-								</Typography>
-							</li>
-							<Image priority quality={20} src={image7} alt="How to Mint" />
-							<li>
-								<Typography sx={styles.li}>
-									After you install the extension you will be redirected to a new page. Click &quote;Create a
-									Wallet.&quote;
+									After you install the extension, you will be redirected to a new page. Click &quot;Create a
+									Wallet&quot;.
 								</Typography>
 							</li>
 							<li>
 								<Typography sx={styles.li}>
 									Create a strong password. This is used to open and unlock your MetaMask wallet, which is different
-									than the backup phrase. This helps protect your wallet if your device gets lost or stolen.
+									than the backup phrase.
 								</Typography>
 							</li>
 							<li>
 								<Typography sx={styles.li}>
-									Backup and verify your secret backup phrase. This is your super secret password which provides access
-									to your wallet. If you lose this phrase, you lose access to your tokens. If someone else gets this
-									phrase, they get access to your wallet. Keep it secure in a password manager (such as 1Password), or
-									write it down in a few safe and secure area (like a safety deposit box) if you don&apos;t want to have
-									any trace of it recorded digitally. Never show or share this phrase with anyone! We will never ask you
-									for your seed phrase and no legitimate entity or person will.
+									Backup and verify your secret backup phrase.{' '}
+									<strong>This may be the most important step to do in your crypto journey.</strong> The backup phrase
+									provides access to your wallet. It allows you to restore it to any device. If someone else gets this
+									phrase, they get access to your wallet. Never show or share this phrase with anyone!
+								</Typography>
+								<Typography sx={styles.li}>
+									Keep it secure in a password manager (such as 1Password), or write it down in a few safe and secure
+									areas (like a safety deposit box) if you don&apos;t want to have any trace of it recorded digitally.
+									We will never ask you for your seed phrase and no legitimate entity or person will.
 								</Typography>
 							</li>
 							<Image priority quality={20} src={image5} alt="How to Mint" />
+							<Box sx={{ mb: 4 }} />
 							<li>
 								<Typography sx={styles.li}>
-									Find your Ethereum address. You can open your wallet by clicking the Fox icon in the top right corner
-									and that will open your wallet. If your address isn&apos;t shown, you can also click the three dots to
-									view &quot;Account Details&quot;.
-								</Typography>
-							</li>
-							<li>
-								<Typography sx={styles.li}>
-									Now you have a wallet set up that you can use to interact with Ethereum and buy/sell NFTs!
+									Now you have a wallet set up that you can use to interact with Ethereum blockchain network and
+									buy/sell NFTs!
 								</Typography>
 							</li>
 						</ol>
@@ -272,8 +247,8 @@ const GuidePage: NextPage = () => {
 							Step 2 - Transfer In Some Funds
 						</Typography>
 						<Typography sx={styles.p}>
-							You&apos;ll need to transfer some ethereum into your digital wallet. If you are buying ethereum on
-							Coinbase and using a metamask wallet,{' '}
+							You&apos;ll need to transfer some Ether (ETH) into your digital wallet. If you are buying ETH on Coinbase
+							and using a MetaMask wallet,{' '}
 							<Link
 								underline="always"
 								color="inherit"
@@ -294,10 +269,10 @@ const GuidePage: NextPage = () => {
 							Once you have enough ETH in your wallet, visit our{' '}
 							<NextLink href="/mint" passHref>
 								<Link underline="always" color="inherit">
-									Mint page
+									mint page
 								</Link>
 							</NextLink>{' '}
-							and connect your wallet. Icon on upper right hand corner of site navigation bar.
+							and connect your wallet. Click the wallet icon on upper right hand corner of site navigation bar.
 						</Typography>
 						<Image priority quality={20} src={image2} alt="How to Mint" />
 						<Typography sx={styles.h5} variant="h5">
@@ -305,20 +280,19 @@ const GuidePage: NextPage = () => {
 						</Typography>
 						<Typography sx={styles.p}>
 							When the mint is live, press the “Mint” button that will be large and centered on https://phanft.xyz and
-							enter the number of NFTs you want to buy. During the pre-sale you&apos;ll be able to mint 1 per wallet
-							address. During the public sale window you&apos;ll be able to mint a max of 5 per wallet address.
+							enter the number of NFTs you want to buy.
 						</Typography>
 						<Typography sx={styles.p}>
-							Metamask will pop open a dialog box, and you&apos;ll be able to see estimated gas fees and approve or
+							MetaMask will pop open a dialog box, and you&apos;ll be able to see estimated gas fees and approve or
 							reject the transaction. If you&apos;re okay with the fees, click “approve”.
 						</Typography>
+						<Alert severity="success">
+							🎉 Congratulations, you&apos;re done! You&apos;ve helped save a Lizard by minting it on the blockchain! 🎉
+						</Alert>
+						<Box sx={{ mb: 4 }} />
 						<Typography sx={styles.p}>
-							🎉 Congratulations, you&apos;re done! You&apos;ve helped saved a Lizard by minting them on the blockchain!
-							🎉
-						</Typography>
-						<Typography sx={styles.p}>
-							You&apos;ll know whether the mint was successful and will soon see the NFT appear in your Metamask mobile
-							wallet. Or by going to{' '}
+							You&apos;ll know whether the mint was successful and will soon see the NFT appear in your MetaMask mobile
+							wallet or by going to{' '}
 							<Link
 								underline="always"
 								color="inherit"
@@ -330,9 +304,18 @@ const GuidePage: NextPage = () => {
 							</Link>
 							, connecting your wallet, and clicking “Profile” to see all the NFTs in your wallet.
 						</Typography>
+					</Paper>
 
-						<Typography sx={styles.h4} variant="h4">
+					<Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" mb={4}>
+						<Typography variant="h3" sx={styles.title} textAlign="center">
 							How to Transfer Your NFT from Crossmint to MetaMask
+						</Typography>
+						<Box className="large-block" />
+					</Box>
+					<Paper sx={styles.paper} elevation={3}>
+						<Typography sx={styles.p}>
+							Follow these steps to transfer your token from your custodial wallet with Crossmint to your non-custodial
+							wallet with MetaMask.
 						</Typography>
 						<ol>
 							<li>
@@ -389,6 +372,7 @@ const GuidePage: NextPage = () => {
 								</Typography>
 							</li>
 							<Image priority quality={20} src={image4} alt="How to Mint" />
+							<Box sx={{ mb: 4 }} />
 							<li>
 								<Typography sx={styles.li}>It may take a minute for the transfer to complete...</Typography>
 							</li>
@@ -399,11 +383,17 @@ const GuidePage: NextPage = () => {
 								</Typography>
 							</li>
 						</ol>
-						<Typography sx={styles.h4} variant="h4">
+					</Paper>
+
+					<Box display="flex" alignItems="center" justifyContent="center" flexDirection="column" mb={4}>
+						<Typography variant="h3" sx={styles.title} textAlign="center">
 							How to View Your NFT
 						</Typography>
+						<Box className="large-block" />
+					</Box>
+					<Paper sx={styles.paper} elevation={3}>
 						<Typography sx={styles.p}>
-							To view your Enlightened Lizard NFT from your desktop or mobile browser go to{' '}
+							To view your Enlightened Lizard NFT from your desktop or mobile browser, go to{' '}
 							<Link
 								underline="always"
 								color="inherit"
@@ -413,7 +403,7 @@ const GuidePage: NextPage = () => {
 							>
 								OpenSea
 							</Link>{' '}
-							connect your wallet, and then click Profile.
+							connect your wallet, and then click &quot;Profile&quot;.
 						</Typography>
 						<Typography sx={styles.p}>To view your NFT within your MetaMask mobile wallet:</Typography>
 						<ol>
@@ -429,7 +419,7 @@ const GuidePage: NextPage = () => {
 								<Typography sx={styles.li}>
 									You will see 2 Tabs – <em>TOKENS</em> and <em>NFTs</em>. TOKENS shows how much ETH (or other crypto)
 									is in your wallet. <em>NFTs</em> shows your NFTs. If the Enlightened Lizard is not automatically
-									showing up in your Metamask mobile wallet:
+									showing up in your MetaMask mobile wallet:
 								</Typography>
 								<ul>
 									<li>

@@ -19,6 +19,7 @@ const Home: NextPage = () => {
 			<AppLayout>
 				<SectionIntro />
 				<SectionLizards />
+				<SectionOnboard />
 				<SectionMission />
 				<SectionRoadmap />
 				<SectionInfo />

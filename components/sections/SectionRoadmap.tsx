@@ -54,7 +54,7 @@ const SectionRoadmap = (): JSX.Element => (
 			</Box>
 			<Box className="large-block secondary" />
 			<Typography sx={styles.roadmapText}>
-				We&apos;ve set the mint price low at .02 ETH to make owning a Lizard easily affordable. This however leaves a
+				We are setting the mint price low enough to make owning a Lizard easily affordable. This however leaves a
 				smaller budget than originally conceived to bundle-in physical items such as LE posters and wearable merch.
 			</Typography>
 			<Typography sx={styles.roadmapText}>

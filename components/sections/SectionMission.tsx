@@ -79,7 +79,7 @@ const SectionMission = (): JSX.Element => (
 					<Typography sx={styles.missionText}>
 						We&apos;re stoked about this new paradigm with endless possibilities. Consider this your invitation to jump
 						in the pond (with us here to guide you) as we create a vibrant and inclusive phan community in Web3 during
-						our favorite band&apos; 4.0 era.
+						our favorite band&apos;s 4.0 era.
 					</Typography>
 				</Grid>
 			</Grid>

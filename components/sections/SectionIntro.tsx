@@ -69,7 +69,7 @@ const SectionIntro = (): JSX.Element => (
 				<Box display="flex" justifyContent="center">
 					<Link href="/mint">
 						<Button variant="contained" color="primary" size="large" sx={styles.btn}>
-							Mint Now
+							Minting Soon
 						</Button>
 					</Link>
 				</Box>

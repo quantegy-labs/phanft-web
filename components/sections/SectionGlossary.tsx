@@ -78,7 +78,7 @@ const SectionGlossary = (): JSX.Element => (
 		</Typography>
 		<Typography sx={styles.glossaryDesc}>
 			The cryptocurrency of the Ethereum blockchain. Ether can be purchased using fiat currency such as U.S. dollars on
-			a variety exchanges such as Coinbase, or within certain crypto Wallets such as Metamask.
+			a variety exchanges such as Coinbase, or within certain crypto Wallets such as MetaMask.
 		</Typography>
 		<Typography variant="h5" component="h4" sx={styles.glossaryTerm}>
 			Smart Contacts

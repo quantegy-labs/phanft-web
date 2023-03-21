@@ -275,7 +275,7 @@ const MintingContainer = (): JSX.Element => {
 				Buy With ETH
 			</Typography>
 			<Typography gutterBottom>
-				Connect your Metamask wallet to interact with the Enlightened Lizards NFT smart contract on the blockchain and
+				Connect your MetaMask wallet to interact with the Enlightened Lizards NFT smart contract on the blockchain and
 				mint your token. Must have .10 ether in your wallet + .01 extra to cover the transaction fee (gas).
 			</Typography>
 			{web3Provider ? (
@@ -292,7 +292,7 @@ const MintingContainer = (): JSX.Element => {
 			) : (
 				<Alert variant="filled" severity="warning" sx={{ mt: 3, mb: 4 }}>
 					<Typography variant="subtitle2" gutterBottom>
-						It looks like you might not have Metamask yet.{' '}
+						It looks like you might not have MetaMask yet.{' '}
 						<Link href="https://metamask.io" color="inherit" target="_blank" rel="noopener noreferrer">
 							Install here
 						</Link>
