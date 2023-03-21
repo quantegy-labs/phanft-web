@@ -76,7 +76,7 @@ const SectionRoadmap = (): JSX.Element => (
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Access our custom bot to crunch and compare show stats across all Englightened Lizard holders" />
+					<ListItemText primary="Access our custom bot to crunch and compare show stats across all Enlightened Lizard holders 🤖" />
 				</ListItem>
 				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
