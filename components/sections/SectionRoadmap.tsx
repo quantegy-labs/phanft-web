@@ -76,19 +76,25 @@ const SectionRoadmap = (): JSX.Element => (
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
+					<ListItemText primary="Access our custom bot to crunch and compare show stats across all Englightened Lizard holders" />
+				</ListItem>
+				<ListItem sx={styles.listItem}>
+					<ListItemIcon>
+						<Star color="secondary" />
+					</ListItemIcon>
 					<ListItemText primary="Free airdrops of future collections and special artist collaborations as we expand the community" />
 				</ListItem>
 				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Access to phan-centric perks from future partners (merch, art, custom craft beer on lot...once our collection is sold out, all becomes possible)" />
+					<ListItemText primary="Invitations to Lizard-holder events and gatherings during tour. i.e. pre-show meetups, and other occasional token-gated events" />
 				</ListItem>
 				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Invitations to Lizard-holder events and gatherings during tour. i.e. pre-show meetups, and other occasional token-gated events" />
+					<ListItemText primary="Access to phan-centric perks from future partners (merch, art, custom craft beer on lot...once our collection is sold out, all becomes possible)" />
 				</ListItem>
 				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
