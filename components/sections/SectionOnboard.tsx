@@ -9,7 +9,7 @@ const styles = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		py: 10,
-		background: "url('/herobg.png') center center no-repeat",
+		background: "url('/bg_onboard.png') center center no-repeat",
 		backgroundSize: 'cover',
 		textAlign: 'center',
 	},
