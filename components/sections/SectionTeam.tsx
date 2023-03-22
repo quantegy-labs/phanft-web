@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from '@mui/material'
+import { Box, Container, Grid, Link, Typography } from '@mui/material'
 import Image from 'next/image'
 
 const styles = {
@@ -71,15 +71,21 @@ const SectionTeam = (): JSX.Element => {
 				<Grid container spacing={4}>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image
-								priority
-								quality={20}
-								layout="responsive"
-								width={300}
-								height={300}
-								src="/lizard_david.png"
-								alt="Team Member"
-							/>
+							<Link
+								href="https://rightsregistry.xyz/ethereum/0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2/6"
+								target="_blank"
+								title="View this token's rights on Mintangible"
+							>
+								<Image
+									priority
+									quality={20}
+									layout="responsive"
+									width={300}
+									height={300}
+									src="/lizard_david.png"
+									alt="Team Member"
+								/>
+							</Link>
 							<Typography variant="h5" component="h4" sx={styles.title}>
 								David
 							</Typography>
@@ -94,15 +100,21 @@ const SectionTeam = (): JSX.Element => {
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image
-								priority
-								quality={20}
-								layout="responsive"
-								width={300}
-								height={300}
-								src="/lizard_drew.png"
-								alt="Team Member"
-							/>
+							<Link
+								href="https://rightsregistry.xyz/ethereum/0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2/27"
+								target="_blank"
+								title="View this token's rights on Mintangible"
+							>
+								<Image
+									priority
+									quality={20}
+									layout="responsive"
+									width={300}
+									height={300}
+									src="/lizard_drew.png"
+									alt="Team Member"
+								/>
+							</Link>
 							<Typography variant="h5" component="h4" sx={styles.title}>
 								Drew
 							</Typography>
@@ -117,15 +129,21 @@ const SectionTeam = (): JSX.Element => {
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
-							<Image
-								priority
-								quality={20}
-								layout="responsive"
-								width={300}
-								height={300}
-								src="/lizard_ian.png"
-								alt="Team Member"
-							/>
+							<Link
+								href="https://rightsregistry.xyz/ethereum/0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2/29"
+								target="_blank"
+								title="View this token's rights on Mintangible"
+							>
+								<Image
+									priority
+									quality={20}
+									layout="responsive"
+									width={300}
+									height={300}
+									src="/lizard_ian.png"
+									alt="Team Member"
+								/>
+							</Link>
 							<Typography variant="h5" component="h4" sx={styles.title}>
 								Ian
 							</Typography>
