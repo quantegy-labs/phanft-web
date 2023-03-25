@@ -127,10 +127,9 @@ const AppHeader = () => {
 	}
 
 	const LogoComponent: JSX.Element = (
-		<Link href="/">
-			<Image
-				priority
-				quality={20}
+		<Link href="/" passHref>
+			{/* eslint-disable-next-line */}
+			<img
 				src={logoSrc}
 				width={200}
 				height={40}
