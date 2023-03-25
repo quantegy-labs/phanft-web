@@ -11,6 +11,8 @@ import {
 	SvgIcon,
 	Toolbar,
 	Typography,
+	useMediaQuery,
+	useTheme,
 } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -91,6 +93,8 @@ const AppHeader = () => {
 	const logoSrcPink = '/logo_pink.svg'
 	const logoSrcGreen = '/logo_green.svg'
 	const [logoSrc, setLogoSrc] = useState<string>(logoSrcPink)
+	const { breakpoints } = useTheme()
+	const desktops = useMediaQuery(breakpoints.up('md'))
 
 	const { connected, connectWallet, disconnectWallet, connectedAddress, web3Provider } = useWeb3Context()
 
@@ -131,8 +135,8 @@ const AppHeader = () => {
 			{/* eslint-disable-next-line */}
 			<img
 				src={logoSrc}
-				width={200}
-				height={40}
+				width={desktops ? 200 : 150}
+				height={desktops ? 40 : 30}
 				alt="PhaNFT Logo"
 				onMouseEnter={handleToggleLogo}
 				onMouseLeave={handleToggleLogo}
@@ -206,6 +210,8 @@ const AppHeader = () => {
 							</Link>
 						))}
 					</Box>
+
+					{/* Buttons */}
 					<Box sx={styles.connectBtnWrap}>
 						<Box display={{ xs: 'none', sm: 'inline-block', md: 'none', lg: 'inline-block' }}>
 							<a
@@ -234,7 +240,13 @@ const AppHeader = () => {
 							</a>
 						</Box>
 						<Link href="/mint">
-							<Button onClick={handleCloseNavMenu} variant="contained" color="primary" size="small" sx={{ ml: 1 }}>
+							<Button
+								onClick={handleCloseNavMenu}
+								variant="contained"
+								color="primary"
+								size="small"
+								sx={{ ml: 1, fontSize: desktops ? undefined : '.75rem' }}
+							>
 								Minting Soon
 							</Button>
 						</Link>
@@ -265,6 +277,7 @@ const AppHeader = () => {
 											py: 0.6,
 											ml: 1,
 											borderWidth: 2,
+											display: desktops ? 'inline-flex' : 'none',
 										}}
 									>
 										<Typography color="secondary" variant="caption">
