@@ -1,6 +1,7 @@
-import { Container, Typography } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import AppLayout from '../../components/layouts/AppLayout'
 
 const EnlightenedLizardDetailsPage: NextPage = props => {
@@ -13,7 +14,17 @@ const EnlightenedLizardDetailsPage: NextPage = props => {
 				<title>PhaNFT | Enlightened Lizards #{id}</title>
 			</Head>
 			<AppLayout>
-				<Container maxWidth="xl" sx={{ my: 8, textAlign: 'center' }}>
+				<Container maxWidth="xl" sx={{ my: 12, textAlign: 'center', color: '#fff' }}>
+					<Image
+						priority
+						quality={20}
+						layout="fixed"
+						width={300}
+						height={300}
+						src="/lizard_unknown.png"
+						alt="Lizards Genesis PFP"
+					/>
+					<Box sx={{ mb: 4 }} />
 					<Typography variant="h4">Content coming soon...</Typography>
 					<Typography variant="h6">Everything&apos;s right, so just hold tight.</Typography>
 				</Container>
