@@ -100,35 +100,6 @@ const SectionTeam = (): JSX.Element => {
 					<Grid item xs={12} md={4}>
 						<Box sx={styles.memberWrap}>
 							<Link
-								href="https://rightsregistry.xyz/ethereum/0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2/20"
-								target="_blank"
-								title="View this token's rights on Mintangible"
-							>
-								<Image
-									quality={20}
-									layout="responsive"
-									width={300}
-									height={300}
-									src="/lizard_ian.jpg"
-									alt="Team Member"
-								/>
-							</Link>
-							<Typography variant="h5" component="h4" sx={styles.title}>
-								Ian
-							</Typography>
-							<Typography variant="overline" component="h6" sx={styles.subtitle}>
-								Community Builder & Discord Mod
-							</Typography>
-							<Typography sx={styles.text}>
-								Grassroots marketer with many hats, bobbing on the surface where cannabis, art, & tech intersect.
-							</Typography>
-							<Typography sx={styles.quote}>Seen more slow than fast Llamas.</Typography>
-						</Box>
-					</Grid>
-
-					<Grid item xs={12} md={4}>
-						<Box sx={styles.memberWrap}>
-							<Link
 								href="https://rightsregistry.xyz/ethereum/0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2/28"
 								target="_blank"
 								title="View this token's rights on Mintangible"
@@ -152,6 +123,34 @@ const SectionTeam = (): JSX.Element => {
 								Web3-native coding guru, a true Ballmer Peak believer, and lifelong musician/producer.
 							</Typography>
 							<Typography sx={styles.quote}>Is this still Lawn Boy?</Typography>
+						</Box>
+					</Grid>
+					<Grid item xs={12} md={4}>
+						<Box sx={styles.memberWrap}>
+							<Link
+								href="https://rightsregistry.xyz/ethereum/0x54A4cDeA2CF37db48E0c78bb41De6904DFF6d4E2/20"
+								target="_blank"
+								title="View this token's rights on Mintangible"
+							>
+								<Image
+									quality={20}
+									layout="responsive"
+									width={300}
+									height={300}
+									src="/lizard_ian.jpg"
+									alt="Team Member"
+								/>
+							</Link>
+							<Typography variant="h5" component="h4" sx={styles.title}>
+								Ian
+							</Typography>
+							<Typography variant="overline" component="h6" sx={styles.subtitle}>
+								Community Builder & Discord Mod
+							</Typography>
+							<Typography sx={styles.text}>
+								Grassroots marketer with many hats, bobbing on the surface where cannabis, art, & tech intersect.
+							</Typography>
+							<Typography sx={styles.quote}>Seen more slow than fast Llamas.</Typography>
 						</Box>
 					</Grid>
 				</Grid>
