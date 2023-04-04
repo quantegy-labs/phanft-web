@@ -23,7 +23,7 @@ type SocialLinkProps = { url: string; icon: string; alt: string }
 
 const SocialLink = ({ url, icon, alt }: SocialLinkProps) => (
 	<Link href={url} target="_blank" rel="noopener noreferrer" sx={styles.link}>
-		<Image priority quality={20} src={icon} alt={alt} width={20} height={20} />
+		<Image quality={20} src={icon} alt={alt} width={20} height={20} />
 	</Link>
 )
 

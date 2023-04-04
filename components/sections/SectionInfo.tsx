@@ -44,7 +44,6 @@ const SectionInfo = (): JSX.Element => (
 					<Grid container spacing={4}>
 						<Grid item xs={12} sm={4}>
 							<Image
-								priority
 								quality={20}
 								layout="responsive"
 								width={460}
@@ -120,7 +119,6 @@ const SectionInfo = (): JSX.Element => (
 						</Grid>
 						<Grid item xs={12} sm={4}>
 							<Image
-								priority
 								quality={20}
 								layout="responsive"
 								width={300}

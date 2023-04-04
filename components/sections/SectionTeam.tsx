@@ -77,7 +77,6 @@ const SectionTeam = (): JSX.Element => {
 								title="View this token's rights on Mintangible"
 							>
 								<Image
-									priority
 									quality={20}
 									layout="responsive"
 									width={300}
@@ -106,7 +105,6 @@ const SectionTeam = (): JSX.Element => {
 								title="View this token's rights on Mintangible"
 							>
 								<Image
-									priority
 									quality={20}
 									layout="responsive"
 									width={300}
@@ -136,7 +134,6 @@ const SectionTeam = (): JSX.Element => {
 								title="View this token's rights on Mintangible"
 							>
 								<Image
-									priority
 									quality={20}
 									layout="responsive"
 									width={300}

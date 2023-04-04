@@ -40,7 +40,6 @@ const SectionLizards = (): JSX.Element => (
 				<Grid item xs={6}>
 					<Box sx={styles.imageWrap}>
 						<Image
-							priority
 							quality={20}
 							layout="responsive"
 							width={500}
@@ -53,7 +52,6 @@ const SectionLizards = (): JSX.Element => (
 				<Grid item xs={6}>
 					<Box sx={styles.imageWrap}>
 						<Image
-							priority
 							quality={20}
 							layout="responsive"
 							width={500}
@@ -66,7 +64,6 @@ const SectionLizards = (): JSX.Element => (
 				<Grid item xs={6}>
 					<Box sx={styles.imageWrap}>
 						<Image
-							priority
 							quality={20}
 							layout="responsive"
 							width={500}
@@ -79,7 +76,6 @@ const SectionLizards = (): JSX.Element => (
 				<Grid item xs={6}>
 					<Box sx={styles.imageWrap}>
 						<Image
-							priority
 							quality={20}
 							layout="responsive"
 							width={500}
