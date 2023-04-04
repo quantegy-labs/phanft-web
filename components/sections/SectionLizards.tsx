@@ -25,10 +25,12 @@ const styles = {
 		},
 	},
 	imageWrap: {
-		border: '10px solid #8DFF9C',
-		borderRadius: '8px',
-		img: {
-			borderRadius: 0,
+		'@media (min-width: 600px)': {
+			border: '6px solid #8DFF9C',
+			borderRadius: '8px',
+			img: {
+				borderRadius: '0 !important',
+			},
 		},
 	},
 }
