@@ -21,6 +21,7 @@ import { useWeb3Context } from '../Web3Provider'
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet'
 import VerifiedUserSharpIcon from '@mui/icons-material/VerifiedUserSharp'
 import formatAddress from '../../lib/formatAddress'
+import SocialIcons from '../SocialIcons'
 
 const styles = {
 	appbar: {
@@ -45,7 +46,7 @@ const styles = {
 		letterSpacing: '.3rem',
 		textDecoration: 'none',
 	},
-	mobileNavWrap: { flexGrow: 1, display: { xs: 'flex', md: 'none' } },
+	mobileNavWrap: { display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-start' },
 	mobileNavMenu: { display: { xs: 'block', md: 'none' } },
 	mobileNavItem: {
 		'&:hover': {
@@ -75,7 +76,7 @@ const styles = {
 			color: '#ff0087',
 		},
 	},
-	connectBtnWrap: { flexGrow: 0 },
+	connectBtnWrap: { flexGrow: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' },
 }
 
 const pages = [
@@ -213,32 +214,7 @@ const AppHeader = () => {
 
 					{/* Buttons */}
 					<Box sx={styles.connectBtnWrap}>
-						<Box display={{ xs: 'none', sm: 'inline-block', md: 'none', lg: 'inline-block' }}>
-							<a
-								href="https://discord.gg/pxwNvgMQaU"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="social-icon-link"
-							>
-								<Image priority quality={20} src="/icon_discord.svg" alt="Discord" width={20} height={20} />
-							</a>
-							<a
-								href="https://twitter.com/phanft_official"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="social-icon-link"
-							>
-								<Image priority quality={20} src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
-							</a>
-							<a
-								href="https://instagram.com/phanft_official"
-								target="_blank"
-								rel="noopener noreferrer"
-								className="social-icon-link"
-							>
-								<Image priority quality={20} src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
-							</a>
-						</Box>
+						<SocialIcons />
 						<Link href="/mint">
 							<Button
 								onClick={handleCloseNavMenu}

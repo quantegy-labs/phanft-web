@@ -1,5 +1,11 @@
 import { Box, Button, Container, Typography } from '@mui/material'
+import Image from 'next/image'
 import Link from 'next/link'
+import Lizard1 from '../../public/banner-lizards/blue.png'
+import Lizard2 from '../../public/banner-lizards/green.png'
+import Lizard3 from '../../public/banner-lizards/orange.png'
+import Lizard4 from '../../public/banner-lizards/teal.png'
+import Lizard5 from '../../public/banner-lizards/yellow.png'
 
 const styles = {
 	banner: {
@@ -7,24 +13,43 @@ const styles = {
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center',
-		px: 4,
-		background: "url('/bg_banner_mobile.jpg') right bottom no-repeat",
-		pt: 10,
-		pb: 24,
-		'@media (min-width: 600px)': {
-			pt: 16,
-			pb: 28,
+		background: "url('/bg_banner.jpg') right bottom no-repeat",
+		backgroundSize: 'cover',
+		position: 'relative',
+		minHeight: 500,
+	},
+	lizard1: {
+		bottom: -8,
+		right: 0,
+	},
+	lizard2: {
+		bottom: -8,
+		right: 150,
+	},
+	lizard3: {
+		bottom: -8,
+		right: 300,
+	},
+	lizard4: {
+		bottom: -8,
+		right: 450,
+		display: {
+			xs: 'none',
+			md: 'block',
 		},
-		'@media (min-width: 900px)': {
-			background: "url('/bg_banner.jpg') right bottom no-repeat",
-			backgroundSize: 'cover',
-			pt: 20,
-			pb: 30,
+	},
+	lizard5: {
+		bottom: -8,
+		right: 600,
+		display: {
+			xs: 'none',
+			md: 'block',
 		},
 	},
 	headline: {
 		color: '#fff',
 		fontSize: 36,
+		px: 4,
 		'@media (min-width: 900px)': {
 			fontSize: 42,
 		},
@@ -56,10 +81,25 @@ const styles = {
 
 const SectionIntro = (): JSX.Element => (
 	<>
-		<Box sx={styles.banner}>
+		<Box sx={styles.banner} className="banner">
 			<Typography variant="h2" sx={styles.headline}>
 				Your Web 3.0 Pass to 4.0 Phandom
 			</Typography>
+			<Box sx={styles.lizard1} position="absolute">
+				<Image src={Lizard1} width={150} height={150} alt="lizard" />
+			</Box>
+			<Box sx={styles.lizard2} position="absolute">
+				<Image src={Lizard2} width={150} height={150} alt="lizard" />
+			</Box>
+			<Box sx={styles.lizard3} position="absolute">
+				<Image src={Lizard3} width={150} height={150} alt="lizard" />
+			</Box>
+			<Box sx={styles.lizard4} position="absolute">
+				<Image src={Lizard4} width={150} height={150} alt="lizard" />
+			</Box>
+			<Box sx={styles.lizard5} position="absolute">
+				<Image src={Lizard5} width={150} height={150} alt="lizard" />
+			</Box>
 		</Box>
 		<Box id="intro" component="section">
 			<Container maxWidth="lg">
