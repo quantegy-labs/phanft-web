@@ -18,7 +18,7 @@ const EnlightenedLizardsCollectionPage: NextPage = () => {
 						layout="fixed"
 						width={300}
 						height={300}
-						src="/lizard_unknown.png"
+						src="/lizard_unknown.jpg"
 						alt="Lizards Genesis PFP"
 					/>
 					<Box sx={{ mb: 4 }} />

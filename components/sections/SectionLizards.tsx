@@ -44,7 +44,7 @@ const SectionLizards = (): JSX.Element => (
 							layout="responsive"
 							width={500}
 							height={500}
-							src="/lizard1.png"
+							src="/lizard1.jpg"
 							alt="Lizards Genesis PFP"
 						/>
 					</Box>
@@ -56,7 +56,7 @@ const SectionLizards = (): JSX.Element => (
 							layout="responsive"
 							width={500}
 							height={500}
-							src="/lizard2.png"
+							src="/lizard2.jpg"
 							alt="Lizards Genesis PFP"
 						/>
 					</Box>
@@ -68,7 +68,7 @@ const SectionLizards = (): JSX.Element => (
 							layout="responsive"
 							width={500}
 							height={500}
-							src="/lizard3.png"
+							src="/lizard3.jpg"
 							alt="Lizards Genesis PFP"
 						/>
 					</Box>
@@ -80,7 +80,7 @@ const SectionLizards = (): JSX.Element => (
 							layout="responsive"
 							width={500}
 							height={500}
-							src="/lizard4.png"
+							src="/lizard4.jpg"
 							alt="Lizards Genesis PFP"
 						/>
 					</Box>

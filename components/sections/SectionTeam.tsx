@@ -81,7 +81,7 @@ const SectionTeam = (): JSX.Element => {
 									layout="responsive"
 									width={300}
 									height={300}
-									src="/lizard_david.png"
+									src="/lizard_david.jpg"
 									alt="Team Member"
 								/>
 							</Link>
@@ -109,7 +109,7 @@ const SectionTeam = (): JSX.Element => {
 									layout="responsive"
 									width={300}
 									height={300}
-									src="/lizard_ian.png"
+									src="/lizard_ian.jpg"
 									alt="Team Member"
 								/>
 							</Link>
@@ -138,7 +138,7 @@ const SectionTeam = (): JSX.Element => {
 									layout="responsive"
 									width={300}
 									height={300}
-									src="/lizard_drew.png"
+									src="/lizard_drew.jpg"
 									alt="Team Member"
 								/>
 							</Link>

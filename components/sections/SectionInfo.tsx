@@ -123,7 +123,7 @@ const SectionInfo = (): JSX.Element => (
 								layout="responsive"
 								width={300}
 								height={300}
-								src="/lizard_unknown.png"
+								src="/lizard_unknown.jpg"
 								alt="Lizards Genesis PFP"
 							/>
 						</Grid>

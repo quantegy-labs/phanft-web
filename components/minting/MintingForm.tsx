@@ -63,7 +63,7 @@ const MintingForm = ({ loading, mintTokens, whitelistMintTokens }: MintingFormPr
 					<Image
 						quality={20}
 						layout="responsive"
-						src="/lizard_unknown.png"
+						src="/lizard_unknown.jpg"
 						alt="Collection preview"
 						width={400}
 						height={400}

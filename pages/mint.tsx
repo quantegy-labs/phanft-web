@@ -57,7 +57,7 @@ const AdminPage: NextPage = () => {
 									layout="responsive"
 									width={600}
 									height={600}
-									src="/lizard5.png"
+									src="/lizard5.jpg"
 									alt="Lizards Genesis PFP"
 								/>
 							</Box> */}
