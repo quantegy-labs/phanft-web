@@ -2,10 +2,10 @@ import { Box, Button, Container, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import Lizard1 from '../../public/banner-lizards/blue.png'
-import Lizard2 from '../../public/banner-lizards/green.png'
-import Lizard3 from '../../public/banner-lizards/orange.png'
-import Lizard4 from '../../public/banner-lizards/teal.png'
-import Lizard5 from '../../public/banner-lizards/yellow.png'
+import Lizard2 from '../../public/banner-lizards/orange.png'
+import Lizard3 from '../../public/banner-lizards/teal.png'
+import Lizard4 from '../../public/banner-lizards/yellow.png'
+import Lizard5 from '../../public/banner-lizards/green.png'
 
 const styles = {
 	banner: {
@@ -21,26 +21,32 @@ const styles = {
 	lizard1: {
 		bottom: -8,
 		right: 0,
+		zIndex: 1,
 	},
 	lizard2: {
 		bottom: -8,
-		right: 150,
+		right: 110,
 	},
 	lizard3: {
 		bottom: -8,
-		right: 300,
+		right: 280,
+		zIndex: 1,
+		display: {
+			xs: 'none',
+			sm: 'block',
+		},
 	},
 	lizard4: {
 		bottom: -8,
-		right: 450,
+		right: 400,
 		display: {
 			xs: 'none',
-			md: 'block',
+			sm: 'block',
 		},
 	},
 	lizard5: {
 		bottom: -8,
-		right: 600,
+		right: 580,
 		display: {
 			xs: 'none',
 			md: 'block',

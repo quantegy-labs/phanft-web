@@ -1,5 +1,4 @@
 import { Box, Link, Typography } from '@mui/material'
-import Image from 'next/image'
 import SocialIcons from '../SocialIcons'
 
 const styles = {
