@@ -272,7 +272,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 				},
 			}}
 		>
-			{loading ? (
+			{!loading ? (
 				<Box
 					sx={{
 						backgroundColor: 'text.primary',
@@ -284,9 +284,9 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 						alignItems: 'center',
 					}}
 				>
-					<CircularProgress size={60} color="info" />
+					<CircularProgress size={60} sx={{ color: '#ff0087' }} />
 					<Typography variant="overline" sx={{ mt: 3, color: '#fafafa' }}>
-						Loading Web3...
+						Still Waiting...
 					</Typography>
 				</Box>
 			) : (
