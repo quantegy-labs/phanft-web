@@ -272,7 +272,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 				},
 			}}
 		>
-			{!loading ? (
+			{loading ? (
 				<Box
 					sx={{
 						backgroundColor: 'text.primary',
