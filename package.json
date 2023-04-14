@@ -26,8 +26,8 @@
 		"etherscan-api": "^10.2.0",
 		"keccak256": "^1.0.6",
 		"merkletreejs": "^0.2.32",
-		"next": "12.1.6",
-		"nextjs-progressbar": "^0.0.14",
+		"next": "13.3.0",
+		"nextjs-progressbar": "^0.0.16",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},
