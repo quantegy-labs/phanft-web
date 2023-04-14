@@ -1,11 +1,6 @@
 import { Box, Button, Container, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
-import Lizard1 from 'public/banner-lizards/blue.png'
-import Lizard2 from 'public/banner-lizards/orange.png'
-import Lizard3 from 'public/banner-lizards/teal.png'
-import Lizard4 from 'public/banner-lizards/yellow.png'
-import Lizard5 from 'public/banner-lizards/green.png'
 
 const styles = {
 	banner: {
@@ -92,19 +87,19 @@ const SectionIntro = (): JSX.Element => (
 				Your Web 3.0 Pass to 4.0 Phandom
 			</Typography>
 			<Box sx={styles.lizard1} position="absolute">
-				<Image priority src={Lizard1} width={150} height={150} alt="lizard" />
+				<Image priority src="/banner-lizards/blue.png" width={150} height={150} alt="lizard" />
 			</Box>
 			<Box sx={styles.lizard2} position="absolute">
-				<Image priority src={Lizard2} width={150} height={150} alt="lizard" />
+				<Image priority src="/banner-lizards/orange.png" width={150} height={150} alt="lizard" />
 			</Box>
 			<Box sx={styles.lizard3} position="absolute">
-				<Image priority src={Lizard3} width={150} height={150} alt="lizard" />
+				<Image priority src="/banner-lizards/teal.png" width={150} height={150} alt="lizard" />
 			</Box>
 			<Box sx={styles.lizard4} position="absolute">
-				<Image priority src={Lizard4} width={150} height={150} alt="lizard" />
+				<Image priority src="/banner-lizards/yellow.png" width={150} height={150} alt="lizard" />
 			</Box>
 			<Box sx={styles.lizard5} position="absolute">
-				<Image priority src={Lizard5} width={150} height={150} alt="lizard" />
+				<Image priority src="/banner-lizards/green.png" width={150} height={150} alt="lizard" />
 			</Box>
 		</Box>
 		<Box id="intro" component="section">
