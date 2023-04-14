@@ -65,6 +65,11 @@ main img:not(main .banner img) {
 	border-radius: 8px;
 }
 
+.full-width {
+	width: 100%;
+	height: auto;
+}
+
 /*
 	Crossmint button
 */

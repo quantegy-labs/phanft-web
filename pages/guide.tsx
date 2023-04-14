@@ -207,8 +207,8 @@ const GuidePage: NextPage = () => {
 									Click &quot;Add to Chrome&quot;, and then &quot;Add Extension&quot; to install the browser extension.
 								</Typography>
 							</li>
-							<Image priority quality={20} src={image1} alt="How to Mint" />
-							<Image priority quality={20} src={image7} alt="How to Mint" />
+							<Image className="full-width" priority quality={20} src={image1} alt="How to Mint" />
+							<Image className="full-width" priority quality={20} src={image7} alt="How to Mint" />
 							<Box sx={{ mb: 4 }} />
 							<li>
 								<Typography sx={styles.li}>
@@ -235,7 +235,7 @@ const GuidePage: NextPage = () => {
 									We will never ask you for your seed phrase and no legitimate entity or person will.
 								</Typography>
 							</li>
-							<Image priority quality={20} src={image5} alt="How to Mint" />
+							<Image className="full-width" priority quality={20} src={image5} alt="How to Mint" />
 							<Box sx={{ mb: 4 }} />
 							<li>
 								<Typography sx={styles.li}>
@@ -275,7 +275,7 @@ const GuidePage: NextPage = () => {
 							</NextLink>{' '}
 							and connect your wallet. Click the wallet icon on upper right hand corner of site navigation bar.
 						</Typography>
-						<Image priority quality={20} src={image2} alt="How to Mint" />
+						<Image className="full-width" priority quality={20} src={image2} alt="How to Mint" />
 						<Typography sx={styles.h5} variant="h5">
 							Step 4 - Mint a Lizard!
 						</Typography>
@@ -343,14 +343,14 @@ const GuidePage: NextPage = () => {
 							<li>
 								<Typography sx={styles.li}>On the pop-up dialog, click &quot;Add Wallet&quot;.</Typography>
 							</li>
-							<Image priority quality={20} src={image6} alt="How to Mint" />
+							<Image className="full-width" priority quality={20} src={image6} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									Get your ETH address from your MetaMask wallet. Click the “Copy” icon as shown in the MetaMask
 									screenshot below.
 								</Typography>
 							</li>
-							<Image priority quality={20} src={image3} alt="How to Mint" />
+							<Image className="full-width" priority quality={20} src={image3} alt="How to Mint" />
 							<li>
 								<Typography sx={styles.li}>
 									Go back to{' '}
@@ -372,7 +372,7 @@ const GuidePage: NextPage = () => {
 									so make sure your ETH address is correct in the field above.
 								</Typography>
 							</li>
-							<Image priority quality={20} src={image4} alt="How to Mint" />
+							<Image className="full-width" priority quality={20} src={image4} alt="How to Mint" />
 							<Box sx={{ mb: 4 }} />
 							<li>
 								<Typography sx={styles.li}>It may take a minute for the transfer to complete...</Typography>

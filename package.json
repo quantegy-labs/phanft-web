@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
-		"start": "next start",
+		"start": "next start -p $PORT",
 		"lint": "yarn lint:code && yarn lint:formatting",
 		"lint:fix": "yarn fix:code && yarn fix:formatting",
 		"lint:code": "next lint",
@@ -14,6 +14,7 @@
 		"fix:formatting": "npx prettier --config .prettierrc.js . --write",
 		"update_collection_info": "node ./scripts/update_collection_info.js"
 	},
+	"cacheDirectories": [".next/cache"],
 	"dependencies": {
 		"@crossmint/client-sdk-react-ui": "^0.1.8-alpha.0",
 		"@emotion/react": "^11.10.6",
