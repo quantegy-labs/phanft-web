@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { ReactElement, useContext, useEffect, useState } from 'react'
 import { ethers, BigNumber } from 'ethers'
 import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
@@ -8,7 +11,6 @@ import Whitelist from '../smart-contract/lib/Whitelist'
 import { EnlightenedLizards as NftContractType } from '../lib/EnlightenedLizards'
 import type { NetworkConfigInterface } from './minting/MintingForm'
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const ContractAbi = require('../lib/abi/' +
 	CollectionConfig.contractName +
 	'.sol/' +
