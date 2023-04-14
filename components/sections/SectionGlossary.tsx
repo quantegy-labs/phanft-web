@@ -78,7 +78,7 @@ const SectionGlossary = (): JSX.Element => (
 		</Typography>
 		<Typography sx={styles.glossaryDesc}>
 			The cryptocurrency of the Ethereum blockchain. Ether can be purchased using fiat currency such as U.S. dollars on
-			a variety exchanges such as Coinbase, or within certain crypto Wallets such as Metamask.
+			a variety exchanges such as Coinbase, or within certain crypto Wallets such as MetaMask.
 		</Typography>
 		<Typography variant="h5" component="h4" sx={styles.glossaryTerm}>
 			Smart Contacts
@@ -86,7 +86,7 @@ const SectionGlossary = (): JSX.Element => (
 		<Typography sx={styles.glossaryDesc}>
 			These are simply programs stored on a blockchain that run when predetermined conditions are met. They typically
 			are used to automate the execution of an agreement so that all participants can be immediately certain of the
-			outcome, without any intermediary&apos;s involvement or time loss. In the case of PhanFT, smart contracts are how
+			outcome, without any intermediary&apos;s involvement or time loss. In the case of PhaNFT, smart contracts are how
 			ownership is determined, and how payments to multiple parties including the seller, the artist, and the charity
 			partner are automatically made when a transaction takes place.
 		</Typography>

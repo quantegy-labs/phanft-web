@@ -1,66 +1,59 @@
 import { Box, Link, Typography } from '@mui/material'
-import Image from 'next/image'
+import SocialIcons from '../SocialIcons'
 
 const styles = {
 	footer: {
-		backgroundColor: '#121212',
+		backgroundColor: '#000',
+		color: '#fff',
 		display: 'flex',
 		flexDirection: 'column',
 		py: 4,
-		borderTop: '1px solid #eaeaea',
+		px: 2,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	socialWrap: {
-		mb: 1,
+	linksMobile: {
+		mt: 2,
+		textAlign: 'center',
+		display: { xs: 'block', sm: 'none' },
+	},
+	linksDesktop: {
+		mt: 2,
+		display: { xs: 'none', sm: 'block' },
 	},
 }
 
-const AppFooter = (): JSX.Element => (
-	<Box component="footer" sx={styles.footer}>
-		<Box sx={styles.socialWrap}>
-			<a
-				href="https://discord.gg/pxwNvgMQaU"
-				target="_blank"
-				rel="noopener noreferrer"
-				className="social-icon-link"
-			>
-				<Image src="/icon_discord.svg" alt="Discord" width={20} height={20} />
-			</a>
-			<a
-				href="https://twitter.com/phanft_official"
-				target="_blank"
-				rel="noopener noreferrer"
-				className="social-icon-link"
-			>
-				<Image src="/icon_twitter.svg" alt="Twitter" width={20} height={20} />
-			</a>
-			<a
-				href="https://instagram.com/phanft_official"
-				target="_blank"
-				rel="noopener noreferrer"
-				className="social-icon-link"
-			>
-				<Image src="/icon_instagram.svg" alt="Instagram" width={20} height={20} />
-			</a>
-		</Box>
-		<Typography variant="overline">
-			<strong>Attention artists:</strong> If you&apos;re interested in designing the art for future
-			collections, please{' '}
-			<Link href="mailto:gm@phanft.xyz" color="inherit">
-				contact us
-			</Link>{' '}
-			.
+const FooterLinksMobile = () => (
+	<Box sx={styles.linksMobile}>
+		<Typography variant="overline" component="p">
+			<Link href="/privacy" underline="hover" color="inherit">
+				Privacy Policy
+			</Link>
 		</Typography>
 		<Typography variant="overline" component="p">
-			&copy; 2022 | Property of{' '}
-			<Link
-				href="https://quantegylabs.com"
-				target="_blank"
-				rel="noopener noreferrer"
-				underline="hover"
-				color="inherit"
-			>
+			<Link href="/terms" underline="hover" color="inherit">
+				Terms of Use
+			</Link>
+		</Typography>
+		<Typography variant="overline" component="p">
+			<Link href="mailto:gm@phanft.xyz" underline="hover" color="inherit">
+				Artist Partner Inquiries
+			</Link>
+		</Typography>
+		<Typography variant="overline" component="p">
+			&copy;2022 Property of{' '}
+			<Link href="https://quantegylabs.com" target="_blank" rel="noopener noreferrer" underline="hover" color="inherit">
+				Quantegy Labs
+			</Link>
+		</Typography>
+	</Box>
+)
+
+const FooterLinksDesktop = () => (
+	<Box sx={styles.linksDesktop}>
+		<Typography variant="overline" component="p">
+			&copy;2022 Property of{' '}
+			<Link href="https://quantegylabs.com" target="_blank" rel="noopener noreferrer" underline="hover" color="inherit">
 				Quantegy Labs
 			</Link>{' '}
 			|{' '}
@@ -70,8 +63,20 @@ const AppFooter = (): JSX.Element => (
 			|{' '}
 			<Link href="/terms" underline="hover" color="inherit">
 				Terms of Use
+			</Link>{' '}
+			|{' '}
+			<Link href="mailto:gm@phanft.xyz" underline="hover" color="inherit">
+				Artist Partner Inquiries
 			</Link>
 		</Typography>
+	</Box>
+)
+
+const AppFooter = (): JSX.Element => (
+	<Box component="footer" sx={styles.footer}>
+		<SocialIcons />
+		<FooterLinksMobile />
+		<FooterLinksDesktop />
 	</Box>
 )
 export default AppFooter

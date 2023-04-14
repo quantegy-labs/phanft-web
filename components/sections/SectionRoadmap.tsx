@@ -3,10 +3,11 @@ import { Box, Container, Divider, List, ListItem, ListItemIcon, ListItemText, Ty
 
 const styles = {
 	headings: {
+		color: '#fff',
 		textAlign: 'center',
-		mb: 6,
 	},
 	heading: {
+		color: '#fff',
 		textAlign: 'center',
 		mb: 1,
 		fontSize: 30,
@@ -15,17 +16,27 @@ const styles = {
 		},
 	},
 	subheading: {
-		fontSize: 24,
+		color: '#fff',
+		fontSize: 20,
+		fontStyle: 'italic',
+		fontWeight: 300,
 		'@media (min-width: 900px)': {
-			fontSize: 30,
+			fontSize: 26,
 		},
 	},
 	roadmapText: {
+		color: '#fff',
 		fontSize: '1.1rem',
 		mb: 2,
 		'@media (min-width: 900px)': {
 			fontSize: '1.25rem',
 			mb: 4,
+		},
+	},
+	listItem: {
+		span: {
+			color: '#fff',
+			fontWeight: 300,
 		},
 	},
 }
@@ -41,105 +52,99 @@ const SectionRoadmap = (): JSX.Element => (
 					Phase 1.0 Benefits and Roadmap
 				</Typography>
 			</Box>
+			<Box className="large-block secondary" />
 			<Typography sx={styles.roadmapText}>
-				We&rsquo;re in this for the long haul and our intent is all for your delight. Below is what we plan to deliver
-				in the first phase with a sold out collection. That said, this is a fast evolving space and we&apos;re learning
-				every day. All ideas are subject to modification and change as needed.
+				We are setting the mint price low enough to make owning a Lizard easily affordable. This however leaves a
+				smaller budget than originally conceived to bundle-in physical items such as LE posters and wearable merch.
+			</Typography>
+			<Typography sx={styles.roadmapText}>
+				We have an abundance of ideas and ability to deliver a &quot;phygital experience&quot; in due time, once we
+				establish ourselves and have more resources in our treasury.
+			</Typography>
+			<Typography sx={styles.roadmapText}>
+				Here&apos;s what minting an Enlightened Lizard gets you today. All ideas are subject to modification and change
+				as needed.
 			</Typography>
 			<List>
-				<ListItem sx={{ fontSize: '1.5rem' }}>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Own a one-of-a-kind, provably-rare digital collectable" />
+					<ListItemText primary="Own a one-of-a-kind, provably-rare digital collectable. Rock it as your social media profile pic to show your support and a wink to your phellow lizards out there." />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Each Lizard holder gets (1) LE art print by Nate Duval (this perk gets triggered on our 100th mint)" />
+					<ListItemText primary="Access our custom bot to crunch and compare show stats across all Enlightened Lizard holders 🤖" />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Each Lizard holder gets (1) wearable merch item" />
+					<ListItemText primary="Free airdrops of future collections and special artist collaborations as we expand the community" />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Free airdrops of future collections and artist collabs as we expand the community" />
+					<ListItemText primary="Invitations to Lizard-holder events and gatherings during tour. i.e. pre-show meetups, and other occasional token-gated events" />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Access to phan-centric perks from our partners" />
+					<ListItemText primary="Access to phan-centric perks from future partners (merch, art, custom craft beer on lot...once our collection is sold out, all becomes possible)" />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Invitations to Lizard holder events and gatherings during tour. i.e. aftershow parties, pre-show meetups, and more. Your Lizard = your ticket" />
+					<ListItemText primary="Purchasing a Lizard generates donations to The Waterwheel Foundation and Mockingbird Foundation" />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
 						<Star color="secondary" />
 					</ListItemIcon>
-					<ListItemText primary="Keys to 'The Corridor', a private sub-section of our public Discord (that we have plans to eventually develop into an interactive gathering place in the metaverse)" />
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<Star color="secondary" />
-					</ListItemIcon>
-					<ListItemText primary="Purchasing a Lizard generates donations to The Waterwheel Foundation and Mockingbird Foundation charity partners." />
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<Star color="secondary" />
-					</ListItemIcon>
-					<ListItemText primary="Help save the Lizards from extinction by minting them to the blockchain and join the quest to gain the knowledge that you lack" />
+					<ListItemText primary="Help save the Lizards from extinction by minting them to the blockchain and join the quest to gain the knowledge that you lack!" />
 				</ListItem>
 			</List>
 			<Divider />
 			<Box sx={styles.headings}>
 				<Typography variant="h4" sx={styles.heading}>
-					Phase 2.0 & Beyond
+					Phase 2.0 &amp; Beyond
 				</Typography>
 				<Typography variant="h5" sx={styles.subheading}>
 					This begins after selling out Phase 1.0 and delivering on the roadmap.
 				</Typography>
 			</Box>
+			<Box className="large-block" />
 			<Typography sx={styles.roadmapText}>
-				The below list are ideas and we reserve the right to change or modify them anytime as we learn and grow as a
-				community. Like the spirit of the music, we&apos;re stepping on stage and improvising together with you in
-				uncharted territory.
+				PhaNFT aims to be a community-driven project, where the uses of secondary sale proceeds are decided by the
+				community through a Helping Friendly DAO. Members will be able to propose ideas and vote on spending, with
+				decisions made through a majority vote of holders and executed by treasury funds.
+			</Typography>
+			<Typography sx={styles.roadmapText}>
+				Here are just a few ideas that we&apos;ve come up with to propose for use of funds:
 			</Typography>
 			<List>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
-						<Star color="secondary" />
+						<Star color="primary" />
 					</ListItemIcon>
-					<ListItemText primary="We take the proceeds from The Lizards collection and invest right back into this community - dosing our brew with fresh batches of new (yet phamiliar) character-driven NFTs, special artist collabs, and even more value for holders digitally and IRL." />
+					<ListItemText primary="We partner with an established and respected poster artist to design the next NFT collection, where each ones comes with a physical poster twin." />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
-						<Star color="secondary" />
+						<Star color="primary" />
 					</ListItemIcon>
-					<ListItemText primary="The Helping Phriendly DAO launches with a public treasury of funds, where holders get to vote on future goals and direction of the project." />
+					<ListItemText primary="We bring the shakedown lot experience into a virtual metaverse before couch tour shows, where Lizards and other creatures that seem oh-so-kind can gather to hang out, buy digital and physical goods from vendors, and get more down at virtual dance parties." />
 				</ListItem>
-				<ListItem>
+				<ListItem sx={styles.listItem}>
 					<ListItemIcon>
-						<Star color="secondary" />
+						<Star color="primary" />
 					</ListItemIcon>
-					<ListItemText primary="We bring the shakedown lot experience into the metaverse before couch tour shows, where Lizards and other creatures that seem oh-so-kind can gather to hang out, buy digital and physical goods from vendors, and get more down at dance parties." />
-				</ListItem>
-				<ListItem>
-					<ListItemIcon>
-						<Star color="secondary" />
-					</ListItemIcon>
-					<ListItemText primary="The Rhombus appears and a new portal is unlocked revealing a digital treasure hunt. Prizes include up to 2 ETH in rewards and exclusive 1-of-1 minted characters including the great and knowledgeable Icculus." />
+					<ListItemText primary="The Rhombus appears and a new portal is unlocked revealing a digital treasure hunt. Prizes include ETH in rewards and exclusive 1-of-1 minted characters including the great and knowledgeable Icculus." />
 				</ListItem>
 			</List>
 		</Container>

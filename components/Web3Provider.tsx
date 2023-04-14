@@ -8,6 +8,7 @@ import Whitelist from '../smart-contract/lib/Whitelist'
 import { EnlightenedLizards as NftContractType } from '../lib/EnlightenedLizards'
 import type { NetworkConfigInterface } from './minting/MintingForm'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const ContractAbi = require('../lib/abi/' +
 	CollectionConfig.contractName +
 	'.sol/' +
@@ -79,18 +80,22 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 		otherState.networkConfig.blockExplorer.generateContractUrl(CollectionConfig.contractAddress!)
 
 	const initContract = async (provider: Web3Provider, account: string | null) => {
-		// Setup contract connection using config
-		const enlightenedLizards = new ethers.Contract(
-			CollectionConfig.contractAddress!,
-			ContractAbi,
-			provider.getSigner(),
-		) as NftContractType
-		setContract(enlightenedLizards)
-		await refreshContractState(enlightenedLizards, account)
+		try {
+			// Setup contract connection using config
+			const enlightenedLizards = new ethers.Contract(
+				CollectionConfig.contractAddress!,
+				ContractAbi,
+				provider.getSigner(),
+			) as NftContractType
+			setContract(enlightenedLizards)
+			await refreshContractState(enlightenedLizards, account)
+		} catch (e: any) {
+			console.error('initContract()', e)
+		}
 	}
 
-	useEffect(() => {
-		const getWeb3 = async () => {
+	const getWeb3 = async () => {
+		try {
 			const browserProvider = (await detectEthereumProvider()) as ExternalProvider
 			if (browserProvider) {
 				console.log('Ethereum successfully detected!')
@@ -128,94 +133,119 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 				)
 				setLoading(false)
 			}
+		} catch (e: any) {
+			console.error('getWeb3()', e)
 		}
-		getWeb3()
+	}
+
+	useEffect(() => {
+		try {
+			getWeb3()
+		} catch (e: any) {
+			console.log('caught', e)
+		}
 	}, [])
 
 	// Refreshes the contract data in state with the most lastest data from contract state, useful for updating UIs after transactions
 	const refreshContractState = async (contract: NftContractType | null, account: string | null): Promise<void> => {
-		if (!contract) return
-		setContractState({
-			maxSupply: (await contract.maxSupply()).toNumber(),
-			totalSupply: (await contract.totalSupply()).toNumber(),
-			maxMintAmountPerTx: (await contract.maxMintAmountPerTx()).toNumber(),
-			tokenPrice: await contract.cost(),
-			isPaused: await contract.paused(),
-			isWhitelistMintEnabled: await contract.whitelistMintEnabled(),
-			isUserInWhitelist: Whitelist.contains(account ? account : connectedAddress || otherState.userAddress || ''),
-		})
+		try {
+			if (!contract || !account) return
+			setContractState({
+				maxSupply: (await contract.maxSupply()).toNumber(),
+				totalSupply: (await contract.totalSupply()).toNumber(),
+				maxMintAmountPerTx: (await contract.maxMintAmountPerTx()).toNumber(),
+				tokenPrice: await contract.cost(),
+				isPaused: await contract.paused(),
+				isWhitelistMintEnabled: await contract.whitelistMintEnabled(),
+				isUserInWhitelist: Whitelist.contains(account ? account : connectedAddress || otherState.userAddress || ''),
+			})
+		} catch (e: any) {
+			console.error('refreshContractState()', e)
+		}
 	}
 
 	// Initializes wallet, network, & contract data
 	const initWallet = async (isInitial = false) => {
-		if (!web3Provider) return
+		try {
+			if (!web3Provider) return
 
-		// Get connected wallets
-		const walletAccounts = (await web3Provider.listAccounts()) ?? []
-		if (walletAccounts.length === 0) {
-			return
+			// Get connected wallets
+			const walletAccounts = (await web3Provider.listAccounts()) ?? []
+			if (walletAccounts.length === 0) {
+				return
+			}
+			const connectedWallet = walletAccounts[0]
+
+			// Get network
+			const network = await web3Provider.getNetwork()
+			let networkConfig: NetworkConfigInterface
+			if (!network) {
+				setWeb3Error('Unsupported network!')
+				return
+			} else if (network.chainId === CollectionConfig.mainnet.chainId) {
+				networkConfig = CollectionConfig.mainnet
+			} else if (network.chainId === CollectionConfig.testnet.chainId) {
+				networkConfig = CollectionConfig.testnet
+			} else {
+				setWeb3Error('Unsupported network!')
+				return
+			}
+
+			// Set network and connected address data
+			setConnectedAddress(connectedWallet)
+			setOtherState({
+				userAddress: connectedWallet,
+				network,
+				networkConfig,
+			})
+
+			// set user whitelist
+			setContractState({
+				...contractState,
+				isUserInWhitelist: Whitelist.contains(connectedWallet),
+			})
+
+			// Get/Set contract data
+			if ((await web3Provider.getCode(CollectionConfig.contractAddress!)) === '0x') {
+				setWeb3Error('Could not find the contract, are you connected to the right chain?')
+				return
+			}
+
+			// Setup contract connection using config
+			if (!isInitial) initContract(web3Provider, connectedWallet)
+		} catch (e: any) {
+			console.error('initWallet()', e)
 		}
-		const connectedWallet = walletAccounts[0]
-
-		// Get network
-		const network = await web3Provider.getNetwork()
-		let networkConfig: NetworkConfigInterface
-		if (!network) {
-			setWeb3Error('Unsupported network!')
-			return
-		} else if (network.chainId === CollectionConfig.mainnet.chainId) {
-			networkConfig = CollectionConfig.mainnet
-		} else if (network.chainId === CollectionConfig.testnet.chainId) {
-			networkConfig = CollectionConfig.testnet
-		} else {
-			setWeb3Error('Unsupported network!')
-			return
-		}
-
-		// Set network and connected address data
-		setConnectedAddress(connectedWallet)
-		setOtherState({
-			userAddress: connectedWallet,
-			network,
-			networkConfig,
-		})
-		// set user whitelist
-		setContractState({
-			...contractState,
-			isUserInWhitelist: Whitelist.contains(connectedWallet),
-		})
-
-		// Get/Set contract data
-		if ((await web3Provider.getCode(CollectionConfig.contractAddress!)) === '0x') {
-			setWeb3Error('Could not find the contract, are you connected to the right chain?')
-			return
-		}
-
-		// Setup contract connection using config
-		if (!isInitial) initContract(web3Provider, connectedWallet)
 	}
 
 	const registerWalletEvents = (browserProvider: ExternalProvider): void => {
-		// @ts-ignore
-		browserProvider.on('accountsChanged', async accts => {
-			setConnectedAddress(accts[0])
-			await initWallet()
-			const ethersProvider = new ethers.providers.Web3Provider(browserProvider)
-			await initContract(ethersProvider, accts[0])
-		})
+		try {
+			// @ts-ignore
+			browserProvider.on('accountsChanged', async accts => {
+				setConnectedAddress(accts[0])
+				await initWallet()
+				const ethersProvider = new ethers.providers.Web3Provider(browserProvider)
+				await initContract(ethersProvider, accts[0])
+			})
 
-		// @ts-ignore
-		browserProvider.on('chainChanged', chain => {
-			window.location.reload()
-		})
+			// @ts-ignore
+			browserProvider.on('chainChanged', chain => {
+				window.location.reload()
+			})
+		} catch (e: any) {
+			console.error('registerWalletEvents()', e)
+		}
 	}
 
 	const connectWallet = async (): Promise<void> => {
 		try {
-			await web3Provider?.provider.request!({ method: 'eth_requestAccounts' })
+			if (!web3Provider) return
+			await web3Provider.provider?.request!({ method: 'eth_requestAccounts' })
 			await initWallet()
 			setConnected(true)
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (e: any) {
+			console.error('connectWallet()', e)
 			setWeb3Error(e)
 		}
 	}
@@ -254,9 +284,9 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
 						alignItems: 'center',
 					}}
 				>
-					<CircularProgress size={60} color="info" />
+					<CircularProgress size={60} sx={{ color: '#ff0087' }} />
 					<Typography variant="overline" sx={{ mt: 3, color: '#fafafa' }}>
-						Loading Web3...
+						Still Waiting...
 					</Typography>
 				</Box>
 			) : (

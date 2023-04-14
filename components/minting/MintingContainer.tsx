@@ -1,5 +1,4 @@
-import { useState, isValidElement, useEffect } from 'react'
-// import { toast } from 'react-toastify'
+import { useState, isValidElement } from 'react'
 import { Alert, Box, Button, CircularProgress, Grid, IconButton, Link, Paper, Typography } from '@mui/material'
 import { Add, Remove } from '@mui/icons-material'
 import CollectionConfig from '../../smart-contract/config/CollectionConfig'
@@ -8,7 +7,6 @@ import { useWeb3Context } from '../Web3Provider'
 import MintingStatus from './MintingStatus'
 import MintingForm from './MintingForm'
 import CrossmintButton from './CrossmintButton'
-// import ethApi from 'etherscan-api'
 
 const styles = {
 	loadingContract: {
@@ -23,13 +21,13 @@ const styles = {
 		mb: 2,
 	},
 	noConnectContainer: {
-		backgroundColor: '#fafafa',
-		color: '#222',
+		border: '2px solid #8DFF9C',
+		color: '#fff',
 		p: 4,
 	},
 	connectContainer: {
-		backgroundColor: '#fafafa',
-		color: '#222',
+		border: '2px solid #8DFF9C',
+		color: '#fff',
 		p: 4,
 	},
 	connectBtn: {
@@ -91,6 +89,7 @@ const MintingContainer = (): JSX.Element => {
 		CollectionConfig.marketplaceConfig.generateCollectionUrl(CollectionConfig.marketplaceIdentifier, !isNotMainnet())
 	const generateTransactionUrl = (transactionHash: string): string =>
 		otherState.networkConfig.blockExplorer.generateTransactionUrl(transactionHash)
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const setError = (error: any = null): void => {
 		let errorMessage = 'Unknown error...'
 		if (null === error || typeof error === 'string') {
@@ -276,7 +275,7 @@ const MintingContainer = (): JSX.Element => {
 				Buy With ETH
 			</Typography>
 			<Typography gutterBottom>
-				Connect your Metamask wallet to interact with the Enlightened Lizards NFT smart contract on the blockchain and
+				Connect your MetaMask wallet to interact with the Enlightened Lizards NFT smart contract on the blockchain and
 				mint your token. Must have .10 ether in your wallet + .01 extra to cover the transaction fee (gas).
 			</Typography>
 			{web3Provider ? (
@@ -293,7 +292,7 @@ const MintingContainer = (): JSX.Element => {
 			) : (
 				<Alert variant="filled" severity="warning" sx={{ mt: 3, mb: 4 }}>
 					<Typography variant="subtitle2" gutterBottom>
-						It looks like you might not have Metamask yet.{' '}
+						It looks like you might not have MetaMask yet.{' '}
 						<Link href="https://metamask.io" color="inherit" target="_blank" rel="noopener noreferrer">
 							Install here
 						</Link>
@@ -302,10 +301,10 @@ const MintingContainer = (): JSX.Element => {
 			)}
 			<Box sx={{ mt: 2 }}>
 				<Typography variant="h4" gutterBottom>
-					Buy With $USD
+					Buy With USD
 				</Typography>
 				<Typography gutterBottom>
-					If you don't have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhanFT
+					If you don&apos;t have a web3 wallet, you can still own an Enlightened Lizards NFT and benefit from the PhaNFT
 					membership. We partnered with{' '}
 					<Link href="https://crossmint.io" target="_blank" color="inherit">
 						Crossmint
