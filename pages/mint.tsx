@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import NextLink from 'next/link'
-import Image from 'next/image'
 import { Box, Container, Grid, Link, Typography } from '@mui/material'
 import AppLayout from '../components/layouts/AppLayout'
 import MintingContainer from '../components/minting/MintingContainer'

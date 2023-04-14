@@ -208,6 +208,7 @@ const GuidePage: NextPage = () => {
 								</Typography>
 							</li>
 							<Image priority quality={20} src={image1} alt="How to Mint" />
+							<Image priority quality={20} src={image7} alt="How to Mint" />
 							<Box sx={{ mb: 4 }} />
 							<li>
 								<Typography sx={styles.li}>
