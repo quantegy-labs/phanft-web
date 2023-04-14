@@ -1,11 +1,11 @@
 import { Box, Button, Container, Typography } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
-import Lizard1 from '../../public/banner-lizards/blue.png'
-import Lizard2 from '../../public/banner-lizards/orange.png'
-import Lizard3 from '../../public/banner-lizards/teal.png'
-import Lizard4 from '../../public/banner-lizards/yellow.png'
-import Lizard5 from '../../public/banner-lizards/green.png'
+import Lizard1 from 'public/banner-lizards/blue.png'
+import Lizard2 from 'public/banner-lizards/orange.png'
+import Lizard3 from 'public/banner-lizards/teal.png'
+import Lizard4 from 'public/banner-lizards/yellow.png'
+import Lizard5 from 'public/banner-lizards/green.png'
 
 const styles = {
 	banner: {
