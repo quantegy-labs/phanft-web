@@ -14,11 +14,6 @@
 		"fix:formatting": "npx prettier --config .prettierrc.js . --write",
 		"update_collection_info": "node ./scripts/update_collection_info.js"
 	},
-	"engines": {
-		"node": "18.15.0",
-		"npm": "9.5.0",
-		"yarn": "1.22.19"
-	},
 	"dependencies": {
 		"@crossmint/client-sdk-react-ui": "^0.1.8-alpha.0",
 		"@emotion/react": "^11.10.6",
