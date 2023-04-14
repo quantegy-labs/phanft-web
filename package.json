@@ -1,6 +1,6 @@
 {
 	"name": "phanft-web",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
@@ -12,7 +12,7 @@
 		"fix:code": "next lint --fix",
 		"lint:formatting": "npx prettier --config .prettierrc.js . --check",
 		"fix:formatting": "npx prettier --config .prettierrc.js . --write",
-		"update_collection_info": "node ./scripts/update_collection_info.js",
+		"update_collection_info": "node ./scripts/update_collection_info.js"
 	},
 	"engines": {
 		"node": "18.15.0",
