@@ -36,47 +36,23 @@ const styles = {
 		whiteSpace: 'no-wrap',
 		overflow: 'hidden',
 	},
-	mobileNavLogo: {
-		cursor: 'pointer',
-		mr: 2,
-		display: { xs: 'flex', md: 'none' },
-		flexGrow: 1,
-		fontFamily: 'monospace',
-		fontWeight: 700,
-		letterSpacing: '.3rem',
-		textDecoration: 'none',
-	},
-	mobileNavWrap: { display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-start' },
-	mobileNavMenu: { display: { xs: 'block', md: 'none' } },
-	mobileNavItem: {
+	/* Nav Styles */
+	mobileNavWrap: { display: { xs: 'flex', md: 'none' }, justifyContent: 'center', alignItems: 'center' },
+	mobileMenuItem: {
+		textTransform: 'uppercase',
+		fontSize: '0.9rem',
+		color: '#fff',
 		'&:hover': {
 			backgroundColor: '#ff0087',
 		},
 	},
-	mobileNavMenuItem: {
-		textAlign: 'right',
-		color: '#fff',
-	},
-	desktopNavLogo: {
-		cursor: 'pointer',
-		mr: 2,
-		display: { xs: 'none', md: 'flex' },
-		fontFamily: 'monospace',
-		fontWeight: 700,
-		letterSpacing: '.3rem',
-		textDecoration: 'none',
-	},
-	desktopNavWrap: { flexGrow: 1, display: { xs: 'none', md: 'flex' } },
-	desktopNavMenuItem: {
-		my: 2,
-		display: 'block',
-		fontSize: '1rem',
+	desktopNavWrap: { display: { xs: 'none', md: 'flex' }, justifyContent: 'center', alignItems: 'center' },
+	desktopMenuItem: {
 		color: '#fff',
 		'&:hover': {
 			color: '#ff0087',
 		},
 	},
-	connectBtnWrap: { flexGrow: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' },
 }
 
 const pages = [
@@ -86,6 +62,7 @@ const pages = [
 	{ name: 'Team', href: '/#team' },
 	{ name: 'FAQs', href: '/#faq' },
 	{ name: 'Guide', href: '/guide' },
+	{ name: 'Mint', href: '/mint' },
 ]
 
 const AppHeader = () => {
@@ -132,23 +109,28 @@ const AppHeader = () => {
 	}
 
 	const LogoComponent: JSX.Element = (
-		<Link href="/" passHref>
-			{/* eslint-disable-next-line */}
-			<img
-				src={logoSrc}
-				width={desktops ? 200 : 150}
-				height={desktops ? 40 : 30}
-				alt="PhaNFT Logo"
-				onMouseEnter={handleToggleLogo}
-				onMouseLeave={handleToggleLogo}
-			/>
-		</Link>
+		<Box mr={2}>
+			<Typography variant="h1" sx={styles.hidden}>
+				Phanft
+			</Typography>
+			<Link href="/" passHref style={{ display: 'flex' }}>
+				{/* eslint-disable-next-line */}
+				<img
+					src={logoSrc}
+					width={desktops ? 200 : 150}
+					height={desktops ? 40 : 30}
+					alt="PhaNFT Logo"
+					onMouseEnter={handleToggleLogo}
+					onMouseLeave={handleToggleLogo}
+				/>
+			</Link>
+		</Box>
 	)
 
 	return (
 		<AppBar position="sticky" enableColorOnDark sx={styles.appbar}>
 			<Container maxWidth="xl">
-				<Toolbar id="back-to-top-anchor" disableGutters>
+				<Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
 					{/* Mobile Navigation */}
 					<Box sx={styles.mobileNavWrap}>
 						<IconButton
@@ -175,37 +157,26 @@ const AppHeader = () => {
 							}}
 							open={Boolean(anchorElNav)}
 							onClose={handleCloseNavMenu}
-							sx={styles.mobileNavMenu}
 						>
-							<nav>
+							<Box component="nav">
 								{pages.map(page => (
 									<Link href={page.href} key={page.name}>
-										<MenuItem onClick={handleCloseNavMenu} sx={styles.mobileNavItem}>
-											<Typography sx={styles.mobileNavMenuItem}>{page.name}</Typography>
+										<MenuItem onClick={handleCloseNavMenu} sx={styles.mobileMenuItem}>
+											{page.name}
 										</MenuItem>
 									</Link>
 								))}
-							</nav>
+							</Box>
 						</Menu>
-					</Box>
-					<Box sx={styles.mobileNavLogo}>
-						<Typography variant="h1" sx={styles.hidden}>
-							PhaNFT
-						</Typography>
 						{LogoComponent}
 					</Box>
 
 					{/* Desktop Navigation */}
-					<Box sx={styles.desktopNavLogo}>
-						<Typography variant="h1" sx={styles.hidden}>
-							PhaNFT
-						</Typography>
-						{LogoComponent}
-					</Box>
 					<Box component="nav" sx={styles.desktopNavWrap}>
+						{LogoComponent}
 						{pages.map(page => (
 							<Link href={page.href} key={page.name}>
-								<Button onClick={handleCloseNavMenu} sx={styles.desktopNavMenuItem}>
+								<Button onClick={handleCloseNavMenu} sx={styles.desktopMenuItem} variant="text">
 									{page.name}
 								</Button>
 							</Link>
@@ -213,19 +184,8 @@ const AppHeader = () => {
 					</Box>
 
 					{/* Buttons */}
-					<Box sx={styles.connectBtnWrap}>
+					<Box display="flex" alignItems="center" justifyContent="center">
 						<SocialIcons />
-						<Link href="/mint">
-							<Button
-								onClick={handleCloseNavMenu}
-								variant="contained"
-								color="primary"
-								size="small"
-								sx={{ ml: 1, fontSize: desktops ? undefined : '.75rem' }}
-							>
-								Minting Soon
-							</Button>
-						</Link>
 						{web3Provider &&
 							(connected ? (
 								<>
@@ -253,7 +213,7 @@ const AppHeader = () => {
 											py: 0.6,
 											ml: 1,
 											borderWidth: 2,
-											display: desktops ? 'inline-flex' : 'none',
+											display: { xs: 'none', sm: 'inline-flex' },
 										}}
 									>
 										<Typography color="secondary" variant="caption">
@@ -279,7 +239,7 @@ const AppHeader = () => {
 									onClick={handleConnectWallet}
 									color="secondary"
 									size="small"
-									sx={{ ml: { md: 2 } }}
+									sx={{ ml: 1 }}
 									disabled={!web3Provider}
 								>
 									<Image priority quality={20} src="/icon_wallet.svg" alt="Connect a Wallet" width={25} height={25} />

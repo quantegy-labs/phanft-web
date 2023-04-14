@@ -14,7 +14,9 @@
 		"fix:formatting": "npx prettier --config .prettierrc.js . --write",
 		"update_collection_info": "node ./scripts/update_collection_info.js"
 	},
-	"cacheDirectories": [".next/cache"],
+	"cacheDirectories": [
+		".next/cache"
+	],
 	"dependencies": {
 		"@crossmint/client-sdk-react-ui": "^0.1.8-alpha.0",
 		"@emotion/react": "^11.10.6",
