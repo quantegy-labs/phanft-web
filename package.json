@@ -13,7 +13,10 @@
 		"lint:formatting": "npx prettier --config .prettierrc.js . --check",
 		"fix:formatting": "npx prettier --config .prettierrc.js . --write",
 		"update_collection_info": "node ./scripts/update_collection_info.js",
-		"heroku-postbuild": "next build"
+	},
+	"engines": {
+		"node": "18.15.0",
+		"yarn": "1.22.19"
 	},
 	"dependencies": {
 		"@crossmint/client-sdk-react-ui": "^0.1.8-alpha.0",
